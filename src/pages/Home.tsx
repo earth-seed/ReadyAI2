@@ -15,6 +15,7 @@ import Banner7Section from '../components/sections/Banner7Section';
 import Banner8Section from '../components/sections/Banner8Section';
 import Banner9Section from '../components/sections/Banner9Section';
 import Banner10Section from '../components/sections/Banner10Section';
+import CalcSection from '../components/sections/CalcSection';
 import SlideAnimator from '../utils/SlideAnimator';
 import SocialSection from '../components/sections/SocialSection';
 
@@ -27,36 +28,11 @@ const Home: React.FC = () => {
   return (
     <div>
       <HeroSection />
-      <Banner1Section />
-      <SlideAnimator direction="left">
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-7">
-              <h2 className="text-2xl font-bold text-primary mb-6">
-                Calculate Your Potential Savings
-              </h2>
-              <p className="text-lg text-gray-600 mb-4">
-                No matter your industry, the platform can help you reduce costs while expanding AI capabilities. 
-                Use our ROI calculator to see how much you could save by switching to our platform.
-              </p>
-              <p className="text-lg text-gray-600 mb-6">
-                A fixed price of $30 per user per month provides access to all platform features, 
-                including unlimited AI agents, all supported LLMs, and our comprehensive management tools.
-              </p>
-            </div>
-            <div className="lg:col-span-5 mt-8 lg:mt-0">
-              <ROICalculator />
-            </div>
-          </div>
-        </div>
-      </div>
-      </SlideAnimator>
-      <Banner8Section />
-      <Banner4Section />
-      <Banner5Section />
-      <Banner6Section />
-      <Banner7Section />
+      <Banner1Section />  
+      <Banner6Section />  
+      <CalcSection />
+      <Banner4Section /> 
+      <Banner8Section /> 
       <Banner2Section />
       <Banner9Section />
       <Banner10Section />

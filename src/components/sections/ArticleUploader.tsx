@@ -99,16 +99,16 @@ const UploadDocAndImage: React.FC = () => {
       <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} />
 
       <label className="font-bold block">Title:</label>
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="border p-2 w-full" />
+      <input type="text" placeholder="Article Title" value={title} onChange={(e) => setTitle(e.target.value)} className="border p-2 w-full" />
 
       <label className="font-bold block">URL:</label>
-      <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} className="border p-2 w-full" />
+      <input type="text" placeholder="article-title" value={url} onChange={(e) => setUrl(e.target.value)} className="border p-2 w-full" />
 
       <label className="font-bold block">Meta Description:</label>
-      <input type="text" value={metaDesc} onChange={(e) => setMetaDesc(e.target.value)} className="border p-2 w-full" />
+      <input type="text" placeholder="meta description" value={metaDesc} onChange={(e) => setMetaDesc(e.target.value)} className="border p-2 w-full" />
 
       <label className="font-bold block">Meta Keywords:</label>
-      <input type="text" value={metaKeywords} onChange={(e) => setMetaKeywords(e.target.value)} className="border p-2 w-full" />
+      <input type="text" placeholder="keyword 1, keyword 2" value={metaKeywords} onChange={(e) => setMetaKeywords(e.target.value)} className="border p-2 w-full" />
 
       <button
         onClick={handleUpload}
