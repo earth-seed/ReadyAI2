@@ -31,14 +31,12 @@ const Home: React.FC = () => {
       <Banner1Section />  
       <Banner6Section />  
       <CalcSection />
-      <Banner4Section /> 
+      <Banner4Section />
+      <Banner5Section /> 
       <Banner8Section /> 
       <Banner2Section />
-      <Banner9Section />
-      <Banner10Section />
-      {/* <FeaturesSection />  */}
-      {/* <IndustriesSection /> */}
-      <Banner />
+      <Banner7Section />
+      <Banner3Section />      
       <CtaSection />
       <SocialSection />
     </div>

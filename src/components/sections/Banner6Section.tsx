@@ -4,7 +4,7 @@ import SlideAnimator from "../../utils/SlideAnimator";
 
 export default function Banner6Section() {
   return (
-    <SlideAnimator direction="left">
+    <SlideAnimator direction="up">
       <section className="relative bg-accent2-lightest text-white py-20 overflow-hidden">
         {/* Background translucent diagonal shapes */}
         <div className="absolute inset-0 pointer-events-none">

@@ -4,9 +4,11 @@ import Button from '../ui/Button';
 import CalendlySection from './CalendlySection';
 import CalendlySectionPopUp from './CalendlySectionPopUp';
 import FloatingButton from '../../utils/FloatingButton';
+import SlideAnimator from '../../utils/SlideAnimator';
 
 const CtaSection: React.FC = () => {
   return (
+    <SlideAnimator direction="left">
     <div className="bg-primary">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:justify-between">
         <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
@@ -64,6 +66,7 @@ const CtaSection: React.FC = () => {
         </div>
       </div>
     </div>
+    </SlideAnimator>
   );
 };
 
