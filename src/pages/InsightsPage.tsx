@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import FloatingButton from "../utils/FloatingButton";
 import { Helmet } from "react-helmet";
 import WordDocViewer from "../components/sections/WordDocParser";
-import { Linkedin } from "lucide-react";
+import { Linkedin, Sparkles } from "lucide-react";
 
 // Firebase imports
 import { getFirestore, collection, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
@@ -115,41 +115,58 @@ const InsightsPage: React.FC = () => {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-left">
           {!articleName && (
-            <h2 className="text-4xl text-gray-700 mb-40 mt-20 text-center tracking-widest">
-              LATEST POSTS
-            </h2>
+            <div className="text-center">
+              <h2 className="inline-block text-4xl text-gray-700 mb-20 mt-20 tracking-widest border-b-2 border-dotted border-gray-400 pb-2">
+                Latest Posts
+              </h2>
+            </div>
+
           )}
 
           {/* List view */}
           {!articleName && (
             <ul className="text-xl mb-20">
-              {articles.map((article) => (
+              {articles.map((article, idx) => (
                 <li
                   key={article.id}
-                  className="flex items-start space-x-4 mb-20"
+                  className={`p-10 mb-10 ${
+                    idx === 0 ? "shadow-lg rounded- mb-20" : ""
+                  }`}
                 >
-                  <img
-                    src={article.imgURL}
-                    alt={article.title}
-                    className="w-40 h-20 object-cover rounded flex-shrink-0"
-                  />
-                  <div>
-                    <button
-                      className="text-blue-600 underline hover:text-blue-800 block text-left"
-                      onClick={() => onSelect(article.url)}
-                    >
-                      {article.title}
-                    </button>
-                    <p className="text-gray-600 text-base mt-4 mb-1 italic">
-                      {formatTimestamp(article.timestamp)}
-                    </p>
-                    <p className="text-gray-600 text-base mt-1">
-                      {article.description}
-                    </p>
+                  {/* Badge row */}
+                  {idx === 0 && (
+                    <div className="mb-12">
+                      <span className="inline-flex items-center gap-2 bg-blue-600 text-white px-3 py-1 rounded-full shadow text-xs font-bold">
+                        <Sparkles className="w-4 h-4 text-white" />
+                        Latest
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Content row (image + text) */}
+                  <div className="flex items-start space-x-4">
+                    <img
+                      src={article.imgURL}
+                      alt={article.title}
+                      className="w-40 h-20 object-cover rounded flex-shrink-0"
+                    />
+                    <div>
+                      <button
+                        className="text-blue-600 underline hover:text-blue-800 block text-left"
+                        onClick={() => onSelect(article.url)}
+                      >
+                        {article.title}
+                      </button>
+                      <p className="text-gray-600 text-base mt-4 mb-1 italic">
+                        {formatTimestamp(article.timestamp)}
+                      </p>
+                      <p className="text-gray-600 text-base mt-1">{article.description}</p>
+                    </div>
                   </div>
                 </li>
               ))}
             </ul>
+
           )}
 
           {/* Single article view */}
