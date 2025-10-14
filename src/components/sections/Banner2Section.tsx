@@ -10,79 +10,61 @@ import {
   FileText,
   Shield,
   Check,
+  Lock,
 } from "lucide-react";
 import SlideAnimator from "../../utils/SlideAnimator.tsx";
 
 const Banner2Section = () => {
   return (
     <SlideAnimator direction="up">
-      <section className="relative bg-accent2 text-white py-20 px-8 overflow-hidden text-lg">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 relative z-10">
-          {/* Left Side with centered shield + text */}
-          <div className="relative flex items-center justify-center text-center px-4">
-            {/* Background Shield */}
-            <Shield className="absolute inset-0 m-auto w-64 md:w-80 lg:w-[420px] h-64 md:h-80 lg:h-[420px] text-white/10 pointer-events-none" />
-
-            {/* Text Content */}
-            <div className="relative z-10 max-w-md">
-              <ShieldCheck className="text-accent w-12 h-12 mx-auto mb-4" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">
-                Secure By Default
-              </h2>
-              <p className="text-gray-300 text-lg font-medium mb-4">
-                Compliant by design
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                ReadyAI.dev provides enterprise-grade security and compliance
-                baked in from the start, giving you confidence to scale AI
-                securely across your organization.
-              </p>
-            </div>
+      <section className="relative bg-accent2-lightest py-20 px-8 overflow-hidden">
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* PART 1: SECTION HEADER */}
+          <div className="text-center mb-16">
+            <h2 className="font-heading text-4xl md:text-5xl font-normal text-primary mb-4">
+              Secure By Default. Compliant By Design.
+            </h2>
+            <p className="font-sans text-lg text-primary-light max-w-3xl mx-auto leading-relaxed">
+              Enterprise-grade security and compliance baked in from the start, 
+              giving you confidence to scale AI securely across your organization.
+            </p>
           </div>
 
-          {/* Right Side */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-base">
-            <FeatureGroup
-              title={
-                <>
-                  Your data. <span className="text-accent">Your rules.</span>
-                </>
-              }
-              items={[
-                { icon: <ShieldCheck />, text: "Never used to train LLMs" },
-                { icon: <Eye />, text: "Data visibility controls" },
-                { icon: <Trash2 />, text: "Delete data anytime" },
-                { icon: <Server />, text: "US-based servers" },
+          {/* PART 2: THREE-PILLAR LAYOUT */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* COLUMN 1: DATA SOVEREIGNTY */}
+            <SecurityPillar
+              icon={<Database className="w-14 h-14 text-accent" />}
+              title="Your Data. Your Rules."
+              features={[
+                "Never used to train LLMs",
+                "Data visibility controls",
+                "Delete data anytime",
+                "US-based servers"
               ]}
             />
 
-            <FeatureGroup
-              title={
-                <>
-                  Enterprise-grade security.{" "}
-                  <span className="text-accent">Fully compliant.</span>
-                </>
-              }
-              items={[
-                { icon: <Database />, text: "SOC 2 Compliant" },
-                { icon: <Shield />, text: "Private Azure instances" },
-                { icon: <Check />, text: "GDPR Compliant" },
-                { icon: <Server />, text: "On-prem deployment options" },
+            {/* COLUMN 2: ENTERPRISE COMPLIANCE */}
+            <SecurityPillar
+              icon={<ShieldCheck className="w-14 h-14 text-accent" />}
+              title="Enterprise-Grade Security. Fully Compliant."
+              features={[
+                "SOC 2 Compliant",
+                "Private Azure instances",
+                "GDPR Compliant",
+                "On-prem deployment options"
               ]}
             />
 
-            <FeatureGroup
-              title={
-                <>
-                  Secure access.{" "}
-                  <span className="text-accent">Granular control.</span>
-                </>
-              }
-              items={[
-                { icon: <Key />, text: "SSO verification" },
-                { icon: <BarChart />, text: "Org-wide analytics" },
-                { icon: <Settings />, text: "Role-based permissions" },
-                { icon: <FileText />, text: "Admin chat log access" },
+            {/* COLUMN 3: ACCESS CONTROL */}
+            <SecurityPillar
+              icon={<Key className="w-14 h-14 text-accent" />}
+              title="Secure Access. Granular Control."
+              features={[
+                "SSO verification",
+                "Org-wide analytics",
+                "Role-based permissions",
+                "Admin chat log access"
               ]}
             />
           </div>
@@ -92,27 +74,30 @@ const Banner2Section = () => {
   );
 };
 
-const FeatureGroup = ({
+const SecurityPillar = ({
+  icon,
   title,
-  items,
+  features,
 }: {
-  title: React.ReactNode;
-  items: { icon: JSX.Element; text: string }[];
+  icon: React.ReactNode;
+  title: string;
+  features: string[];
 }) => (
-  <div>
-    <h3 className="text-white font-semibold mb-4 text-lg">{title}</h3>
-    <div className="space-y-3">
-      {items.map((item, i) => (
-        <Feature key={i} icon={item.icon} text={item.text} />
-      ))}
+  <div className="bg-white/70 backdrop-blur-sm border border-accent/20 rounded-2xl p-10 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-white/90 hover:border-accent/40 h-full">
+    <div className="mb-6 transition-transform duration-300 hover:scale-110">
+      {icon}
     </div>
-  </div>
-);
-
-const Feature = ({ icon, text }: { icon: JSX.Element; text: string }) => (
-  <div className="flex items-center space-x-3">
-    <div className="text-accent w-6 h-6">{icon}</div>
-    <span className="text-gray-200">{text}</span>
+    <h3 className="font-heading text-2xl font-normal text-primary mb-6 leading-snug">
+      {title}
+    </h3>
+    <ul className="space-y-4 w-full">
+      {features.map((feature, index) => (
+        <li key={index} className="flex items-start gap-3 text-left">
+          <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+          <span className="font-sans text-base text-primary-light">{feature}</span>
+        </li>
+      ))}
+    </ul>
   </div>
 );
 

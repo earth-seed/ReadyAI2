@@ -1,12 +1,11 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Services, SOLUTIONS } from '../utils/constants';
-import { ArrowRight, Brain, Cpu, Layers, LayoutDashboard, Shield, TrendingDown, Zap } from 'lucide-react';
+import { ArrowRight, Cpu, Layers, LayoutDashboard, Shield, TrendingDown, Zap } from 'lucide-react';
 import Button from '../components/ui/Button';
 import FloatingButton from '../utils/FloatingButton';
 
 const iconMap = {
-  'brain': Brain,
   'cpu': Cpu,
   'layout-dashboard': LayoutDashboard,
   'shield': Shield,

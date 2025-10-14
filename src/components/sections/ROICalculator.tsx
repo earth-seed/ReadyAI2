@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Button from '../ui/Button';
 import { Calculator } from 'lucide-react';
 
 const ROICalculator: React.FC = () => {
@@ -16,7 +15,7 @@ const ROICalculator: React.FC = () => {
     const currentAnnualCost = seatsNum * priceNum * 12;
     const devsAiCost = seatsNum * 30 * 12; // $30 per seat per month
     const savings = currentAnnualCost - devsAiCost;
-    const savingsPercentage = (savings / currentAnnualCost) * 100;
+    const savingsPercentage = currentAnnualCost > 0 ? (savings / currentAnnualCost) * 100 : 0;
 
     setAnnualSavings(savings);
     setPercentageSavings(savingsPercentage);
@@ -30,78 +29,78 @@ const ROICalculator: React.FC = () => {
   }, [seats, pricePerSeat]);
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="p-6 sm:p-8">
-        <div className="flex items-center mb-6">
-          <Calculator className="h-6 w-6 text-blue-600 mr-3" />
-          <h3 className="text-xl font-bold text-gray-900">AI ROI Calculator</h3>
-        </div>
-
-        <p className="text-gray-600 mb-6">
-          Calculate your potential savings by switching to the platform.
+    <div className="space-y-6">
+      <div>
+        <h3 className="font-heading text-primary text-xl font-normal mb-2 flex items-center gap-2">
+          <Calculator className="h-5 w-5 text-accent" />
+          AI ROI Calculator
+        </h3>
+        <p className="font-sans text-primary-light text-sm">
+          Calculate your potential savings by switching to ReadyAI.
         </p>
+      </div>
 
-        <div className="space-y-4">
-          <div>
-            <label htmlFor="seats" className="block text-sm font-medium text-gray-700 mb-1">
-              Number of AI Users
-            </label>
-            <input
-              type="number"
-              id="seats"
-              min="1"
-              value={seats}
-              onChange={(e) => setSeats(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="pricePerSeat" className="block text-sm font-medium text-gray-700 mb-1">
-              Current Monthly Cost Per User ($)
-            </label>
-            <input
-              type="number"
-              id="pricePerSeat"
-              min="0"
-              value={pricePerSeat}
-              onChange={(e) => setPricePerSeat(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-
-          <Button 
-            onClick={handleCalculate}
-            isFullWidth={true}
-            className="mt-2"
-          >
-            Calculate Savings
-          </Button>
+      <div className="space-y-4">
+        <div>
+          <label htmlFor="seats" className="block font-sans text-sm font-medium text-primary mb-2">
+            Number of AI Users
+          </label>
+          <input
+            type="number"
+            id="seats"
+            min="1"
+            value={seats}
+            onChange={(e) => setSeats(e.target.value)}
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg font-sans text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+            placeholder="Enter number of users"
+          />
         </div>
 
-        {calculated && (
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100 break-words">
-            <h4 className="font-semibold text-blue-900 mb-3">Your Potential Savings</h4>
+        <div>
+          <label htmlFor="pricePerSeat" className="block font-sans text-sm font-medium text-primary mb-2">
+            Current Monthly Cost Per User ($)
+          </label>
+          <input
+            type="number"
+            id="pricePerSeat"
+            min="0"
+            value={pricePerSeat}
+            onChange={(e) => setPricePerSeat(e.target.value)}
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg font-sans text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+            placeholder="Enter current cost per user"
+          />
+        </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-sm text-blue-700">Annual Savings</p>
-                <p className="text-2xl font-bold text-blue-900">${annualSavings.toLocaleString()}</p>
-              </div>
+        <button 
+          onClick={handleCalculate}
+          className="w-full bg-accent text-white px-6 py-3 rounded-lg font-sans font-semibold hover:bg-accent-dark transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+        >
+          Calculate Savings
+        </button>
+      </div>
 
-              <div>
-                <p className="text-sm text-blue-700">Percentage Savings</p>
-                <p className="text-2xl font-bold text-blue-900">{percentageSavings.toFixed(1)}%</p>
-              </div>
+      {calculated && (
+        <div className="mt-6 p-6 bg-gradient-to-br from-accent/10 to-transparent rounded-xl border-2 border-accent/30">
+          <h4 className="font-heading text-primary text-lg font-normal mb-4">Your Potential Savings</h4>
+
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="bg-white rounded-lg p-4 border border-accent/20">
+              <p className="font-sans text-xs uppercase tracking-wide text-primary-light mb-1">Annual Savings</p>
+              <p className="font-heading text-2xl font-normal text-accent">${annualSavings.toLocaleString()}</p>
             </div>
 
-            <p className="mt-4 text-sm text-blue-700">
-              By switching to the platform, you could save ${annualSavings.toLocaleString()} annually,
-              which is {percentageSavings.toFixed(1)}% of your current AI spending.
-            </p>
+            <div className="bg-white rounded-lg p-4 border border-accent/20">
+              <p className="font-sans text-xs uppercase tracking-wide text-primary-light mb-1">Percentage Savings</p>
+              <p className="font-heading text-2xl font-normal text-accent">{percentageSavings.toFixed(1)}%</p>
+            </div>
           </div>
-        )}
-      </div>
+
+          <p className="font-sans text-sm text-primary-light leading-relaxed">
+            By switching to ReadyAI, you could save <span className="font-semibold text-accent">${annualSavings.toLocaleString()}</span> annually,
+            which is <span className="font-semibold text-accent">{percentageSavings.toFixed(1)}%</span> of your current AI spending.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

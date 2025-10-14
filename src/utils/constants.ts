@@ -21,7 +21,7 @@ export const SOLUTIONS: Solution[] = [
     id: 'llm-integration',
     title: 'LLM Integration',
     description: 'Access industry-leading selection of customizable LLMs tailored to your specific business needs and use cases',
-    icon: 'brain',
+    icon: 'layout-dashboard',
   },
   {
     id: 'security',
