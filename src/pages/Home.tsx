@@ -17,6 +17,7 @@ import Banner9Section from '../components/sections/Banner9Section';
 import Banner10Section from '../components/sections/Banner10Section';
 import CalcSection from '../components/sections/CalcSection';
 import IndustriesShowcaseSection from '../components/sections/IndustriesShowcaseSection';
+import BlogShowcaseSection from '../components/sections/BlogShowcaseSection';
 import SlideAnimator from '../utils/SlideAnimator';
 import SocialSection from '../components/sections/SocialSection';
 
@@ -34,6 +35,7 @@ const Home: React.FC = () => {
       <CalcSection />
       <Banner2Section />
       <IndustriesShowcaseSection />
+      <BlogShowcaseSection />
       <CtaSection />
       <SocialSection />
     </div>
