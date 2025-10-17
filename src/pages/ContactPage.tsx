@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Calendar, MessageCircle } from 'lucide-react';
+import { PopupButton } from 'react-calendly';
 import ContactForm from '../components/layout/ContactForm';
 import CalendlySectionPopUp from '../components/sections/CalendlySectionPopUp';
 
@@ -54,7 +55,7 @@ const ContactPage: React.FC = () => {
           </div>
 
           {/* Right Column - Sidebar */}
-          <div className="space-y-6 lg:sticky lg:top-24">
+          <div className="space-y-6">
             {/* Contact Information Card */}
             <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
               <h3 className="font-heading text-xl font-medium text-primary mb-6 flex items-center gap-2">
@@ -99,9 +100,9 @@ const ContactPage: React.FC = () => {
                   </div>
                 </a>
 
-                <div className="flex items-start gap-4 p-3 rounded-xl">
+                <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-accent2-lightest transition-colors group">
                   <div className="flex-shrink-0 mt-0.5">
-                    <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                       <MapPin className="w-5 h-5 text-accent" />
                     </div>
                   </div>
@@ -125,21 +126,15 @@ const ContactPage: React.FC = () => {
                   Schedule a Demo
                 </h3>
               </div>
-              <p className="text-white/90 text-sm leading-relaxed mb-5 flex-grow">
+              <p className="text-white/90 text-sm leading-relaxed mb-5">
                 See ReadyAI in action. Book a personalized walkthrough with our team to explore how we can help secure and scale your AI operations.
               </p>
-              <button
-                onClick={() => {
-                  const calendlyBtn = document.querySelector('[data-calendly-trigger]') as HTMLElement;
-                  if (calendlyBtn) calendlyBtn.click();
-                }}
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-white text-primary rounded-lg font-sans font-semibold hover:bg-gray-50 transition-all hover:shadow-xl mt-auto"
-              >
-                Book a Demo
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </button>
+              <PopupButton
+                url="https://calendly.com/readyai-sales"
+                rootElement={document.getElementById("root") as HTMLElement}
+                text="Book a Demo"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-white text-primary rounded-lg font-sans font-semibold hover:bg-gray-50 transition-all hover:shadow-xl"
+              />
             </div>
           </div>
         </div>
