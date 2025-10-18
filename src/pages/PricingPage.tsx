@@ -169,16 +169,16 @@ const PricingPage: React.FC = () => {
           </div>
 
           {/* Personal Plans */}
-          <div className="text-center py-12 bg-white rounded-2xl border border-gray-100 shadow-sm">
-            <h2 className="font-heading text-2xl font-medium text-primary mb-4">
+          <div className="text-center py-12 bg-gradient-to-br from-primary via-primary-light to-primary-dark rounded-2xl shadow-lg">
+            <h2 className="font-heading text-2xl font-medium text-white mb-4">
               Just Exploring AI on Your Own?
             </h2>
-            <p className="text-lg text-gray-700 mb-2">
+            <p className="text-lg text-white/90 mb-6">
               Start small with our Free & Personal Plans
             </p>
             <Link 
               to="/plans-and-enterprise-options/individual-starter-plans"
-              className="inline-flex items-center gap-2 text-accent hover:text-accent-dark font-semibold transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary rounded-lg font-semibold hover:bg-gray-50 transition-all shadow-md hover:shadow-xl"
             >
               View Individual Plans
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
