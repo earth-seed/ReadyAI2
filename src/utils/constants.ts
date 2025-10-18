@@ -255,14 +255,18 @@ export const NAVIGATION: NavItem[] = [
     })),
   },
   {
-    name: 'Plans & Enterprise Options',
+    name: 'Pricing and Plans',
     path: '/plans-and-enterprise-options',
-    submenu: PricingTiers.length > 0 ? [
+    submenu: [
       {
-        name: PricingTiers[PricingTiers.length - 1].name,
-        path: `/plans-and-enterprise-options/${PricingTiers[PricingTiers.length - 1].id}`,
+        name: 'Enterprise Options',
+        path: '/plans-and-enterprise-options',
+      },
+      {
+        name: 'Individual Plans',
+        path: '/plans-and-enterprise-options/individual-starter-plans',
       }
-    ] : [],
+    ],
   },
   {
     name: 'FAQ',
