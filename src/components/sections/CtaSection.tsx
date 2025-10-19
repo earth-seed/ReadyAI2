@@ -1,6 +1,5 @@
 import React from 'react';
 import CalendlySection from './CalendlySection';
-import FloatingButton from '../../utils/FloatingButton';
 import SlideAnimator from '../../utils/SlideAnimator';
 
 const CtaSection: React.FC = () => {
@@ -46,7 +45,6 @@ const CtaSection: React.FC = () => {
             </div>
           </div>
         </div>
-        <FloatingButton url="https://devs.ai/signup?ref=sales%40readyai.dev" label="Explore Platform" />
       </div>
     </div>
     </SlideAnimator>
