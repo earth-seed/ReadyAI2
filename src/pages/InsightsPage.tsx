@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import WordDocViewer from "../components/sections/WordDocParser";
 import { Linkedin, Sparkles, Calendar, ArrowRight, TrendingUp, BookOpen, Users, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Firebase imports
 import { getFirestore, collection, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
@@ -242,6 +243,33 @@ const InsightsPage: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* CTA Section */}
+      <div className="bg-gradient-to-br from-primary via-primary-light to-primary-dark py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-heading text-3xl md:text-4xl font-medium text-white mb-6">
+            Ready to Transform Your AI Strategy?
+          </h2>
+          <p className="font-sans text-lg text-white/90 mb-8 leading-relaxed">
+            Whether you're exploring LLM integration, AI-powered workflows, or organizational AI governance, 
+            our platform can help you succeed.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact">
+              <button className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary rounded-lg font-sans font-semibold hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl">
+                Contact Our Team
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </Link>
+            <a href="https://devs.ai/signup?ref=sales%40readyai.dev" target="_blank" rel="noopener noreferrer">
+              <button className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white rounded-lg font-sans font-semibold hover:bg-accent-dark transition-all shadow-lg hover:shadow-xl">
+                Explore Platform
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
 
     </div>
   );
