@@ -28,7 +28,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="fixed w-full z-50 bg-white shadow-sm">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto pl-4 pr-0 sm:pl-6 sm:pr-0 lg:pl-8 lg:pr-0">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center">
             <img 
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-4 -mr-8">
             <form onSubmit={handleSearch} className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-4 w-4 text-gray-400" />
@@ -93,6 +93,12 @@ const Header: React.FC = () => {
               className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
             >
               Contact
+            </Link>
+            <Link
+              to="/solutions"
+              className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-accent hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+            >
+              Explore Platform
             </Link>
           </div>
 
@@ -158,12 +164,18 @@ const Header: React.FC = () => {
                 </div>
               </form>
             </div>
-            <div className="px-3 py-2">
+            <div className="px-3 py-2 space-y-2">
               <Link
                 to="/contact"
                 className="block text-center w-full px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark"
               >
                 Contact
+              </Link>
+              <Link
+                to="/solutions"
+                className="block text-center w-full px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-accent hover:bg-accent-dark"
+              >
+                Explore Platform
               </Link>
             </div>
           </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Shield, Target, Users, Zap, Award, Globe, Lock, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
-import FloatingButton from '../utils/FloatingButton';
 import { Link } from 'react-router-dom';
 
 const AboutPage: React.FC = () => {
@@ -287,7 +286,6 @@ const AboutPage: React.FC = () => {
         </div>
       </div>
 
-      <FloatingButton url="https://devs.ai/signup?ref=sales%40readyai.dev" label="Explore Platform" />
     </div>
   );
 };

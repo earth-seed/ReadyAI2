@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import FloatingButton from "../utils/FloatingButton";
 import { Helmet } from "react-helmet";
 import WordDocViewer from "../components/sections/WordDocParser";
-import { Linkedin, Sparkles } from "lucide-react";
+import { Linkedin, Sparkles, Calendar, ArrowRight, TrendingUp, BookOpen, Users, Clock } from "lucide-react";
 
 // Firebase imports
 import { getFirestore, collection, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
@@ -73,7 +72,7 @@ const InsightsPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       {/* Open Graph Meta */}
       {currArticle?.title ? (
         <Helmet>
@@ -92,125 +91,158 @@ const InsightsPage: React.FC = () => {
         </Helmet>
       )}
 
-      {/* Header */}
+      {/* Modern Hero Section */}
       <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] bg-cover bg-center"></div>
+        {/* Animated background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
         </div>
+        
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="pt-20 pb-10 md:pt-24 md:pb-14">
-            <div className="text-center">
-              <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-                <span className="block">Insights</span>
-                <span className="block text-2xl mt-4 text-accent">
-                  Industry insights and trends
-                </span>
+          <div className="pt-24 pb-20 md:pt-32 md:pb-24">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white mb-8">
+                AI Insights & <span className="text-accent">Trends</span>
               </h1>
+              
+              <p className="text-lg text-gray-200 mb-12 leading-relaxed max-w-2xl mx-auto">
+                Expert analysis, industry trends, and strategic insights for enterprise AI adoption
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <div className="flex items-center gap-2 text-gray-300">
+                  <BookOpen className="w-5 h-5" />
+                  <span>{articles.length} Articles</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <Users className="w-5 h-5" />
+                  <span>Expert Analysis</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <Clock className="w-5 h-5" />
+                  <span>Updated Weekly</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Articles list OR single article */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-left">
-          {!articleName && (
-            <div className="text-center">
-              <h2 className="inline-block text-4xl text-gray-700 mb-20 mt-20 tracking-widest border-b-2 border-dotted border-gray-400 pb-2">
-                Latest Posts
-              </h2>
-            </div>
+      {/* Articles Grid */}
+      {!articleName && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
-          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {articles.map((article, idx) => (
+              <article
+                key={article.id}
+                className={`group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 ${
+                  idx === 0 ? "md:col-span-2 lg:col-span-1" : ""
+                }`}
+              >
 
-          {/* List view */}
-          {!articleName && (
-            <ul className="text-xl mb-20">
-              {articles.map((article, idx) => (
-                <li
-                  key={article.id}
-                  className={`p-10 mb-10 ${
-                    idx === 0 ? "shadow-lg rounded- mb-20" : ""
-                  }`}
-                >
-                  {/* Badge row */}
-                  {idx === 0 && (
-                    <div className="mb-12">
-                      <span className="inline-flex items-center gap-2 bg-blue-600 text-white px-3 py-1 rounded-full shadow text-xs font-bold">
-                        <Sparkles className="w-4 h-4 text-white" />
-                        Latest
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Content row (image + text) */}
-                  <div className="flex items-start space-x-4">
-                    <img
-                      src={article.imgURL}
-                      alt={article.title}
-                      className="w-40 h-20 object-cover rounded flex-shrink-0"
-                    />
-                    <div>
-                      <button
-                        className="text-blue-600 underline hover:text-blue-800 block text-left"
-                        onClick={() => onSelect(article.url)}
-                      >
-                        {article.title}
-                      </button>
-                      <p className="text-gray-600 text-base mt-4 mb-1 italic">
-                        {formatTimestamp(article.timestamp)}
-                      </p>
-                      <p className="text-gray-600 text-base mt-1">{article.description}</p>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-          )}
-
-          {/* Single article view */}
-          {currArticle && (
-            <>
-              <WordDocViewer docPath={currArticle.doc} />
-              <h2 className="text-4xl text-gray-700 mb-16 text-center">
-                {currArticle.title}
-              </h2>
-
-              <div className="flex flex-col min-h-screen text-xl leading-loose tracking-widest">
-                <img
-                  src={currArticle.imgURL}
-                  alt={currArticle.title}
-                  className="object-cover w-full h-64 mb-2 rounded-lg mx-auto flex-shrink-0"
-                />
-
-                <div className="grid grid-cols-2 gap-2 mb-20">
-                  <p className="text-sm md:text-base leading-none">
-                    {formatTimestamp(currArticle.timestamp)}
-                  </p>
-                  <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareLinkedInUrl}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex gap-2 text-sm md:text-base leading-none justify-end"
-                  >
-                    <span>Share:</span>
-                    <Linkedin color="#0077b5" className="w-4 h-4 md:w-5 md:h-5" />
-                  </a>
+                {/* Article Image */}
+                <div className="relative overflow-hidden">
+                  <img
+                    src={article.imgURL}
+                    alt={article.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
 
-                {/* Parse and display Word doc from Firebase Storage */}
-                <WordDocParser docPath={currArticle.docURL} />
-              </div>
-            </>
-          )}
-        </div>
-      </div>
+                {/* Article Content */}
+                <div className="p-6">
+                  <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                    <Calendar className="w-4 h-4" />
+                    <span>{formatTimestamp(article.timestamp)}</span>
+                  </div>
 
-      <FloatingButton
-        url="https://devs.ai/signup?ref=sales%40readyai.dev"
-        label="Explore Platform"
-      />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-accent transition-colors duration-200 line-clamp-2">
+                    {article.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                    {article.description}
+                  </p>
+
+                  <button
+                    onClick={() => onSelect(article.url)}
+                    className="inline-flex items-center gap-2 text-accent font-semibold hover:text-accent-dark transition-colors duration-200 group/btn"
+                  >
+                    Read Article
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Single Article View */}
+      {currArticle && (
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* Article Header */}
+          <div className="mb-12">
+            <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+              <Calendar className="w-4 h-4" />
+              <span>{formatTimestamp(currArticle.timestamp)}</span>
+              <span className="mx-2">•</span>
+              <span>ReadyAI Insights</span>
+            </div>
+
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+              {currArticle.title}
+            </h1>
+
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              {currArticle.description}
+            </p>
+
+            {/* Share Button */}
+            <div className="flex items-center gap-4">
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareLinkedInUrl}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+              >
+                <Linkedin className="w-4 h-4" />
+                Share on LinkedIn
+              </a>
+            </div>
+          </div>
+
+          {/* Article Image */}
+          <div className="mb-12">
+            <img
+              src={currArticle.imgURL}
+              alt={currArticle.title}
+              className="w-full h-64 md:h-80 object-cover rounded-2xl shadow-lg"
+            />
+          </div>
+
+          {/* Article Content */}
+          <div className="prose prose-lg max-w-none">
+            <WordDocParser docPath={currArticle.docURL} />
+          </div>
+
+          {/* Back to Insights */}
+          <div className="mt-16 pt-8 border-t border-gray-200">
+            <button
+              onClick={() => navigate('/insights')}
+              className="inline-flex items-center gap-2 text-accent font-semibold hover:text-accent-dark transition-colors duration-200"
+            >
+              <ArrowRight className="w-4 h-4 rotate-180" />
+              Back to All Insights
+            </button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
