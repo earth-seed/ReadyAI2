@@ -2,6 +2,7 @@ export interface Industry {
   id: string;
   name: string;
   description: string;
+  industryStatement?: string;
   icon: string;
 }
 

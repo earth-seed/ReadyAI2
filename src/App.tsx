@@ -34,7 +34,8 @@ function App() {
     if (performance.memory) {
       trackCustomMetric('HeapSize', performance.memory.usedJSHeapSize);
     }
-  }, [trackCustomMetric]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Router>

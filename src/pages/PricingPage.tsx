@@ -1,230 +1,279 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import PricingSection1 from '../components/sections/PricingSection1';
-import FloatingButton from '../utils/FloatingButton';
-import CalendlySectionPopUp from '../components/sections/CalendlyBtn';
+import { Check, Sparkles } from 'lucide-react';
 import CalendlyBtn from '../components/sections/CalendlyBtn';
-import CalendlySection from '../components/sections/CalendlySection';
 import { PricingTiers } from '../utils/constants';
-import { Sparkles } from 'lucide-react';
 
 const PricingPage: React.FC = () => {
   const { tierId } = useParams<{ tierId: string }>();
-    const selectedTier = tierId 
-      ? PricingTiers.find(tier => tier.id === tierId) 
-      : null;
-  
-    React.useEffect(() => {
-      document.title = selectedTier
-        ? `${selectedTier.name} - ReadyAI`
-        : 'Plans & Enterprise Options - ReadyAI';
-    }, [selectedTier]);
+  const selectedTier = tierId 
+    ? PricingTiers.find(tier => tier.id === tierId) 
+    : null;
+
+  React.useEffect(() => {
+    document.title = selectedTier
+      ? 'Individual Plans - ReadyAI'
+      : 'Enterprise Pricing and Plans - ReadyAI';
+  }, [selectedTier]);
 
   return (
-    <div
-      className="relative min-h-screen"
-      style={{
-        backgroundImage: `linear-gradient(
-          45deg,
-          #f5f5f5 0%,
-          #f5f5f5 33%,   /* first stripe */
-          #ffffff 33%,
-          #ffffff 66%,   /* second stripe */
-          #f5f5f5 66%,
-          #f5f5f5 100%   /* third stripe */
-        )`
-      }}
-    >
-      {/* Top Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-black via-gray-700 to-gray-300">
-        {/* Abstract background patterns */}
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] bg-cover bg-center"></div>
+          <div className="absolute top-20 right-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
         </div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="pt-20 pb-10 md:pt-24 md:pb-14">
-            <div className="text-center">
-              <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-                <span className="block">{selectedTier?.name ? selectedTier.name : "Plans & Enterprise Options"}</span>
-                <span className="block text-2xl mt-4 text-accent">
-                  Advisory-led pathways to secure enterprise AI success
-                </span>
-              </h1>
-              <p className="mt-6 text-lg text-white max-w-3xl mx-auto">
-                {selectedTier?.note ? selectedTier.note : "Every enterprise has a unique AI journey. ReadyAI.dev provides advisory-led pathways to help you explore, evaluate, and scale with confidence."}
-              </p>
-            </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+          <div className="text-center">
+            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white mb-6">
+              {selectedTier ? "Individual Plans" : "Enterprise Pricing and Plans"}
+            </h1>
+            <p className="font-sans text-lg md:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+              {selectedTier?.note 
+                ? selectedTier.note 
+                : "Get started quickly with our flexible pricing designed to enable AI for all organizations—from a small law office to the largest global enterprise. Our plans scale with your use cases while ensuring strict security and governance controls."}
+            </p>
           </div>
         </div>
-      </div>   
-            
+      </div>
 
-      {/* =================== MAIN VIEW ================ */}
+      {/* Main Content */}
       {!selectedTier ? (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">   
-          {/* Highlightable Boxes */}
-          <div className="grid gap-8 md:grid-cols-3 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* Pricing Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
             {/* Pilot Program */}
-            <div className="bg-accent2-lightest bg-opacity-70 rounded-2xl shadow-md p-8 text-center transition transform hover:scale-105 hover:shadow-xl">
-              <h2 className="text-3xl font-bold text-accent-dark">Pilot Program</h2>
-              <p className="mt-4 text-lg text-accent2">
-                Try before you buy. Run a low-risk proof of concept with your team, guided by our enterprise AI advisors. 
-                Perfect for validating ROI, testing workflows, and building executive alignment.
-              </p>
-              <div className="mt-6">
-                <CalendlyBtn
-                  text="Request a Pilot"
-                  className="bg-accent text-white px-5 py-2 rounded-lg shadow hover:bg-accent-dark"
-                />
+            <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all">
+              <div className="p-8">
+                <h2 className="font-heading text-3xl font-medium text-primary mb-4">
+                  Pilot Program
+                </h2>
+                <p className="text-gray-600 mb-6 leading-relaxed min-h-[120px]">
+                  Try before you buy. Run a low-risk proof of concept with your team, guided by our enterprise AI advisors. 
+                  Perfect for validating ROI, testing workflows, and building executive alignment.
+                </p>
+                <div className="mt-auto">
+                  <CalendlyBtn
+                    text="Request a Pilot"
+                    className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                  />
+                </div>
               </div>
             </div>
+
             {/* Executive Evaluation */}
-            <div className="bg-accent2-lightest bg-opacity-70 rounded-2xl shadow-md p-8 text-center transition transform hover:scale-105 hover:shadow-xl">
-              <h2 className="text-3xl font-bold text-accent-dark">Executive Evaluation</h2>
-              <p className="mt-4 text-lg text-accent2">
-                Strategy-led evaluation for leaders. Tailored demos and advisory sessions for CIOs, CTOs, and HR leaders. 
-                ReadyAI.dev helps you align with your governance, compliance, and transformation goals.
-              </p>
-              <div className="mt-6">
-                <CalendlyBtn
-                  text="Book an Executive Session"
-                  className="bg-accent text-white px-5 py-2 rounded-lg shadow hover:bg-accent-dark"
-                />
+            <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all">
+              <div className="p-8">
+                <h2 className="font-heading text-3xl font-medium text-primary mb-4">
+                  Executive Evaluation
+                </h2>
+                <p className="text-gray-600 mb-6 leading-relaxed min-h-[120px]">
+                  Strategy-led evaluation for leaders. Tailored demos and advisory sessions for CIOs, CTOs, and HR leaders. 
+                  ReadyAI helps you align with your governance, compliance, and transformation goals.
+                </p>
+                <div className="mt-auto">
+                  <CalendlyBtn
+                    text="Book an Executive Session"
+                    className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                  />
+                </div>
               </div>
             </div>
+
             {/* Enterprise Plan */}
-            <div className="bg-accent2-lightest bg-opacity-70 rounded-2xl shadow-md p-8 text-center transition transform hover:scale-105 hover:shadow-xl">
-              <h2 className="text-3xl font-bold text-accent-dark">Enterprise Plan</h2>
-              <p className="mt-4 text-lg text-accent2">
-                Scale with confidence. When you’re ready to deploy enterprise-wide, ReadyAI.dev delivers all the power of 30+ AI models in one secure platform.
-              </p>
-              <ul className="mt-6 text-lg text-accent2 list-disc list-inside space-y-2">
-                <li>$30/seat per month (annual billing)</li>
-                <li>Governance and compliance tools</li>
-                <li>Enterprise-grade security and support</li>
-                <li>User permissions and advanced analytics</li>
-                <li>All integrations, workflows, and APIs</li>
-                <li>Unlimited chat history and 20GB storage</li>
-              </ul>
-              <div className="mt-6">
-                <CalendlyBtn
-                  text="Speak to an AI Strategy Advisor"
-                  className="bg-accent text-white px-5 py-2 rounded-lg shadow hover:bg-accent-dark"
-                />
+            <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all">
+              <div className="p-8">
+                <h2 className="font-heading text-3xl font-medium text-primary mb-4">
+                  Enterprise Plan
+                </h2>
+                <div className="mb-6">
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-heading text-5xl font-medium text-accent">$30</span>
+                    <span className="text-gray-600 text-lg">/seat/month</span>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1">Annual billing</p>
+                </div>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Scale with confidence. When you're ready to deploy enterprise-wide, ReadyAI delivers all the power of 30+ AI models in one secure platform.
+                </p>
+                
+                <div className="mb-6">
+                  <p className="font-sans font-semibold text-primary mb-3">Enterprise plan features:</p>
+                  <ul className="space-y-2.5">
+                    {[
+                      'Governance and compliance tools',
+                      'Enterprise-grade security and support',
+                      'User permissions and advanced analytics',
+                      'All integrations, workflows, and APIs',
+                      'Unlimited chat history and 20GB storage'
+                    ].map((feature, index) => (
+                      <li key={index} className="flex items-start gap-2.5">
+                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-auto">
+                  <CalendlyBtn
+                    text="Speak to an AI Strategy Advisor"
+                    className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                  />
+                </div>
               </div>
             </div>
           </div>
-          {/* Why Enterprises Choose ReadyAI.dev */}
-          <div className="rounded-2xl overflow-hidden shadow-lg">
-            {/* Colored Header */}
-            <div className="relative overflow-hidden mt-20 text-accent bg-accent2-light bg-opacity-70 py-6 px-8">
-              {/* Decorative Background Icons */}
-              <Sparkles className="absolute top-0 left-0 w-20 h-20 opacity-5 transform -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-              <Sparkles className="absolute top-4 right-12 w-10 h-10 opacity-10 pointer-events-none" />
-              <Sparkles className="absolute bottom-0 left-1/2 w-16 h-16 opacity-5 transform -translate-x-1/2 translate-y-1/3 pointer-events-none" />
-              <Sparkles className="absolute bottom-2 right-2 w-12 h-12 opacity-15 pointer-events-none" />
-              <Sparkles className="absolute top-1/2 left-1/4 w-24 h-24 opacity-5 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
-              <h2 className="text-3xl text-accent-dark text-center tracking-widest">
-                Why Enterprises Choose ReadyAI.dev
+          {/* Why Enterprises Choose ReadyAI */}
+          <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden mb-16">
+            <div className="bg-gradient-to-r from-accent2-lightest via-accent2-light to-accent2-lightest px-8 py-8">
+              <h2 className="font-heading text-3xl font-medium text-primary text-center">
+                Why Enterprises Choose ReadyAI
               </h2>
             </div>
-            {/* Body */}
-            <div className="bg-accent2-lightest bg-opacity-70 px-8 py-10">
-              <p className="mt-4 text-lg text-accent2">
-                Buying AI subscriptions separately is costly: <strong>$60</strong> OpenAI + <strong>$60</strong> Anthropic + <strong>$30</strong> Gemini + <strong>$19</strong> Cohere + <strong>$40</strong> Grok + more.
+            <div className="px-8 md:px-12 py-10 space-y-6">
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+                Buying AI subscriptions separately is costly: <strong className="text-primary">$60</strong> OpenAI + <strong className="text-primary">$60</strong> Anthropic + <strong className="text-primary">$30</strong> Gemini + <strong className="text-primary">$19</strong> Cohere + <strong className="text-primary">$40</strong> Grok + more.
               </p>
-              <p className="mt-12 text-lg text-accent2">
-                That’s over <strong>$210</strong>/seat/month. With ReadyAI.dev, our enterprise platform includes all AI subscriptions.
-                At only <strong>$30</strong>/seat/month, your employees can access everything in one place.
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+                That's over <strong className="text-accent text-xl">$210/seat/month</strong>. With ReadyAI, our enterprise platform includes all AI subscriptions.
+                At only <strong className="text-accent text-xl">$30/seat/month</strong>, your employees can access everything in one place.
               </p>
-              <p className="mt-12 text-lg text-accent2">
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed">
                 You also have the added benefits of working with a platform backed by a global partner that specializes 
                 in governance, compliance, and enterprise security.
               </p>
             </div>
           </div>
-          {/* Pathways */}
-          <div className="mx-auto pt-20 pb-40 max-w-2xl">
-            <h2 className="text-2xl font-semibold text-accent-dark text-left">Get Started the Way That Fits You</h2>
-            <ul className="mt-6 text-lg text-accent2 space-y-8 text-left">
-              <li><strong>Pilot →</strong> Low-risk proof of concept with expert guidance</li>
-              <li><strong>Executive Evaluation →</strong> Strategic review for leadership teams</li>
-              <li><strong>Enterprise Plan →</strong> Scale with enterprise-grade security & governance</li>
-            </ul>
-            <div className="mt-6 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+
+          {/* Ready to Get Started? */}
+          <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 mb-16 border border-gray-100">
+            <div className="text-center mb-10">
+              <h2 className="font-heading text-3xl font-medium text-primary mb-4">
+                Ready to Get Started?
+              </h2>
+              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                Our team is ready to help you find the right approach for your organization. 
+                Schedule a conversation to discuss your AI strategy, security requirements, and implementation timeline.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <CalendlyBtn
-                text="Book a Pilot"
-                className="bg-accent text-white px-5 py-2 rounded-lg shadow hover:bg-accent-dark"
-              />
-              <CalendlyBtn
-                text="Book an Executive Session"
-                className="bg-accent text-white px-5 py-2 rounded-lg shadow hover:bg-accent-dark"
-              />    
-              <CalendlyBtn
-                text="Speak to an AI Strategy Advisor"
-                className="bg-accent text-white px-5 py-2 rounded-lg shadow hover:bg-accent-dark"
+                text="Schedule a Consultation"
+                className="bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-md hover:shadow-lg"
               />
             </div>
           </div>
+
           {/* Personal Plans */}
-          <div className="text-center mt-1 pt-10 pb-10">
-            <h2 className="text-xl font-semibold text-accent-dark">Just Exploring AI on Your Own?</h2>
-            <p className="mt-4 text-lg text-accent2">
-              <Link className="underline hover:no-underline" to="/plans-and-enterprise-options/individual-starter-plans">Start small with our Free & Personal Plans →</Link>
+          <div className="text-center py-12 bg-gradient-to-br from-primary via-primary-light to-primary-dark rounded-2xl shadow-lg">
+            <h2 className="font-heading text-2xl font-medium text-white mb-4">
+              Just Exploring AI on Your Own?
+            </h2>
+            <p className="text-lg text-white/90 mb-6">
+              Start small with our Free & Personal Plans
             </p>
+            <Link 
+              to="/plans-and-enterprise-options/individual-starter-plans"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary rounded-lg font-semibold hover:bg-gray-50 transition-all shadow-md hover:shadow-xl"
+            >
+              View Individual Plans
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
           </div>
         </div>
 
-      /* ==================== TIER VIEW ================== */
-      ): (        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12"> 
-          <div className="grid gap-20 md:grid-cols-2 mt-12">
-            <div className="bg-accent2-lightest bg-opacity-70 rounded-2xl shadow-md p-8 text-center transition transform hover:scale-105 hover:shadow-xl">
-              <h2 className="text-3xl font-bold text-accent-dark">Free Plan</h2>
-              <h3 className="text-2xl text-accent2 mt-8">$0 /month</h3>
-              <p className="mt-8 text-lg text-accent2">
-                Best for exploring AI capabilities and learning the basics.
-              </p>
-              <ul className='list-disc list-inside mt-8 mb-8'>
-                <li>Access to 20+ leading LLMs</li>
-                <li>2GB storage</li>
-                <li>Unlimited agents</li>
-                <li>Analytics & reporting</li>
-                <li>Microsoft integration</li>
-              </ul>
-              <CalendlyBtn
-                text="Start Exploring for FREE"
-                className="bg-accent text-white px-5 py-2 rounded-lg shadow hover:bg-accent-dark"
-              />
+      ) : (
+        /* Individual Starter Plans View */
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {/* Free Plan */}
+            <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all">
+              <div className="p-8">
+                <h2 className="font-heading text-3xl font-medium text-primary mb-4">Free Plan</h2>
+                <div className="mb-6">
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-heading text-5xl font-medium text-accent">$0</span>
+                    <span className="text-gray-600 text-lg">/month</span>
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Best for exploring AI capabilities and learning the basics.
+                </p>
+                <ul className="space-y-2.5 mb-8">
+                  {[
+                    'Access to 20+ leading LLMs',
+                    '2GB storage',
+                    'Unlimited agents',
+                    'Analytics & reporting',
+                    'Microsoft integration'
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-start gap-2.5">
+                      <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <CalendlyBtn
+                  text="Start Exploring for FREE"
+                  className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                />
+              </div>
             </div>
-            <div className="bg-accent2-lightest bg-opacity-70 rounded-2xl shadow-md p-8 text-center transition transform hover:scale-105 hover:shadow-xl">
-              <h2 className="text-3xl font-bold text-accent-dark">Personal Plan</h2>
-              <h3 className="text-2xl text-accent2 mt-8">$15 /month per seat (annual) ($18 month-to-month)</h3>
-              <p className="mt-8 text-lg text-accent2">
-                Best for individual professionals and creators.
-              </p>
-              <ul className='list-disc list-inside mt-8 mb-8'>
-                <li>Access to all 30+ LLMs</li>
-                <li>10GB storage</li>
-                <li>All integrations</li>
-                <li>Workflows & APIs</li>
-                <li>Unlimited chat history</li>
-              </ul>
-              <CalendlyBtn
-                text="Unlock Personal Plan"
-                className="bg-accent text-white px-5 py-2 rounded-lg shadow hover:bg-accent-dark"
-              />
+
+            {/* Personal Plan */}
+            <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all">
+              <div className="p-8">
+                <h2 className="font-heading text-3xl font-medium text-primary mb-4">Personal Plan</h2>
+                <div className="mb-6">
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-heading text-5xl font-medium text-accent">$15</span>
+                    <span className="text-gray-600 text-lg">/month per seat</span>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1">Annual billing ($18 month-to-month)</p>
+                </div>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Best for individual professionals and creators.
+                </p>
+                <ul className="space-y-2.5 mb-8">
+                  {[
+                    'Access to all 30+ LLMs',
+                    '10GB storage',
+                    'All integrations',
+                    'Workflows & APIs',
+                    'Unlimited chat history'
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-start gap-2.5">
+                      <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <CalendlyBtn
+                  text="Unlock Personal Plan"
+                  className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="mx-auto pt-20 pb-40 max-w-2xl">
-            <h2 className="text-2xl font-semibold text-accent-dark text-left">Get Started the Way That Fits You</h2>
-            <p className='mt-6 mb-8'>Move to our Enterprise Plan <strong>($30/seat/month)</strong> and gain governance, compliance, advanced analytics, and enterprise-grade support, without losing your work or data.</p>
+          {/* Upgrade Section */}
+          <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-12 text-center border border-gray-100">
+            <h2 className="font-heading text-3xl font-medium text-primary mb-6">
+              Ready to Scale?
+            </h2>
+            <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Move to our Enterprise Plan <strong className="text-accent text-xl">($30/seat/month)</strong> and gain governance, 
+              compliance, advanced analytics, and enterprise-grade support, without losing your work or data.
+            </p>
             <CalendlyBtn
               text="Upgrade to Enterprise Options"
-              className="bg-accent text-white px-5 py-2 rounded-lg shadow hover:bg-accent-dark"
+              className="bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-md hover:shadow-lg"
             />
           </div>
         </div>
