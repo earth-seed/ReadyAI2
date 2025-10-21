@@ -246,10 +246,16 @@ export const NAVIGATION: NavItem[] = [
   {
     name: 'Solutions',
     path: '/solutions',
-    submenu: SOLUTIONS.map(solution => ({
-      name: solution.title,
-      path: `/solutions/${solution.id}`,
-    })),
+    submenu: [
+      {
+        name: 'Explore All Solutions',
+        path: '/solutions',
+      },
+      ...SOLUTIONS.map(solution => ({
+        name: solution.title,
+        path: `/solutions/${solution.id}`,
+      })),
+    ],
   },
   {
     name: 'Industry',

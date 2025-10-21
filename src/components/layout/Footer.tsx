@@ -62,6 +62,14 @@ const Footer: React.FC = () => {
           <div className="text-center md:text-left">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Solutions</h3>
             <ul className="space-y-2">
+              <li>
+                <Link 
+                  to="/solutions" 
+                  className="text-gray-500 hover:text-gray-900"
+                >
+                  Explore All Solutions
+                </Link>
+              </li>
               {SOLUTIONS.map((solution) => (
                 <li key={solution.id}>
                   <Link 
@@ -82,7 +90,7 @@ const Footer: React.FC = () => {
               {INDUSTRIES.map((industry) => (
                 <li key={industry.id}>
                   <Link 
-                    to={`/industries/${industry.id}`} 
+                    to={`/industry/${industry.id}`} 
                     className="text-gray-500 hover:text-gray-900"
                   >
                     {industry.name}
