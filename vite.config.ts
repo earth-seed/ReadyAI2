@@ -11,4 +11,13 @@ export default defineConfig({
     host: true, // or '0.0.0.0'
     port: 3000,
   },
+  preview: {
+    host: true,
+    port: 3000,
+    allowedHosts: [
+      'readyai2.onrender.com',
+      'localhost',
+      '127.0.0.1'
+    ]
+  },
 });
