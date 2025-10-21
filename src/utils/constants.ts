@@ -35,37 +35,42 @@ export const INDUSTRIES: Industry[] = [
   {
     id: 'financial',
     name: 'Financial Services',
-    description: 'Streamline operations, enhance customer experiences, and improve risk management with AI-powered solutions',
+    description: 'Streamline operations, enhance customer experiences, and improve risk management with AI-powered solutions.',
     icon: 'landmark',
   },
   {
     id: 'retail',
     name: 'Retail',
     description: 'Personalize customer experiences, optimize inventory management, and automate routine tasks',
+    industryStatement: 'We understand your industry, we\'ve done this before, and we have trusted partners who can support you.',
     icon: 'shopping-bag',
   },
   {
     id: 'healthcare',
     name: 'Healthcare & Life Sciences',
     description: 'Improve patient care, accelerate research, and optimize operational efficiency with secure AI solutions',
+    industryStatement: 'We understand your industry, we\'ve done this before, and we have trusted partners who can support you, such as <a href="https://www.linkedin.com/in/paul-m-berman/" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-dark underline hover:no-underline transition-all duration-200 font-semibold">Paul Berman, MBA</a>.',
     icon: 'stethoscope',
   },
   {
     id: 'manufacturing',
     name: 'Manufacturing',
     description: 'Enhance quality control, predict maintenance needs, and optimize production processes',
+    industryStatement: 'We understand your industry, we\'ve done this before, and we have trusted partners who can support you.',
     icon: 'factory',
   },
   {
     id: 'energy',
     name: 'Energy & Utilities',
     description: 'Optimize resource allocation, predict equipment failures, and improve customer service',
+    industryStatement: 'We understand your industry, we\'ve done this before, and we have trusted partners who can support you.',
     icon: 'zap',
   },
   {
     id: 'public',
     name: 'Public Sector',
     description: 'Enhance citizen services, improve resource allocation, and optimize administrative processes',
+    industryStatement: 'We understand your industry, we\'ve done this before, and we have trusted partners who can support you.',
     icon: 'building',
   }
 ];
@@ -241,10 +246,16 @@ export const NAVIGATION: NavItem[] = [
   {
     name: 'Solutions',
     path: '/solutions',
-    submenu: SOLUTIONS.map(solution => ({
-      name: solution.title,
-      path: `/solutions/${solution.id}`,
-    })),
+    submenu: [
+      {
+        name: 'Explore All Solutions',
+        path: '/solutions',
+      },
+      ...SOLUTIONS.map(solution => ({
+        name: solution.title,
+        path: `/solutions/${solution.id}`,
+      })),
+    ],
   },
   {
     name: 'Industry',

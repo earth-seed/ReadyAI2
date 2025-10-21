@@ -1,6 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { INDUSTRIES } from '../utils/constants';
+import { INDUSTRY_CONTENT } from '../data/industryContent';
+import IndustryTemplate from '../components/IndustryTemplate';
 import Button from '../components/ui/Button';
 import ROICalculator from '../components/sections/ROICalculator';
 import { 
@@ -11,7 +13,18 @@ import {
   Zap, 
   Building,
   ArrowRight,
-  Check
+  Check,
+  Shield,
+  Users,
+  Lock,
+  BarChart3,
+  Brain,
+  FileText,
+  Target,
+  TrendingUp,
+  Eye,
+  Database,
+  AlertTriangle
 } from 'lucide-react';
 import CalendlySectionPopUp from '../components/sections/CalendlySectionPopUp';
 
@@ -126,415 +139,212 @@ const IndustryPage: React.FC = () => {
             </div>
             
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-              <div className="lg:flex lg:items-center lg:justify-between">
-                <div>
-                  <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white mb-6">
-                    {selectedIndustry.name}
-                  </h1>
-                  <p className="font-sans text-lg md:text-xl text-white/90 max-w-3xl leading-relaxed">
-                    {selectedIndustry.description}
-                  </p>
-                </div>
-                <div className="mt-8 lg:mt-0 lg:ml-8">
+              <div className="flex items-center justify-between mb-8">
+                <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white">
+                  {selectedIndustry.name}
+                </h1>
+                <div className="hidden sm:block">
                   <Link to="/industry">
-                    <Button variant="outline" className="border-white text-white hover:bg-white/10 backdrop-blur-sm">
+                    <Button variant="outline" className="border-white text-white hover:bg-white/10 backdrop-blur-sm text-xl px-7 py-4">
                       All Industries
                     </Button>
                   </Link>
                 </div>
               </div>
+              <div>
+                {industryId === 'financial' && (
+                  <p className="font-sans text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed">
+                    We understand your industry, we've done this before, and we have trusted partners who can support you. 
+                  </p>
+                )}
+                {selectedIndustry.industryStatement && (
+                  <p className="font-sans text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedIndustry.industryStatement }}>
+                  </p>
+                )}
+              </div>
+              <div className="block sm:hidden mt-6">
+                <Link to="/industry">
+                  <Button variant="outline" className="border-white text-white hover:bg-white/10 backdrop-blur-sm text-xl px-7 py-4">
+                    All Industries
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-8 md:p-12 space-y-10">
-              {industryId === 'financial' && (
-                <div className="space-y-8">
-                  <h2 className="font-heading text-3xl md:text-4xl font-medium text-primary border-b border-gray-200 pb-4">
-                    AI Solutions for Financial Services
-                  </h2>
-                  <p className="font-sans text-lg text-gray-700 leading-relaxed">
-                    In the fast-paced world of financial services, AI is revolutionizing everything from customer service to risk management. 
-                    Our platform provides a secure, compliant platform that enables financial institutions to deploy AI solutions with confidence.
-                  </p>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Key Applications</h3>
-                    <ul className="space-y-4">
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Fraud Detection</strong> - AI agents that monitor transactions in real-time and flag suspicious activities</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Customer Service</strong> - Intelligent assistants that handle routine customer inquiries while maintaining compliance</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Document Processing</strong> - Automated extraction and analysis of financial documents</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Risk Assessment</strong> - Advanced models for credit scoring and risk evaluation</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Regulatory Compliance</strong> - AI-powered monitoring to ensure adherence to changing regulations</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Industry-Specific Benefits</h3>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">SOC 2 and ISO 27001 compliance</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Granular access controls</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Comprehensive audit trails</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Core banking integration</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Data residency options</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              )}
+            {industryId === 'financial' && (
+              <IndustryTemplate content={INDUSTRY_CONTENT.find(c => c.id === 'financial')!} />
+            )}
 
-              {industryId === 'retail' && (
-                <div className="space-y-8">
-                  <h2 className="font-heading text-3xl md:text-4xl font-medium text-primary border-b border-gray-200 pb-4">
-                    AI Solutions for Retail
-                  </h2>
-                  <p className="font-sans text-lg text-gray-700 leading-relaxed">
-                    The retail industry faces intense competition and rapidly changing consumer expectations. 
-                    Our platform helps retailers create personalized experiences, optimize operations, and build 
-                    stronger customer relationships through intelligent AI applications.
-                  </p>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Key Applications</h3>
-                    <ul className="space-y-4">
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Personalized Recommendations</strong> - AI agents that analyze customer behavior to suggest relevant products</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Inventory Management</strong> - Predictive models that optimize stock levels and reduce waste</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Customer Service</strong> - Omnipresent support across digital channels with seamless human handoff</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Pricing Optimization</strong> - Dynamic pricing models based on demand, competition, and inventory</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Customer Insights</strong> - Deep analysis of customer feedback and behavior patterns</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Industry-Specific Benefits</h3>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Integration with major e-commerce platforms</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Support for omnichannel experiences</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Real-time analytics capabilities</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Point-of-sale system integration</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">GDPR and CCPA compliance</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              )}
+            {industryId === 'retail' && (
+              <IndustryTemplate content={INDUSTRY_CONTENT.find(c => c.id === 'retail')!} />
+            )}
 
-              {industryId === 'healthcare' && (
-                <div className="space-y-8">
-                  <h2 className="font-heading text-3xl md:text-4xl font-medium text-primary border-b border-gray-200 pb-4">
-                    AI Solutions for Healthcare & Life Sciences
-                  </h2>
-                  <p className="font-sans text-lg text-gray-700 leading-relaxed">
-                    Healthcare organizations face unique challenges in balancing innovation with patient safety and regulatory compliance. 
-                    Our platform provides a secure platform for deploying AI solutions that improve patient outcomes while maintaining the 
-                    highest standards of data protection and compliance.
-                  </p>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Key Applications</h3>
-                    <ul className="space-y-4">
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Clinical Documentation</strong> - AI-assisted note taking and summarization for providers</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Patient Engagement</strong> - Intelligent communication tools for education and care coordination</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Research Analysis</strong> - Processing and analyzing large datasets for clinical research</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Administrative Automation</strong> - Streamlining billing, scheduling, and other administrative tasks</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Clinical Decision Support</strong> - Providing relevant information to assist healthcare providers</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Industry-Specific Benefits</h3>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">HIPAA compliance</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">EHR system integration</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Complete audit trails</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">PHI handling compliance</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Flexible deployment options</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              )}
+            {industryId === 'healthcare' && (
+              <IndustryTemplate content={INDUSTRY_CONTENT.find(c => c.id === 'healthcare')!} />
+            )}
 
-              {industryId === 'manufacturing' && (
-                <div className="space-y-8">
-                  <h2 className="font-heading text-3xl md:text-4xl font-medium text-primary border-b border-gray-200 pb-4">
-                    AI Solutions for Manufacturing
-                  </h2>
-                  <p className="font-sans text-lg text-gray-700 leading-relaxed">
-                    In today's competitive manufacturing environment, efficiency and quality are paramount. 
-                    Our platform helps manufacturers implement AI solutions that optimize production processes, 
-                    improve quality control, and reduce downtime through predictive maintenance.
-                  </p>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Key Applications</h3>
-                    <ul className="space-y-4">
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Predictive Maintenance</strong> - AI models that forecast equipment failures before they occur</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Quality Control</strong> - Computer vision systems for automated defect detection</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Supply Chain Optimization</strong> - Intelligent forecasting and inventory management</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Production Planning</strong> - AI-driven scheduling to maximize throughput and efficiency</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Safety Monitoring</strong> - Real-time analysis of operational data to enhance workplace safety</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Industry-Specific Benefits</h3>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">IoT system integration</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Edge computing support</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Real-time processing</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">MES/ERP compatibility</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Manufacturing versatility</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              )}
+            {industryId === 'manufacturing' && (
+              <IndustryTemplate content={INDUSTRY_CONTENT.find(c => c.id === 'manufacturing')!} />
+            )}
 
-              {industryId === 'energy' && (
-                <div className="space-y-8">
-                  <h2 className="font-heading text-3xl md:text-4xl font-medium text-primary border-b border-gray-200 pb-4">
-                    AI Solutions for Energy & Utilities
-                  </h2>
-                  <p className="font-sans text-lg text-gray-700 leading-relaxed">
-                    The energy and utilities sector is undergoing a profound transformation driven by renewable energy sources,
-                    smart grids, and changing consumer expectations. Our platform helps energy companies leverage AI to optimize 
-                    operations, improve reliability, and accelerate the transition to sustainable energy systems.
-                  </p>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Key Applications</h3>
-                    <ul className="space-y-4">
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Grid Management</strong> - AI systems that optimize energy distribution and reduce losses</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Predictive Maintenance</strong> - Forecasting equipment failures for utility infrastructure</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Energy Forecasting</strong> - Accurate prediction of renewable energy production and demand</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Customer Engagement</strong> - Personalized tools for helping consumers manage energy usage</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Asset Optimization</strong> - Maximizing the efficiency and lifespan of equipment</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Industry-Specific Benefits</h3>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">SCADA integration</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Time-series analysis</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Infrastructure security</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Regulatory compliance</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Renewable compatibility</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              )}
+            {industryId === 'energy' && (
+              <IndustryTemplate content={INDUSTRY_CONTENT.find(c => c.id === 'energy')!} />
+            )}
 
-              {industryId === 'public' && (
-                <div className="space-y-8">
-                  <h2 className="font-heading text-3xl md:text-4xl font-medium text-primary border-b border-gray-200 pb-4">
-                    AI Solutions for Public Sector
-                  </h2>
-                  <p className="font-sans text-lg text-gray-700 leading-relaxed">
-                    Government agencies and public sector organizations face unique challenges in delivering efficient services 
-                    while maintaining transparency and protecting citizen data. Our platform provides secure, compliant AI solutions 
-                    that help public sector entities improve service delivery and operational efficiency.
-                  </p>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Key Applications</h3>
-                    <ul className="space-y-4">
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Citizen Services</strong> - AI assistants that provide 24/7 access to government information and services</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Document Processing</strong> - Automated classification and extraction of information from forms and documents</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Fraud Detection</strong> - Identifying patterns that may indicate fraudulent activity in benefit programs</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Resource Allocation</strong> - Optimizing the deployment of public resources based on need and impact</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Emergency Response</strong> - Coordinating and prioritizing actions during emergencies</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Industry-Specific Benefits</h3>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Data residency options</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Accessibility features</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Transparent AI decisions</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Legacy system support</span>
-                      </li>
-                    </ul>
+            {industryId === 'public' && (
+              <IndustryTemplate content={INDUSTRY_CONTENT.find(c => c.id === 'public')!} />
+            )}
+
+            {/* Legacy content for other industries */}
+            {industryId !== 'financial' && industryId !== 'retail' && industryId !== 'healthcare' && industryId !== 'manufacturing' && industryId !== 'energy' && industryId !== 'public' && (
+              <div className="space-y-12">
+
+                {/* Secure. Compliant. Built for Confidence */}
+                <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-accent2-lightest rounded-2xl p-8 md:p-12 border border-primary/10 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
+                  <div className="relative">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent-dark rounded-xl flex items-center justify-center">
+                        <Shield className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="font-heading text-3xl font-medium text-primary">Secure. Compliant. Built for Confidence.</h3>
+                    </div>
+                    <div className="space-y-6">
+                      <p className="font-sans text-lg text-gray-700 leading-relaxed">
+                        Financial institutions continually navigate the delicate balance between innovation and oversight.
+                      </p>
+                      <p className="font-sans text-lg text-gray-700 leading-relaxed">
+                        In a highly regulated environment where trust is non-negotiable, AI must not only be powerful but also governed, auditable, and compliant from its foundation.
+                      </p>
+                      <p className="font-sans text-lg text-gray-700 leading-relaxed">
+                        The ReadyAI.dev platform provides a <strong className="text-primary">secure, governed AI framework</strong> that enables banks, insurers, and fintech organizations to deploy advanced AI responsibly. It unifies innovation and compliance — supporting faster transformation, stronger risk management, and enhanced customer experiences.
+                      </p>
+                      <p className="font-sans text-lg text-gray-700 leading-relaxed">
+                        Every workflow — from fraud detection to customer service — operates within a transparent, compliant structure aligned with <strong className="text-primary">SOC 2, ISO 27001</strong>, and global financial-data standards.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              )}
-            </div>
+
+                {/* Transforming Financial Services */}
+                <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center">
+                      <Brain className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="font-heading text-3xl font-medium text-primary">Transforming Financial Services with Responsible AI</h3>
+                  </div>
+                  <p className="font-sans text-lg text-gray-700 leading-relaxed">
+                    ReadyAI.dev allows financial enterprises to modernize safely — automating document processing, assessing credit risk, and managing compliance without sacrificing control. Our platform provides leaders with full visibility, auditability, and accountability across every model and decision.
+                  </p>
+                </div>
+
+                {/* Why Financial Leaders Choose ReadyAI.dev */}
+                <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent-dark rounded-xl flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="font-heading text-3xl font-medium text-primary">Why Financial Leaders Choose ReadyAI.dev</h3>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="bg-white rounded-xl p-6 border border-gray-100 hover:border-accent/30 transition-all duration-300 hover:shadow-lg">
+                      <h4 className="font-sans text-lg font-semibold text-primary mb-3">Customer Experience</h4>
+                      <p className="font-sans text-gray-700">Deploy intelligent assistants that streamline service while maintaining compliance.</p>
+                    </div>
+                    <div className="bg-white rounded-xl p-6 border border-gray-100 hover:border-accent/30 transition-all duration-300 hover:shadow-lg">
+                      <h4 className="font-sans text-lg font-semibold text-primary mb-3">Core System Integration</h4>
+                      <p className="font-sans text-gray-700">Connect seamlessly with banking, insurance, and risk platforms to unify data governance.</p>
+                    </div>
+                    <div className="bg-white rounded-xl p-6 border border-gray-100 hover:border-accent/30 transition-all duration-300 hover:shadow-lg">
+                      <h4 className="font-sans text-lg font-semibold text-primary mb-3">Fraud Detection & Prevention</h4>
+                      <p className="font-sans text-gray-700">Govern AI agents that monitor transactions in real time and flag anomalies.</p>
+                    </div>
+                    <div className="bg-white rounded-xl p-6 border border-gray-100 hover:border-accent/30 transition-all duration-300 hover:shadow-lg">
+                      <h4 className="font-sans text-lg font-semibold text-primary mb-3">Private AI Workspaces</h4>
+                      <p className="font-sans text-gray-700">Fully isolated, compliant environments for model development and deployment.</p>
+                    </div>
+                    <div className="bg-white rounded-xl p-6 border border-gray-100 hover:border-accent/30 transition-all duration-300 hover:shadow-lg">
+                      <h4 className="font-sans text-lg font-semibold text-primary mb-3">Regulatory Compliance</h4>
+                      <p className="font-sans text-gray-700">Automate monitoring and reporting aligned with evolving regulations.</p>
+                    </div>
+                    <div className="bg-white rounded-xl p-6 border border-gray-100 hover:border-accent/30 transition-all duration-300 hover:shadow-lg">
+                      <h4 className="font-sans text-lg font-semibold text-primary mb-3">Risk Assessment Models</h4>
+                      <p className="font-sans text-gray-700">Enhance credit scoring and investment analysis with transparent, explainable AI.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Governance First */}
+                <div className="bg-gradient-to-br from-primary via-primary-light to-primary-dark rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+                  <div className="absolute bottom-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
+                  <div className="relative">
+                    <h3 className="font-heading text-3xl font-medium text-white mb-6">Governance First. Always.</h3>
+                    <p className="font-sans text-xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-8">
+                      Build trust, reduce risk, and innovate responsibly with transparent, compliant AI — powered by the only platform designed for enterprise-grade governance.
+                    </p>
+                    <a
+                      href="https://calendly.com/readyai-dev/executive-evaluation"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                    >
+                      Explore your secure AI workspace
+                      <ArrowRight className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Use Cases */}
+                <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center">
+                      <Target className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="font-heading text-3xl font-medium text-primary">Use Cases</h3>
+                  </div>
+        <div className="space-y-6">
+          <div className="p-6 bg-white rounded-xl border border-gray-100 hover:border-accent/30 hover:shadow-md transition-all duration-300">
+            <h4 className="font-sans text-xl font-semibold text-primary mb-2">Customer Support</h4>
+            <p className="font-sans text-gray-700 leading-relaxed">Automate service requests while maintaining full compliance.</p>
+          </div>
+
+          <div className="p-6 bg-white rounded-xl border border-gray-100 hover:border-accent/30 hover:shadow-md transition-all duration-300">
+            <h4 className="font-sans text-xl font-semibold text-primary mb-2">Compliance Monitoring</h4>
+            <p className="font-sans text-gray-700 leading-relaxed">Continuously audit and document adherence to evolving regulations.</p>
+          </div>
+
+          <div className="p-6 bg-white rounded-xl border border-gray-100 hover:border-accent/30 hover:shadow-md transition-all duration-300">
+            <h4 className="font-sans text-xl font-semibold text-primary mb-2">Document Intelligence</h4>
+            <p className="font-sans text-gray-700 leading-relaxed">Extract and process financial data with complete auditability.</p>
+          </div>
+
+          <div className="p-6 bg-white rounded-xl border border-gray-100 hover:border-accent/30 hover:shadow-md transition-all duration-300">
+            <h4 className="font-sans text-xl font-semibold text-primary mb-2">Fraud Detection</h4>
+            <p className="font-sans text-gray-700 leading-relaxed">Identify suspicious transactions through explainable anomaly detection.</p>
+          </div>
+
+          <div className="p-6 bg-white rounded-xl border border-gray-100 hover:border-accent/30 hover:shadow-md transition-all duration-300">
+            <h4 className="font-sans text-xl font-semibold text-primary mb-2">Risk Management</h4>
+            <p className="font-sans text-gray-700 leading-relaxed">Model exposure and credit scoring with transparent AI analytics.</p>
+          </div>
+        </div>
+                </div>
+              </div>
+            )}
+
+            {/* Other industries content */}
+            {industryId !== 'financial' && industryId !== 'retail' && industryId !== 'healthcare' && industryId !== 'manufacturing' && industryId !== 'energy' && industryId !== 'public' && (
+              <div>
+                {/* No other industries currently have legacy content */}
+              </div>
+            )}
+
             
-            <div className="mt-20">
+            <div className="mt-12">
               <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
                 <div className="lg:grid lg:grid-cols-12 lg:gap-8">
                   <div className="lg:col-span-7">
@@ -568,7 +378,6 @@ const IndustryPage: React.FC = () => {
         </div>
       )}
 
-      <CalendlySectionPopUp />
       
     </div>
   );

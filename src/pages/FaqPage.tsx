@@ -16,33 +16,23 @@ interface FAQCategory {
 
 const faqCategories: FAQCategory[] = [
   {
-    name: 'Platform & Features',
+    name: 'Platform & Benefits',
     icon: <Cpu className="w-5 h-5" />,
     faqs: [
       {
-        question: 'How can the Platform benefit my organization?',
+        question: 'How does the ReadyAI.dev Platform benefit your enterprise?',
         answer:
-          'The Platform is an advanced AI governance solution designed to streamline and optimize your IT operations, procurement processes, and technology management. It enables your team to increase efficiency, reduce costs, and make data-driven decisions while maintaining complete control over AI tool usage across your enterprise.',
+          'ReadyAI.dev gives you one secure, unified space to manage your entire AI ecosystem. You can connect to multiple LLMs in one place, monitor usage and costs, and stay fully compliant across every department. Your CIO, or whoever oversees your AI strategy, gets complete visibility and control from a single dashboard.\n\n→ Learn more in our Solutions section',
       },
       {
-        question: 'How do you help with procurement and vendor management?',
+        question: 'What makes ReadyAI.dev different from other AI firms?',
         answer:
-          'The platform provides centralized procurement workflows, vendor comparison, and real-time analytics, empowering Procurement and IT leaders to make informed vendor choices and automate purchasing processes.',
+          'Most companies offer AI consulting. We go further. ReadyAI.dev combines a powerful, governed platform with hands-on Professional Services. You get real structure, compliance, and support, not just generic advice. Our team helps you manage every LLM under one umbrella so you can move fast and stay in control.',
       },
       {
-        question: 'Is your platform customizable to meet specific enterprise requirements?',
+        question: 'How does the platform simplify LLM access and management?',
         answer:
-          "Yes. It is highly customizable to align with your organization's workflows, security policies, and compliance needs, ensuring it fits seamlessly with your existing IT infrastructure.",
-      },
-      {
-        question: 'How can your Platform help IT Directors improve operational efficiency?',
-        answer:
-          'By automating routine tasks, providing dashboards with key performance metrics, and enabling proactive issue resolution, we help IT Directors reduce downtime and optimize resource allocation, while managing the multi-department launch of different AI LLMs, agents, and integrations.',
-      },
-      {
-        question: 'Can the platform scale as our business grows?',
-        answer:
-          "Absolutely. It was built to scale with your organization's evolving needs, from small teams to large enterprise deployments, without compromising performance. Start with a pilot, develop a rollout plan with our expansive team's assistance, and enjoy a successful AI strategy for your entire organization.",
+          'You get unlimited LLM options, all for one price. The platform brings everything together: model access, permissions, performance data, and governance controls. That means you can test and scale AI safely while keeping full visibility over how, where, and why it\'s being used.\n\n→ Explore our Framework for Choosing the Right LLMs',
       },
     ],
   },
@@ -51,20 +41,25 @@ const faqCategories: FAQCategory[] = [
     icon: <Shield className="w-5 h-5" />,
     faqs: [
       {
-        question: 'How secure is the platform?',
+        question: 'How secure is ReadyAI.dev?',
         answer:
-          'Security is our top priority. The Platform employs industry-leading encryption, role-based access controls, and regular security audits to protect your sensitive data and ensure compliance with relevant regulations. Our experienced Security Team is available to meet with you to share the best practices and integration security processes.',
+          'Security isn\'t a checkbox for us, it\'s built into everything we do. Our platform meets SOC 2, GDPR, HIPAA, and NIST standards, with encryption, audit trails, and continuous monitoring. Our Professional Services team also work directly with your Security and Compliance leads to make sure every integration meets your standards and keeps your data protected.\n\n→ View our Trust & Security Certifications',
       },
     ],
   },
   {
-    name: 'Support & Training',
+    name: 'Professional Services',
     icon: <Zap className="w-5 h-5" />,
     faqs: [
       {
-        question: 'What kind of support and training do you offer?',
+        question: 'How do you help with change management and user adoption?',
         answer:
-          'We provide comprehensive onboarding, ongoing training, dedicated customer support, and tailored consultancy to ensure your team gets the most value from the platform. If your team is comfortable starting without our help, we can be a backup to your strategy development or engaged later.',
+          'We know that successful AI adoption starts with people. Through our AI Strategy Consulting and Training & Enablement programs, we help your teams adapt confidently. Together, we\'ll map out clear roadmaps, communication plans, and governance guidelines, so AI becomes part of how your business runs, not a one-off experiment.',
+      },
+      {
+        question: 'What\'s included in your AI Strategy Consulting?',
+        answer:
+          'We support you through every stage of enterprise AI adoption: AI Strategy & Pilot Design, Virtual AI Architect, Implementation Services, Change Management Support, and Training & Enablement. Our Professional Services team is with you from planning to rollout, using the ReadyAI.dev platform to ensure continuity, compliance, and measurable success without any stress.',
       },
     ],
   },
@@ -73,24 +68,20 @@ const faqCategories: FAQCategory[] = [
     icon: <DollarSign className="w-5 h-5" />,
     faqs: [
       {
-        question: 'What is the pricing model?',
-        answer: '$30/seat/month – that simple!',
+        question: 'How is the platform priced?',
+        answer:
+          'Our pricing is simple and transparent: $30 per user per month. That includes unlimited LLM access under one governance framework. Pricing scales with your organization\'s needs, not your usage, so you can plan confidently as you grow.',
       },
     ],
   },
   {
-    name: 'Getting Started',
+    name: 'Partnerships & Support',
     icon: <Rocket className="w-5 h-5" />,
     faqs: [
       {
-        question: 'How can I get a demo or trial?',
+        question: 'Who are your technology and industry partners?',
         answer:
-          "You can request a personalized demo with the team of AI experts or start a free trial by contacting the sales team at sales@readyai.dev. We'll guide you through how the platform can meet your specific challenges.",
-      },
-      {
-        question: 'Can I look at the Platform without contacting the sales team?',
-        answer: 'Absolutely yes!',
-        hasButton: true,
+          'We collaborate with leading organizations such as XXX, XXX, and XXX, as well as enterprise and research partners around the world. These partnerships allow us to share knowledge, host events, and co-develop governance frameworks that make enterprise AI safer and more effective.\n\n→ See upcoming collaborations in our Events & News section.',
       },
     ],
   },
@@ -204,9 +195,41 @@ const FaqPage: React.FC = () => {
                             >
                               <div className="px-6 pb-6 pt-2 border-t border-gray-100">
                                 <div className="pl-4 border-l-4 border-accent/30">
-                                  <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
-                                    {faq.answer}
-                                  </p>
+                                  <div className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
+                                    {faq.answer.split('\n').map((line, index) => {
+                                      if (line.startsWith('→')) {
+                                        const linkText = line.replace('→ ', '');
+                                        let href = '#';
+                                        let target = '_self';
+                                        
+                                        if (linkText.includes('Solutions section')) {
+                                          href = '/solutions';
+                                        } else if (linkText.includes('Framework for Choosing')) {
+                                          href = '/resources';
+                                        } else if (linkText.includes('Trust & Security')) {
+                                          href = '/solutions/security';
+                                        } else if (linkText.includes('Events & News')) {
+                                          href = '/insights';
+                                        }
+                                        
+                                        return (
+                                          <div key={index} className="mt-3">
+                                            <a
+                                              href={href}
+                                              target={target}
+                                              className="inline-flex items-center gap-2 text-accent hover:text-accent-dark font-semibold transition-colors duration-200"
+                                            >
+                                              {linkText}
+                                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                              </svg>
+                                            </a>
+                                          </div>
+                                        );
+                                      }
+                                      return <p key={index}>{line}</p>;
+                                    })}
+                                  </div>
 
                                   {/* Explore Platform Button */}
                                   {faq.hasButton && (
@@ -254,17 +277,30 @@ const FaqPage: React.FC = () => {
             Still have questions?
           </h3>
           <p className="font-sans text-white/90 mb-6 max-w-2xl mx-auto">
-            Our team of AI experts is ready to help you navigate your enterprise AI journey.
+            We'd love to help. Contact our team or book an executive evaluation to see how ReadyAI.dev can help you unify, govern, and scale AI across your enterprise.
           </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white rounded-lg font-sans font-semibold hover:bg-accent-dark transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-          >
-            Contact Our Team
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white rounded-lg font-sans font-semibold hover:bg-accent-dark transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Contact Our Team
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </a>
+            <a
+              href="https://calendly.com/readyai-dev/executive-evaluation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary border-2 border-primary rounded-lg font-sans font-semibold hover:bg-primary hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Book an Evaluation
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
