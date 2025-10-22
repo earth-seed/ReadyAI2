@@ -15,6 +15,7 @@ import ResourcesPage from './pages/ResourcesPage';
 import BlogPage from './pages/BlogPage';
 import FAQPage from './pages/FaqPage';
 import CookieConsent from './components/ui/CookieConsent';
+import CTAManager from './components/ui/CTAManager';
 import { usePerformance } from './hooks/usePerformance';
 import Version from './pages/Version';
 import InsightsPage from './pages/InsightsPage';
@@ -68,6 +69,26 @@ function App() {
         </main>
         <Footer />
         <CookieConsent />
+        {/* Strategic popup focused on platform exploration */}
+        <CTAManager 
+          enableLeadCapture={false}
+          enableScrollCTA={false}
+          enableGatedContent={true}
+          enablePlatformExploration={true}
+          gatedContentConfig={{
+            title: "AI Security Playbook",
+            description: "Get our comprehensive guide to securing AI in your enterprise",
+            downloadUrl: "/downloads/ai-security-playbook.pdf"
+          }}
+          platformExplorationConfig={{
+            triggerDelay: 120, // 2 minutes (less annoying)
+            scrollTrigger: 80 // 80% scroll (more engaged users)
+          }}
+          onTrack={(action, data) => {
+            console.log('CTA Event:', action, data);
+            // Add your analytics tracking here
+          }}
+        />
       </div>
     </Router>
   );
