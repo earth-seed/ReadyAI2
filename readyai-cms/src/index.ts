@@ -20,6 +20,15 @@ export default {
       const count = await strapi.admin.services.user.count();
       console.log(`Current admin users: ${count}`);
       
+      if (count > 0) {
+        const existingAdmins = await strapi.admin.services.user.findAll();
+        console.log('=== EXISTING ADMIN USERS ===');
+        existingAdmins.forEach((admin: any) => {
+          console.log(`Email: ${admin.email}, Firstname: ${admin.firstname}, Lastname: ${admin.lastname}`);
+        });
+        console.log('============================');
+      }
+      
       if (count === 0) {
         const role = await strapi.admin.services.role.findSuperAdmin();
         await strapi.admin.services.user.create({
