@@ -12,7 +12,10 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "env:local": "node switch-env.js local",
+    "env:staging": "node switch-env.js staging",
+    "env:production": "node switch-env.js production"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.28.0",
