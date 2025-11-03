@@ -44,6 +44,7 @@ API_TOKEN_SALT=[generate-random-string]
 ADMIN_JWT_SECRET=[generate-random-string]
 TRANSFER_TOKEN_SALT=[generate-random-string]
 JWT_SECRET=[generate-random-string]
+ENCRYPTION_KEY=[generate-random-string]
 
 # Cloudinary
 CLOUDINARY_NAME=your_cloudinary_cloud_name

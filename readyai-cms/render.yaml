@@ -24,6 +24,8 @@ services:
         generateValue: true
       - key: JWT_SECRET
         generateValue: true
+      - key: ENCRYPTION_KEY
+        generateValue: true
       - key: CLOUDINARY_NAME
         sync: false
       - key: CLOUDINARY_KEY
