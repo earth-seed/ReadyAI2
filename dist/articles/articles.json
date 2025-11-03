@@ -1,0 +1,56 @@
+[
+  {
+    "title": "5 Warning Signs Your Teams Are Using Shadow AI Tools",
+    "path": "5 Warning Signs Your Teams Are Using Shadow AI Tools",
+    "url": "5-warning-sign-your-teams-are-using-shadow-ai",
+    "image": "/assets/images/5-warning-signs.jpeg",
+    "metaDescription": "Unauthorized AI used without IT oversight. This article reveals five key warning signs your teams may be using them and how to regain control",
+    "metaKeywords": "Shadow AI tools",
+    "timestamp": "Tue Aug 1, 2025"
+  },
+  {
+    "title": "What is Shadow AI and Why It Is A Growing Risk For Enterprises",
+    "path": "What Is Shadow AI And Why It Is A Growing Risk For Enterprises", 
+    "url": "what-is-shadow-ai",
+    "image": "/assets/images/shadow_ai.jpeg",
+    "metaDescription": "Discover what Shadow AI is, how it relates to Shadow IT, and why it poses a growing risk to enterprise security, compliance, and data",
+    "metaKeywords": "Shadow AI",
+    "timestamp": "Tue Aug 5, 2025"
+  },
+  {
+    "title": "Is Your Company’s Data at Risk from Shadow AI?",
+    "path": "Is Your Companys Data at Risk from Shadow AI", 
+    "url": "data-at-risk-from-shadow-ai",
+    "image": "/assets/images/data at risk.jpg",
+    "metaDescription": "Is Your Company’s Data at Risk from Shadow AI? Learn how AI tools can create compliance issues, and how to safeguard your enterprise.",
+    "metaKeywords": "data at risk from Shadow AI",
+    "timestamp": "Tue Aug 13, 2025"
+  },
+  {
+    "title": "The Compliance Playbook for Enterprise AI: SOC 2, HIPAA, GDPR and Beyond",
+    "path": "The Compliance Playbook for Enterprise AI SOC 2 HIPAA GDPR and Beyond", 
+    "url": "compliance-playbook-for-enterprise-AI",
+    "image": "/assets/images/The Compliance Playbook For Enterprise AI.jpg",
+    "metaDescription": "The Compliance Playbook for Enterprise AI: Navigate SOC 2, HIPAA, GDPR, and more. Learn how to build a secure, compliant AI strategy.",
+    "metaKeywords": "compliance playbook for enterprise AI",
+    "timestamp": "Tue Aug 19, 2025"
+  },
+  {
+    "title": "Agentic AI in the Enterprise: The Next Governance Crisis for CIOs CTOs and HR Leaders",
+    "path": "Agentic AI in the Enterprise The Next Governance Crisis for CIOs CTOs and HR Leaders", 
+    "url": "agentic-AI-in-the-enterprise",
+    "image": "/assets/images/Agentic AI in the Enterprise.jpg",
+    "metaDescription": "Agentic AI is redefining enterprise governance. What CIOs, CTOs, and HR leaders must do now to prepare for digital employees at machine speed.",
+    "metaKeywords": "agentic AI",
+    "timestamp": "Tue Aug 26, 2025"
+  },
+  {
+    "title": "Compliance or Chaos? How US Enterprises Can Get Ahead of AI Regulation",
+    "path": "Compliance or Chaos_ How US Enterprises Can Get Ahead of AI Regulation", 
+    "url": "US-enterprises-AI-regulation",
+    "image": "/assets/images/Compliance or Chaos_ How US Enterprises Can Get Ahead of AI Regulation.jpg",
+    "metaDescription": "AI regulation is evolving fast, will your enterprise choose compliance or chaos? Discover how to stay ahead of emerging rules.",
+    "metaKeywords": "AI-regulation",
+    "timestamp": "Tue Sep 2, 2025"
+  }
+]
