@@ -1,7 +1,13 @@
 export default ({ env }) => [
   'strapi::logger',
   'strapi::errors',
-  'strapi::security',
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: false,
+      crossOriginEmbedderPolicy: false,
+    },
+  },
   {
     name: 'strapi::cors',
     config: {
