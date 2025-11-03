@@ -24,7 +24,14 @@ export default ({ env }) => [
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
-  'strapi::session',
+  {
+    name: 'strapi::session',
+    config: {
+      secure: false, // Render proxy handles HTTPS
+      httpOnly: true,
+      sameSite: 'lax',
+    },
+  },
   'strapi::favicon',
   'strapi::public',
 ];

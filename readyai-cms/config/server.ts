@@ -9,6 +9,7 @@ export default ({ env }) => ({
     enabled: true,
     host: env('HOST', '0.0.0.0'),
     port: env.int('PORT', 1337),
+    secure: false, // Render uses HTTPS proxy but internal connection is HTTP
   },
   cron: {
     enabled: false,
@@ -16,9 +17,5 @@ export default ({ env }) => ({
   admin: {
     url: env('PUBLIC_ADMIN_URL', '/admin'),
     serveAdminPanel: env.bool('SERVE_ADMIN', true),
-  },
-  cookie: {
-    secure: env.bool('COOKIE_SECURE', false), // Set to true only if using HTTPS
-    sameSite: 'lax',
   },
 });
