@@ -42,7 +42,7 @@ export default {
         console.log(`Found admin user: ${admin.email}`);
         console.log('Resetting password...');
         
-        // Update the password
+        // Update the password using admin service
         await strapi.admin.services.user.updateById(admin.id, {
           password: adminPassword,
         });
@@ -52,15 +52,24 @@ export default {
         console.log(`No admin found with email: ${adminEmail}`);
         console.log('Creating new admin user...');
         
-        // Create new admin if doesn't exist
-        const role = await strapi.admin.services.role.findSuperAdmin();
+        // Find super admin role by code
+        const superAdminRole = await strapi.entityService.findMany('admin::role', {
+          filters: { code: 'strapi-super-admin' },
+          fields: ['id'],
+        });
+        
+        if (!superAdminRole || superAdminRole.length === 0) {
+          throw new Error('Super admin role not found');
+        }
+        
+        // Create admin using admin service (admin users need special handling)
         await strapi.admin.services.user.create({
           email: adminEmail,
           password: adminPassword,
           firstname: process.env.ADMIN_FIRSTNAME || 'Admin',
           lastname: process.env.ADMIN_LASTNAME || 'User',
           isActive: true,
-          roles: [role.id],
+          roles: [superAdminRole[0].id],
         });
         console.log(`✅ Admin created: ${adminEmail}`);
       }
