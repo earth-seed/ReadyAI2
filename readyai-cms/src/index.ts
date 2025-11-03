@@ -21,7 +21,9 @@ export default {
       console.log(`Current admin users: ${count}`);
       
       if (count > 0) {
-        const existingAdmins = await strapi.admin.services.user.findAll();
+        const existingAdmins = await strapi.entityService.findMany('admin::user', {
+          fields: ['email', 'firstname', 'lastname'],
+        });
         console.log('=== EXISTING ADMIN USERS ===');
         existingAdmins.forEach((admin: any) => {
           console.log(`Email: ${admin.email}, Firstname: ${admin.firstname}, Lastname: ${admin.lastname}`);
