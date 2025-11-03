@@ -41,5 +41,6 @@ export default ({ env }) => ({
         defaultReplyTo: env('SMTP_FROM', 'Contact readyai.dev'),
       },
     },
+    enabled: true,
   },
 });
