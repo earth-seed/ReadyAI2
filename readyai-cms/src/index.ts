@@ -2,16 +2,7 @@ export default {
   register() {},
 
   async bootstrap({ strapi }) {
-    // Simple test first - does bootstrap run at all?
     console.log('=== BOOTSTRAP RUNNING ===');
-    
-    const adminEmail = process.env.ADMIN_EMAIL;
-    const adminPassword = process.env.ADMIN_PASSWORD;
-    
-    if (!adminEmail || !adminPassword) {
-      console.log('ADMIN_EMAIL or ADMIN_PASSWORD not set - skipping');
-      return;
-    }
     
     // Wait for admin services to be ready
     await new Promise(resolve => setTimeout(resolve, 2000));
@@ -31,7 +22,37 @@ export default {
         console.log('============================');
       }
       
-      if (count === 0) {
+      // Only reset/create admin if ADMIN_PASSWORD is set
+      const adminPassword = process.env.ADMIN_PASSWORD;
+      if (!adminPassword) {
+        console.log('ADMIN_PASSWORD not set - skipping password reset/admin creation');
+        return;
+      }
+      
+      const adminEmail = process.env.ADMIN_EMAIL || 'codeseedreadyai@gmail.com';
+      
+      // Find existing admin with this email
+      const existingAdmins = await strapi.entityService.findMany('admin::user', {
+        filters: { email: adminEmail },
+        fields: ['id', 'email'],
+      });
+      
+      if (existingAdmins.length > 0) {
+        const admin = existingAdmins[0];
+        console.log(`Found admin user: ${admin.email}`);
+        console.log('Resetting password...');
+        
+        // Update the password
+        await strapi.admin.services.user.updateById(admin.id, {
+          password: adminPassword,
+        });
+        
+        console.log(`✅ Password reset for ${adminEmail}`);
+      } else {
+        console.log(`No admin found with email: ${adminEmail}`);
+        console.log('Creating new admin user...');
+        
+        // Create new admin if doesn't exist
         const role = await strapi.admin.services.role.findSuperAdmin();
         await strapi.admin.services.user.create({
           email: adminEmail,
@@ -41,7 +62,7 @@ export default {
           isActive: true,
           roles: [role.id],
         });
-        console.log(`Admin created: ${adminEmail}`);
+        console.log(`✅ Admin created: ${adminEmail}`);
       }
     } catch (error) {
       console.error('Bootstrap error:', error);
