@@ -1,3 +1,41 @@
+# Environment variables
 .env
 .env.*
+
+# Dependencies
 node_modules
+
+# Build outputs
+dist
+dist-ssr
+*.local
+
+# Vite cache
+.vite
+node_modules/.vite
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Strapi specific
+readyai-cms/.tmp
+readyai-cms/dist
+readyai-cms/build
+readyai-cms/.cache
