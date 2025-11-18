@@ -4,27 +4,55 @@ export default ({ env }) => [
   {
     name: 'strapi::security',
     config: {
-      contentSecurityPolicy: false,
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'connect-src': ["'self'", 'https:'],
+          'img-src': ["'self'", 'data:', 'blob:', 'https://res.cloudinary.com'],
+          'media-src': ["'self'", 'data:', 'blob:', 'https://res.cloudinary.com'],
+          upgradeInsecureRequests: null,
+        },
+      },
       crossOriginEmbedderPolicy: false,
     },
   },
   {
     name: 'strapi::cors',
     config: {
+      enabled: true,
       origin: [
         'http://localhost:1337',
         'http://localhost:3000',
-        'https://res.cloudinary.com',
-        env('FRONTEND_URL', 'http://localhost:3000'),
-        // Add your production frontend URL here or via env variable
+        env('FRONTEND_URL'),
+        env('PUBLIC_URL'),
       ].filter(Boolean),
-      headers: ['Content-Type', 'Authorization', 'X-Frame-Options'],
+      headers: [
+        'Content-Type',
+        'Authorization',
+        'X-Frame-Options',
+        'X-Requested-With',
+      ],
     },
   },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
-  'strapi::session',
+  {
+    name: 'strapi::session',
+    config: {
+      enabled: true,
+      client: 'cookie',
+      key: 'strapi.sid',
+      httpOnly: true,
+      maxAge: 86400000,
+      overwrite: true,
+      signed: true,
+      rolling: false,
+      renew: false,
+      secure: false, // Set to false because proxy (Render) handles HTTPS
+      sameSite: 'lax',
+    },
+  },
   'strapi::favicon',
   'strapi::public',
 ];

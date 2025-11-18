@@ -1,20 +1,79 @@
-// import type { Core } from '@strapi/strapi';
-
 export default {
-  /**
-   * An asynchronous register function that runs before
-   * your application is initialized.
-   *
-   * This gives you an opportunity to extend code.
-   */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  register() {},
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   *
-   * This gives you an opportunity to set up your data model,
-   * run jobs, or perform some special logic.
-   */
-  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
+  async bootstrap({ strapi }) {
+    // Wait for admin services to be ready
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    try {
+      const count = await strapi.admin.services.user.count();
+      strapi.log.info(`[Bootstrap] Admin users count: ${count}`);
+
+      if (count > 0) {
+        const existingAdmins = await strapi.entityService.findMany('admin::user', {
+          fields: ['email', 'firstname', 'lastname'],
+        });
+        strapi.log.info('[Bootstrap] Existing admin users:');
+        existingAdmins.forEach((admin: any) => {
+          strapi.log.info(`  - ${admin.email} (${admin.firstname} ${admin.lastname})`);
+        });
+      }
+
+      // Only reset/create admin if ADMIN_PASSWORD is set
+      const adminPassword = process.env.ADMIN_PASSWORD;
+      if (!adminPassword) {
+        strapi.log.info('[Bootstrap] ADMIN_PASSWORD not set - skipping admin operations');
+        return;
+      }
+
+      const adminEmail = process.env.ADMIN_EMAIL || 'codeseedreadyai@gmail.com';
+
+      // Find existing admin with this email
+      const matchingAdmins = await strapi.entityService.findMany('admin::user', {
+        filters: { email: adminEmail },
+        fields: ['id', 'email'],
+      });
+
+      if (matchingAdmins.length > 0) {
+        const admin = matchingAdmins[0];
+        strapi.log.info(`[Bootstrap] Found admin user: ${admin.email}`);
+        strapi.log.info('[Bootstrap] Resetting password...');
+
+        // Update the password using admin service
+        await strapi.admin.services.user.updateById(admin.id, {
+          password: adminPassword,
+        });
+
+        strapi.log.info(`[Bootstrap] ✅ Password reset for ${adminEmail}`);
+      } else {
+        strapi.log.info(`[Bootstrap] No admin found with email: ${adminEmail}`);
+        strapi.log.info('[Bootstrap] Creating new admin user...');
+
+        // Find super admin role by code
+        const superAdminRole = await strapi.entityService.findMany('admin::role', {
+          filters: { code: 'strapi-super-admin' },
+          fields: ['id'],
+        });
+
+        if (!superAdminRole || superAdminRole.length === 0) {
+          throw new Error('[Bootstrap] Super admin role not found');
+        }
+
+        // Create admin using admin service
+        await strapi.admin.services.user.create({
+          email: adminEmail,
+          password: adminPassword,
+          firstname: process.env.ADMIN_FIRSTNAME || 'Admin',
+          lastname: process.env.ADMIN_LASTNAME || 'User',
+          isActive: true,
+          roles: [superAdminRole[0].id],
+        });
+
+        strapi.log.info(`[Bootstrap] ✅ Admin created: ${adminEmail}`);
+      }
+    } catch (error) {
+      strapi.log.error('[Bootstrap] Error:', error);
+      throw error;
+    }
+  },
 };
