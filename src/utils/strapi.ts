@@ -48,10 +48,9 @@ export interface StrapiResponse<T> {
  * - Proper error handling for network and API errors
  */
 export const fetchArticles = async (): Promise<StrapiArticle[]> => {
-  // Strapi 5 best practice: Use specific populate instead of * for better performance
-  // Format: populate[fieldName]=true or populate[fieldName][fields][0]=field
+  // Start with simple query to debug, then optimize
   const params = new URLSearchParams({
-    'populate[featuredImage]': 'true',
+    'populate': '*', // Use * for now to ensure we get all data
     'sort[0]': 'publicationDate:desc',
     'publicationState': 'live',
   });
@@ -59,12 +58,15 @@ export const fetchArticles = async (): Promise<StrapiArticle[]> => {
   const url = `${STRAPI_URL}/api/articles?${params.toString()}`;
   
   try {
+    console.log('[Strapi] Fetching from URL:', url);
     const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     });
+    
+    console.log('[Strapi] Response status:', response.status, response.statusText);
     
     if (!response.ok) {
       // Handle different error types
@@ -81,14 +83,23 @@ export const fetchArticles = async (): Promise<StrapiArticle[]> => {
     }
     
     // Strapi 5 always returns { data: [...], meta: {...} } structure
-    const result: StrapiResponse<StrapiArticle> = await response.json();
+    const result: any = await response.json();
+    console.log('[Strapi] Full API response:', JSON.stringify(result, null, 2));
     
-    if (!result.data || !Array.isArray(result.data)) {
-      console.warn('[Strapi] Unexpected response structure:', result);
-      return [];
+    // Handle different possible response structures
+    let articles: StrapiArticle[] = [];
+    if (result.data && Array.isArray(result.data)) {
+      articles = result.data;
+    } else if (Array.isArray(result)) {
+      articles = result;
     }
     
-    return result.data;
+    console.log('[Strapi] Parsed articles count:', articles.length);
+    if (articles.length > 0) {
+      console.log('[Strapi] First article structure:', articles[0]);
+    }
+    
+    return articles;
   } catch (error) {
     // Distinguish between network errors and API errors
     if (error instanceof TypeError && error.message.includes('fetch')) {
@@ -143,6 +154,55 @@ export const fetchArticleBySlug = async (slug: string): Promise<StrapiArticle | 
     }
     
     console.error(`[Strapi] Error fetching article with slug "${slug}":`, error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch a draft article for preview using preview token
+ * Strapi 5 preview uses a token passed as a query parameter
+ * The token is validated by Strapi's preview middleware
+ */
+export const fetchArticlePreview = async (id: string, token: string): Promise<StrapiArticle | null> => {
+  if (!id || !token) {
+    throw new Error('Article ID and preview token are required');
+  }
+  
+  // Strapi 5 preview: token is passed as query param, not Authorization header
+  const params = new URLSearchParams({
+    'populate': '*',
+    'token': token,
+  });
+  
+  const url = `${STRAPI_URL}/api/articles/${id}?${params.toString()}`;
+  
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    
+    if (!response.ok) {
+      if (response.status === 401 || response.status === 403) {
+        throw new Error('Invalid or expired preview token. Please generate a new preview link from Strapi.');
+      }
+      if (response.status === 404) {
+        return null;
+      }
+      throw new Error(`Failed to fetch preview: ${response.status} ${response.statusText}`);
+    }
+    
+    const result: { data: StrapiArticle } = await response.json();
+    return result.data || null;
+  } catch (error) {
+    if (error instanceof TypeError && error.message.includes('fetch')) {
+      console.error('[Strapi] Network error fetching preview:', id);
+      throw new Error(`Cannot connect to Strapi API. Check that ${STRAPI_URL} is accessible.`);
+    }
+    
+    console.error(`[Strapi] Error fetching preview for article ${id}:`, error);
     throw error;
   }
 };
