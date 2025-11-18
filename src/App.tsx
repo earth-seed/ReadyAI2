@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -18,6 +18,7 @@ import CookieConsent from './components/ui/CookieConsent';
 import { usePerformance } from './hooks/usePerformance';
 import Version from './pages/Version';
 import InsightsPage from './pages/InsightsPage';
+import ArticlePreview from './pages/ArticlePreview';
 import AboutPage from './pages/AboutPage';
 import ReferralsPage from './pages/ReferralsPage';
 import AdminPage from './pages/AdminPage';
@@ -30,9 +31,9 @@ function App() {
     const loadTime = performance.now();
     trackCustomMetric('InitialLoad', loadTime);
 
-    // Track memory usage
-    if (performance.memory) {
-      trackCustomMetric('HeapSize', performance.memory.usedJSHeapSize);
+    // Track memory usage (Chrome-specific API)
+    if ('memory' in performance && (performance as any).memory) {
+      trackCustomMetric('HeapSize', (performance as any).memory.usedJSHeapSize);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -60,6 +61,7 @@ function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/insights" element={<InsightsPage />} />  
             <Route path="/insights/:articleName" element={<InsightsPage />} />
+            <Route path="/preview" element={<ArticlePreview />} />
             <Route path="/about-us" element={<AboutPage />} />   
             <Route path="/referral/:referralCode" element={<ReferralsPage />} />   
             <Route path="/admin" element={<AdminPage />} />   
