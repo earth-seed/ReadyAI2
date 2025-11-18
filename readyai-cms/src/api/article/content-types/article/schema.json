@@ -19,9 +19,12 @@
       "type": "uid",
       "targetField": "title"
     },
+    "description": {
+      "type": "text"
+    },
     "content": {
       "type": "blocks",
-      "required": true
+      "required": false
     },
     "featuredImage": {
       "type": "media",
