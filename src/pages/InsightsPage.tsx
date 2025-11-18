@@ -36,17 +36,24 @@ const InsightsPage: React.FC = () => {
         const strapiArticles = await fetchArticles();
         
         // Map Strapi articles to display format
-        const mappedArticles: Article[] = strapiArticles.map((article) => ({
-          id: article.id,
-          title: article.attributes.title,
-          slug: article.attributes.slug,
-          url: article.attributes.slug, // Use slug for routing
-          imgURL: getImageUrl(article.attributes.featuredImage),
-          description: article.attributes.description || article.attributes.metaDescription || '',
-          metaKeywords: article.attributes.metaKeywords || '',
-          publicationDate: article.attributes.publicationDate || article.attributes.publishedAt || '',
-          content: article.attributes.content,
-        }));
+        const mappedArticles: Article[] = strapiArticles
+          .filter((article) => article && article.attributes) // Filter out invalid articles
+          .map((article) => {
+            if (!article.attributes.title) {
+              console.warn('[InsightsPage] Article missing title:', article);
+            }
+            return {
+              id: article.id,
+              title: article.attributes.title || 'Untitled',
+              slug: article.attributes.slug || '',
+              url: article.attributes.slug || '', // Use slug for routing
+              imgURL: getImageUrl(article.attributes.featuredImage),
+              description: article.attributes.description || article.attributes.metaDescription || '',
+              metaKeywords: article.attributes.metaKeywords || '',
+              publicationDate: article.attributes.publicationDate || article.attributes.publishedAt || '',
+              content: article.attributes.content,
+            };
+          });
         
         setArticles(mappedArticles);
         setError(null);
