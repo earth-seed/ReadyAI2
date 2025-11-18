@@ -17,10 +17,12 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "content": {
       "type": "blocks",
@@ -42,7 +44,8 @@
       "type": "text"
     },
     "publicationDate": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "author": {
       "type": "relation",

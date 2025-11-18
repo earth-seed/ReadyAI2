@@ -1,75 +1,124 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import WordDocViewer from "../components/sections/WordDocParser";
-import { Linkedin, Sparkles, Calendar, ArrowRight, TrendingUp, BookOpen, Users, Clock } from "lucide-react";
+import { Linkedin, Calendar, ArrowRight, BookOpen, Users, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
-// Firebase imports
-import { getFirestore, collection, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
-import { app } from "../middleware/firebase"; // your initialized firebase app
-import WordDocParser from "../components/sections/WordDocParser";
+// Strapi imports
+import { fetchArticles, fetchArticleBySlug, getImageUrl } from "../utils/strapi";
+import StrapiBlocksRenderer from "../components/sections/StrapiBlocksRenderer";
 
-const db = getFirestore(app);
-
+// Article type for display (mapped from Strapi)
 type Article = {
-  id: string;
+  id: number;
   title: string;
-  url: string;
-  imgURL: string; // Firebase Storage URL
-  docURL: string;   // Firebase Storage URL
-  timestamp: Timestamp;
+  slug: string;
+  url: string; // For routing compatibility
+  imgURL: string;
   description: string;
   metaKeywords: string;
+  publicationDate: string;
+  content?: any[];
 };
 
 const InsightsPage: React.FC = () => {
   const { articleName } = useParams<{ articleName: string }>();
   const navigate = useNavigate();
   const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // fetch metadata from Firestore
+  // Fetch articles from Strapi
   useEffect(() => {
-    const fetchArticles = async () => {
+    const loadArticles = async () => {
       try {
-        const q = query(collection(db, "articles"), orderBy("timestamp", "desc")); 
-        const snapshot = await getDocs(q);
-        const docs: Article[] = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as Article[];
-        setArticles(docs);
+        setLoading(true);
+        const strapiArticles = await fetchArticles();
+        
+        // Map Strapi articles to display format
+        const mappedArticles: Article[] = strapiArticles.map((article) => ({
+          id: article.id,
+          title: article.attributes.title,
+          slug: article.attributes.slug,
+          url: article.attributes.slug, // Use slug for routing
+          imgURL: getImageUrl(article.attributes.featuredImage),
+          description: article.attributes.description || article.attributes.metaDescription || '',
+          metaKeywords: article.attributes.metaKeywords || '',
+          publicationDate: article.attributes.publicationDate || article.attributes.publishedAt || '',
+          content: article.attributes.content,
+        }));
+        
+        setArticles(mappedArticles);
+        setError(null);
       } catch (err) {
-        console.error("Failed to fetch articles from Firestore:", err);
+        console.error("Failed to fetch articles from Strapi:", err);
+        setError("Failed to load articles. Please try again later.");
+      } finally {
+        setLoading(false);
       }
     };
-    fetchArticles();
+    
+    loadArticles();
   }, []);
 
-  // current article from URL
-  const currArticle = articles.find((a) => a.url === articleName);
+  // Fetch single article if viewing individual article
+  const [currArticle, setCurrArticle] = useState<Article | null>(null);
+  
+  useEffect(() => {
+    if (articleName) {
+      const foundArticle = articles.find((a) => a.slug === articleName || a.url === articleName);
+      if (foundArticle) {
+        setCurrArticle(foundArticle);
+      } else {
+        // Try to fetch directly from Strapi if not in list
+        const loadArticle = async () => {
+          try {
+            const strapiArticle = await fetchArticleBySlug(articleName);
+            if (strapiArticle) {
+              setCurrArticle({
+                id: strapiArticle.id,
+                title: strapiArticle.attributes.title,
+                slug: strapiArticle.attributes.slug,
+                url: strapiArticle.attributes.slug,
+                imgURL: getImageUrl(strapiArticle.attributes.featuredImage),
+                description: strapiArticle.attributes.description || strapiArticle.attributes.metaDescription || '',
+                metaKeywords: strapiArticle.attributes.metaKeywords || '',
+                publicationDate: strapiArticle.attributes.publicationDate || strapiArticle.attributes.publishedAt || '',
+                content: strapiArticle.attributes.content,
+              });
+            }
+          } catch (err) {
+            console.error('Failed to fetch article:', err);
+          }
+        };
+        loadArticle();
+      }
+    } else {
+      setCurrArticle(null);
+    }
+  }, [articleName, articles]);
 
   // LinkedIn share
-  const shareLinkedInUrl = `https://readyai.dev/insights/${currArticle?.url}`;
+  const shareLinkedInUrl = `https://readyai.dev/insights/${currArticle?.slug || currArticle?.url}`;
 
-  const onSelect = (path: string) => {
-    navigate(path);
+  const onSelect = (slug: string) => {
+    navigate(`/insights/${slug}`);
   };
 
-  function formatTimestamp(ts: Timestamp | string): string {
-    if (!ts) return "";
-
-    if (ts instanceof Timestamp) {
-      return ts.toDate().toLocaleDateString("en-US", {
+  function formatTimestamp(dateString: string): string {
+    if (!dateString) return "";
+    
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString("en-US", {
         weekday: "short", // Tue
         month: "short",   // Sep
         day: "numeric",   // 2
         year: "numeric",  // 2025
       });
+    } catch (err) {
+      return dateString;
     }
-
-    // If it's already a string, just return it
-    return ts;
   }
 
   return (
@@ -134,9 +183,34 @@ const InsightsPage: React.FC = () => {
       {/* Articles Grid */}
       {!articleName && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {loading && (
+            <div className="text-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading articles...</p>
+            </div>
+          )}
+          
+          {error && (
+            <div className="text-center py-12">
+              <p className="text-red-600 mb-4">{error}</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark"
+              >
+                Retry
+              </button>
+            </div>
+          )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articles.map((article, idx) => (
+          {!loading && !error && articles.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-gray-600">No articles found.</p>
+            </div>
+          )}
+
+          {!loading && !error && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {articles.map((article, idx) => (
               <article
                 key={article.id}
                 className={`group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 ${
@@ -158,7 +232,7 @@ const InsightsPage: React.FC = () => {
                 <div className="p-6">
                   <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
                     <Calendar className="w-4 h-4" />
-                    <span>{formatTimestamp(article.timestamp)}</span>
+                    <span>{formatTimestamp(article.publicationDate)}</span>
                   </div>
 
                   <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-accent transition-colors duration-200 line-clamp-2">
@@ -170,7 +244,7 @@ const InsightsPage: React.FC = () => {
                   </p>
 
                   <button
-                    onClick={() => onSelect(article.url)}
+                    onClick={() => onSelect(article.slug)}
                     className="inline-flex items-center gap-2 text-accent font-semibold hover:text-accent-dark transition-colors duration-200 group/btn"
                   >
                     Read Article
@@ -179,7 +253,8 @@ const InsightsPage: React.FC = () => {
                 </div>
               </article>
             ))}
-          </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -190,7 +265,7 @@ const InsightsPage: React.FC = () => {
           <div className="mb-12">
             <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
               <Calendar className="w-4 h-4" />
-              <span>{formatTimestamp(currArticle.timestamp)}</span>
+              <span>{formatTimestamp(currArticle.publicationDate)}</span>
               <span className="mx-2">•</span>
               <span>ReadyAI Insights</span>
             </div>
@@ -227,9 +302,13 @@ const InsightsPage: React.FC = () => {
           </div>
 
           {/* Article Content */}
-          <div className="prose prose-lg max-w-none">
-            <WordDocParser docPath={currArticle.docURL} />
-          </div>
+          {currArticle.content && currArticle.content.length > 0 ? (
+            <StrapiBlocksRenderer blocks={currArticle.content} />
+          ) : (
+            <div className="prose prose-lg max-w-none">
+              <p className="text-gray-600 italic">Content coming soon...</p>
+            </div>
+          )}
 
           {/* Back to Insights */}
           <div className="mt-16 pt-8 border-t border-gray-200">
