@@ -44,19 +44,34 @@ export interface StrapiResponse<T> {
  * Fetch all published articles from Strapi
  */
 export const fetchArticles = async (): Promise<StrapiArticle[]> => {
+  const url = `${STRAPI_URL}/api/articles?populate=*&sort=publicationDate:desc&publicationState=live`;
+  
   try {
-    const response = await fetch(
-      `${STRAPI_URL}/api/articles?populate=*&sort=publicationDate:desc&publicationState=live`
-    );
+    console.log('[Strapi] Fetching articles from:', url);
+    const response = await fetch(url);
     
     if (!response.ok) {
-      throw new Error(`Failed to fetch articles: ${response.statusText}`);
+      const errorText = await response.text();
+      console.error('[Strapi] API Error:', {
+        status: response.status,
+        statusText: response.statusText,
+        url,
+        error: errorText
+      });
+      
+      if (response.status === 403) {
+        throw new Error('API Permission Denied. Please enable "find" permission for Article in Strapi Settings → Users & Permissions → Roles → Public');
+      }
+      
+      throw new Error(`Failed to fetch articles: ${response.status} ${response.statusText}`);
     }
     
     const data: StrapiResponse<StrapiArticle> = await response.json();
+    console.log('[Strapi] Received articles:', data.data?.length || 0);
     return data.data || [];
   } catch (error) {
-    console.error('Error fetching articles from Strapi:', error);
+    console.error('[Strapi] Error fetching articles:', error);
+    console.error('[Strapi] Strapi URL:', STRAPI_URL);
     throw error;
   }
 };
