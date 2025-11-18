@@ -23,6 +23,8 @@ export default ({ env }) => [
       origin: [
         'http://localhost:1337',
         'http://localhost:3000',
+        'https://readyai2.onrender.com',
+        'https://readyai.dev',
         env('FRONTEND_URL'),
         env('PUBLIC_URL'),
       ].filter(Boolean),
