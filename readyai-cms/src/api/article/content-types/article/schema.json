@@ -26,7 +26,15 @@
     },
     "content": {
       "type": "blocks",
-      "required": false
+      "blocks": [
+        "blocks.paragraph",
+        "blocks.heading",
+        "blocks.list",
+        "blocks.quote",
+        "blocks.code",
+        "blocks.link",
+        "component.image-block"
+      ]
     },
     "featuredImage": {
       "type": "media",

@@ -27,6 +27,22 @@ interface Block {
   alt?: string;
   caption?: string;
   items?: string[];
+  image?: {
+    url?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+  };
+  // For Strapi image blocks
+  imageUrl?: string;
+  imageAlt?: string;
+  imageCaption?: string;
+  // Alignment options (left, center, right, full-width)
+  align?: 'left' | 'center' | 'right' | 'full';
+  // Size options (small, medium, large, full)
+  size?: 'small' | 'medium' | 'large' | 'full';
 }
 
 interface StrapiBlocksRendererProps {
@@ -196,21 +212,142 @@ const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks }) =
         );
 
       case 'image':
-        const imageUrl = block.url || '';
-        const imageAlt = block.alt || block.caption || '';
+        // Handle different image block structures from Strapi
+        let imageUrl = '';
+        let imageAlt = '';
+        let imageCaption = '';
+        
+        // Check for nested image object (Strapi 5 format)
+        if (block.image) {
+          const img = block.image as any;
+          imageUrl = img.url || img.data?.attributes?.url || '';
+          imageAlt = img.alternativeText || img.alt || img.caption || '';
+          imageCaption = img.caption || '';
+        } else {
+          // Fallback to direct properties
+          imageUrl = block.url || block.imageUrl || '';
+          imageAlt = block.alt || block.imageAlt || block.caption || '';
+          imageCaption = block.caption || block.imageCaption || '';
+        }
+        
+        // Get alignment and size options
+        const align = block.align || 'center';
+        const size = block.size || 'full';
+        
+        // Determine CSS classes based on alignment and size
+        const alignmentClasses = {
+          left: 'float-left mr-6 mb-4',
+          center: 'mx-auto block',
+          right: 'float-right ml-6 mb-4',
+          full: 'w-full',
+        }[align] || 'mx-auto block';
+        
+        const sizeClasses = {
+          small: 'max-w-xs',
+          medium: 'max-w-md',
+          large: 'max-w-2xl',
+          full: 'w-full',
+        }[size] || 'w-full';
+        
+        // For full-width images, use a different container
+        if (size === 'full' || align === 'full') {
+          return (
+            <figure key={index} className="my-8">
+              <img
+                src={imageUrl}
+                alt={imageAlt}
+                className={`${sizeClasses} rounded-lg shadow-lg ${align === 'center' ? 'mx-auto' : ''}`}
+              />
+              {imageCaption && (
+                <figcaption className="text-sm text-gray-600 mt-2 text-center">
+                  {imageCaption}
+                </figcaption>
+              )}
+            </figure>
+          );
+        }
+        
+        // For aligned images (left/right), use float layout
         return (
-          <figure key={index} className="my-8">
+          <figure key={index} className={`${alignmentClasses} ${sizeClasses} my-4`}>
             <img
               src={imageUrl}
               alt={imageAlt}
-              className="w-full rounded-lg shadow-lg"
+              className="w-full rounded-lg shadow-md"
             />
-            {block.caption && (
-              <figcaption className="text-sm text-gray-600 mt-2 text-center">
-                {block.caption}
+            {imageCaption && (
+              <figcaption className="text-xs text-gray-600 mt-1 text-center">
+                {imageCaption}
               </figcaption>
             )}
           </figure>
+        );
+
+      // Handle component blocks (custom components like image-block)
+      case 'component':
+        // Check if it's our image-block component
+        if ((block as any).component === 'image-block' || (block as any).componentName === 'image-block') {
+          const componentData = (block as any).image || (block as any);
+          const img = componentData.image?.data?.attributes || componentData.image?.attributes || componentData;
+          
+          imageUrl = img.url || '';
+          imageAlt = img.alternativeText || componentData.caption || '';
+          imageCaption = componentData.caption || '';
+          const align = componentData.alignment || 'center';
+          const size = componentData.size || 'full';
+          
+          const alignmentClasses = {
+            left: 'float-left mr-6 mb-4',
+            center: 'mx-auto block',
+            right: 'float-right ml-6 mb-4',
+            full: 'w-full',
+          }[align] || 'mx-auto block';
+          
+          const sizeClasses = {
+            small: 'max-w-xs',
+            medium: 'max-w-md',
+            large: 'max-w-2xl',
+            full: 'w-full',
+          }[size] || 'w-full';
+          
+          if (size === 'full' || align === 'full') {
+            return (
+              <figure key={index} className="my-8">
+                <img
+                  src={imageUrl}
+                  alt={imageAlt}
+                  className={`${sizeClasses} rounded-lg shadow-lg ${align === 'center' ? 'mx-auto' : ''}`}
+                />
+                {imageCaption && (
+                  <figcaption className="text-sm text-gray-600 mt-2 text-center">
+                    {imageCaption}
+                  </figcaption>
+                )}
+              </figure>
+            );
+          }
+          
+          return (
+            <figure key={index} className={`${alignmentClasses} ${sizeClasses} my-4`}>
+              <img
+                src={imageUrl}
+                alt={imageAlt}
+                className="w-full rounded-lg shadow-md"
+              />
+              {imageCaption && (
+                <figcaption className="text-xs text-gray-600 mt-1 text-center">
+                  {imageCaption}
+                </figcaption>
+              )}
+            </figure>
+          );
+        }
+        
+        // Fallback for other component types
+        return (
+          <div key={index} className="my-4 p-4 bg-gray-100 rounded">
+            <p className="text-sm text-gray-600">Unsupported component: {(block as any).component || (block as any).componentName}</p>
+          </div>
         );
 
       case 'code':

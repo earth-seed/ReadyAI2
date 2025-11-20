@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Linkedin, Calendar, ArrowRight } from "lucide-react";
-import { fetchArticlePreview, getImageUrl, type StrapiArticle } from "../utils/strapi";
+import { fetchArticlePreview, getImageUrl } from "../utils/strapi";
 import StrapiBlocksRenderer from "../components/sections/StrapiBlocksRenderer";
 
 type Article = {
@@ -53,16 +53,35 @@ const ArticlePreview: React.FC = () => {
           return;
         }
 
+        // Handle both flat and nested structures
+        const attrs = strapiArticle.attributes || strapiArticle;
+        
+        // Handle featuredImage - can be flat or nested
+        let imgURL = '';
+        if (attrs.featuredImage) {
+          const featuredImage = attrs.featuredImage as any;
+          if (featuredImage.url) {
+            // Flat structure: featuredImage.url
+            imgURL = featuredImage.url;
+          } else if (featuredImage.data?.attributes?.url) {
+            // Nested structure: featuredImage.data.attributes.url
+            imgURL = getImageUrl(featuredImage);
+          } else if (featuredImage.data?.url) {
+            // Alternative nested structure
+            imgURL = getImageUrl({ data: { attributes: { url: featuredImage.data.url } } });
+          }
+        }
+        
         setArticle({
           id: strapiArticle.id,
-          title: strapiArticle.attributes.title,
-          slug: strapiArticle.attributes.slug,
-          url: strapiArticle.attributes.slug,
-          imgURL: getImageUrl(strapiArticle.attributes.featuredImage),
-          description: strapiArticle.attributes.description || strapiArticle.attributes.metaDescription || '',
-          metaKeywords: strapiArticle.attributes.metaKeywords || '',
-          publicationDate: strapiArticle.attributes.publicationDate || strapiArticle.attributes.publishedAt || '',
-          content: strapiArticle.attributes.content,
+          title: attrs.title || 'Untitled',
+          slug: attrs.slug || '',
+          url: attrs.slug || '',
+          imgURL: imgURL,
+          description: attrs.description || attrs.metaDescription || '',
+          metaKeywords: attrs.metaKeywords || '',
+          publicationDate: attrs.publicationDate || attrs.publishedAt || '',
+          content: attrs.content,
         });
         setError(null);
       } catch (err: any) {
