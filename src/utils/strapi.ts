@@ -48,9 +48,10 @@ export interface StrapiResponse<T> {
  * - Proper error handling for network and API errors
  */
 export const fetchArticles = async (): Promise<StrapiArticle[]> => {
-  // Start with simple query to debug, then optimize
+  // Use populate=* to get all fields including content blocks
+  // TODO: Optimize to specific fields once structure is stable
   const params = new URLSearchParams({
-    'populate': '*', // Use * for now to ensure we get all data
+    'populate': '*',
     'sort[0]': 'publicationDate:desc',
     'publicationState': 'live',
   });
@@ -58,15 +59,12 @@ export const fetchArticles = async (): Promise<StrapiArticle[]> => {
   const url = `${STRAPI_URL}/api/articles?${params.toString()}`;
   
   try {
-    console.log('[Strapi] Fetching from URL:', url);
     const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    
-    console.log('[Strapi] Response status:', response.status, response.statusText);
     
     if (!response.ok) {
       // Handle different error types
@@ -84,7 +82,6 @@ export const fetchArticles = async (): Promise<StrapiArticle[]> => {
     
     // Strapi 5 always returns { data: [...], meta: {...} } structure
     const result: any = await response.json();
-    console.log('[Strapi] Full API response:', JSON.stringify(result, null, 2));
     
     // Handle different possible response structures
     let articles: StrapiArticle[] = [];
@@ -92,11 +89,6 @@ export const fetchArticles = async (): Promise<StrapiArticle[]> => {
       articles = result.data;
     } else if (Array.isArray(result)) {
       articles = result;
-    }
-    
-    console.log('[Strapi] Parsed articles count:', articles.length);
-    if (articles.length > 0) {
-      console.log('[Strapi] First article structure:', articles[0]);
     }
     
     return articles;
