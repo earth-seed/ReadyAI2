@@ -32,15 +32,15 @@ const Counter = ({ end, duration = 2, prefix = '', suffix = '' }: { end: number;
 export default function EnterpriseAINumbersSection() {
   return (
     <SlideAnimator direction="up">
-      <section className="relative bg-accent2-lightest py-20 md:py-32 overflow-hidden">
+      <section className="relative bg-white py-20 md:py-32 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
           
           {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
             <h2 className="font-heading text-primary text-4xl sm:text-5xl md:text-6xl font-normal mb-6">
@@ -89,11 +89,11 @@ export default function EnterpriseAINumbersSection() {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: item.delay, duration: 0.6 }}
-                className="group relative bg-white backdrop-blur-sm border-2 border-gray-100 rounded-3xl p-10 md:p-12 hover:shadow-2xl hover:border-accent/30 hover:-translate-y-2 transition-all duration-300"
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ delay: item.delay, duration: 0.5, ease: "easeOut" }}
+                className="group relative bg-accent2-lightest rounded-3xl border-2 border-accent/20 p-10 md:p-12 hover:shadow-2xl hover:border-accent/40 hover:-translate-y-2 hover:bg-accent2-light transition-all duration-300"
               >
                 <div className="absolute top-8 right-8 opacity-10 group-hover:opacity-20 transition-opacity">
                   <item.icon className="w-20 h-20 text-accent" strokeWidth={1} />
@@ -113,7 +113,7 @@ export default function EnterpriseAINumbersSection() {
                   <h4 className="font-sans text-primary text-xl md:text-2xl font-semibold mb-4 leading-tight">
                     {item.label}
                   </h4>
-                  <p className="font-sans text-gray-600 text-base md:text-lg leading-relaxed">
+                  <p className="font-sans text-gray-700 text-base md:text-lg leading-relaxed">
                     {item.description}
                   </p>
                 </div>
