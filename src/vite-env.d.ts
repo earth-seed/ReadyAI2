@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-declare module 'react-helmet' {
+declare module 'react-helmet-async' {
   import { Component } from 'react';
   
   interface HelmetProps {

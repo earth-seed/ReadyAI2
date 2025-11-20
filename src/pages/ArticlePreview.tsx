@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Linkedin, Calendar, ArrowRight } from "lucide-react";
 import { fetchArticlePreview, getImageUrl, type StrapiArticle } from "../utils/strapi";
 import StrapiBlocksRenderer from "../components/sections/StrapiBlocksRenderer";

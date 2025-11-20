@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Linkedin, Calendar, ArrowRight, BookOpen, Users, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -36,7 +36,7 @@ const InsightsPage: React.FC = () => {
         const strapiArticles = await fetchArticles();
         
         // Map Strapi articles to display format
-        // Handle both flat structure (Strapi 5 with populate) and nested attributes structure
+        // Handle both flat structure (Strapi 5 with populate) ssand nested attributes structure
         const mappedArticles: Article[] = strapiArticles
           .filter((article: any) => {
             const isValid = article && (article.attributes || article.title);
