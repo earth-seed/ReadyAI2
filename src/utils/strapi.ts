@@ -160,7 +160,8 @@ export const fetchArticlePreview = async (id: string, token: string): Promise<St
     throw new Error('Article ID and preview token are required');
   }
   
-  // Strapi 5 preview: token is passed as query param, not Authorization header
+  // Strapi 5 preview: token is passed as query param
+  // Use populate=* to get all fields including content blocks
   const params = new URLSearchParams({
     'populate': '*',
     'token': token,
@@ -183,11 +184,41 @@ export const fetchArticlePreview = async (id: string, token: string): Promise<St
       if (response.status === 404) {
         return null;
       }
-      throw new Error(`Failed to fetch preview: ${response.status} ${response.statusText}`);
+      const errorText = await response.text().catch(() => 'Unknown error');
+      throw new Error(`Failed to fetch preview: ${response.status} ${response.statusText}. ${errorText}`);
     }
     
-    const result: { data: StrapiArticle } = await response.json();
-    return result.data || null;
+    // Strapi 5 can return either nested (attributes) or flat structure with populate=*
+    const result: any = await response.json();
+    const article = result.data;
+    
+    if (!article) {
+      return null;
+    }
+    
+    // Return in consistent format (nested attributes structure)
+    // If it's already flat, wrap it in attributes
+    if (article.attributes) {
+      return article as StrapiArticle;
+    } else {
+      // Convert flat structure to nested
+      return {
+        id: article.id,
+        attributes: {
+          title: article.title,
+          slug: article.slug,
+          description: article.description,
+          content: article.content,
+          featuredImage: article.featuredImage,
+          metaDescription: article.metaDescription,
+          metaKeywords: article.metaKeywords,
+          publicationDate: article.publicationDate,
+          publishedAt: article.publishedAt,
+          createdAt: article.createdAt,
+          updatedAt: article.updatedAt,
+        },
+      } as StrapiArticle;
+    }
   } catch (error) {
     if (error instanceof TypeError && error.message.includes('fetch')) {
       console.error('[Strapi] Network error fetching preview:', id);

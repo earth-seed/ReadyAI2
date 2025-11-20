@@ -43,4 +43,12 @@ export default ({ env }) => ({
     },
     enabled: true,
   },
+  'content-manager': {
+    config: {
+      preview: {
+        enabled: true,
+        openTarget: 'new-tab',
+      },
+    },
+  },
 });
