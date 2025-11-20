@@ -36,22 +36,48 @@ const InsightsPage: React.FC = () => {
         const strapiArticles = await fetchArticles();
         
         // Map Strapi articles to display format
+        // Handle both flat structure (Strapi 5 with populate) and nested attributes structure
         const mappedArticles: Article[] = strapiArticles
-          .filter((article) => article && article.attributes) // Filter out invalid articles
-          .map((article) => {
-            if (!article.attributes.title) {
+          .filter((article: any) => {
+            const isValid = article && (article.attributes || article.title);
+            if (!isValid) {
+              console.warn('[InsightsPage] Filtered out invalid article:', article);
+            }
+            return isValid;
+          })
+          .map((article: any) => {
+            // Handle flat structure (direct properties) vs nested structure (attributes)
+            const attrs = article.attributes || article;
+            
+            if (!attrs.title) {
               console.warn('[InsightsPage] Article missing title:', article);
             }
+            
+            // Handle featuredImage - can be flat or nested
+            let imgURL = '';
+            if (attrs.featuredImage) {
+              if (attrs.featuredImage.url) {
+                // Flat structure: featuredImage.url
+                imgURL = attrs.featuredImage.url;
+              } else if (attrs.featuredImage.data?.attributes?.url) {
+                // Nested structure: featuredImage.data.attributes.url
+                imgURL = getImageUrl(attrs.featuredImage);
+              } else if (attrs.featuredImage.data?.url) {
+                // Alternative nested structure
+                imgURL = getImageUrl({ data: { attributes: { url: attrs.featuredImage.data.url } } });
+              }
+            }
+            
             return {
               id: article.id,
-              title: article.attributes.title || 'Untitled',
-              slug: article.attributes.slug || '',
-              url: article.attributes.slug || '', // Use slug for routing
-              imgURL: getImageUrl(article.attributes.featuredImage),
-              description: article.attributes.description || article.attributes.metaDescription || '',
-              metaKeywords: article.attributes.metaKeywords || '',
-              publicationDate: article.attributes.publicationDate || article.attributes.publishedAt || '',
-              content: article.attributes.content,
+              title: attrs.title || 'Untitled',
+              slug: attrs.slug || '',
+              url: attrs.slug || '', // Use slug for routing
+              imgURL: imgURL,
+              description: attrs.description || attrs.metaDescription || '',
+              metaKeywords: attrs.metaKeywords || '',
+              publicationDate: attrs.publicationDate || attrs.publishedAt || '',
+              content: attrs.content,
             };
           });
         
