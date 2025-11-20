@@ -74,7 +74,7 @@ const BlogShowcaseSection: React.FC = () => {
 
   return (
     <SlideAnimator direction="up">
-      <section className="bg-accent2-lightest py-24 px-8">
+      <section className="bg-white py-24 px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="flex items-end justify-between mb-12">

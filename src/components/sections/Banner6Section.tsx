@@ -1,9 +1,9 @@
-// components/AIGovernanceGap.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { AlertCircle, TrendingUp, Users } from "lucide-react";
+import { TrendingUp, Users, Zap, DollarSign, ArrowRight, Target, Shield } from "lucide-react";
+import SlideAnimator from '../../utils/SlideAnimator';
 
-const Counter = ({ end, duration = 2 }: { end: number; duration?: number }) => {
+const Counter = ({ end, duration = 2, prefix = '', suffix = '' }: { end: number; duration?: number; prefix?: string; suffix?: string }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -26,210 +26,110 @@ const Counter = ({ end, duration = 2 }: { end: number; duration?: number }) => {
     requestAnimationFrame(animate);
   }, [isInView, end, duration]);
 
-  return <span ref={ref}>{count}</span>;
+  return <span ref={ref}>{prefix}{count}{suffix}</span>;
 };
 
 export default function Banner6Section() {
   return (
-    <section className="relative bg-accent2-lightest py-20 md:py-32 overflow-hidden">
-      {/* Subtle animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent2-lighter via-accent2-lightest to-accent2-lighter opacity-30 animate-pulse" style={{ animationDuration: '8s' }}></div>
-      
-      {/* Diagonal decorative shapes */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-accent2-lighter transform skew-x-[-20deg]"></div>
-        <div className="absolute bottom-0 left-0 w-1/3 h-full bg-accent2-lighter transform skew-x-[-20deg]"></div>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
-        
-        {/* PART 1: OPENING STATEMENT */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
-        >
-          <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-4">
-            The Enterprise Reality
-          </p>
-          <h2 className="font-heading text-primary text-4xl md:text-6xl font-normal mb-6 leading-tight">
-            AI Evolves Weekly. Governance Lags Behind.
-          </h2>
-          <p className="font-sans text-primary-light text-lg md:text-2xl max-w-4xl mx-auto leading-relaxed">
-            Shadow AI is already inside your enterprise—creating gaps in 
-            data security, compliance, and strategic oversight.
-          </p>
-        </motion.div>
-
-        {/* PART 2: THE DATA (3-Column Grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-          {[
-            {
-              stat: "~2",
-              label: "New AI Models Released Weekly",
-              description: "LLMs become old news fast. Staying current is a challenge.",
-              icon: TrendingUp,
-              delay: 0.1
-            },
-            {
-              stat: "75%",
-              statNumber: 75,
-              label: "Of Employees Use Free AI Tools",
-              description: "AI adoption is happening—with or without your governance framework.",
-              icon: Users,
-              delay: 0.2
-            },
-            {
-              stat: "69%",
-              statNumber: 69,
-              label: "Are Afraid to Report AI Tool Usage",
-              description: "Shadow AI creates blind spots in compliance and data security.",
-              icon: AlertCircle,
-              delay: 0.3
-            }
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: item.delay, duration: 0.6 }}
-              className="group relative bg-white/60 backdrop-blur-sm border border-accent/20 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-            >
-              <div className="absolute top-6 right-6 opacity-20 group-hover:opacity-30 transition-opacity">
-                <item.icon className="w-12 h-12 text-accent" strokeWidth={1} />
-              </div>
-              <div className="relative">
-                <div className="font-heading text-6xl md:text-7xl font-normal text-accent mb-4">
-                  {item.statNumber ? (
-                    <>
-                      <Counter end={item.statNumber} />%
-                    </>
-                  ) : (
-                    item.stat
-                  )}
-                </div>
-                <h3 className="font-sans text-primary text-lg md:text-xl font-semibold mb-3 leading-tight">
-                  {item.label}
-                </h3>
-                <p className="font-sans text-primary-light text-sm md:text-base leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* PART 3: BOARD-LEVEL QUESTIONS (Two-Column Split) */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 mb-24 bg-gradient-to-br from-primary to-primary-light rounded-2xl p-8 md:p-12"
-        >
-          {/* Left Column */}
-          <div className="md:col-span-2">
-            <h3 className="font-heading text-white text-2xl md:text-3xl font-normal mb-4">
-              What Boards Are Asking
-            </h3>
-            <p className="font-sans text-gray-300 text-base md:text-lg leading-relaxed">
-              C-suite priorities have shifted from "Should we use AI?" to "How do we govern it at scale?"
+    <SlideAnimator direction="up">
+      <section className="relative bg-white py-20 md:py-32 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+          
+          {/* PART 1: THE ENTERPRISE AI SHIFT */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-heading text-primary text-4xl sm:text-5xl md:text-6xl font-normal mb-6">
+              The Enterprise AI Shift
+            </h2>
+            <p className="font-sans text-gray-700 text-lg md:text-xl leading-relaxed max-w-5xl mx-auto">
+              Enterprises are realizing that AI isn't just another toolset — it's becoming an architectural layer of its own.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Right Column */}
-          <div className="md:col-span-3 space-y-4">
-            {[
-              "Who owns AI governance across the enterprise?",
-              "What's the ROI on our AI investments?",
-              "Are we keeping pace with competitors?"
-            ].map((question, index) => (
+          {/* PART 2: THE SHIFT - Timeline Style */}
+          <div className="max-w-4xl mx-auto mb-20 relative">
+            {/* Timeline Line */}
+            <div className="absolute left-3 md:left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gray-300 via-accent to-accent"></div>
+            
+            <div className="space-y-12">
+              {/* Step 1: The Reality */}
               <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-                className="flex items-start gap-3 group cursor-pointer"
+                transition={{ duration: 0.6 }}
+                className="relative pl-12 md:pl-16"
               >
-                <svg className="w-6 h-6 text-accent flex-shrink-0 mt-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-                <span className="font-sans text-white text-base md:text-lg group-hover:text-accent transition-colors">
-                  {question}
-                </span>
+                {/* Timeline Dot */}
+                <div className="absolute left-2 md:left-4.5 top-8 w-3 h-3 rounded-full bg-gray-400 border-2 border-white shadow-lg z-10"></div>
+                
+                <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200 p-8 md:p-10 shadow-lg">
+                  <p className="font-sans text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                    Across every enterprise, AI is already happening — HR are automating onboarding, engineers are testing copilots, and operations are launching predictive workflows. AI has entered a new era — faster, broader, and more business-critical than ever.
+                  </p>
+                  <p className="font-sans text-gray-900 text-base md:text-lg leading-relaxed font-semibold">
+                    What began as isolated experiments has evolved into a full-scale enterprise transformation.
+                  </p>
+                </div>
               </motion.div>
-            ))}
-          </div>
-        </motion.div>
 
-        {/* PART 4: THE AGENT ERA (Two-Column Split) */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-        >
-          {/* Left Column */}
-          <div>
-            <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-4">
-              The AI Agent Era Has Arrived
-            </p>
-            <h3 className="font-heading text-primary text-3xl md:text-4xl font-normal mb-6">
-              Chatbots Aren't Enough Anymore
-            </h3>
-            <p className="font-sans text-primary-light text-base md:text-lg leading-relaxed mb-8">
-              The transition from reactive tools to autonomous agents requires new governance architecture.
-            </p>
-
-            {/* Timeline/Progression */}
-            <div className="flex items-center gap-4">
-              {["Chatbot", "Assistant", "Agent"].map((stage, index) => (
-                <React.Fragment key={stage}>
-                  <div className="flex flex-col items-center">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                      index === 2 ? 'bg-accent text-white' : 'bg-gray-200 text-gray-600'
-                    }`}>
-                      <span className="font-sans text-xs font-semibold">{index + 1}</span>
-                    </div>
-                    <span className="font-sans text-xs text-primary-light mt-2">{stage}</span>
+              {/* Step 2: The Challenge */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="relative pl-12 md:pl-16"
+              >
+                {/* Timeline Dot */}
+                <div className="absolute left-2 md:left-4.5 top-8 w-3 h-3 rounded-full bg-primary border-2 border-white shadow-lg z-10"></div>
+                
+                <div className="bg-gradient-to-br from-primary via-primary-light to-primary-dark rounded-2xl p-8 md:p-10 shadow-xl relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+                  <div className="relative">
+                    <p className="font-sans text-gray-200 text-base md:text-lg leading-relaxed mb-6">
+                      Every department now relies on intelligence, yet few have real visibility or control. Even the world's most advanced companies are struggling to govern their AI ecosystems. Enterprises are moving from experimentation to orchestration — from scattered AI tools to governed ecosystems.
+                    </p>
+                    <p className="font-sans text-white text-base md:text-lg leading-relaxed font-semibold">
+                      The challenge has changed — and the strategy must too.
+                    </p>
                   </div>
-                  {index < 2 && (
-                    <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  )}
-                </React.Fragment>
-              ))}
+                </div>
+              </motion.div>
+
+              {/* Step 3: The Solution */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative pl-12 md:pl-16"
+              >
+                {/* Timeline Dot */}
+                <div className="absolute left-2 md:left-4.5 top-8 w-3 h-3 rounded-full bg-accent border-2 border-white shadow-lg z-10"></div>
+                
+                <div className="bg-gradient-to-br from-accent2-lightest via-accent2-light/30 to-white rounded-2xl border-2 border-accent/20 p-8 md:p-10 shadow-xl relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+                  <div className="relative">
+                    <p className="font-sans text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                      Boards are no longer asking <span className="font-semibold">if</span> AI should be used — they're asking <span className="italic font-semibold">how to govern it, at scale.</span>
+                    </p>
+                    <p className="font-sans text-gray-800 text-base md:text-lg leading-relaxed font-semibold">
+                      ReadyAI.dev provides the secure foundation for that shift — <span className="text-accent">one platform to unify every model, every team, and every process</span> with complete oversight, compliance, and control.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
-
-          {/* Right Column - Stats */}
-          <div className="space-y-8">
-            <div className="bg-gradient-to-br from-accent/10 to-transparent border border-accent/30 rounded-xl p-6 md:p-8">
-              <div className="font-heading text-5xl md:text-6xl font-normal text-accent mb-2">
-                <Counter end={82} />%
-              </div>
-              <p className="font-sans text-primary-light text-base md:text-lg">
-                of executives plan to integrate AI agents by 2028
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-primary/10 to-transparent border border-primary/30 rounded-xl p-6 md:p-8">
-              <div className="font-heading text-5xl md:text-6xl font-normal text-primary mb-2">
-                $<Counter end={50} />B
-              </div>
-              <p className="font-sans text-primary-light text-base md:text-lg">
-                projected AI agent market size by 2030
-              </p>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </SlideAnimator>
   );
 }

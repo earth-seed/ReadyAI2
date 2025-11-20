@@ -1,72 +1,83 @@
 import React from 'react';
-import CalendlyBtn from './CalendlyBtn';
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="relative bg-gradient-to-br from-accent2-lightest via-white to-accent2-lighter overflow-hidden">
+    <div className="relative bg-white overflow-hidden">
       {/* Subtle decorative elements */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0" style={{ opacity: 0.03 }}>
         <div className="absolute top-20 right-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
       </div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="pt-32 pb-20 md:pt-40 md:pb-28">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="pt-24 pb-16 md:pt-32 md:pb-24">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left side - Text content */}
-            <div className="max-w-3xl">
-              <h1 className="font-heading text-5xl font-normal tracking-tight text-primary sm:text-6xl md:text-7xl leading-tight mb-8 animate-fade-in-up">
-                Your secure foundation for enterprise AI
+            <div className="max-w-2xl pt-8 md:pt-12">
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-primary leading-[1.1] mb-6 animate-fade-in-up">
+                <span className="block">One Secure Platform.</span>
+                <span className="block">Every AI Model.</span>
+                <span className="block whitespace-nowrap">Real Enterprise Control.</span>
               </h1>
-              <p className="font-sans text-xl sm:text-2xl text-primary-light leading-relaxed mb-12 animate-fade-in-up-delay">
-                With advanced security, compliance, and expert guidance, we help leaders bring AI into their organizations — safely and sustainably.
-              </p>
-              <div className="mt-12 flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2"> 
-                <CalendlyBtn
-                  text="Talk to an Expert"
-                  className="bg-accent text-white px-8 py-4 rounded-lg shadow-lg hover:bg-accent-dark hover:ring-2 hover:ring-accent-light transition-all duration-300 text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1"
-                />
+              
+              <div className="space-y-4 mb-8 animate-fade-in-up-delay">
+                <p className="font-sans text-lg sm:text-xl text-gray-700 leading-relaxed">
+                  Even the most advanced enterprises are struggling to control internal AI use.
+                </p>
+                <p className="font-sans text-lg sm:text-xl text-gray-700 leading-relaxed">
+                  ReadyAI.dev gives enterprises one secure workspace to govern every LLM — safely, compliantly, and under a single governance layer.
+                </p>
+              </div>
+              
+              <div className="mb-10 animate-fade-in-up-delay">
+                <p className="font-sans text-lg sm:text-xl text-accent font-semibold">
+                  Choice is power, but control is confidence.
+                </p>
+              </div>
+              
+              <div className="mb-10 animate-fade-in-up-delay-2"> 
                 <a
                   href="https://devs.ai/signup?ref=sales%40readyai.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white text-primary px-8 py-4 rounded-lg shadow-lg border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 text-center"
+                  className="inline-flex items-center justify-center gap-2 bg-accent text-white px-8 py-3.5 rounded-lg shadow-md hover:bg-accent-dark hover:shadow-lg transition-all duration-200 text-base font-semibold"
                 >
-                  Explore Platform
+                  Explore the ReadyAI.dev Platform
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </a>
               </div>
               
               {/* Trust Indicators */}
-              <div className="mt-8 flex items-center justify-start gap-x-4 text-sm text-primary-light animate-fade-in-up-delay-3">
-                <div className="flex items-center gap-1.5 whitespace-nowrap">
+              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 animate-fade-in-up-delay-3">
+                <div className="flex items-center gap-2">
                   <svg className="w-4 h-4 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>SOC 2 Certified</span>
+                  <span className="font-medium">SOC 2 Certified</span>
                 </div>
-                <div className="text-primary-light/40">•</div>
-                <div className="flex items-center gap-1.5 whitespace-nowrap">
+                <div className="flex items-center gap-2">
                   <svg className="w-4 h-4 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>Enterprise-Grade Security</span>
+                  <span className="font-medium">Enterprise-Grade Security</span>
                 </div>
-                <div className="text-primary-light/40">•</div>
-                <div className="flex items-center gap-1.5 whitespace-nowrap">
+                <div className="flex items-center gap-2">
                   <svg className="w-4 h-4 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>99.9% Uptime SLA</span>
+                  <span className="font-medium">99.9% Uptime SLA</span>
                 </div>
               </div>
             </div>
 
             {/* Right side - Stacked layers animation */}
             <div className="hidden lg:flex justify-center items-start pt-8">
-              <div className="relative w-96 h-[500px] flex items-start justify-center pt-12" style={{ perspective: '2000px', perspectiveOrigin: '50% 50%' }}>
+              <div className="relative w-[500px] h-[600px] flex items-start justify-center pt-20" style={{ perspective: '2000px', perspectiveOrigin: '50% 50%' }}>
                 {/* Layer 1 - Bottom */}
                 <div 
-                  className="absolute w-80 h-52 shadow-2xl"
+                  className="absolute w-96 h-64 shadow-2xl"
                   style={{
                     animation: 'stackLayer1 1s ease-out forwards, pulse 3s ease-in-out 1s infinite',
                     opacity: 0,
@@ -80,7 +91,7 @@ const HeroSection: React.FC = () => {
                 
                 {/* Layer 2 */}
                 <div 
-                  className="absolute w-80 h-52 shadow-2xl"
+                  className="absolute w-96 h-64 shadow-2xl"
                   style={{
                     animation: 'stackLayer2 1s ease-out 0.15s forwards, pulse 3s ease-in-out 1.15s infinite',
                     opacity: 0,
@@ -94,7 +105,7 @@ const HeroSection: React.FC = () => {
                 
                 {/* Layer 3 */}
                 <div 
-                  className="absolute w-80 h-52 shadow-2xl"
+                  className="absolute w-96 h-64 shadow-2xl"
                   style={{
                     animation: 'stackLayer3 1s ease-out 0.3s forwards, pulse 3s ease-in-out 1.3s infinite',
                     opacity: 0,
@@ -108,7 +119,7 @@ const HeroSection: React.FC = () => {
                 
                 {/* Layer 4 */}
                 <div 
-                  className="absolute w-80 h-52 shadow-2xl"
+                  className="absolute w-96 h-64 shadow-2xl"
                   style={{
                     animation: 'stackLayer4 1s ease-out 0.45s forwards, pulse 3s ease-in-out 1.45s infinite',
                     opacity: 0,
@@ -122,7 +133,7 @@ const HeroSection: React.FC = () => {
                 
                 {/* Layer 5 */}
                 <div 
-                  className="absolute w-80 h-52 shadow-2xl"
+                  className="absolute w-96 h-64 shadow-2xl"
                   style={{
                     animation: 'stackLayer5 1s ease-out 0.6s forwards, pulse 3s ease-in-out 1.6s infinite',
                     opacity: 0,
@@ -136,7 +147,7 @@ const HeroSection: React.FC = () => {
                 
                 {/* Layer 6 - Top */}
                 <div 
-                  className="absolute w-80 h-52 shadow-2xl"
+                  className="absolute w-96 h-64 shadow-2xl"
                   style={{
                     animation: 'stackLayer6 1s ease-out 0.75s forwards, pulse 3s ease-in-out 1.75s infinite',
                     opacity: 0,
