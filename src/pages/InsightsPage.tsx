@@ -336,7 +336,7 @@ const InsightsPage: React.FC = () => {
 
           {/* Article Content */}
           {currArticle.content && currArticle.content.length > 0 ? (
-            <StrapiBlocksRenderer blocks={currArticle.content} />
+            <StrapiBlocksRenderer content={currArticle.content} />
           ) : (
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-600 italic">Content coming soon...</p>

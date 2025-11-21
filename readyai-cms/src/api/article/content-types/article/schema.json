@@ -24,18 +24,6 @@
       "type": "text",
       "required": true
     },
-    "content": {
-      "type": "blocks",
-      "blocks": [
-        "blocks.paragraph",
-        "blocks.heading",
-        "blocks.list",
-        "blocks.quote",
-        "blocks.code",
-        "blocks.link",
-        "component.image-block"
-      ]
-    },
     "featuredImage": {
       "type": "media",
       "multiple": false,
@@ -59,6 +47,14 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "admin::user"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "image-block.schema",
+        "text-block.schema"
+      ],
+      "required": true
     }
   }
 }

@@ -1,6 +1,8 @@
 /**
- * Renderer for Strapi blocks content (Strapi 5 format)
- * Handles common block types: paragraph, heading, list, quote, image, etc.
+ * Renderer for Strapi content (Strapi 5 format)
+ * Handles both Blocks Editor format and Dynamic Zones
+ * - Blocks: paragraph, heading, list, quote, image, etc.
+ * - Dynamic Zones: components.text-block, components.image-block
  * Supports nested lists and inline formatting (bold, italic, underline)
  */
 
@@ -45,14 +47,27 @@ interface Block {
   size?: 'small' | 'medium' | 'large' | 'full';
 }
 
-interface StrapiBlocksRendererProps {
-  blocks: Block[];
+// Dynamic Zone Component interface
+interface DynamicZoneComponent {
+  __component: string;
+  [key: string]: any; // Component-specific fields
 }
 
-const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks }) => {
-  if (!blocks || blocks.length === 0) {
+interface StrapiBlocksRendererProps {
+  blocks?: Block[];
+  content?: (Block[] | DynamicZoneComponent[]); // Support both blocks and dynamic zones
+}
+
+const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks, content }) => {
+  // Support both blocks prop and content prop (for dynamic zones)
+  const data = blocks || content;
+  
+  if (!data || data.length === 0) {
     return null;
   }
+
+  // Check if this is a Dynamic Zone (components have __component field)
+  const isDynamicZone = data.length > 0 && typeof data[0] === 'object' && '__component' in data[0];
 
   const renderTextNode = (node: TextNode, index: number): React.ReactNode => {
     if (!node || node.type !== 'text') return null;
@@ -231,8 +246,8 @@ const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks }) =
         }
         
         // Get alignment and size options
-        const align = block.align || 'center';
-        const size = block.size || 'full';
+        const align = (block.align as 'left' | 'center' | 'right' | 'full') || 'center';
+        const size = (block.size as 'small' | 'medium' | 'large' | 'full') || 'full';
         
         // Determine CSS classes based on alignment and size
         const alignmentClasses = {
@@ -293,8 +308,8 @@ const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks }) =
           imageUrl = img.url || '';
           imageAlt = img.alternativeText || componentData.caption || '';
           imageCaption = componentData.caption || '';
-          const align = componentData.alignment || 'center';
-          const size = componentData.size || 'full';
+          const align = (componentData.alignment as 'left' | 'center' | 'right' | 'full') || 'center';
+          const size = (componentData.size as 'small' | 'medium' | 'large' | 'full') || 'full';
           
           const alignmentClasses = {
             left: 'float-left mr-6 mb-4',
@@ -386,9 +401,117 @@ const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks }) =
     }
   };
 
+  // Render Dynamic Zone component
+  const renderDynamicZoneComponent = (component: DynamicZoneComponent, index: number): React.ReactNode => {
+    if (!component || !component.__component) return null;
+
+    switch (component.__component) {
+      case 'components.text-block':
+        // Text block contains blocks editor content
+        if (component.content && Array.isArray(component.content)) {
+          return (
+            <div key={index}>
+              {(component.content as Block[]).map((block, i) => renderBlock(block, i))}
+            </div>
+          );
+        }
+        return null;
+
+      case 'components.image-block':
+        // Image block component
+        let imageUrl = '';
+        let imageAlt = '';
+        let imageCaption = '';
+        
+        // Handle image data structure
+        if (component.image) {
+          const img = component.image as any;
+          if (img.data?.attributes) {
+            imageUrl = img.data.attributes.url || '';
+            imageAlt = img.data.attributes.alternativeText || component.caption || '';
+          } else if (img.attributes) {
+            imageUrl = img.attributes.url || '';
+            imageAlt = img.attributes.alternativeText || component.caption || '';
+          } else if (img.url) {
+            imageUrl = img.url;
+            imageAlt = img.alternativeText || component.caption || '';
+          }
+        }
+        
+        imageCaption = component.caption || '';
+        const align = (component.alignment as 'left' | 'center' | 'right' | 'full') || 'center';
+        const size = (component.size as 'small' | 'medium' | 'large' | 'full') || 'full';
+        
+        const alignmentClasses = {
+          left: 'float-left mr-6 mb-4',
+          center: 'mx-auto block',
+          right: 'float-right ml-6 mb-4',
+          full: 'w-full',
+        }[align] || 'mx-auto block';
+        
+        const sizeClasses = {
+          small: 'max-w-xs',
+          medium: 'max-w-md',
+          large: 'max-w-2xl',
+          full: 'w-full',
+        }[size] || 'w-full';
+        
+        if (size === 'full' || align === 'full') {
+          return (
+            <figure key={index} className="my-8">
+              <img
+                src={imageUrl}
+                alt={imageAlt}
+                className={`${sizeClasses} rounded-lg shadow-lg ${align === 'center' ? 'mx-auto' : ''}`}
+              />
+              {imageCaption && (
+                <figcaption className="text-sm text-gray-600 mt-2 text-center">
+                  {imageCaption}
+                </figcaption>
+              )}
+            </figure>
+          );
+        }
+        
+        return (
+          <figure key={index} className={`${alignmentClasses} ${sizeClasses} my-4`}>
+            <img
+              src={imageUrl}
+              alt={imageAlt}
+              className="w-full rounded-lg shadow-md"
+            />
+            {imageCaption && (
+              <figcaption className="text-xs text-gray-600 mt-1 text-center">
+                {imageCaption}
+              </figcaption>
+            )}
+          </figure>
+        );
+
+      default:
+        return (
+          <div key={index} className="my-4 p-4 bg-gray-100 rounded">
+            <p className="text-sm text-gray-600">Unsupported component: {component.__component}</p>
+          </div>
+        );
+    }
+  };
+
+  // Render based on content type
+  if (isDynamicZone) {
+    return (
+      <div className="prose prose-lg max-w-none">
+        {(data as DynamicZoneComponent[]).map((component, index) => 
+          renderDynamicZoneComponent(component, index)
+        )}
+      </div>
+    );
+  }
+
+  // Render blocks editor format
   return (
     <div className="prose prose-lg max-w-none">
-      {blocks.map((block, index) => renderBlock(block, index))}
+      {(data as Block[]).map((block, index) => renderBlock(block, index))}
     </div>
   );
 };
