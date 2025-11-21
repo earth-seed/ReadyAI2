@@ -8,6 +8,10 @@
 
 import React from 'react';
 
+import { getImageUrl } from '../../utils/strapi';
+
+const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337';
+
 interface TextNode {
   type: 'text';
   text: string;
@@ -171,20 +175,40 @@ const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks, con
         const isOrdered = format === 'ordered' || format === 1 || format === '1';
         const ListTag = isOrdered ? 'ol' : 'ul';
         const listClasses = isOrdered 
-          ? 'list-decimal pl-8 mb-6 space-y-2' 
-          : 'list-disc pl-8 mb-6 space-y-2';
+          ? 'list-decimal pl-8 mb-6' 
+          : 'list-disc pl-8 mb-6';
         
         return (
           <ListTag key={index} className={listClasses}>
             {block.children?.map((child, i) => {
               // Handle list-item blocks
               if (child.type === 'list-item') {
+                // Check if this item contains a nested list
+                const hasNestedList = child.children?.some(c => c.type === 'list');
+                
                 return (
-                  <li key={i} className="mb-2">
+                  <li key={i} className={hasNestedList ? "mb-1" : "mb-2"}>
                     {child.children?.map((grandchild, j) => {
-                      // If grandchild is a nested list, render it as a block
+                      // If grandchild is a nested list, render it with proper spacing
                       if (grandchild.type === 'list') {
-                        return <React.Fragment key={j}>{renderBlock(grandchild as Block, j)}</React.Fragment>;
+                        const nestedList = grandchild as Block;
+                        const nestedFormat = nestedList.format;
+                        const nestedIsOrdered = nestedFormat === 'ordered' || nestedFormat === 1 || nestedFormat === '1';
+                        const NestedListTag = nestedIsOrdered ? 'ol' : 'ul';
+                        return (
+                          <NestedListTag key={j} className={`list-${nestedIsOrdered ? 'decimal' : 'disc'} pl-6 mt-1 mb-0`}>
+                            {nestedList.children?.map((nestedChild, k) => {
+                              if (nestedChild.type === 'list-item') {
+                                return (
+                                  <li key={k} className="mb-0">
+                                    {nestedChild.children?.map((nestedGrandchild, l) => renderInline(nestedGrandchild, l))}
+                                  </li>
+                                );
+                              }
+                              return <li key={k} className="mb-0">{renderInline(nestedChild, k)}</li>;
+                            })}
+                          </NestedListTag>
+                        );
                       }
                       // Otherwise render as inline content
                       return renderInline(grandchild, j);
@@ -195,13 +219,13 @@ const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks, con
               // Handle nested lists directly (for deeply nested structures)
               if (child.type === 'list') {
                 return (
-                  <li key={i} className="list-none">
+                  <li key={i} className="list-none mb-2">
                     {renderBlock(child as Block, i)}
                   </li>
                 );
               }
               // Fallback for other types
-              return <li key={i}>{renderInline(child, i)}</li>;
+              return <li key={i} className="mb-2">{renderInline(child, i)}</li>;
             })}
           </ListTag>
         );
@@ -405,7 +429,14 @@ const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks, con
   const renderDynamicZoneComponent = (component: DynamicZoneComponent, index: number): React.ReactNode => {
     if (!component || !component.__component) return null;
 
-    switch (component.__component) {
+    // Normalize component name - handle different formats Strapi might return
+    const componentName = component.__component
+      .replace('components.', '')
+      .replace('.schema', '')
+      .toLowerCase();
+
+    switch (componentName) {
+      case 'text-block':
       case 'components.text-block':
         // Text block contains blocks editor content
         if (component.content && Array.isArray(component.content)) {
@@ -417,28 +448,43 @@ const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks, con
         }
         return null;
 
+      case 'image-block':
       case 'components.image-block':
-        // Image block component
+        // Extract image data from component
         let imageUrl = '';
         let imageAlt = '';
-        let imageCaption = '';
+        const imageCaption = component.caption || '';
         
-        // Handle image data structure
+        // Handle various Strapi image data structures
         if (component.image) {
           const img = component.image as any;
-          if (img.data?.attributes) {
-            imageUrl = img.data.attributes.url || '';
-            imageAlt = img.data.attributes.alternativeText || component.caption || '';
-          } else if (img.attributes) {
-            imageUrl = img.attributes.url || '';
-            imageAlt = img.attributes.alternativeText || component.caption || '';
+          
+          // Try standard Strapi media structure first (most common)
+          if (img.data?.attributes?.url) {
+            const url = img.data.attributes.url;
+            imageUrl = url.startsWith('http') ? url : getImageUrl({ data: { attributes: { url, alternativeText: img.data.attributes.alternativeText } } });
+            imageAlt = img.data.attributes.alternativeText || imageCaption;
+          } else if (img.data?.url) {
+            const url = img.data.url;
+            imageUrl = url.startsWith('http') ? url : getImageUrl({ data: { attributes: { url, alternativeText: img.data.alternativeText } } });
+            imageAlt = img.data.alternativeText || imageCaption;
+          } else if (img.attributes?.url) {
+            const url = img.attributes.url;
+            imageUrl = url.startsWith('http') ? url : getImageUrl({ data: { attributes: { url, alternativeText: img.attributes.alternativeText } } });
+            imageAlt = img.attributes.alternativeText || imageCaption;
           } else if (img.url) {
-            imageUrl = img.url;
-            imageAlt = img.alternativeText || component.caption || '';
+            imageUrl = img.url.startsWith('http') ? img.url : `${STRAPI_URL}${img.url}`;
+            imageAlt = img.alternativeText || imageCaption;
+          } else if (typeof img === 'string') {
+            imageUrl = img.startsWith('http') ? img : `${STRAPI_URL}${img}`;
           }
         }
         
-        imageCaption = component.caption || '';
+        // If no image URL found, skip rendering
+        if (!imageUrl) {
+          return null;
+        }
+        
         const align = (component.alignment as 'left' | 'center' | 'right' | 'full') || 'center';
         const size = (component.size as 'small' | 'medium' | 'large' | 'full') || 'full';
         
@@ -489,11 +535,8 @@ const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks, con
         );
 
       default:
-        return (
-          <div key={index} className="my-4 p-4 bg-gray-100 rounded">
-            <p className="text-sm text-gray-600">Unsupported component: {component.__component}</p>
-          </div>
-        );
+        // Unsupported component - silently skip
+        return null;
     }
   };
 
