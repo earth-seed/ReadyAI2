@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Services, SOLUTIONS } from '../utils/constants';
-import { ArrowRight, Cpu, Layers, LayoutDashboard, Shield, TrendingDown, Zap, Check, Brain, Users, Lock, BarChart3, Database, Eye, FileText, AlertTriangle, Target, TrendingUp, ChevronRight, DollarSign, ChevronDown } from 'lucide-react';
+import { ArrowRight, Cpu, Layers, LayoutDashboard, Shield, TrendingDown, Zap, Check, Brain, Users, Lock, BarChart3, Database, Eye, FileText, AlertTriangle, Target, TrendingUp, ChevronRight, DollarSign, ChevronDown, BookOpen, GitBranch, RefreshCw, Boxes } from 'lucide-react';
 import Button from '../components/ui/Button';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const iconMap = {
   'cpu': Cpu,
@@ -81,8 +81,11 @@ const SolutionsPage: React.FC = () => {
   React.useEffect(() => {
     document.title = selectedSolution 
       ? `${selectedSolution.title} - ReadyAI` 
-      : 'Solutions - ReadyAI';
+      : 'Platform - ReadyAI';
   }, [selectedSolution]);
+
+  // Tab state for capabilities section
+  const [activeTab, setActiveTab] = useState<'rag' | 'actions' | 'integrations'>('rag');
 
   const totalDirectCost = aiProviders.reduce((sum, provider) => sum + provider.price, 0);
   const currentFeature = platformFeatures[activeFeature];
@@ -92,7 +95,7 @@ const SolutionsPage: React.FC = () => {
       {!selectedSolution ? (
         <div>
           {/* Hero Section */}
-          <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark overflow-hidden pt-20">
+          <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark overflow-hidden pt-24">
             {/* Enhanced Background Elements */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-20 right-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
@@ -102,143 +105,336 @@ const SolutionsPage: React.FC = () => {
             </div>
             
             
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-              <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl font-normal text-white mb-8 leading-tight">
-                One Platform.<br />
-                <span className="text-accent">Complete Control.</span>
-              </h1>
-              
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
               <div className="max-w-4xl">
-                <p className="font-sans text-2xl md:text-3xl text-white/90 mb-8 font-medium">
-                  The Platform That Keeps Your Enterprise in Control
+                <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl font-normal text-white mb-8 leading-tight">
+                  Inside the<br /><span className="text-accent">AI Operating Layer</span>
+                </h1>
+                
+                <p className="font-sans text-xl md:text-2xl text-white/90 mb-6 leading-relaxed max-w-3xl">
+                  Every capability in our platform connects back to one purpose: <span className="font-semibold text-white">giving enterprises a single, governed operating layer that unifies every model, agent, and workflow.</span>
                 </p>
                 
-                {/* Individual Pills */}
-                <div className="flex flex-wrap gap-3 mb-8">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 backdrop-blur-sm rounded-full border border-accent/30">
-                    <div className="w-2 h-2 bg-accent rounded-full"></div>
-                    <span className="font-sans text-sm text-white font-medium">One Framework</span>
-                  </div>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 backdrop-blur-sm rounded-full border border-accent/30">
-                    <div className="w-2 h-2 bg-accent rounded-full"></div>
-                    <span className="font-sans text-sm text-white font-medium">Unlimited Models</span>
-                  </div>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 backdrop-blur-sm rounded-full border border-accent/30">
-                    <div className="w-2 h-2 bg-accent rounded-full"></div>
-                    <span className="font-sans text-sm text-white font-medium">Complete Governance</span>
-                  </div>
-                </div>
+                <p className="font-sans text-lg md:text-xl text-white/85 mb-6 leading-relaxed max-w-3xl">
+                  The platform gives your enterprise everything you need to turn your AI potential into performance.
+                </p>
                 
-                <div className="space-y-6 text-lg text-white/90 leading-relaxed">
-                  <p>
-                    ReadyAI.dev offers enterprises a <span className="text-accent font-semibold">unified AI foundation</span>, combining secure multi-model access, compliance by design, and user governance within a single, governed environment.
-                  </p>
-                  <p>
-                    Unlike consulting-led approaches, the ReadyAI.dev platform is the <span className="text-accent font-semibold">product</span> — giving your teams everything they need to deploy, monitor, and scale AI safely.
-                  </p>
-                </div>
+                <p className="font-sans text-lg md:text-xl text-white/85 mb-10 leading-relaxed max-w-3xl">
+                  From knowledge-enhanced agents to real-time integrations, every feature is built to expand your capabilities without compromising your control.
+                </p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 mt-12">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <a
                     href="https://calendly.com/readyai-dev/executive-evaluation"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 shadow-2xl"
+                    className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 shadow-2xl"
                   >
-                    Explore the Platform
+                    Platform
                     <ArrowRight className="w-5 h-5" />
                   </a>
                   <a
                     href="/contact"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
+                    className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
                   >
-                    Learn More
+                    Book a Call
                     <ArrowRight className="w-5 h-5" />
                   </a>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Cream Banner - Key Message */}
+          <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50 border-y border-amber-100 py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl">
+                <div className="relative">
+                  {/* Subtle decorative accent */}
+                  <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-accent via-accent-light to-accent rounded-full"></div>
+                  
+                  <div className="pl-8">
+                    <p className="font-heading text-3xl md:text-4xl text-primary font-semibold mb-4 leading-tight">
+                      Your entire internal AI ecosystem — finally unified under one operating layer.
+                    </p>
+                    <p className="font-sans text-xl md:text-2xl text-gray-700 leading-relaxed">
+                      Now you can govern every model and workflow from one secure foundation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           
-          {/* Platform Features Section */}
+          {/* Capabilities Section with Tabs */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
               <h2 className="font-heading text-4xl md:text-5xl font-medium text-primary mb-6">
-                Platform Features
+                Capabilities
               </h2>
               <p className="font-sans text-xl text-gray-600 max-w-3xl mx-auto">
-                What makes ReadyAI.dev the most trusted enterprise AI platform.
+                These capabilities form the intelligence layer that powers your enterprise AI — governed, connected, and built for scale.
               </p>
             </div>
 
-            {/* Two Column Layout */}
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
-              {/* Left Sidebar - Feature List */}
-              <div className="lg:col-span-4 space-y-1">
-                {platformFeatures.map((feature, index) => (
-                  <button
-                    key={feature.id}
-                    onClick={() => setActiveFeature(index)}
-                    className={`group w-full text-left px-5 py-4 rounded-lg font-sans text-base transition-all duration-300 flex items-center justify-between ${
-                      activeFeature === index
-                        ? 'bg-accent text-white shadow-md'
-                        : 'text-primary hover:bg-gray-50 border border-transparent hover:border-gray-200'
-                    }`}
-                  >
-                    <span className={activeFeature === index ? 'font-medium' : ''}>
-                      {feature.name}
-                    </span>
-                    <ChevronRight 
-                      className={`w-5 h-5 transition-transform duration-300 ${
-                        activeFeature === index 
-                          ? 'opacity-100' 
-                          : 'opacity-0 group-hover:opacity-50 -translate-x-2 group-hover:translate-x-0'
-                      }`}
-                    />
-                  </button>
-                ))}
-              </div>
+            {/* Tab Navigation */}
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
+              <button
+                onClick={() => setActiveTab('rag')}
+                className={`px-6 py-3 rounded-xl font-sans font-medium transition-all duration-300 ${
+                  activeTab === 'rag'
+                    ? 'bg-accent text-white shadow-lg'
+                    : 'bg-gray-100 text-primary hover:bg-gray-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <BookOpen className="w-5 h-5" />
+                  <span>RAG & Knowledge</span>
+                </div>
+              </button>
+              <button
+                onClick={() => setActiveTab('actions')}
+                className={`px-6 py-3 rounded-xl font-sans font-medium transition-all duration-300 ${
+                  activeTab === 'actions'
+                    ? 'bg-accent text-white shadow-lg'
+                    : 'bg-gray-100 text-primary hover:bg-gray-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Zap className="w-5 h-5" />
+                  <span>Agentic Actions</span>
+                </div>
+              </button>
+              <button
+                onClick={() => setActiveTab('integrations')}
+                className={`px-6 py-3 rounded-xl font-sans font-medium transition-all duration-300 ${
+                  activeTab === 'integrations'
+                    ? 'bg-accent text-white shadow-lg'
+                    : 'bg-gray-100 text-primary hover:bg-gray-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <GitBranch className="w-5 h-5" />
+                  <span>Flexible Integrations</span>
+                </div>
+              </button>
+            </div>
 
-              {/* Right Content Area */}
-              <div className="lg:col-span-8">
+            {/* Tab Content */}
+            <AnimatePresence mode="wait">
+              {activeTab === 'rag' && (
                 <motion.div
-                  key={activeFeature}
+                  key="rag"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white rounded-2xl p-8 md:p-10 lg:p-12 min-h-[320px] flex flex-col justify-between relative overflow-hidden"
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white rounded-2xl p-8 md:p-12 relative overflow-hidden"
                 >
-                  {/* Subtle decorative elements */}
+                  {/* Background decoration */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
                   <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
                   
                   <div className="relative z-10">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 bg-accent/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                        <currentFeature.icon className="w-6 h-6 text-accent" />
-                        </div>
-                      <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal leading-tight">
-                        {currentFeature.name}
-                      </h3>
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-16 h-16 bg-accent/20 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <BookOpen className="w-8 h-8 text-accent" />
+                      </div>
+                      <div>
+                        <h3 className="font-heading text-3xl font-semibold text-white mb-3">
+                          Augment Knowledge with RAG
+                        </h3>
+                        <p className="font-sans text-lg text-accent mb-4 font-medium">
+                          Enhance your accuracy. Expand your enterprise intelligence.
+                        </p>
+                      </div>
                     </div>
                     
-                    <p className="font-sans text-xl text-white/90 leading-relaxed">
-                      {currentFeature.description}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 relative z-10">
-                    <a
-                      href="https://calendly.com/readyai-dev/executive-evaluation"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-accent text-white px-7 py-3.5 rounded-lg font-sans font-semibold hover:bg-accent-dark transition-all duration-200 shadow-lg hover:shadow-2xl transform hover:-translate-y-1"
-                    >
-                      Book a Demo
-                      <ArrowRight className="w-5 h-5" />
-                    </a>
+                    <div className="space-y-4 text-white/90 font-sans text-base leading-relaxed">
+                      <p>
+                        Augment the knowledge of your AI agents with Retrieval-Augmented Generation (RAG). You can use this cutting-edge technique to enhance your generative AI with factual accuracy and relevance.
+                      </p>
+                      <p>
+                        Your enterprise can safely upload and manage all your proprietary data. It ensures your AI agents generate business-specific, reliable responses that align with your objectives.
+                      </p>
+                      <p>
+                        RAG strengthens every internal AI workflow with verified, contextual knowledge.
+                      </p>
+                      <p>
+                        RAG gives your agents access to the most up-to-date information, which helps to drive informed decision-making and consistent performance.
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
+              )}
+
+              {activeTab === 'actions' && (
+                <motion.div
+                  key="actions"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white rounded-2xl p-8 md:p-12 relative overflow-hidden"
+                >
+                  {/* Background decoration */}
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-16 h-16 bg-accent/20 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <Zap className="w-8 h-8 text-accent" />
+                      </div>
+                      <div>
+                        <h3 className="font-heading text-3xl font-semibold text-white mb-3">
+                          Agentic Actions
+                        </h3>
+                        <p className="font-sans text-lg text-accent mb-4 font-medium">
+                          Move from a response mindset to an execution approach.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4 text-white/90 font-sans text-base leading-relaxed">
+                      <p>
+                        Easily integrate your AI agents with existing systems and workflows using the platform's extensive API offerings.
+                      </p>
+                      <p>
+                        Our APIs enable your agents to trigger specific agentic actions. For example, these actions can help you interact with other software and systems, process transactions, retrieve data, and update records.
+                      </p>
+                      <p>
+                        By connecting to external applications, your agents can automate tasks in real time, driving efficiency and streamlining workflows across your enterprise systems.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {activeTab === 'integrations' && (
+                <motion.div
+                  key="integrations"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white rounded-2xl p-8 md:p-12 relative overflow-hidden"
+                >
+                  {/* Background decoration */}
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-16 h-16 bg-accent/20 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <GitBranch className="w-8 h-8 text-accent" />
+                      </div>
+                      <div>
+                        <h3 className="font-heading text-3xl font-semibold text-white mb-3">
+                          Flexible Integrations
+                        </h3>
+                        <p className="font-sans text-lg text-accent mb-4 font-medium">
+                          Connect all your internal AI across your enterprise ecosystem.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4 text-white/90 font-sans text-base leading-relaxed">
+                      <p>
+                        Your AI solutions become instantly scalable across the entire tech stack, so you can deliver real business value throughout systems and workflows.
+                      </p>
+                      <p>
+                        Integrate all your AI agents across your ecosystem of business applications.
+                      </p>
+                      <p>
+                        The platform offers extensive integrations with popular platforms like Confluence, GitHub, Jira, and OneDrive.
+                      </p>
+                      <p className="font-medium text-accent text-lg">
+                        Together, these capabilities form the intelligence core of your AI operating layer — unified, governed, and fully adaptable.
+                      </p>
+                    </div>
+
+                    {/* Integration logos */}
+                    <div className="mt-8 pt-8 border-t border-white/20">
+                      <div className="flex flex-wrap justify-center gap-8 items-center">
+                        <div className="text-white/70 font-sans text-sm font-medium">Integrates with:</div>
+                        <div className="flex flex-wrap justify-center gap-6">
+                          <span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 text-white font-medium text-sm">Confluence</span>
+                          <span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 text-white font-medium text-sm">GitHub</span>
+                          <span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 text-white font-medium text-sm">Jira</span>
+                          <span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 text-white font-medium text-sm">OneDrive</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* CTA Section */}
+            <div className="text-center mt-12">
+              <a
+                href="https://calendly.com/readyai-dev/executive-evaluation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
+              >
+                See How It Works
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Operational Management Section */}
+          <div className="bg-white py-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <h2 className="font-heading text-4xl md:text-5xl font-medium text-primary mb-6">
+                  Operational Management
+                </h2>
+                <p className="font-sans text-xl text-gray-600 max-w-3xl mx-auto">
+                  Maintain complete control over your AI ecosystem with comprehensive lifecycle management.
+                </p>
+              </div>
+
+              {/* Agent Management Card */}
+              <div className="max-w-5xl mx-auto">
+                <div className="bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white rounded-2xl p-8 md:p-12 relative overflow-hidden">
+                  {/* Background decoration */}
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="w-16 h-16 bg-accent/20 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <RefreshCw className="w-8 h-8 text-accent" />
+                      </div>
+                      <div>
+                        <h3 className="font-heading text-3xl font-semibold text-white mb-3">
+                          Agent Management
+                        </h3>
+                        <p className="font-sans text-lg text-accent mb-4 font-medium">
+                          Govern, optimize, and evolve every AI agent with ease.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4 text-white/90 font-sans text-base leading-relaxed">
+                      <p>
+                        Take control of your AI, so you can enjoy optimal AI performance with our built-in lifecycle management.
+                      </p>
+                      <p>
+                        With the platform, you can manage the entire lifecycle of your agent, from initial customization to ongoing data and LLM updates, ensuring continuous optimization.
+                      </p>
+                      <p>
+                        You can also train your AI with real-time data and monitor its performance to guarantee efficiency. The platform enables effortless LLM swaps, retaining context and knowledge, with no integration or financial hurdles.
+                      </p>
+                      <p className="text-accent font-semibold text-lg">
+                        It gives CIOs full internal AI control — with no chaos, no duplication, and no vendor lock-in.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -467,37 +663,28 @@ const SolutionsPage: React.FC = () => {
           </div>
 
           {/* Final CTA Section */}
-          <div className="bg-gradient-to-br from-primary via-primary-light to-primary-dark py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
-              <div className="relative">
-                <h2 className="font-heading text-4xl md:text-5xl font-medium text-white mb-6">
-                  Governance First. Always.
-                </h2>
-                <p className="font-sans text-xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-8">
-                  Build transparency, compliance, and trust into every layer of your AI operations.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="https://calendly.com/readyai-dev/executive-evaluation"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                  >
-                    Book a Demo
-                    <ArrowRight className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="https://calendly.com/readyai-dev/executive-evaluation"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary rounded-xl font-sans font-semibold hover:bg-gray-50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                  >
-                    Explore the Platform
-                    <ArrowRight className="w-5 h-5" />
-                  </a>
-                </div>
+          <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark py-20 overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+            
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <h2 className="font-heading text-4xl md:text-5xl font-medium text-white mb-6">
+                Build Your AI Operating Layer
+              </h2>
+              <p className="font-sans text-xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-8">
+                Take control with unified governance, seamless integrations, and enterprise-grade security.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="https://calendly.com/readyai-dev/executive-evaluation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  Book a Call With Us
+                  <ArrowRight className="w-5 h-5" />
+                </a>
               </div>
             </div>
           </div>
@@ -735,13 +922,13 @@ const SolutionsPage: React.FC = () => {
       ) : (
         <div>
           {/* Individual Solution Hero Section */}
-          <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark overflow-hidden">
+          <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark overflow-hidden pt-32 pb-20">
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-20 right-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
               <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
             </div>
             
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white mb-6">
                 {selectedSolution.title}
               </h1>

@@ -22,13 +22,13 @@ const CalcSection: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-4">
+          <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
             Smart Investment
           </p>
-          <h2 className="font-heading text-white text-4xl md:text-6xl font-normal mb-6 leading-tight">
+          <h2 className="font-heading text-white text-3xl md:text-4xl lg:text-5xl font-normal mb-6 leading-tight">
             AI That Pays for Itself
           </h2>
-          <p className="font-sans text-gray-300 text-lg md:text-2xl mb-8 max-w-3xl mx-auto">
+          <p className="font-sans text-gray-300 text-base mb-8 max-w-3xl mx-auto leading-relaxed">
             AI should cut costs, not create chaos.
           </p>
           
@@ -67,17 +67,17 @@ const CalcSection: React.FC = () => {
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
                   <Calculator className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="font-heading text-primary text-2xl md:text-3xl font-normal">
+                <h3 className="font-heading text-primary text-xl md:text-2xl font-normal">
                   Calculate Your Potential Savings
                 </h3>
               </div>
               
               <div className="space-y-4">
-                <p className="font-sans text-primary-light text-base md:text-lg leading-relaxed">
+                <p className="font-sans text-primary-light text-base leading-relaxed">
                   No matter your industry, our platform can help you reduce costs while expanding AI capabilities. 
                   Use our ROI calculator to see how much you could save by switching to ReadyAI.
                 </p>
-                <p className="font-sans text-primary-light text-base md:text-lg leading-relaxed">
+                <p className="font-sans text-primary-light text-base leading-relaxed">
                   A fixed price of <span className="font-semibold text-accent">$30 per user per month</span> provides access to all platform features, 
                   including unlimited AI agents, all supported LLMs, and our comprehensive management tools.
                 </p>
