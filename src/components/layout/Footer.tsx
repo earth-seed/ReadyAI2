@@ -58,16 +58,16 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Solutions */}
+          {/* Platform */}
           <div className="text-center md:text-left">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Solutions</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Platform</h3>
             <ul className="space-y-2">
               <li>
                 <Link 
                   to="/solutions" 
                   className="text-gray-500 hover:text-gray-900"
                 >
-                  Explore All Solutions
+                  Explore Platform
                 </Link>
               </li>
               {SOLUTIONS.map((solution) => (
