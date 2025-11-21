@@ -48,8 +48,8 @@ export interface StrapiResponse<T> {
  * - Proper error handling for network and API errors
  */
 export const fetchArticles = async (): Promise<StrapiArticle[]> => {
-  // Use populate=* to get all fields including content blocks
-  // TODO: Optimize to specific fields once structure is stable
+  // Use populate=* which works reliably for all fields
+  // Note: Media in dynamic zone components may not populate (known Strapi 5 limitation)
   const params = new URLSearchParams({
     'populate': '*',
     'sort[0]': 'publicationDate:desc',
@@ -113,13 +113,11 @@ export const fetchArticleBySlug = async (slug: string): Promise<StrapiArticle | 
     throw new Error('Slug is required');
   }
   
-  // Strapi 5 best practice: Use specific populate for better performance
-  // For Dynamic Zones, we need to populate with the 'on' parameter
+  // Use populate=* which works reliably for all fields
+  // Note: Media in dynamic zone components may not populate (known Strapi 5 limitation)
   const params = new URLSearchParams({
     'filters[slug][$eq]': slug,
-    'populate[featuredImage]': 'true',
-    'populate[content][on][components.text-block][populate]': '*',
-    'populate[content][on][components.image-block][populate]': '*',
+    'populate': '*',
     'publicationState': 'live',
   });
   
@@ -164,7 +162,7 @@ export const fetchArticlePreview = async (id: string, token: string): Promise<St
   }
   
   // Strapi 5 preview: token is passed as query param
-  // Use populate=* to get all fields including content blocks
+  // Use populate=* which works reliably for all fields
   const params = new URLSearchParams({
     'populate': '*',
     'token': token,
@@ -252,4 +250,5 @@ export const getImageUrl = (image: StrapiArticle['attributes']['featuredImage'])
   // Otherwise, it's a relative path, prepend Strapi URL
   return `${STRAPI_URL}${url}`;
 };
+
 

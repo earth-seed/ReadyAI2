@@ -38,20 +38,10 @@ const InsightsPage: React.FC = () => {
         // Map Strapi articles to display format
         // Handle both flat structure (Strapi 5 with populate) ssand nested attributes structure
         const mappedArticles: Article[] = strapiArticles
-          .filter((article: any) => {
-            const isValid = article && (article.attributes || article.title);
-            if (!isValid) {
-              console.warn('[InsightsPage] Filtered out invalid article:', article);
-            }
-            return isValid;
-          })
+          .filter((article: any) => article && (article.attributes || article.title))
           .map((article: any) => {
             // Handle flat structure (direct properties) vs nested structure (attributes)
             const attrs = article.attributes || article;
-            
-            if (!attrs.title) {
-              console.warn('[InsightsPage] Article missing title:', article);
-            }
             
             // Handle featuredImage - can be flat or nested
             let imgURL = '';
@@ -108,16 +98,32 @@ const InsightsPage: React.FC = () => {
           try {
             const strapiArticle = await fetchArticleBySlug(articleName);
             if (strapiArticle) {
+              // Handle both flat structure (direct properties) and nested structure (attributes)
+              const attrs = strapiArticle.attributes || strapiArticle;
+              
+              // Handle featuredImage - can be flat or nested
+              let imgURL = '';
+              if (attrs.featuredImage) {
+                const featuredImg = attrs.featuredImage as any;
+                if (featuredImg.url) {
+                  imgURL = featuredImg.url;
+                } else if (featuredImg.data?.attributes?.url) {
+                  imgURL = getImageUrl(featuredImg);
+                } else if (featuredImg.data?.url) {
+                  imgURL = getImageUrl({ data: { attributes: { url: featuredImg.data.url } } });
+                }
+              }
+              
               setCurrArticle({
                 id: strapiArticle.id,
-                title: strapiArticle.attributes.title,
-                slug: strapiArticle.attributes.slug,
-                url: strapiArticle.attributes.slug,
-                imgURL: getImageUrl(strapiArticle.attributes.featuredImage),
-                description: strapiArticle.attributes.description || strapiArticle.attributes.metaDescription || '',
-                metaKeywords: strapiArticle.attributes.metaKeywords || '',
-                publicationDate: strapiArticle.attributes.publicationDate || strapiArticle.attributes.publishedAt || '',
-                content: strapiArticle.attributes.content,
+                title: attrs.title || 'Untitled',
+                slug: attrs.slug || '',
+                url: attrs.slug || '',
+                imgURL: imgURL,
+                description: attrs.description || attrs.metaDescription || '',
+                metaKeywords: attrs.metaKeywords || '',
+                publicationDate: attrs.publicationDate || attrs.publishedAt || '',
+                content: attrs.content,
               });
             }
           } catch (err) {
