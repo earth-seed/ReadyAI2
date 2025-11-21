@@ -95,7 +95,7 @@ const SolutionsPage: React.FC = () => {
       {!selectedSolution ? (
         <div>
           {/* Hero Section */}
-          <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark overflow-hidden pt-20">
+          <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark overflow-hidden pt-24">
             {/* Enhanced Background Elements */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-20 right-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
@@ -922,13 +922,13 @@ const SolutionsPage: React.FC = () => {
       ) : (
         <div>
           {/* Individual Solution Hero Section */}
-          <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark overflow-hidden">
+          <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark overflow-hidden pt-32 pb-20">
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-20 right-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
               <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
             </div>
             
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white mb-6">
                 {selectedSolution.title}
               </h1>
