@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from '../components/sections/HeroSection';
 import Banner1Section from '../components/sections/Banner1Section';
 import BannerStandalone from '../components/sections/BannerStandalone';
+import Banner3Section from '../components/sections/Banner3Section';
 import Banner6Section from '../components/sections/Banner6Section';
 import EnterpriseAINumbersSection from '../components/sections/EnterpriseAINumbersSection';
 import CalcSection from '../components/sections/CalcSection';
@@ -25,6 +26,7 @@ const Home: React.FC = () => {
       <HeroSection />
       <Banner1Section />
       <BannerStandalone />
+      <Banner3Section />
       <Banner6Section />
       <EnterpriseAINumbersSection />
       <CalcSection />

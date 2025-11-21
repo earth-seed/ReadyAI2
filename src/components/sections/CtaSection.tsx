@@ -11,10 +11,13 @@ const CtaSection: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="lg:grid lg:grid-cols-12 lg:gap-12">
               <div className="lg:col-span-7 text-white">
-                <h2 className="font-heading text-3xl md:text-4xl font-normal text-white mb-6">
+                <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
+                  Get Started
+                </p>
+                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6">
                   Ready to Take the Next Step?
                 </h2>
-                <p className="font-sans text-lg text-gray-300 mb-6 leading-relaxed">
+                <p className="font-sans text-base text-gray-300 mb-6 leading-relaxed">
                   Starting with AI or looking to formalize governance across your enterprise.
                   Whatever stage you are at, ReadyAI can help you. Select one of the steps below to secure AI in your workplace.
                 </p>

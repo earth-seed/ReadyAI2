@@ -37,19 +37,24 @@ const Banner1Section = () => {
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-normal text-primary mb-6">
+            {/* Gold Label */}
+            <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
+              Enterprise-Grade AI Governance
+            </p>
+            
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-6">
               Why Enterprises Choose <span className="text-accent">ReadyAI.dev</span>
             </h2>
-            <div className="max-w-5xl mx-auto px-4 space-y-6">
-              <p className="font-sans text-lg md:text-xl text-gray-700 leading-relaxed text-center">
+            <div className="max-w-5xl mx-auto px-4 space-y-4">
+              <p className="font-sans text-base text-gray-700 leading-relaxed text-center">
                 How many LLMs is your business running? Do you know?{' '}
                 <span className="whitespace-nowrap">Shouldn't you?</span>
               </p>
-              <p className="font-sans text-lg md:text-xl text-gray-700 leading-relaxed text-center">
+              <p className="font-sans text-base text-gray-700 leading-relaxed text-center">
                 Visibility defines control. Governance defines trust.{' '}
                 <span className="text-accent font-semibold">ReadyAI.dev delivers both.</span>
               </p>
-              <p className="font-sans text-lg md:text-xl text-gray-700 leading-relaxed text-center">
+              <p className="font-sans text-base text-gray-700 leading-relaxed text-center">
                 One platform to unify every model, every team, and every process.
               </p>
             </div>

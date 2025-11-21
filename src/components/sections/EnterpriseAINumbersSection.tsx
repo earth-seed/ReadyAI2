@@ -43,13 +43,18 @@ export default function EnterpriseAINumbersSection() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-primary text-4xl sm:text-5xl md:text-6xl font-normal mb-6">
+            {/* Gold Label */}
+            <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
+              Market Impact & Adoption
+            </p>
+            
+            <h2 className="font-heading text-primary text-3xl md:text-4xl lg:text-5xl font-normal mb-6">
               Enterprise AI in Numbers
             </h2>
           </motion.div>
 
-          {/* Stats Grid - Bigger Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          {/* Stats Grid - Compact Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {[
               {
                 stat: "2+",
@@ -93,13 +98,13 @@ export default function EnterpriseAINumbersSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: item.delay, duration: 0.5, ease: "easeOut" }}
-                className="group relative bg-accent2-lightest rounded-3xl border-2 border-accent/20 p-10 md:p-12 hover:shadow-2xl hover:border-accent/40 hover:-translate-y-2 hover:bg-accent2-light transition-all duration-300"
+                className="group relative bg-accent2-lightest rounded-2xl border-2 border-accent/20 p-6 md:p-8 hover:shadow-xl hover:border-accent/40 hover:-translate-y-1 hover:bg-accent2-light transition-all duration-300"
               >
-                <div className="absolute top-8 right-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <item.icon className="w-20 h-20 text-accent" strokeWidth={1} />
+                <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                  <item.icon className="w-12 h-12 text-accent" strokeWidth={1} />
                 </div>
                 <div className="relative">
-                  <div className="font-heading text-6xl md:text-7xl font-normal text-accent mb-6">
+                  <div className="font-heading text-4xl md:text-5xl font-normal text-accent mb-4">
                     {item.statNumber ? (
                       <Counter 
                         end={item.statNumber} 
@@ -110,10 +115,10 @@ export default function EnterpriseAINumbersSection() {
                       item.stat
                     )}
                   </div>
-                  <h4 className="font-sans text-primary text-xl md:text-2xl font-semibold mb-4 leading-tight">
+                  <h4 className="font-sans text-primary text-lg md:text-xl font-semibold mb-3 leading-tight">
                     {item.label}
                   </h4>
-                  <p className="font-sans text-gray-700 text-base md:text-lg leading-relaxed">
+                  <p className="font-sans text-gray-700 text-sm md:text-base leading-relaxed">
                     {item.description}
                   </p>
                 </div>

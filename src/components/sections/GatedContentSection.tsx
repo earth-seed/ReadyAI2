@@ -48,10 +48,13 @@ const GatedContentSection: React.FC = () => {
       <div className="bg-accent2-lightest py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-normal text-gray-900 mb-6">
+            <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
+              Premium Content
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-6">
               Exclusive Resources
             </h2>
-            <p className="font-sans text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="font-sans text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
               Access our premium content library designed specifically for enterprise AI leaders. 
               Get instant access to proven frameworks, tools, and strategies.
             </p>

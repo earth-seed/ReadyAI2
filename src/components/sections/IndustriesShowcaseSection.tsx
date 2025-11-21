@@ -15,11 +15,14 @@ const IndustriesShowcaseSection: React.FC = () => {
       <section className="bg-accent2-lightest py-24 px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="mb-16">
-            <h2 className="font-heading text-4xl md:text-5xl font-normal text-primary mb-3">
+          <div className="mb-16 text-center">
+            <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
+              Tailored Solutions
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-6">
               Industry Expertise
             </h2>
-            <p className="font-sans text-lg text-primary-light max-w-2xl">
+            <p className="font-sans text-base text-primary-light max-w-3xl mx-auto leading-relaxed">
               Specialized AI solutions designed for your sector's unique challenges and compliance requirements
             </p>
           </div>
@@ -66,17 +69,17 @@ const IndustriesShowcaseSection: React.FC = () => {
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
                 
                 <div className="relative z-10">
-                  <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal mb-6 leading-tight">
+                  <h3 className="font-heading text-2xl md:text-3xl lg:text-4xl font-normal mb-6 leading-tight">
                     {currentIndustry.name}
                   </h3>
                   
-                  <p className="font-sans text-xl text-white/90 leading-relaxed mb-6">
+                  <p className="font-sans text-base text-white/90 leading-relaxed mb-6">
                     {currentIndustry.description}
                   </p>
                   
                   <div className="h-px bg-white/20 my-6"></div>
                   
-                  <p className="font-sans text-base text-white/70 leading-relaxed">
+                  <p className="font-sans text-sm text-white/70 leading-relaxed">
                     Learn how ReadyAI empowers organizations in {currentIndustry.name.toLowerCase()} 
                     with enterprise-grade security, compliance-ready infrastructure, and AI solutions 
                     tailored to your regulatory landscape.

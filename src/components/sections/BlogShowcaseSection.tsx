@@ -77,41 +77,42 @@ const BlogShowcaseSection: React.FC = () => {
       <section className="bg-white py-24 px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h2 className="font-heading text-4xl md:text-5xl font-normal text-primary mb-3">
-                Latest Insights
-              </h2>
-              <p className="font-sans text-lg text-primary-light max-w-2xl">
-                Expert perspectives on AI adoption, security, and enterprise transformation
-              </p>
-            </div>
+          <div className="text-center mb-16">
+            <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
+              Thought Leadership
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-6">
+              Latest Insights
+            </h2>
+            <p className="font-sans text-base text-primary-light max-w-3xl mx-auto leading-relaxed">
+              Expert perspectives on AI adoption, security, and enterprise transformation
+            </p>
+          </div>
 
-            {/* Navigation Arrows */}
-            <div className="hidden md:flex gap-2">
-              <button
-                onClick={handlePrev}
-                disabled={currentIndex === 0}
-                className={`p-3 rounded-lg border transition-all duration-200 ${
-                  currentIndex === 0
-                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
-                    : 'border-accent text-accent hover:bg-accent hover:text-white'
-                }`}
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleNext}
-                disabled={currentIndex >= maxIndex}
-                className={`p-3 rounded-lg border transition-all duration-200 ${
-                  currentIndex >= maxIndex
-                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
-                    : 'border-accent text-accent hover:bg-accent hover:text-white'
-                }`}
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
+          {/* Navigation Arrows - Positioned Above Carousel */}
+          <div className="flex justify-center gap-2 mb-8">
+            <button
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+              className={`p-3 rounded-lg border transition-all duration-200 ${
+                currentIndex === 0
+                  ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                  : 'border-accent text-accent hover:bg-accent hover:text-white'
+              }`}
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={currentIndex >= maxIndex}
+              className={`p-3 rounded-lg border transition-all duration-200 ${
+                currentIndex >= maxIndex
+                  ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                  : 'border-accent text-accent hover:bg-accent hover:text-white'
+              }`}
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Articles Carousel */}

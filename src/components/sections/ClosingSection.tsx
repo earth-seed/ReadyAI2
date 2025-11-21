@@ -5,14 +5,14 @@ import SlideAnimator from '../../utils/SlideAnimator';
 const ClosingSection: React.FC = () => {
   return (
     <SlideAnimator direction="up">
-      <section className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark py-16 md:py-24 px-8 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative bg-accent2-lightest py-16 md:py-20 px-8 overflow-hidden border-t border-b border-accent/10">
+        <div className="max-w-5xl mx-auto text-center space-y-6">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-sans text-white text-lg md:text-xl lg:text-2xl leading-relaxed"
+            className="font-sans text-gray-700 text-lg md:text-xl leading-relaxed"
           >
             True transformation happens when teams, models, and governance align under one framework.
           </motion.p>
@@ -21,9 +21,9 @@ const ClosingSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-sans text-white text-lg md:text-xl lg:text-2xl leading-relaxed mt-6 font-medium"
+            className="font-sans text-gray-900 text-lg md:text-xl leading-relaxed font-semibold"
           >
-            ReadyAI.dev gives you that framework — one secure platform for every model, every department, and every outcome.
+            ReadyAI.dev gives you that framework — <span className="text-accent">one secure platform</span> for every model, every department, and every outcome.
           </motion.p>
         </div>
       </section>
