@@ -114,9 +114,12 @@ export const fetchArticleBySlug = async (slug: string): Promise<StrapiArticle | 
   }
   
   // Strapi 5 best practice: Use specific populate for better performance
+  // For Dynamic Zones, we need to populate with the 'on' parameter
   const params = new URLSearchParams({
     'filters[slug][$eq]': slug,
     'populate[featuredImage]': 'true',
+    'populate[content][on][components.text-block][populate]': '*',
+    'populate[content][on][components.image-block][populate]': '*',
     'publicationState': 'live',
   });
   

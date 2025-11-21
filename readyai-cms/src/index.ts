@@ -27,6 +27,8 @@ export default {
       }
 
       const adminEmail = process.env.ADMIN_EMAIL || 'codeseedreadyai@gmail.com';
+      strapi.log.info(`[Bootstrap] Attempting to reset password for: ${adminEmail}`);
+      strapi.log.info(`[Bootstrap] Password length: ${adminPassword.length} characters`);
 
       // Find existing admin with this email
       const matchingAdmins = await strapi.entityService.findMany('admin::user', {
@@ -37,14 +39,17 @@ export default {
       if (matchingAdmins.length > 0) {
         const admin = matchingAdmins[0];
         strapi.log.info(`[Bootstrap] Found admin user: ${admin.email}`);
-        strapi.log.info('[Bootstrap] Resetting password...');
+        strapi.log.info('[Bootstrap] Resetting password and ensuring user is active...');
 
-        // Update the password using admin service
+        // Update the password and ensure user is active and not blocked
         await strapi.admin.services.user.updateById(admin.id, {
           password: adminPassword,
+          isActive: true,
+          blocked: false,
         });
 
         strapi.log.info(`[Bootstrap] ✅ Password reset for ${adminEmail}`);
+        strapi.log.info(`[Bootstrap] You can now log in with email: ${adminEmail}`);
       } else {
         strapi.log.info(`[Bootstrap] No admin found with email: ${adminEmail}`);
         strapi.log.info('[Bootstrap] Creating new admin user...');

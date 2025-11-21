@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_text_blocks",
+  "info": {
+    "displayName": "Text Block",
+    "description": "A rich text block for paragraphs and formatted content"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

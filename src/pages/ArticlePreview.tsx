@@ -213,7 +213,7 @@ const ArticlePreview: React.FC = () => {
 
         {/* Article Content */}
         {article.content && article.content.length > 0 ? (
-          <StrapiBlocksRenderer blocks={article.content} />
+          <StrapiBlocksRenderer content={article.content} />
         ) : (
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-600 italic">Content coming soon...</p>
