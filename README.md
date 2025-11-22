@@ -1,28 +1,216 @@
-# ReadyAI Strapi CMS - Complete Documentation
+# ReadyAI Website
 
-## Executive Summary
-
-This document provides comprehensive documentation for the ReadyAI Strapi CMS implementation. We've implemented a professional, enterprise-grade content management system using **custom hosting** instead of Strapi's managed service, resulting in **significant cost savings of $90/month** while maintaining full functionality and control.
+A modern, enterprise-grade website for ReadyAI built with React, TypeScript, and Strapi CMS. Features a professional content management system with custom hosting that saves **$1,020/year** compared to managed services.
 
 ---
 
 ## Table of Contents
 
-1. [Architecture Decision: Custom Hosting vs Managed Service](#architecture-decision)
-2. [System Overview](#system-overview)
-3. [Deployment Architecture](#deployment-architecture)
-4. [Content Types & Schema](#content-types--schema)
-5. [Custom Controller Implementation](#custom-controller-implementation)
-6. [Frontend Integration](#frontend-integration)
-7. [Deployment Guide](#deployment-guide)
-8. [Cost Analysis](#cost-analysis)
-9. [Maintenance & Support](#maintenance--support)
+1. [Project Overview](#project-overview)
+2. [Quick Start](#quick-start)
+3. [Technology Stack](#technology-stack)
+4. [Project Structure](#project-structure)
+5. [Development Setup](#development-setup)
+6. [Strapi CMS Documentation](#strapi-cms-documentation)
+7. [Deployment](#deployment)
+8. [Contributing](#contributing)
 
 ---
 
-## Architecture Decision: Custom Hosting vs Managed Service
+## Project Overview
 
-### Why We Chose Custom Hosting
+ReadyAI is a comprehensive enterprise AI governance platform. This repository contains:
+
+- **Frontend**: React + TypeScript application hosted on Netlify
+- **CMS Backend**: Strapi 5 CMS hosted on Render with PostgreSQL
+- **Media Storage**: Cloudinary CDN for optimized image delivery
+- **Features**: Content management, article publishing, SEO optimization, and more
+
+### Key Highlights
+
+✅ **Cost-Effective**: Custom-hosted CMS saves $1,020/year vs managed service  
+✅ **Modern Stack**: React 18, TypeScript, Vite, Tailwind CSS  
+✅ **Professional CMS**: Strapi 5 with Dynamic Zones and custom controllers  
+✅ **SEO Optimized**: Meta tags, Open Graph, structured data  
+✅ **Performance**: Optimized builds, CDN delivery, lazy loading  
+
+---
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js 18+ and npm
+- Git
+- Code editor (VS Code recommended)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd ReadyAI2
+
+# Install frontend dependencies
+npm install
+
+# Install Strapi CMS dependencies
+cd readyai-cms
+npm install
+cd ..
+```
+
+### Running Locally
+
+```bash
+# Start frontend development server
+npm run dev
+# Frontend runs on http://localhost:3000
+
+# Start Strapi CMS (in separate terminal)
+cd readyai-cms
+npm run develop
+# Strapi runs on http://localhost:1337
+```
+
+### Environment Variables
+
+Create `.env` file in root directory:
+
+```bash
+# Strapi API URL
+VITE_STRAPI_URL=http://localhost:1337
+```
+
+For Strapi CMS environment variables, see [Strapi Deployment Guide](#strapi-deployment-guide).
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- **Framework**: React 18.3
+- **Language**: TypeScript 5.5
+- **Build Tool**: Vite 5.4
+- **Styling**: Tailwind CSS 3.4
+- **Routing**: React Router 6.20
+- **SEO**: React Helmet Async
+- **Animations**: Framer Motion
+- **UI Components**: Headless UI, Lucide React
+
+### Backend (CMS)
+
+- **CMS**: Strapi 5
+- **Database**: PostgreSQL (production), SQLite (development)
+- **Media Storage**: Cloudinary
+- **Email**: SMTP (Nodemailer)
+- **Hosting**: Render
+
+### Infrastructure
+
+- **Frontend Hosting**: Netlify
+- **CMS Hosting**: Render
+- **Database**: Render PostgreSQL
+- **CDN**: Cloudinary
+- **Functions**: Netlify Functions
+
+---
+
+## Project Structure
+
+```
+ReadyAI2/
+├── src/                    # Frontend React application
+│   ├── components/         # React components
+│   │   ├── sections/       # Page sections
+│   │   ├── ui/            # Reusable UI components
+│   │   └── layout/        # Layout components
+│   ├── pages/             # Page components
+│   ├── utils/             # Utility functions
+│   │   └── strapi.ts     # Strapi API integration
+│   └── types/             # TypeScript type definitions
+│
+├── readyai-cms/           # Strapi CMS backend
+│   ├── src/
+│   │   ├── api/          # API endpoints
+│   │   │   └── article/  # Article content type
+│   │   ├── components/   # Reusable components
+│   │   └── index.ts      # Bootstrap script
+│   └── config/            # Strapi configuration
+│
+├── public/                # Static assets
+├── netlify/              # Netlify functions
+└── config/               # Frontend configuration
+```
+
+---
+
+## Development Setup
+
+### Frontend Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Lint code
+npm run lint
+```
+
+### Strapi CMS Development
+
+```bash
+cd readyai-cms
+
+# Start development server
+npm run develop
+
+# Build admin panel
+npm run build
+
+# Start production server
+npm start
+```
+
+### Environment Setup
+
+**Frontend (.env):**
+```bash
+VITE_STRAPI_URL=http://localhost:1337
+```
+
+**Strapi (readyai-cms/.env):**
+```bash
+DATABASE_CLIENT=sqlite
+DATABASE_FILENAME=.tmp/data.db
+CLOUDINARY_NAME=your_cloudinary_name
+CLOUDINARY_KEY=your_cloudinary_key
+CLOUDINARY_SECRET=your_cloudinary_secret
+```
+
+---
+
+## Strapi CMS Documentation
+
+### Executive Summary
+
+We've implemented a professional, enterprise-grade content management system using **custom hosting** instead of Strapi's managed service, resulting in **significant cost savings of $85/month** ($1,020/year) while maintaining full functionality and control.
+
+---
+
+### Architecture Decision: Custom Hosting vs Managed Service
+
+#### Why We Chose Custom Hosting
 
 **Strapi Cloud (Managed Service):**
 - Cost: **$99/month** for production tier
@@ -34,7 +222,7 @@ This document provides comprehensive documentation for the ReadyAI Strapi CMS im
 - Benefits: Full control, customizable, same functionality
 - Savings: **$85/month** ($1,020/year)
 
-### Decision Rationale
+#### Decision Rationale
 
 We implemented a custom-hosted Strapi solution on Render with PostgreSQL, achieving:
 
@@ -50,9 +238,9 @@ This decision demonstrates our commitment to cost-effective solutions while main
 
 ---
 
-## System Overview
+### System Overview
 
-### Technology Stack
+#### Technology Stack
 
 - **CMS Backend**: Strapi 5 (Node.js)
 - **Database**: PostgreSQL (Render)
@@ -61,7 +249,7 @@ This decision demonstrates our commitment to cost-effective solutions while main
 - **Frontend**: React (Netlify)
 - **Email**: SMTP (Nodemailer)
 
-### Key Features
+#### Key Features
 
 ✅ Professional admin interface  
 ✅ Rich text editor with media support  
@@ -74,9 +262,9 @@ This decision demonstrates our commitment to cost-effective solutions while main
 
 ---
 
-## Deployment Architecture
+### Deployment Architecture
 
-### Infrastructure Components
+#### Infrastructure Components
 
 ```
 ┌─────────────────┐
@@ -99,7 +287,7 @@ This decision demonstrates our commitment to cost-effective solutions while main
 └─────────┘ └─────────┘
 ```
 
-### Environment Setup
+#### Environment Setup
 
 **Production URLs:**
 - Strapi Admin: `https://readyai-strapi-cms.onrender.com/admin`
@@ -108,9 +296,9 @@ This decision demonstrates our commitment to cost-effective solutions while main
 
 ---
 
-## Content Types & Schema
+### Content Types & Schema
 
-### Article Content Type
+#### Article Content Type
 
 The Article content type supports rich, flexible content with the following structure:
 
@@ -128,16 +316,16 @@ The Article content type supports rich, flexible content with the following stru
 }
 ```
 
-### Dynamic Zone Components
+#### Dynamic Zone Components
 
 The `content` field uses Strapi's Dynamic Zone feature, allowing flexible content composition:
 
-#### Text Block Component
+**Text Block Component**
 - **Type**: `text-block.schema`
 - **Fields**: 
   - `content`: Rich text blocks (paragraphs, headings, lists, quotes, code)
 
-#### Image Block Component
+**Image Block Component**
 - **Type**: `image-block.schema`
 - **Fields**:
   - `image`: Media (required)
@@ -153,13 +341,13 @@ This allows content creators to:
 
 ---
 
-## Custom Controller Implementation
+### Custom Controller Implementation
 
-### Overview
+#### Overview
 
 Strapi 5 has a known limitation where media fields within Dynamic Zone components are not automatically populated by the API. We've implemented a **custom controller** that manually populates image data for image-block components.
 
-### Why This Was Necessary
+#### Why This Was Necessary
 
 **The Problem:**
 - Strapi's default API doesn't populate media fields in Dynamic Zone components
@@ -172,7 +360,7 @@ Strapi 5 has a known limitation where media fields within Dynamic Zone component
 - Populates image data before returning to frontend
 - Transparent to content creators (works automatically)
 
-### Implementation Details
+#### Implementation Details
 
 **File**: `readyai-cms/src/api/article/controllers/article.ts`
 
@@ -189,11 +377,11 @@ The controller:
 - `files`: Actual image file data
 - `components_image_blocks`: Component data
 
-### Adding Image Blocks to Other Content Types
+#### Adding Image Blocks to Other Content Types
 
 If you need image blocks in other content types (e.g., Pages, Products), follow these steps:
 
-#### Step 1: Add Dynamic Zone to Content Type
+**Step 1: Add Dynamic Zone to Content Type**
 
 1. Open Strapi Admin Panel
 2. Go to **Content-Type Builder**
@@ -202,7 +390,7 @@ If you need image blocks in other content types (e.g., Pages, Products), follow 
 5. Select **Dynamic Zone**
 6. Add components: `text-block.schema`, `image-block.schema`
 
-#### Step 2: Create Custom Controller
+**Step 2: Create Custom Controller**
 
 Create a new controller file following the same pattern:
 
@@ -329,7 +517,7 @@ const controller = factories.createCoreController('api::[content-type].[content-
 export default controller;
 ```
 
-#### Step 3: Update Table Names
+**Step 3: Update Table Names**
 
 **Important**: Replace these in the controller:
 - `[content-type]_cmps`: Replace with your actual junction table name
@@ -340,14 +528,14 @@ export default controller;
 1. Check your database: `SELECT name FROM sqlite_master WHERE type='table' AND name LIKE '%_cmps';`
 2. Or check Strapi's database schema documentation
 
-#### Step 4: Test
+**Step 4: Test**
 
 1. Restart Strapi
 2. Create content with image blocks
 3. Test API endpoint: `GET /api/[content-type]?populate=*`
 4. Verify image data is populated in response
 
-### Benefits of This Approach
+#### Benefits of This Approach
 
 ✅ **Works around Strapi limitation** - Solves the media population issue  
 ✅ **Transparent** - Content creators don't notice any difference  
@@ -357,9 +545,9 @@ export default controller;
 
 ---
 
-## Frontend Integration
+### Frontend Integration
 
-### API Configuration
+#### API Configuration
 
 **File**: `src/utils/strapi.ts`
 
@@ -380,7 +568,7 @@ export const fetchArticles = async (): Promise<StrapiArticle[]> => {
 };
 ```
 
-### Rendering Dynamic Zone Content
+#### Rendering Dynamic Zone Content
 
 **File**: `src/components/sections/StrapiBlocksRenderer.tsx`
 
@@ -395,7 +583,7 @@ The `StrapiBlocksRenderer` component handles:
 <StrapiBlocksRenderer content={article.content} />
 ```
 
-### Environment Variables
+#### Environment Variables
 
 **Netlify Environment Variables:**
 ```bash
@@ -404,16 +592,16 @@ VITE_STRAPI_URL=https://readyai-strapi-cms.onrender.com
 
 ---
 
-## Deployment Guide
+### Strapi Deployment Guide
 
-### Prerequisites
+#### Prerequisites
 
 - Render account
 - Cloudinary account
 - GitHub repository access
 - Node.js 18+ installed locally
 
-### Step 1: Create PostgreSQL Database
+#### Step 1: Create PostgreSQL Database
 
 1. Go to [Render Dashboard](https://dashboard.render.com)
 2. Click **"New +"** → **"PostgreSQL"**
@@ -423,7 +611,7 @@ VITE_STRAPI_URL=https://readyai-strapi-cms.onrender.com
 4. Click **"Create Database"**
 5. Copy the **Internal Database URL**
 
-### Step 2: Deploy Strapi Service
+#### Step 2: Deploy Strapi Service
 
 1. In Render Dashboard, click **"New +"** → **"Web Service"**
 2. Connect your GitHub repository
@@ -435,7 +623,7 @@ VITE_STRAPI_URL=https://readyai-strapi-cms.onrender.com
    - **Start Command**: `npm start`
    - **Plan**: Starter ($7/month)
 
-### Step 3: Set Environment Variables
+#### Step 3: Set Environment Variables
 
 Add these in Render service settings:
 
@@ -475,7 +663,7 @@ ADMIN_EMAIL=your-admin@email.com
 ADMIN_PASSWORD=your-secure-password
 ```
 
-### Step 4: Deploy and Access
+#### Step 4: Deploy and Access
 
 1. Click **"Create Web Service"**
 2. Wait for deployment (5-10 minutes)
@@ -484,7 +672,7 @@ ADMIN_PASSWORD=your-secure-password
    - If `ADMIN_PASSWORD` is set, admin user will be auto-created/reset on first boot
    - Otherwise, create admin user manually on first visit
 
-### Step 5: Configure Frontend
+#### Step 5: Configure Frontend
 
 1. Add to Netlify environment variables:
    ```bash
@@ -493,7 +681,7 @@ ADMIN_PASSWORD=your-secure-password
 2. Deploy frontend
 3. Test `/admin` route redirect
 
-### Step 6: Configure Admin Bootstrap (Optional)
+#### Step 6: Configure Admin Bootstrap (Optional)
 
 The Strapi bootstrap script (`readyai-cms/src/index.ts`) automatically creates or resets admin users on startup if environment variables are set:
 
@@ -510,7 +698,7 @@ The Strapi bootstrap script (`readyai-cms/src/index.ts`) automatically creates o
 
 **Security Note:** Only set `ADMIN_PASSWORD` in production if you need automated admin management. For manual setup, leave it unset.
 
-### Step 7: Enable Preview Feature
+#### Step 7: Enable Preview Feature
 
 Article preview allows viewing draft content before publishing:
 
@@ -526,9 +714,9 @@ Article preview allows viewing draft content before publishing:
 
 ---
 
-## Cost Analysis
+### Cost Analysis
 
-### Monthly Costs
+#### Monthly Costs
 
 | Service | Cost | Purpose |
 |---------|------|---------|
@@ -538,7 +726,7 @@ Article preview allows viewing draft content before publishing:
 | Netlify (Frontend) | $0 | Existing hosting |
 | **Total** | **$14/month** | Complete CMS solution |
 
-### Comparison: Custom vs Managed
+#### Comparison: Custom vs Managed
 
 | Solution | Monthly Cost | Annual Cost | Notes |
 |----------|-------------|-------------|-------|
@@ -546,7 +734,7 @@ Article preview allows viewing draft content before publishing:
 | **Custom Hosting (Our Solution)** | $14 | $168 | Full control, same features |
 | **Savings** | **$85/month** | **$1,020/year** | 86% cost reduction |
 
-### Scaling Costs
+#### Scaling Costs
 
 As traffic grows, costs scale predictably:
 - **Current**: $14/month (handles ~10,000 requests/day)
@@ -557,9 +745,9 @@ Still significantly less than managed service at any scale.
 
 ---
 
-## Maintenance & Support
+### Maintenance & Support
 
-### Regular Maintenance
+#### Regular Maintenance
 
 **Monthly:**
 - Review Render service logs
@@ -571,13 +759,13 @@ Still significantly less than managed service at any scale.
 - Update Strapi dependencies
 - Review and rotate security keys
 
-### Backup Strategy
+#### Backup Strategy
 
 - **Database**: Render provides automatic PostgreSQL backups
 - **Media**: Cloudinary provides automatic backups
 - **Code**: GitHub repository serves as code backup
 
-### Monitoring
+#### Monitoring
 
 **Key Metrics to Monitor:**
 - API response times
@@ -590,7 +778,7 @@ Still significantly less than managed service at any scale.
 - Cloudinary Dashboard (media usage)
 - Netlify Analytics (frontend performance)
 
-### Troubleshooting
+#### Troubleshooting
 
 **Common Issues:**
 
@@ -613,7 +801,7 @@ Still significantly less than managed service at any scale.
    - Verify all dependencies are installed
    - Check build logs in Render dashboard
 
-### Support Resources
+#### Support Resources
 
 - [Strapi Documentation](https://docs.strapi.io/)
 - [Render Documentation](https://render.com/docs)
@@ -621,16 +809,16 @@ Still significantly less than managed service at any scale.
 
 ---
 
-## Success Metrics
+### Success Metrics
 
-### Technical Achievements
+#### Technical Achievements
 
 ✅ **99.9% Uptime** - Reliable hosting infrastructure  
 ✅ **< 2s API Response Time** - Fast content delivery  
 ✅ **Mobile Performance Score > 90** - Optimized for all devices  
 ✅ **SEO Score > 90** - Search engine optimized  
 
-### Business Value
+#### Business Value
 
 ✅ **$1,020/year savings** - Cost-effective solution  
 ✅ **Professional CMS** - Enterprise-grade content management  
@@ -639,20 +827,69 @@ Still significantly less than managed service at any scale.
 
 ---
 
-## Conclusion
+## Deployment
 
-This custom-hosted Strapi implementation provides a professional, scalable, and cost-effective content management solution. By choosing custom hosting over the managed service, we've achieved:
+### Frontend Deployment (Netlify)
 
-- **86% cost reduction** ($1,020/year savings)
-- **Full functionality** (all features of managed service)
-- **Complete control** (custom configurations and extensions)
-- **Professional infrastructure** (production-grade hosting)
+The frontend is automatically deployed via Netlify when changes are pushed to the main branch.
 
-The system is production-ready, well-documented, and designed to scale with your business needs.
+**Manual Deployment:**
+```bash
+npm run build
+# Deploy dist/ folder to Netlify
+```
+
+**Environment Variables (Netlify):**
+- `VITE_STRAPI_URL`: Strapi API URL
+
+### Strapi CMS Deployment (Render)
+
+See [Strapi Deployment Guide](#strapi-deployment-guide) above for complete instructions.
 
 ---
 
-**Document Version**: 1.0  
+## Contributing
+
+### Development Workflow
+
+1. Create a feature branch: `git checkout -b feature/your-feature`
+2. Make your changes
+3. Test locally
+4. Commit: `git commit -m "Add your feature"`
+5. Push: `git push origin feature/your-feature`
+6. Create a Pull Request
+
+### Code Style
+
+- Follow TypeScript best practices
+- Use ESLint for code quality
+- Follow existing code patterns
+- Write clear, documented code
+
+### Testing
+
+- Test frontend changes locally
+- Test Strapi changes in development mode
+- Verify API endpoints work correctly
+- Test on multiple browsers/devices
+
+---
+
+## License
+
+[Add your license information here]
+
+---
+
+## Support
+
+For questions or issues:
+- Check the [Strapi CMS Documentation](#strapi-cms-documentation) section
+- Review troubleshooting guides
+- Contact the development team
+
+---
+
 **Last Updated**: November 2025  
 **Maintained By**: CodeSeed Development Team
 
