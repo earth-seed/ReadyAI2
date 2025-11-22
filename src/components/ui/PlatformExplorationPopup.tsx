@@ -48,7 +48,10 @@ const PlatformExplorationPopup: React.FC<PlatformExplorationPopupProps> = ({
   }, [triggerDelay, scrollTrigger]);
 
   const showPopup = () => {
+    // Check if already visible or previously dismissed
     if (isVisible) return;
+    const hasSeenPopup = localStorage.getItem('platform-exploration-popup-seen');
+    if (hasSeenPopup) return;
     
     setIsAnimating(true);
     setIsVisible(true);

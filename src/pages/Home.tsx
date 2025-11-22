@@ -8,6 +8,7 @@ import EnterpriseAINumbersSection from '../components/sections/EnterpriseAINumbe
 import CalcSection from '../components/sections/CalcSection';
 import Banner2Section from '../components/sections/Banner2Section';
 import CIOInsightSection from '../components/sections/CIOInsightSection';
+import LeadershipSection from '../components/sections/LeadershipSection';
 import IndustriesShowcaseSection from '../components/sections/IndustriesShowcaseSection';
 import BlogShowcaseSection from '../components/sections/BlogShowcaseSection';
 import GatedContentSection from '../components/sections/GatedContentSection';
@@ -27,6 +28,7 @@ const Home: React.FC = () => {
       <Banner1Section />
       <BannerStandalone />
       <Banner3Section />
+      <LeadershipSection />
       <Banner6Section />
       <EnterpriseAINumbersSection />
       <CalcSection />
