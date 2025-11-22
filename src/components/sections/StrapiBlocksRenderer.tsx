@@ -187,7 +187,7 @@ const StrapiBlocksRenderer: React.FC<StrapiBlocksRendererProps> = ({ blocks, con
                 const hasNestedList = child.children?.some(c => c.type === 'list');
                 
                 return (
-                  <li key={i} className={hasNestedList ? "mb-1" : "mb-2"}>
+                  <li key={i} className={hasNestedList ? "mb-0" : "mb-2"}>
                     {child.children?.map((grandchild, j) => {
                       // If grandchild is a nested list, render it with proper spacing
                       if (grandchild.type === 'list') {
