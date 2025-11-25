@@ -24,9 +24,10 @@ import {
   TrendingUp,
   Eye,
   Database,
-  AlertTriangle
+  AlertTriangle,
+  Calculator
 } from 'lucide-react';
-import CalendlySectionPopUp from '../components/sections/CalendlySectionPopUp';
+import CalendlyBtn from '../components/sections/CalendlyBtn';
 
 const iconMap = {
   'landmark': Landmark,
@@ -106,24 +107,83 @@ const IndustryPage: React.FC = () => {
             </div>
             
             <div className="mt-20">
-              <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
-                <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-                  <div className="lg:col-span-7">
-                    <h2 className="font-heading text-3xl font-medium text-primary mb-6">
-                      Calculate Your Potential Savings
-                    </h2>
-                    <p className="font-sans text-lg text-gray-700 mb-4 leading-relaxed">
-                      No matter your industry, our platform can help you reduce costs while expanding AI capabilities. 
-                      Use our ROI calculator to see how much you could save by switching to our platform.
-                    </p>
-                    <p className="font-sans text-lg text-gray-700 mb-6 leading-relaxed">
-                      Our fixed price of <strong className="text-accent">$30 per user per month</strong> provides access to all platform features, 
-                      including unlimited AI agents, all supported LLMs, and our comprehensive management tools.
-                    </p>
+              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div className="lg:grid lg:grid-cols-12 lg:gap-8 p-8 md:p-12">
+                  <div className="lg:col-span-7 mb-8 lg:mb-0">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                        <Calculator className="w-6 h-6 text-accent" />
+                      </div>
+                      <h3 className="font-heading text-primary text-xl md:text-2xl font-normal">
+                        Calculate Your Potential Savings
+                      </h3>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <p className="font-sans text-primary-light text-base leading-relaxed">
+                        No matter your industry, our platform can help you <span className="font-semibold text-accent">reduce your internal AI spend</span>, while expanding AI capabilities. 
+                        Use our ROI calculator to see how much you could save by switching to ReadyAI.
+                      </p>
+                      <p className="font-sans text-primary-light text-base leading-relaxed">
+                        A fixed price of <span className="font-semibold text-accent">$30 per user per month</span> provides access to all platform features, 
+                        including unlimited AI agents, all supported LLMs, and our comprehensive management tools.
+                      </p>
+
+                      {/* Key Benefits */}
+                      <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {[
+                          'No hidden fees or usage charges',
+                          'Access to 30+ premium LLMs',
+                          'Unlimited AI agent creation',
+                          'Enterprise-grade security included'
+                        ].map((benefit, index) => (
+                          <div key={index} className="flex items-start gap-2">
+                            <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span className="font-sans text-primary-light text-sm md:text-base">{benefit}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <div className="lg:col-span-5 mt-8 lg:mt-0">
-                    <ROICalculator />
+                  
+                  <div className="lg:col-span-5">
+                    <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                      <ROICalculator />
+                    </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Banner */}
+            <div className="mt-16 bg-gradient-to-br from-primary via-primary-light to-primary-dark rounded-2xl p-12 md:p-16 text-center relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-0 right-0 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
+              
+              <div className="relative z-10">
+                <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-4">
+                  Get Started
+                </p>
+                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6">
+                  Ready to Transform Your AI Strategy?
+                </h2>
+                <p className="font-sans text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Connect with our industry specialists to explore how ReadyAI can secure and scale your AI operations
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/contact">
+                    <button className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                      Contact Our Team
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
+                  </Link>
+                  <CalendlyBtn
+                    url="https://calendly.com/readyai-sales"
+                    text="Schedule a Demo"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
+                  />
                 </div>
               </div>
             </div>
@@ -286,15 +346,11 @@ const IndustryPage: React.FC = () => {
                     <p className="font-sans text-xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-8">
                       Build trust, reduce risk, and innovate responsibly with transparent, compliant AI — powered by the only platform designed for enterprise-grade governance.
                     </p>
-                    <a
-                      href="https://calendly.com/readyai-dev/executive-evaluation"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <CalendlyBtn
+                      url="https://calendly.com/readyai-sales"
+                      text="Explore your secure AI workspace"
                       className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                    >
-                      Explore your secure AI workspace
-                      <ArrowRight className="w-5 h-5" />
-                    </a>
+                    />
                   </div>
                 </div>
 
@@ -345,32 +401,83 @@ const IndustryPage: React.FC = () => {
 
             
             <div className="mt-12">
-              <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
-                <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-                  <div className="lg:col-span-7">
-                    <h2 className="font-heading text-3xl font-medium text-primary mb-6">
-                      Calculate Your Potential Savings
-                    </h2>
-                    <p className="font-sans text-lg text-gray-700 mb-4 leading-relaxed">
-                      See how much your organization could save by adopting our platform.
-                      Our consolidated approach typically reduces AI licensing costs by 70-85%.
-                    </p>
-                    <p className="font-sans text-lg text-gray-700 mb-6 leading-relaxed">
-                      Beyond direct cost savings, our customers report significant operational improvements,
-                      faster deployment times, and reduced maintenance overhead.
-                    </p>
+              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div className="lg:grid lg:grid-cols-12 lg:gap-8 p-8 md:p-12">
+                  <div className="lg:col-span-7 mb-8 lg:mb-0">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                        <Calculator className="w-6 h-6 text-accent" />
+                      </div>
+                      <h3 className="font-heading text-primary text-xl md:text-2xl font-normal">
+                        Calculate Your Potential Savings
+                      </h3>
+                    </div>
                     
-                    <div className="mt-8">
-                      <Link to="/contact">
-                        <Button size="lg">
-                          Contact Our Industry Specialists
-                        </Button>
-                      </Link>
+                    <div className="space-y-4">
+                      <p className="font-sans text-primary-light text-base leading-relaxed">
+                        No matter your industry, our platform can help you <span className="font-semibold text-accent">reduce your internal AI spend</span>, while expanding AI capabilities. 
+                        Use our ROI calculator to see how much you could save by switching to ReadyAI.
+                      </p>
+                      <p className="font-sans text-primary-light text-base leading-relaxed">
+                        A fixed price of <span className="font-semibold text-accent">$30 per user per month</span> provides access to all platform features, 
+                        including unlimited AI agents, all supported LLMs, and our comprehensive management tools.
+                      </p>
+
+                      {/* Key Benefits */}
+                      <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {[
+                          'No hidden fees or usage charges',
+                          'Access to 30+ premium LLMs',
+                          'Unlimited AI agent creation',
+                          'Enterprise-grade security included'
+                        ].map((benefit, index) => (
+                          <div key={index} className="flex items-start gap-2">
+                            <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span className="font-sans text-primary-light text-sm md:text-base">{benefit}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <div className="mt-8 lg:mt-0 lg:col-span-5">
-                    <ROICalculator />
+                  
+                  <div className="lg:col-span-5">
+                    <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                      <ROICalculator />
+                    </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Banner */}
+            <div className="mt-16 bg-gradient-to-br from-primary via-primary-light to-primary-dark rounded-2xl p-12 md:p-16 text-center relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-0 right-0 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
+              
+              <div className="relative z-10">
+                <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-4">
+                  Get Started
+                </p>
+                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6">
+                  Ready to Transform Your AI Strategy?
+                </h2>
+                <p className="font-sans text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Connect with our industry specialists to explore how ReadyAI can secure and scale your AI operations
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/contact">
+                    <button className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                      Contact Our Team
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
+                  </Link>
+                  <CalendlyBtn
+                    url="https://calendly.com/readyai-sales"
+                    text="Schedule a Demo"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
+                  />
                 </div>
               </div>
             </div>

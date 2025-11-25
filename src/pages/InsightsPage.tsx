@@ -199,21 +199,6 @@ const InsightsPage: React.FC = () => {
               <p className="text-lg text-gray-200 mb-12 leading-relaxed max-w-2xl mx-auto">
                 Expert analysis, industry trends, and strategic insights for enterprise AI adoption
               </p>
-              
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <div className="flex items-center gap-2 text-gray-300">
-                  <BookOpen className="w-5 h-5" />
-                  <span>{articles.length} Articles</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-300">
-                  <Users className="w-5 h-5" />
-                  <span>Expert Analysis</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-300">
-                  <Clock className="w-5 h-5" />
-                  <span>Updated Weekly</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>

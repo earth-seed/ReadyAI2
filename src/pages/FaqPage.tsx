@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, Cpu, Shield, Zap, DollarSign, Rocket } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import CalendlyBtn from '../components/sections/CalendlyBtn';
 
 interface FAQ {
   question: string;
@@ -289,17 +290,11 @@ const FaqPage: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </a>
-            <a
-              href="https://calendly.com/readyai-dev/executive-evaluation"
-              target="_blank"
-              rel="noopener noreferrer"
+            <CalendlyBtn
+              url="https://calendly.com/readyai-sales"
+              text="Book an Evaluation"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary border-2 border-primary rounded-lg font-sans font-semibold hover:bg-primary hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              Book an Evaluation
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </a>
+            />
           </div>
         </div>
       </div>
