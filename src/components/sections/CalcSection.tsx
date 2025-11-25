@@ -74,7 +74,7 @@ const CalcSection: React.FC = () => {
               
               <div className="space-y-4">
                 <p className="font-sans text-primary-light text-base leading-relaxed">
-                  No matter your industry, our platform can help you reduce costs while expanding AI capabilities. 
+                  No matter your industry, our platform can help you <span className="font-semibold text-accent">reduce your internal AI spend</span>, while expanding AI capabilities. 
                   Use our ROI calculator to see how much you could save by switching to ReadyAI.
                 </p>
                 <p className="font-sans text-primary-light text-base leading-relaxed">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, FileText, Shield, Users, ArrowRight } from 'lucide-react';
+import { Download, FileText, Shield, ArrowRight } from 'lucide-react';
 import GatedContentModal from '../ui/GatedContentModal';
 
 const GatedContentSection: React.FC = () => {
@@ -15,22 +15,13 @@ const GatedContentSection: React.FC = () => {
       title: "AI Security Playbook",
       description: "Comprehensive guide to securing AI in your enterprise",
       downloadUrl: "/downloads/ai-security-playbook.pdf",
-      icon: Shield,
-      color: "bg-blue-500"
+      icon: Shield
     },
     {
       title: "Enterprise AI Governance Framework",
       description: "Step-by-step framework for implementing AI governance",
       downloadUrl: "/downloads/ai-governance-framework.pdf",
-      icon: FileText,
-      color: "bg-green-500"
-    },
-    {
-      title: "AI ROI Calculator",
-      description: "Interactive tool to calculate AI implementation ROI",
-      downloadUrl: "/downloads/ai-roi-calculator.xlsx",
-      icon: Users,
-      color: "bg-purple-500"
+      icon: FileText
     }
   ];
 
@@ -45,55 +36,66 @@ const GatedContentSection: React.FC = () => {
 
   return (
     <>
-      <div className="bg-accent2-lightest py-16">
+      <div className="bg-white py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          {/* Section Header */}
+          <div className="text-center mb-16">
             <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
-              Premium Content
+              Enterprise Resources
             </p>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-6">
-              Exclusive Resources
+              Exclusive Content for AI Leaders
             </h2>
-            <p className="font-sans text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Access our premium content library designed specifically for enterprise AI leaders. 
-              Get instant access to proven frameworks, tools, and strategies.
+            <p className="font-sans text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Download proven frameworks and strategic guides designed for enterprise decision-makers
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Resource Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {gatedContentItems.map((item, index) => {
               const IconComponent = item.icon;
               return (
                 <div
                   key={index}
-                  className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 hover:shadow-lg hover:border-primary/20 transition-all duration-200 cursor-pointer group"
+                  className="relative bg-gradient-to-br from-accent2-lightest to-white border-2 border-gray-100 rounded-2xl p-8 hover:border-accent/30 hover:shadow-xl transition-all duration-300 cursor-pointer group overflow-hidden"
                   onClick={() => handleContentClick(item)}
                 >
-                  <div className={`w-12 h-12 ${item.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-200`}>
-                    <IconComponent className="w-6 h-6 text-white" />
-                  </div>
+                  {/* Decorative background element */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-300"></div>
                   
-                  <h3 className="font-heading text-xl font-medium text-gray-900 mb-3">
-                    {item.title}
-                  </h3>
-                  
-                  <p className="font-sans text-gray-600 mb-6 leading-relaxed">
-                    {item.description}
-                  </p>
-                  
-                  <div className="flex items-center text-primary font-sans font-medium group-hover:text-primary-dark transition-colors">
-                    <Download className="w-4 h-4 mr-2" />
-                    <span>Get Access</span>
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                  <div className="relative">
+                    {/* Icon */}
+                    <div className="w-14 h-14 bg-gradient-to-br from-accent to-accent-dark rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <IconComponent className="w-7 h-7 text-white" />
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="font-heading text-2xl font-semibold text-primary mb-3 group-hover:text-accent transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="font-sans text-base text-gray-600 mb-6 leading-relaxed">
+                      {item.description}
+                    </p>
+                    
+                    {/* CTA */}
+                    <div className="flex items-center text-accent font-sans font-semibold group-hover:gap-3 gap-2 transition-all duration-300">
+                      <Download className="w-5 h-5" />
+                      <span>Download Now</span>
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
                   </div>
                 </div>
               );
             })}
           </div>
 
+          {/* Bottom Note */}
           <div className="text-center mt-12">
-            <p className="text-sm text-gray-500">
-              All resources are free for qualified enterprise prospects
+            <p className="font-sans text-sm text-gray-500 italic">
+              Complimentary resources for qualified enterprise organizations
             </p>
           </div>
         </div>

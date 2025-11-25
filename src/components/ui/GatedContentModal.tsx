@@ -56,29 +56,35 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
     }
 
     try {
-      // Submit to Netlify Forms
-      const encodedForm = new URLSearchParams({
-        'form-name': 'gated-content',
-        name: formData.name,
-        company: formData.company,
-        email: formData.email,
-        phone: formData.phone,
-        content: title,
-        consent: formData.consent ? 'yes' : 'no',
-      });
-
-      await fetch('/', {
+      // Submit to eWay-CRM via Netlify Function
+      const response = await fetch('/.netlify/functions/eway-crm-lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodedForm.toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          phone: formData.phone,
+          content: title,
+          consent: formData.consent,
+        }),
       });
 
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit lead');
+      }
+
+      console.log('✅ Lead submitted to eWay-CRM successfully:', result);
+      
       onFormSubmit?.(formData);
       onTrack?.('gated_content_form_submitted', { title, email: formData.email });
       setStep('success');
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    } catch (error: any) {
+      console.error('❌ Error submitting form:', error);
       onTrack?.('gated_content_form_error', { title, error: error.message });
+      alert('Failed to submit form. Please try again.');
     }
   };
 
