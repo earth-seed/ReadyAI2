@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, TrendingUp, Target } from 'lucide-react';
 import { IndustryContent } from '../data/industryContent';
+import CalendlyBtn from './sections/CalendlyBtn';
 
 interface IndustryTemplateProps {
   content: IndustryContent;
@@ -79,15 +80,11 @@ const IndustryTemplate: React.FC<IndustryTemplateProps> = ({ content }) => {
           <p className="font-sans text-xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-8">
             {content.governanceSection.content}
           </p>
-          <a
-            href={content.governanceSection.buttonLink}
-            target="_blank"
-            rel="noopener noreferrer"
+          <CalendlyBtn
+            url={content.governanceSection.buttonLink}
+            text={content.governanceSection.buttonText}
             className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-          >
-            {content.governanceSection.buttonText}
-            <ArrowRight className="w-5 h-5" />
-          </a>
+          />
         </div>
       </div>
 

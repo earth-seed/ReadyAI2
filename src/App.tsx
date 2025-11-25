@@ -17,6 +17,7 @@ import BlogPage from './pages/BlogPage';
 import FAQPage from './pages/FaqPage';
 import CookieConsent from './components/ui/CookieConsent';
 import CTAManager from './components/ui/CTAManager';
+import ScrollToTop from './components/ui/ScrollToTop';
 import { usePerformance } from './hooks/usePerformance';
 import Version from './pages/Version';
 import InsightsPage from './pages/InsightsPage';
@@ -43,6 +44,7 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
+        <ScrollToTop />
         <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">

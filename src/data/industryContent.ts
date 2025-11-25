@@ -98,7 +98,7 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
       title: 'Governance First. Always.',
       content: 'Build trust, reduce risk, and innovate responsibly with transparent, compliant AI — powered by the only platform designed for enterprise-grade governance.',
       buttonText: 'Explore your secure AI workspace',
-      buttonLink: 'https://calendly.com/readyai-dev/executive-evaluation'
+      buttonLink: 'https://calendly.com/readyai-sales'
     },
     useCasesSection: {
       title: 'Use Cases',
@@ -180,7 +180,7 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
       title: 'Governance First. Always.',
       content: 'Strengthen customer trust through transparent, compliant AI — powered by the only platform designed for enterprise-grade governance.',
       buttonText: 'Explore your secure AI workspace',
-      buttonLink: 'https://calendly.com/readyai-dev/executive-evaluation'
+      buttonLink: 'https://calendly.com/readyai-sales'
     },
     useCasesSection: {
       title: 'Use Cases',
@@ -262,7 +262,7 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
       title: 'Governance First. Always.',
       content: 'Build trust and innovation into every layer of care — powered by the only platform designed for enterprise-grade AI governance.',
       buttonText: 'Explore your secure AI workspace',
-      buttonLink: 'https://calendly.com/readyai-dev/executive-evaluation'
+      buttonLink: 'https://calendly.com/readyai-sales'
     },
     useCasesSection: {
       title: 'Use Cases',
@@ -340,7 +340,7 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
       title: 'Governance First. Always.',
       content: 'Build smarter, safer factories through transparent, compliant AI — powered by the only platform designed for enterprise-grade governance.',
       buttonText: 'Explore your secure AI workspace',
-      buttonLink: 'https://calendly.com/readyai-dev/executive-evaluation'
+      buttonLink: 'https://calendly.com/readyai-sales'
     },
     useCasesSection: {
       title: 'Use Cases',
@@ -418,7 +418,7 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
       title: 'Governance First. Always.',
       content: 'Build operational resilience through transparent, compliant AI — powered by the only platform designed for enterprise-grade governance.',
       buttonText: 'Explore your secure AI workspace',
-      buttonLink: 'https://calendly.com/readyai-dev/executive-evaluation'
+      buttonLink: 'https://calendly.com/readyai-sales'
     },
     useCasesSection: {
       title: 'Use Cases',
@@ -494,7 +494,7 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
       title: 'Governance First. Always.',
       content: 'Build citizen trust through transparent, compliant AI — powered by the only platform designed for enterprise-grade governance.',
       buttonText: 'Explore your secure AI workspace',
-      buttonLink: 'https://calendly.com/readyai-dev/executive-evaluation'
+      buttonLink: 'https://calendly.com/readyai-sales'
     },
     useCasesSection: {
       icon: Target,

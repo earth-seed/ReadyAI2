@@ -65,14 +65,14 @@ const Banner1Section = () => {
             <div className="overflow-x-auto">
               <div className="min-w-full">
                 {/* Table Header */}
-                <div className="grid grid-cols-3 gap-8 px-10 py-8 bg-gradient-to-r from-gray-50 to-white border-b border-gray-200">
-                  <div className="font-sans text-gray-900 font-semibold text-xs md:text-sm uppercase tracking-widest">
+                <div className="grid gap-2 px-10 py-8 bg-gradient-to-r from-primary via-primary-light to-primary-dark border-b border-primary-dark" style={{ gridTemplateColumns: '200px 1fr 1fr' }}>
+                  <div className="font-sans text-white font-semibold text-xs md:text-sm uppercase tracking-widest">
                     Feature
                   </div>
-                  <div className="font-sans text-gray-600 font-semibold text-xs md:text-sm uppercase tracking-widest text-center">
+                  <div className="font-sans text-white/90 font-semibold text-xs md:text-sm uppercase tracking-widest text-center">
                     Consumer AI Tools
                   </div>
-                  <div className="font-sans text-gray-900 font-semibold text-xs md:text-sm uppercase tracking-widest text-center">
+                  <div className="font-sans text-accent font-semibold text-xs md:text-sm uppercase tracking-widest text-center">
                     ReadyAI.dev
                   </div>
                 </div>
@@ -87,7 +87,8 @@ const Banner1Section = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1, duration: 0.5 }}
-                        className="grid grid-cols-3 gap-8 px-10 py-8 hover:bg-accent2-lightest/30 transition-all duration-300 group"
+                        className="grid gap-2 px-10 py-8 hover:bg-accent2-lightest/30 transition-all duration-300 group"
+                        style={{ gridTemplateColumns: '200px 1fr 1fr' }}
                       >
                         <div className="flex items-center">
                           <div className="font-sans text-primary font-semibold text-base md:text-lg">
