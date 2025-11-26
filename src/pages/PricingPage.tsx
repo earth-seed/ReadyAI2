@@ -190,7 +190,7 @@ const PricingPage: React.FC = () => {
                 Get Started
               </p>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6">
-                Ready to Transform Your AI Strategy?
+                Transform Your AI Strategy Today
               </h2>
               <p className="font-sans text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Connect with our team to explore how ReadyAI can secure and scale your AI operations
@@ -217,8 +217,8 @@ const PricingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {/* Free Plan */}
-            <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all">
-              <div className="p-8">
+            <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all flex flex-col">
+              <div className="p-8 flex flex-col flex-grow">
                 <h2 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-4">Free Plan</h2>
                 <div className="mb-6">
                   <div className="flex items-baseline gap-2">
@@ -243,16 +243,18 @@ const PricingPage: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-                <CalendlyBtn
-                  text="Start Exploring for FREE"
-                  className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
-                />
+                <div className="mt-auto">
+                  <CalendlyBtn
+                    text="Start Exploring for FREE"
+                    className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                  />
+                </div>
               </div>
             </div>
 
             {/* Personal Plan */}
-            <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all">
-              <div className="p-8">
+            <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all flex flex-col">
+              <div className="p-8 flex flex-col flex-grow">
                 <h2 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-4">Personal Plan</h2>
                 <div className="mb-6">
                   <div className="flex items-baseline gap-2">
@@ -278,10 +280,12 @@ const PricingPage: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-                <CalendlyBtn
-                  text="Unlock Personal Plan"
-                  className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
-                />
+                <div className="mt-auto">
+                  <CalendlyBtn
+                    text="Unlock Personal Plan"
+                    className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -311,7 +315,7 @@ const PricingPage: React.FC = () => {
                 Get Started
               </p>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6">
-                Ready to Transform Your AI Strategy?
+                Transform Your AI Strategy Today
               </h2>
               <p className="font-sans text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Connect with our team to explore how ReadyAI can secure and scale your AI operations
