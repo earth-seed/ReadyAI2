@@ -106,13 +106,13 @@ const SolutionsPage: React.FC = () => {
             </div>
             
             
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
               <div className="max-w-4xl">
-                <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl font-normal text-white mb-8 leading-tight">
+                <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white mb-6 sm:mb-8 leading-tight">
                   Inside the<br /><span className="text-accent">AI Operating Layer</span>
                 </h1>
                 
-                <p className="font-sans text-lg md:text-xl text-white/90 mb-6 leading-relaxed max-w-3xl">
+                <p className="font-sans text-base sm:text-lg md:text-xl text-white/90 mb-6 leading-relaxed max-w-3xl">
                   Every capability in our platform connects back to one purpose: <span className="font-semibold text-white">giving enterprises a single, governed operating layer that unifies every model, agent, and workflow.</span>
                 </p>
                 
@@ -738,6 +738,8 @@ const SolutionsPage: React.FC = () => {
                     </h3>
                     
                     <div className="max-w-4xl mx-auto">
+                      {/* Desktop Table View */}
+                      <div className="hidden md:block">
                       <div className="grid grid-cols-3 gap-4 mb-4 text-center font-semibold">
                         <div className="text-left text-gray-700">Service</div>
                         <div className="text-gray-900">Direct Subscription</div>
@@ -782,7 +784,60 @@ const SolutionsPage: React.FC = () => {
                               <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
                                 Save 86%
                               </span>
+                              </div>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Mobile Card View */}
+                      <div className="md:hidden space-y-3 sm:space-y-4 mb-6">
+                        {Services.map((service, index) => (
+                          <div key={index} className="bg-white rounded-lg p-3 sm:p-4 border border-gray-200">
+                            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 pb-2 sm:pb-3 border-b border-gray-100">
+                              {service.icon && (
+                                <img
+                                  src={service.icon}
+                                  alt={service.name}
+                                  className="h-5 w-5 sm:h-6 sm:w-6 object-contain flex-shrink-0"
+                                />
+                              )}
+                              <span className="text-sm sm:text-base font-semibold text-gray-900 flex-1 min-w-0 break-words">{service.name}</span>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                              <div>
+                                <div className="text-xs text-gray-500 mb-1">Direct</div>
+                                <div className="text-base sm:text-lg font-semibold text-gray-900">{service.price}</div>
+                              </div>
+                              <div>
+                                <div className="text-xs text-gray-500 mb-1">ReadyAI</div>
+                                <div className="text-base sm:text-lg font-semibold text-accent">Included</div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                        
+                        {/* Mobile Total */}
+                        <div className="bg-white rounded-lg p-4 sm:p-5 border-2 border-gray-300">
+                          <div className="text-center mb-3 sm:mb-4">
+                            <div className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">TOTAL COMPARISON</div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                            <div className="text-center p-3 sm:p-4 bg-red-50 rounded-lg">
+                              <div className="text-xs text-gray-600 mb-1 sm:mb-2">Direct</div>
+                              <div className="text-2xl sm:text-3xl font-bold text-red-600">$210</div>
+                              <div className="text-xs text-gray-500">/mo/seat</div>
+                            </div>
+                            <div className="text-center p-3 sm:p-4 bg-green-50 rounded-lg">
+                              <div className="text-xs text-gray-600 mb-1 sm:mb-2">ReadyAI</div>
+                              <div className="text-2xl sm:text-3xl font-bold text-green-600">$30</div>
+                              <div className="text-xs text-gray-500">/mo/seat</div>
+                            </div>
+                          </div>
+                          <div className="text-center mt-3 sm:mt-4">
+                            <span className="inline-block bg-green-100 text-green-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
+                              Save 86%
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -988,8 +1043,8 @@ const SolutionsPage: React.FC = () => {
                   Connect with our team to explore how ReadyAI can secure and scale your AI operations
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/contact">
-                    <button className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <Link to="/contact" className="w-full sm:w-auto">
+                    <button className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                       Contact Our Team
                       <ArrowRight className="w-5 h-5" />
                     </button>
@@ -997,7 +1052,7 @@ const SolutionsPage: React.FC = () => {
                   <CalendlyBtn
                     url="https://calendly.com/readyai-sales"
                     text="Schedule a Demo"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
                   />
                 </div>
               </div>

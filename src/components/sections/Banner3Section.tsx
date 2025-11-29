@@ -102,29 +102,29 @@ const Banner3Section = () => {
   const Icon = currentTab.icon;
 
   return (
-    <div className="bg-white py-16 md:py-24 px-6 md:px-8">
+    <div className="bg-white py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
+        <div className="text-center mb-8 sm:mb-12">
+          <p className="font-sans text-accent text-xs sm:text-sm md:text-base uppercase tracking-widest mb-4 sm:mb-6">
             All-in-One Platform
           </p>
-            <h2 className="font-heading text-primary text-3xl md:text-4xl lg:text-5xl font-normal mb-6">
+            <h2 className="font-heading text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal mb-4 sm:mb-6">
               Complete AI Platform
             </h2>
-            <p className="font-sans text-primary-light text-base max-w-3xl mx-auto leading-relaxed">
+            <p className="font-sans text-primary-light text-sm sm:text-base max-w-3xl mx-auto leading-relaxed px-2">
               Everything you need to build, deploy, and manage AI across your enterprise
             </p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="mb-12 border-b border-gray-200 overflow-x-auto">
-          <div className="flex space-x-8 min-w-max md:min-w-0 md:justify-center px-4 md:px-0">
+        <div className="mb-8 sm:mb-12 border-b border-gray-200 overflow-x-auto">
+          <div className="flex space-x-4 sm:space-x-8 min-w-max md:min-w-0 md:justify-center px-2 sm:px-4 md:px-0">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative pb-4 px-2 font-sans text-sm md:text-base font-medium transition-colors whitespace-nowrap ${
+                className={`relative pb-3 sm:pb-4 px-1 sm:px-2 font-sans text-xs sm:text-sm md:text-base font-medium transition-colors whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'text-accent'
                     : 'text-gray-500 hover:text-gray-700'
@@ -149,7 +149,7 @@ const Banner3Section = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="flex items-start gap-8 max-w-5xl"
+          className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 md:gap-8 max-w-5xl"
         >
           {/* Left: Small Icon */}
           <motion.div
@@ -158,23 +158,23 @@ const Banner3Section = () => {
             transition={{ delay: 0.1, duration: 0.4 }}
             className="flex-shrink-0"
           >
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg bg-primary/5 flex items-center justify-center border border-accent/20">
-              <Icon className="w-8 h-8 md:w-10 md:h-10 text-accent" strokeWidth={1.5} />
+            <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-lg bg-primary/5 flex items-center justify-center border border-accent/20">
+              <Icon className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-accent" strokeWidth={1.5} />
             </div>
           </motion.div>
 
           {/* Right: Content (Main Focus) */}
-          <div className="flex-1 space-y-6">
+          <div className="flex-1 space-y-4 sm:space-y-6">
             <div>
-              <h3 className="font-heading text-primary text-3xl md:text-4xl font-normal mb-3">
+              <h3 className="font-heading text-primary text-2xl sm:text-3xl md:text-4xl font-normal mb-2 sm:mb-3">
                 {currentTab.title}
               </h3>
-              <p className="font-sans text-accent text-lg md:text-xl font-medium">
+              <p className="font-sans text-accent text-base sm:text-lg md:text-xl font-medium">
                 {currentTab.description}
               </p>
             </div>
             
-            <p className="font-sans text-primary-light text-base md:text-lg leading-relaxed">
+            <p className="font-sans text-primary-light text-sm sm:text-base md:text-lg leading-relaxed">
               {currentTab.details}
             </p>
 

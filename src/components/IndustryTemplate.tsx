@@ -16,10 +16,10 @@ const IndustryTemplate: React.FC<IndustryTemplateProps> = ({ content }) => {
       {/* Trust Section */}
       <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
         <div className="flex items-center gap-4 mb-8">
-          <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent-dark rounded-xl flex items-center justify-center">
-            <TrustIcon className="w-6 h-6 text-white" />
+          <div className="hidden sm:flex w-14 h-14 flex-shrink-0 bg-gradient-to-br from-accent to-accent-dark rounded-full items-center justify-center shadow-lg">
+            <TrustIcon className="w-7 h-7 text-white" />
           </div>
-          <h3 className="font-heading text-3xl md:text-4xl font-normal text-primary">{content.trustSection.title}</h3>
+          <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal text-primary">{content.trustSection.title}</h3>
         </div>
         <div className="space-y-4">
           <p className="font-sans text-base text-primary-light leading-relaxed" dangerouslySetInnerHTML={{ __html: content.trustSection.content }}>
@@ -34,10 +34,10 @@ const IndustryTemplate: React.FC<IndustryTemplateProps> = ({ content }) => {
       {/* Transformation Section */}
       <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
         <div className="flex items-center gap-4 mb-8">
-          <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center">
-            <TransformationIcon className="w-6 h-6 text-white" />
+          <div className="hidden sm:flex w-14 h-14 flex-shrink-0 bg-gradient-to-br from-primary to-primary-dark rounded-full items-center justify-center shadow-lg">
+            <TransformationIcon className="w-7 h-7 text-white" />
           </div>
-          <h3 className="font-heading text-3xl md:text-4xl font-normal text-primary">{content.transformationSection.title}</h3>
+          <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal text-primary">{content.transformationSection.title}</h3>
         </div>
         <div className="space-y-4">
           <p className="font-sans text-base text-primary-light leading-relaxed" dangerouslySetInnerHTML={{ __html: content.transformationSection.content }}>
@@ -52,10 +52,10 @@ const IndustryTemplate: React.FC<IndustryTemplateProps> = ({ content }) => {
       {/* Benefits Section */}
       <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
         <div className="flex items-center gap-4 mb-8">
-          <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent-dark rounded-xl flex items-center justify-center">
-            <TrendingUp className="w-6 h-6 text-white" />
+          <div className="hidden sm:flex w-14 h-14 flex-shrink-0 bg-gradient-to-br from-accent to-accent-dark rounded-full items-center justify-center shadow-lg">
+            <TrendingUp className="w-7 h-7 text-white" />
           </div>
-          <h3 className="font-heading text-3xl md:text-4xl font-normal text-primary">{content.benefitsSection.title}</h3>
+          <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal text-primary">{content.benefitsSection.title}</h3>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {content.benefitsSection.benefits.map((benefit, index) => {
@@ -63,8 +63,8 @@ const IndustryTemplate: React.FC<IndustryTemplateProps> = ({ content }) => {
             return (
               <div key={index} className="bg-white rounded-xl p-6 border border-gray-100 hover:border-accent/30 hover:shadow-md transition-all duration-300">
                 {BenefitIcon && (
-                  <div className="w-12 h-12 bg-gradient-to-br from-accent/10 to-accent/5 rounded-lg flex items-center justify-center mb-4">
-                    <BenefitIcon className="w-6 h-6 text-accent" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-accent/10 to-accent/5 rounded-full flex items-center justify-center mb-4 shadow-sm">
+                    <BenefitIcon className="w-7 h-7 text-accent" />
                   </div>
                 )}
                 <h4 className="font-sans text-lg font-semibold text-primary mb-2">{benefit.title}</h4>
@@ -95,10 +95,10 @@ const IndustryTemplate: React.FC<IndustryTemplateProps> = ({ content }) => {
       {/* Use Cases Section */}
       <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
         <div className="flex items-center gap-4 mb-8">
-          <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center">
-            {content.useCasesSection.icon ? <content.useCasesSection.icon className="w-6 h-6 text-white" /> : <Target className="w-6 h-6 text-white" />}
+          <div className="hidden sm:flex w-14 h-14 flex-shrink-0 bg-gradient-to-br from-primary to-primary-dark rounded-full items-center justify-center shadow-lg">
+            {content.useCasesSection.icon ? <content.useCasesSection.icon className="w-7 h-7 text-white" /> : <Target className="w-7 h-7 text-white" />}
           </div>
-          <h3 className="font-heading text-3xl md:text-4xl font-normal text-primary">{content.useCasesSection.title}</h3>
+          <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal text-primary">{content.useCasesSection.title}</h3>
         </div>
         <div className="space-y-6">
           {content.useCasesSection.useCases.map((useCase, index) => (

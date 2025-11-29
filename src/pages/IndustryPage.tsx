@@ -61,11 +61,11 @@ const IndustryPage: React.FC = () => {
               <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
             </div>
             
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white mb-6">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white mb-4 sm:mb-6">
                 Industry-Specific AI Solutions
               </h1>
-              <p className="font-sans text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed">
+              <p className="font-sans text-base sm:text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed">
                 Discover how the platform can be tailored to meet the unique challenges and opportunities in your industry
               </p>
             </div>
@@ -84,8 +84,8 @@ const IndustryPage: React.FC = () => {
                   >
                     <div className="p-8 flex-grow">
                       {Icon && (
-                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center mb-5 group-hover:from-accent/20 group-hover:to-accent/10 transition-colors">
-                          <Icon className="h-7 w-7 text-accent" />
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center mb-5 group-hover:from-accent/20 group-hover:to-accent/10 transition-colors shadow-sm">
+                          <Icon className="h-8 w-8 text-accent" />
                         </div>
                       )}
                       <h3 className="font-heading text-2xl font-medium text-primary group-hover:text-accent transition-colors mb-3">
@@ -110,9 +110,9 @@ const IndustryPage: React.FC = () => {
               <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
                 <div className="lg:grid lg:grid-cols-12 lg:gap-8 p-8 md:p-12">
                   <div className="lg:col-span-7 mb-8 lg:mb-0">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                        <Calculator className="w-6 h-6 text-accent" />
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-6">
+                      <div className="w-16 h-16 sm:w-14 sm:h-14 flex-shrink-0 rounded-full bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center shadow-sm">
+                        <Calculator className="w-8 h-8 sm:w-7 sm:h-7 text-accent" />
                       </div>
                       <h3 className="font-heading text-primary text-xl md:text-2xl font-normal">
                         Calculate Your Potential Savings
@@ -173,8 +173,8 @@ const IndustryPage: React.FC = () => {
                   Connect with our industry specialists to explore how ReadyAI can secure and scale your AI operations
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/contact">
-                    <button className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <Link to="/contact" className="w-full sm:w-auto">
+                    <button className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                       Contact Our Team
                       <ArrowRight className="w-5 h-5" />
                     </button>
@@ -182,7 +182,7 @@ const IndustryPage: React.FC = () => {
                   <CalendlyBtn
                     url="https://calendly.com/readyai-sales"
                     text="Schedule a Demo"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
                   />
                 </div>
               </div>
@@ -198,9 +198,9 @@ const IndustryPage: React.FC = () => {
               <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
             </div>
             
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-              <div className="flex items-center justify-between mb-8">
-                <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
+                <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white">
                   {selectedIndustry.name}
                 </h1>
                 <div className="hidden sm:block">
@@ -213,12 +213,12 @@ const IndustryPage: React.FC = () => {
               </div>
               <div>
                 {industryId === 'financial' && (
-                  <p className="font-sans text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed">
+                  <p className="font-sans text-base sm:text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed">
                     We understand your industry, we've done this before, and we have trusted partners who can support you. 
                   </p>
                 )}
                 {selectedIndustry.industryStatement && (
-                  <p className="font-sans text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedIndustry.industryStatement }}>
+                  <p className="font-sans text-base sm:text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedIndustry.industryStatement }}>
                   </p>
                 )}
               </div>
@@ -265,11 +265,11 @@ const IndustryPage: React.FC = () => {
                 <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-accent2-lightest rounded-2xl p-8 md:p-12 border border-primary/10 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
                   <div className="relative">
-                    <div className="flex items-center gap-4 mb-8">
-                      <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent-dark rounded-xl flex items-center justify-center">
-                        <Shield className="w-6 h-6 text-white" />
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+                      <div className="w-16 h-16 sm:w-14 sm:h-14 flex-shrink-0 bg-gradient-to-br from-accent to-accent-dark rounded-full flex items-center justify-center shadow-lg">
+                        <Shield className="w-8 h-8 sm:w-7 sm:h-7 text-white" />
                       </div>
-                      <h3 className="font-heading text-3xl md:text-4xl font-normal text-primary">Secure. Compliant. Built for Confidence.</h3>
+                      <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal text-primary">Secure. Compliant. Built for Confidence.</h3>
                     </div>
                     <div className="space-y-4">
                       <p className="font-sans text-base text-primary-light leading-relaxed">
@@ -290,11 +290,11 @@ const IndustryPage: React.FC = () => {
 
                 {/* Transforming Financial Services */}
                 <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center">
-                      <Brain className="w-6 h-6 text-white" />
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+                    <div className="w-16 h-16 sm:w-14 sm:h-14 flex-shrink-0 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center shadow-lg">
+                      <Brain className="w-8 h-8 sm:w-7 sm:h-7 text-white" />
                     </div>
-                    <h3 className="font-heading text-3xl md:text-4xl font-normal text-primary">Transforming Financial Services with Responsible AI</h3>
+                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal text-primary">Transforming Financial Services with Responsible AI</h3>
                   </div>
                   <p className="font-sans text-base text-primary-light leading-relaxed">
                     ReadyAI.dev allows financial enterprises to modernize safely — automating document processing, assessing credit risk, and managing compliance without sacrificing control. Our platform provides leaders with full visibility, auditability, and accountability across every model and decision.
@@ -303,11 +303,11 @@ const IndustryPage: React.FC = () => {
 
                 {/* Why Financial Leaders Choose ReadyAI.dev */}
                 <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent-dark rounded-xl flex items-center justify-center">
-                      <TrendingUp className="w-6 h-6 text-white" />
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+                    <div className="w-16 h-16 sm:w-14 sm:h-14 flex-shrink-0 bg-gradient-to-br from-accent to-accent-dark rounded-full flex items-center justify-center shadow-lg">
+                      <TrendingUp className="w-8 h-8 sm:w-7 sm:h-7 text-white" />
                     </div>
-                    <h3 className="font-heading text-3xl md:text-4xl font-normal text-primary">Why Financial Leaders Choose ReadyAI.dev</h3>
+                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal text-primary">Why Financial Leaders Choose ReadyAI.dev</h3>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div className="bg-white rounded-xl p-6 border border-gray-100 hover:border-accent/30 transition-all duration-300 hover:shadow-lg">
@@ -356,11 +356,11 @@ const IndustryPage: React.FC = () => {
 
                 {/* Use Cases */}
                 <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 border border-gray-100">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center">
-                      <Target className="w-6 h-6 text-white" />
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+                    <div className="w-16 h-16 sm:w-14 sm:h-14 flex-shrink-0 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center shadow-lg">
+                      <Target className="w-8 h-8 sm:w-7 sm:h-7 text-white" />
                     </div>
-                    <h3 className="font-heading text-3xl md:text-4xl font-normal text-primary">Use Cases</h3>
+                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal text-primary">Use Cases</h3>
                   </div>
         <div className="space-y-6">
           <div className="p-6 bg-white rounded-xl border border-gray-100 hover:border-accent/30 hover:shadow-md transition-all duration-300">
@@ -404,9 +404,9 @@ const IndustryPage: React.FC = () => {
               <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
                 <div className="lg:grid lg:grid-cols-12 lg:gap-8 p-8 md:p-12">
                   <div className="lg:col-span-7 mb-8 lg:mb-0">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                        <Calculator className="w-6 h-6 text-accent" />
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-6">
+                      <div className="w-16 h-16 sm:w-14 sm:h-14 flex-shrink-0 rounded-full bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center shadow-sm">
+                        <Calculator className="w-8 h-8 sm:w-7 sm:h-7 text-accent" />
                       </div>
                       <h3 className="font-heading text-primary text-xl md:text-2xl font-normal">
                         Calculate Your Potential Savings
@@ -467,8 +467,8 @@ const IndustryPage: React.FC = () => {
                   Connect with our industry specialists to explore how ReadyAI can secure and scale your AI operations
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/contact">
-                    <button className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <Link to="/contact" className="w-full sm:w-auto">
+                    <button className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                       Contact Our Team
                       <ArrowRight className="w-5 h-5" />
                     </button>
@@ -476,7 +476,7 @@ const IndustryPage: React.FC = () => {
                   <CalendlyBtn
                     url="https://calendly.com/readyai-sales"
                     text="Schedule a Demo"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
                   />
                 </div>
               </div>

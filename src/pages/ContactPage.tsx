@@ -18,16 +18,16 @@ const ContactPage: React.FC = () => {
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20">
           <div className="max-w-3xl">
-            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white mb-6">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white mb-4 sm:mb-6">
               Contact Us
             </h1>
-            <p className="font-sans text-base md:text-lg text-white/90 leading-relaxed mb-4">
+            <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed mb-4">
               Our team is ready to help you implement enterprise-grade AI governance. Whether you&apos;re looking to secure shadow AI, streamline compliance, or scale your AI infrastructure, we&apos;re here to support your journey every step of the way.
             </p>
-            <div className="flex items-center gap-2 text-accent font-sans text-base md:text-lg font-medium">
-              <MessageCircle className="w-5 h-5" />
+            <div className="flex items-center gap-2 text-accent font-sans text-sm sm:text-base md:text-lg font-medium">
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
               <span>Connect with our AI governance experts today.</span>
             </div>
           </div>
@@ -35,16 +35,16 @@ const ContactPage: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:items-start">
           {/* Left Column - Contact Form */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-8">
-              <div className="mb-8">
-                <h2 className="font-heading text-3xl md:text-4xl font-normal text-primary mb-2">
+            <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-5 sm:p-8">
+              <div className="mb-6 sm:mb-8">
+                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal text-primary mb-2">
                   Get in Touch
                 </h2>
-                <p className="font-sans text-base text-primary-light leading-relaxed">
+                <p className="font-sans text-sm sm:text-base text-primary-light leading-relaxed">
                   Fill out the form below and our team will respond within one business day.
                 </p>
               </div>

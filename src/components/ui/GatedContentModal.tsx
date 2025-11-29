@@ -111,23 +111,23 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
       />
       
       {/* Modal */}
-      <div className="flex min-h-full items-center justify-center p-4">
-        <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
+      <div className="flex min-h-full items-end md:items-center justify-center p-0 md:p-4">
+        <div className="relative bg-white rounded-t-2xl md:rounded-2xl shadow-2xl max-w-2xl w-full max-h-[95vh] md:max-h-[90vh] overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-primary-dark text-white p-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+          <div className="bg-gradient-to-r from-primary to-primary-dark text-white p-5 md:p-6">
+            <div className="flex items-start md:items-center justify-between gap-3">
+              <div className="flex items-start md:items-center gap-3 flex-1 min-w-0">
+                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm flex-shrink-0">
                   <Lock className="w-5 h-5" />
                 </div>
-                <div>
-                  <h2 className="text-xl font-semibold">{title}</h2>
-                  <p className="text-white/90 text-sm">{description}</p>
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-lg md:text-xl font-semibold leading-tight mb-1">{title}</h2>
+                  <p className="text-white/90 text-xs md:text-sm leading-snug">{description}</p>
                 </div>
               </div>
               <button
                 onClick={handleClose}
-                className="text-white/80 hover:text-white hover:bg-white/10 rounded-lg p-2 transition-colors"
+                className="text-white/80 hover:text-white hover:bg-white/10 rounded-lg p-2 transition-colors flex-shrink-0"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -135,15 +135,15 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
           </div>
 
           {/* Content */}
-          <div className="p-6">
+          <div className="p-5 md:p-6 overflow-y-auto max-h-[calc(95vh-120px)] md:max-h-[calc(90vh-120px)]">
             {step === 'form' ? (
               <div>
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">{contentTitle}</h3>
-                  <p className="text-gray-600">{contentDescription}</p>
+                  <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">{contentTitle}</h3>
+                  <p className="text-sm md:text-base text-gray-600">{contentDescription}</p>
                 </div>
 
-                <form onSubmit={handleFormSubmit} className="space-y-4">
+                <form onSubmit={handleFormSubmit} className="space-y-3 md:space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Name *
@@ -153,7 +153,7 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       required
                       value={formData.name}
                       onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 md:py-2 text-base focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>
 
@@ -165,7 +165,7 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       type="text"
                       value={formData.company}
                       onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 md:py-2 text-base focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>
 
@@ -178,7 +178,7 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       required
                       value={formData.email}
                       onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 md:py-2 text-base focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>
 
@@ -190,7 +190,7 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 md:py-2 text-base focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>
 

@@ -19,23 +19,24 @@
     line-height: 1.2;
   }
 
+  /* iPhone SE and small mobile optimization */
   h1 {
-    font-size: 3.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
   }
 
   h2 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
   }
 
   h3 {
-    font-size: 1.875rem;
+    font-size: 1.25rem;
     font-weight: 600;
   }
 
   h4 {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: 600;
   }
 
@@ -43,6 +44,55 @@
   p {
     line-height: 1.625;
     letter-spacing: -0.01em;
+  }
+
+  /* Larger mobile (375px+) */
+  @media (min-width: 375px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* Tablet/iPad responsive typography */
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 2.25rem;
+    }
+
+    h3 {
+      font-size: 1.875rem;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
   }
 }
 
@@ -89,5 +139,34 @@
   /* Professional links */
   .link-primary {
     @apply text-accent hover:text-accent-dark transition-colors duration-200 font-medium;
+  }
+
+  /* Mobile-optimized touch targets */
+  @media (max-width: 767px) {
+    button, a {
+      min-height: 44px; /* iOS minimum touch target */
+      min-width: 44px;
+    }
+
+    input, select, textarea {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+  }
+
+  /* iPhone SE specific optimizations */
+  @media (max-width: 374px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  /* iPad/Tablet optimizations */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+      max-width: 100%;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 }

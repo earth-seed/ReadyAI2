@@ -80,18 +80,18 @@ const ROICalculator: React.FC = () => {
       </div>
 
       {calculated && (
-        <div className="mt-6 p-6 bg-gradient-to-br from-accent/10 to-transparent rounded-xl border-2 border-accent/30">
-          <h4 className="font-heading text-primary text-lg font-normal mb-4">Your Potential Savings</h4>
+        <div className="mt-6 p-4 sm:p-6 bg-gradient-to-br from-accent/10 to-transparent rounded-xl border-2 border-accent/30">
+          <h4 className="font-heading text-primary text-base sm:text-lg font-normal mb-4">Your Potential Savings</h4>
 
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
             <div className="bg-white rounded-lg p-4 border border-accent/20">
               <p className="font-sans text-xs uppercase tracking-wide text-primary-light mb-1">Annual Savings</p>
-              <p className="font-heading text-2xl font-normal text-accent">${annualSavings.toLocaleString()}</p>
+              <p className="font-heading text-xl sm:text-2xl font-normal text-accent break-words">${annualSavings.toLocaleString()}</p>
             </div>
 
             <div className="bg-white rounded-lg p-4 border border-accent/20">
               <p className="font-sans text-xs uppercase tracking-wide text-primary-light mb-1">Percentage Savings</p>
-              <p className="font-heading text-2xl font-normal text-accent">{percentageSavings.toFixed(1)}%</p>
+              <p className="font-heading text-xl sm:text-2xl font-normal text-accent">{percentageSavings.toFixed(1)}%</p>
             </div>
           </div>
 

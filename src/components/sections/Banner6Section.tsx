@@ -32,8 +32,8 @@ const Counter = ({ end, duration = 2, prefix = '', suffix = '' }: { end: number;
 export default function Banner6Section() {
   return (
     <SlideAnimator direction="up">
-      <section className="relative bg-accent2-lightest py-20 md:py-32 overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+      <section className="relative bg-accent2-lightest py-16 sm:py-20 md:py-32 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
           
           {/* PART 1: THE ENTERPRISE AI SHIFT */}
           <motion.div

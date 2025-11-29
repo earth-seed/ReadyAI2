@@ -28,17 +28,17 @@ const Header: React.FC = () => {
 
   return (
     <header className="fixed w-full z-50 bg-white shadow-sm">
-      <div className="container mx-auto pl-4 pr-0 sm:pl-6 sm:pr-0 lg:pl-8 lg:pr-0">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto pl-3 pr-0 sm:pl-4 sm:pr-0 md:pl-6 md:pr-0 lg:pl-8 lg:pr-0">
+        <div className="flex items-center justify-between h-14 sm:h-16">
           <Link to="/" className="flex items-center">
             <img 
               src="/readyai-logo.jpg"
               alt="ReadyAI" 
-              className="h-8 w-auto"
+              className="h-7 sm:h-8 w-auto"
             />
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8">
             {NAVIGATION.map((item) => (
               <div key={item.name} className="relative group">
                 <Link 
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center space-x-4 -mr-8">
+          <div className="hidden lg:flex items-center space-x-4 -mr-8">
             <form onSubmit={handleSearch} className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-4 w-4 text-gray-400" />
@@ -104,7 +104,7 @@ const Header: React.FC = () => {
             </a>
           </div>
 
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -122,7 +122,7 @@ const Header: React.FC = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-md">
             {NAVIGATION.map((item) => (
               <div key={item.name}>
