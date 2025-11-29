@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Download, Lock, CheckCircle, ArrowRight } from 'lucide-react';
+import { X, Download, Lock, CheckCircle } from 'lucide-react';
 import Button from './Button';
-import ContactForm from '../layout/ContactForm';
+import { emailSchema } from '../../utils/security';
 
 interface GatedContentModalProps {
   isOpen: boolean;
@@ -28,17 +28,60 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
 }) => {
   const [step, setStep] = useState<'form' | 'success'>('form');
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     company: '',
     email: '',
     phone: '',
     consent: false
   });
+  const [errors, setErrors] = useState<{ email?: string; firstName?: string; lastName?: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Load saved form data from localStorage when modal opens
   useEffect(() => {
     if (isOpen) {
       onTrack?.('gated_content_opened', { title });
       document.body.style.overflow = 'hidden';
+      
+      // Check if user has previously submitted form data
+      const savedData = localStorage.getItem('gated-content-form-data');
+      if (savedData) {
+        try {
+          const parsed = JSON.parse(savedData);
+          // Handle legacy format with single 'name' field
+          if (parsed.name && !parsed.firstName) {
+            const nameParts = parsed.name.trim().split(' ');
+            setFormData({
+              firstName: nameParts[0] || '',
+              lastName: nameParts.slice(1).join(' ') || '',
+              company: parsed.company || '',
+              email: parsed.email || '',
+              phone: parsed.phone || '',
+              consent: parsed.consent || false
+            });
+          } else {
+            setFormData({
+              firstName: parsed.firstName || '',
+              lastName: parsed.lastName || '',
+              company: parsed.company || '',
+              email: parsed.email || '',
+              phone: parsed.phone || '',
+              consent: parsed.consent || false
+            });
+          }
+        } catch (error) {
+          console.warn('Failed to parse saved form data:', error);
+        }
+      }
+
+      // Check if this specific PDF has already been accessed
+      const accessedPDFs = JSON.parse(localStorage.getItem('gated-content-accessed') || '[]');
+      if (accessedPDFs.includes(title)) {
+        // User already accessed this PDF, skip to success
+        setStep('success');
+      }
+      // If savedData exists, form will be pre-filled and user can just click submit
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -51,9 +94,34 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.email || !formData.consent) {
+    // Reset errors
+    setErrors({});
+    
+    // Validate required fields
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.consent) {
+      const newErrors: { email?: string; firstName?: string; lastName?: string } = {};
+      if (!formData.firstName) {
+        newErrors.firstName = 'First name is required';
+      }
+      if (!formData.lastName) {
+        newErrors.lastName = 'Last name is required';
+      }
+      if (!formData.email) {
+        newErrors.email = 'Email is required';
+      }
+      setErrors(newErrors);
       return;
     }
+
+    // Validate email format
+    try {
+      emailSchema.parse(formData.email);
+    } catch (error) {
+      setErrors({ email: 'Please enter a valid email address' });
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       // Submit to eWay-CRM via Netlify Function
@@ -61,7 +129,8 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.name,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
           company: formData.company,
           email: formData.email,
           phone: formData.phone,
@@ -78,6 +147,23 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
 
       console.log('✅ Lead submitted to eWay-CRM successfully:', result);
       
+      // Save form data to localStorage for future use
+      localStorage.setItem('gated-content-form-data', JSON.stringify({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        company: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        consent: formData.consent
+      }));
+
+      // Track which PDFs have been accessed
+      const accessedPDFs = JSON.parse(localStorage.getItem('gated-content-accessed') || '[]');
+      if (!accessedPDFs.includes(title)) {
+        accessedPDFs.push(title);
+        localStorage.setItem('gated-content-accessed', JSON.stringify(accessedPDFs));
+      }
+      
       onFormSubmit?.(formData);
       onTrack?.('gated_content_form_submitted', { title, email: formData.email });
       setStep('success');
@@ -85,6 +171,8 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
       console.error('❌ Error submitting form:', error);
       onTrack?.('gated_content_form_error', { title, error: error.message });
       alert('Failed to submit form. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -144,17 +232,47 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
             {step === 'form' ? (
               <div>
                 <form onSubmit={handleFormSubmit} className="space-y-3 md:space-y-4">
-                  <div>
-                    <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
-                      Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary"
-                    />
+                  <div className="grid grid-cols-2 gap-3 md:gap-4">
+                    <div>
+                      <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
+                        First Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.firstName}
+                        onChange={(e) => {
+                          setFormData(prev => ({ ...prev, firstName: e.target.value }));
+                          if (errors.firstName) setErrors(prev => ({ ...prev, firstName: undefined }));
+                        }}
+                        className={`w-full border rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary ${
+                          errors.firstName ? 'border-red-300' : 'border-gray-300'
+                        }`}
+                      />
+                      {errors.firstName && (
+                        <p className="mt-1 text-xs text-red-600">{errors.firstName}</p>
+                      )}
+                    </div>
+                    <div>
+                      <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
+                        Last Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.lastName}
+                        onChange={(e) => {
+                          setFormData(prev => ({ ...prev, lastName: e.target.value }));
+                          if (errors.lastName) setErrors(prev => ({ ...prev, lastName: undefined }));
+                        }}
+                        className={`w-full border rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary ${
+                          errors.lastName ? 'border-red-300' : 'border-gray-300'
+                        }`}
+                      />
+                      {errors.lastName && (
+                        <p className="mt-1 text-xs text-red-600">{errors.lastName}</p>
+                      )}
+                    </div>
                   </div>
 
                   <div>
@@ -177,9 +295,17 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       type="email"
                       required
                       value={formData.email}
-                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary"
+                      onChange={(e) => {
+                        setFormData(prev => ({ ...prev, email: e.target.value }));
+                        if (errors.email) setErrors(prev => ({ ...prev, email: undefined }));
+                      }}
+                      className={`w-full border rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary ${
+                        errors.email ? 'border-red-300' : 'border-gray-300'
+                      }`}
                     />
+                    {errors.email && (
+                      <p className="mt-1 text-xs text-red-600">{errors.email}</p>
+                    )}
                   </div>
 
                   <div>
@@ -216,10 +342,10 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                     size="lg"
                     isFullWidth
                     className="mt-6"
-                    disabled={!formData.name || !formData.email || !formData.consent}
+                    disabled={!formData.firstName || !formData.lastName || !formData.email || !formData.consent || isSubmitting}
                   >
                     <Lock className="w-4 h-4 mr-2" />
-                    Access Content
+                    {isSubmitting ? 'Submitting...' : 'Access Content'}
                   </Button>
                 </form>
               </div>

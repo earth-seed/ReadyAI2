@@ -20,7 +20,7 @@ const GatedContentSection: React.FC = () => {
     {
       title: "Enterprise AI Governance Framework",
       description: "Step-by-step framework for implementing AI governance",
-      downloadUrl: "/downloads/ai-governance-framework.pdf",
+      downloadUrl: "/downloads/ai-security-playbook.pdf",
       icon: FileText
     }
   ];

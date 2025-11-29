@@ -40,6 +40,10 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+[dev]
+  targetPort = 3000
+  framework = "vite"
+
 [[redirects]]
   from = "/health"
   to = "/.netlify/functions/health"
