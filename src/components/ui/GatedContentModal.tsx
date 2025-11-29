@@ -118,11 +118,16 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
             <div className="flex items-start md:items-center justify-between gap-3">
               <div className="flex items-start md:items-center gap-3 flex-1 min-w-0">
                 <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm flex-shrink-0">
-                  <Lock className="w-5 h-5" />
+                  <Download className="w-5 h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h2 className="text-lg md:text-xl font-semibold leading-tight mb-1">{title}</h2>
-                  <p className="text-white/90 text-xs md:text-sm leading-snug">{description}</p>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h2 className="text-lg md:text-xl font-semibold leading-tight">{title}</h2>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-accent text-primary">
+                      FREE
+                    </span>
+                  </div>
+                  <p className="text-white/90 text-xs md:text-sm leading-snug">{contentDescription}</p>
                 </div>
               </div>
               <button
@@ -138,11 +143,6 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
           <div className="p-5 md:p-6 overflow-y-auto max-h-[calc(95vh-120px)] md:max-h-[calc(90vh-120px)]">
             {step === 'form' ? (
               <div>
-                <div className="text-center mb-5 md:mb-6">
-                  <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-2">{contentTitle}</h3>
-                  <p className="text-xs md:text-base text-gray-600">{contentDescription}</p>
-                </div>
-
                 <form onSubmit={handleFormSubmit} className="space-y-3 md:space-y-4">
                   <div>
                     <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
