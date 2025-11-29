@@ -11,9 +11,9 @@ const HeroSection: React.FC = () => {
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pt-20 pb-12 sm:pt-24 sm:pb-16 md:pt-32 md:pb-24">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid xl:grid-cols-2 gap-16 items-center">
             {/* Left side - Text content */}
-            <div className="max-w-2xl pt-8 md:pt-12">
+            <div className="max-w-2xl pt-8 md:pt-12 mx-auto xl:mx-0">
               <h1 className="font-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-primary leading-[1.1] mb-6 animate-fade-in-up">
                 <span className="block">One Secure Platform.</span>
                 <span className="block">Every AI Model.</span>
@@ -74,7 +74,7 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* Right side - Stacked layers animation */}
-            <div className="hidden lg:flex justify-center items-start pt-8">
+            <div className="hidden xl:flex justify-center items-start pt-8">
               <div className="relative w-[500px] h-[600px] flex items-start justify-center pt-20" style={{ perspective: '2000px', perspectiveOrigin: '50% 50%' }}>
                 {/* Layer 1 - Bottom */}
                 <div 

@@ -39,26 +39,26 @@ const GatedContentSection: React.FC = () => {
       <div className="bg-white py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
+          <div className="text-center mb-12 md:mb-16">
+            <p className="font-sans text-accent text-xs md:text-sm uppercase tracking-widest mb-4 md:mb-6">
               Enterprise Resources
             </p>
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-6">
+            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-primary mb-4 md:mb-6">
               Exclusive Content for AI Leaders
             </h2>
-            <p className="font-sans text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-sans text-sm md:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Download proven frameworks and strategic guides designed for enterprise decision-makers
             </p>
           </div>
 
           {/* Resource Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
             {gatedContentItems.map((item, index) => {
               const IconComponent = item.icon;
               return (
                 <div
                   key={index}
-                  className="relative bg-gradient-to-br from-accent2-lightest to-white border-2 border-gray-100 rounded-2xl p-8 hover:border-accent/30 hover:shadow-xl transition-all duration-300 cursor-pointer group overflow-hidden"
+                  className="relative bg-gradient-to-br from-accent2-lightest to-white border-2 border-gray-100 rounded-2xl p-5 sm:p-6 lg:p-8 hover:border-accent/30 hover:shadow-xl transition-all duration-300 cursor-pointer group overflow-hidden"
                   onClick={() => handleContentClick(item)}
                 >
                   {/* Decorative background element */}
@@ -66,25 +66,25 @@ const GatedContentSection: React.FC = () => {
                   
                   <div className="relative">
                     {/* Icon */}
-                    <div className="w-14 h-14 bg-gradient-to-br from-accent to-accent-dark rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <IconComponent className="w-7 h-7 text-white" />
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-accent to-accent-dark rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                     </div>
                     
                     {/* Title */}
-                    <h3 className="font-heading text-2xl font-semibold text-primary mb-3 group-hover:text-accent transition-colors duration-300">
+                    <h3 className="font-heading text-lg sm:text-xl lg:text-2xl font-semibold text-primary mb-2 sm:mb-3 group-hover:text-accent transition-colors duration-300">
                       {item.title}
                     </h3>
                     
                     {/* Description */}
-                    <p className="font-sans text-base text-gray-600 mb-6 leading-relaxed">
+                    <p className="font-sans text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
                       {item.description}
                     </p>
                     
                     {/* CTA */}
-                    <div className="flex items-center text-accent font-sans font-semibold group-hover:gap-3 gap-2 transition-all duration-300">
-                      <Download className="w-5 h-5" />
+                    <div className="flex items-center text-accent font-sans text-sm sm:text-base font-semibold group-hover:gap-3 gap-2 transition-all duration-300">
+                      <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                       <span>Download Now</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
@@ -93,8 +93,8 @@ const GatedContentSection: React.FC = () => {
           </div>
 
           {/* Bottom Note */}
-          <div className="text-center mt-12">
-            <p className="font-sans text-sm text-gray-500 italic">
+          <div className="text-center mt-8 sm:mt-12">
+            <p className="font-sans text-xs sm:text-sm text-gray-500 italic">
               Complimentary resources for qualified enterprise organizations
             </p>
           </div>
