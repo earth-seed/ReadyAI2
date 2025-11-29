@@ -38,10 +38,36 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
   const [errors, setErrors] = useState<{ email?: string; name?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Load saved form data from localStorage when modal opens
   useEffect(() => {
     if (isOpen) {
       onTrack?.('gated_content_opened', { title });
       document.body.style.overflow = 'hidden';
+      
+      // Check if user has previously submitted form data
+      const savedData = localStorage.getItem('gated-content-form-data');
+      if (savedData) {
+        try {
+          const parsed = JSON.parse(savedData);
+          setFormData({
+            name: parsed.name || '',
+            company: parsed.company || '',
+            email: parsed.email || '',
+            phone: parsed.phone || '',
+            consent: parsed.consent || false
+          });
+        } catch (error) {
+          console.warn('Failed to parse saved form data:', error);
+        }
+      }
+
+      // Check if this specific PDF has already been accessed
+      const accessedPDFs = JSON.parse(localStorage.getItem('gated-content-accessed') || '[]');
+      if (accessedPDFs.includes(title)) {
+        // User already accessed this PDF, skip to success
+        setStep('success');
+      }
+      // If savedData exists, form will be pre-filled and user can just click submit
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -102,6 +128,22 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
       }
 
       console.log('✅ Lead submitted to eWay-CRM successfully:', result);
+      
+      // Save form data to localStorage for future use
+      localStorage.setItem('gated-content-form-data', JSON.stringify({
+        name: formData.name,
+        company: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        consent: formData.consent
+      }));
+
+      // Track which PDFs have been accessed
+      const accessedPDFs = JSON.parse(localStorage.getItem('gated-content-accessed') || '[]');
+      if (!accessedPDFs.includes(title)) {
+        accessedPDFs.push(title);
+        localStorage.setItem('gated-content-accessed', JSON.stringify(accessedPDFs));
+      }
       
       onFormSubmit?.(formData);
       onTrack?.('gated_content_form_submitted', { title, email: formData.email });

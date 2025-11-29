@@ -113,13 +113,75 @@ export const handler: Handler = async (event) => {
 
     console.log('✅ Login successful, sessionId obtained');
 
-    // Step 2: Parse name into FirstName and LastName
+    // Step 2: Check for existing contact by email to avoid duplicates
+    console.log('🔍 Checking for existing contact...');
+    const checkDuplicateResponse = await fetch(`${serviceUrl}/GetContacts`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        sessionId: sessionId,
+        transmitObject: {
+          Email: formData.email.trim(),
+          maxRecords: 1,
+        },
+      }),
+    });
+
+    let existingContact = null;
+    if (checkDuplicateResponse.ok) {
+      try {
+        const checkData = await checkDuplicateResponse.json();
+        if (checkData.Data && Array.isArray(checkData.Data) && checkData.Data.length > 0) {
+          // Check if any contact has matching email
+          const foundContact = checkData.Data.find((contact: any) => 
+            contact.Email && contact.Email.toLowerCase() === formData.email.trim().toLowerCase()
+          );
+          if (foundContact) {
+            existingContact = foundContact;
+            console.log('ℹ️  Contact already exists with this email, skipping creation');
+            console.log('   Existing contact ID:', (existingContact as any).ItemGUID || (existingContact as any).Id);
+          }
+        }
+      } catch (error) {
+        // If GetContacts fails or returns unexpected format, continue with creation
+        console.warn('⚠️  Could not check for duplicates, proceeding with creation:', error);
+      }
+    }
+
+    // Step 3: Parse name into FirstName and LastName
     const nameParts = formData.name.trim().split(' ');
     const firstName = nameParts[0] || '';
     const lastName = nameParts.slice(1).join(' ') || '';
 
-    // Step 3: Create contact/lead in eWay-CRM
-    console.log('📝 Creating contact in eWay-CRM...');
+    // Step 4: Create contact/lead in eWay-CRM (only if not duplicate)
+    if (existingContact) {
+      console.log('✅ Using existing contact, skipping creation');
+      
+      // Logout and return success
+      try {
+        await fetch(`${serviceUrl}/LogOut`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId }),
+        });
+      } catch (logoutError) {
+        console.error('⚠️ Logout failed:', logoutError);
+      }
+
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ 
+          success: true,
+          message: 'Lead already exists',
+          duplicate: true,
+          data: { existing: true }
+        }),
+      };
+    }
+
+    console.log('📝 Creating new contact in eWay-CRM...');
     
     // Build transmitObject - ensure required fields have values
     // eWay CRM requires LastName, so use a fallback if empty
