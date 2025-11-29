@@ -39,3 +39,6 @@ readyai-cms/.tmp
 readyai-cms/dist
 readyai-cms/build
 readyai-cms/.cache
+
+# Local Netlify folder
+.netlify

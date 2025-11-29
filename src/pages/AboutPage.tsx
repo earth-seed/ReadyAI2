@@ -92,12 +92,12 @@ const AboutPage: React.FC = () => {
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-4">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-4">
               AI Confidence for Modern Enterprises
             </h1>
-            <p className="font-sans text-base md:text-lg text-white/90 leading-relaxed">
+            <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">
               We provide secure, enterprise-grade AI platform that helps organizations embrace innovation 
               with clarity, confidence, and compliance.
             </p>
@@ -113,13 +113,13 @@ const AboutPage: React.FC = () => {
               By The Numbers
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="bg-white/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 text-center border border-white/60">
-                <div className="font-heading text-4xl md:text-5xl lg:text-6xl font-normal text-accent mb-2">
+              <div key={index} className="bg-white/40 backdrop-blur-sm rounded-2xl p-4 sm:p-6 md:p-8 text-center border border-white/60">
+                <div className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-accent mb-2">
                   {stat.number}
                 </div>
-                <div className="font-sans text-gray-700 text-base md:text-lg">{stat.label}</div>
+                <div className="font-sans text-gray-700 text-sm sm:text-base md:text-lg">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -263,18 +263,18 @@ const AboutPage: React.FC = () => {
                   <img 
                     src="/assets/images/readyai-carol-eastman.jpeg" 
                     alt="Carol Eastman - CEO of ReadyAI" 
-                    className="w-full h-full object-cover min-h-[300px]"
+                    className="w-full h-full object-cover min-h-[250px] sm:min-h-[300px]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
                 </div>
                 
                 {/* Header Info */}
-                <div className="lg:col-span-3 p-6 md:p-8">
+                <div className="lg:col-span-3 p-5 sm:p-6 md:p-8">
                   <div className="mb-4">
-                    <h3 className="font-heading text-3xl md:text-4xl font-medium text-primary mb-2">
+                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-primary mb-2">
                       Carol Eastman
                     </h3>
-                    <p className="font-sans text-xl text-accent font-semibold mb-3">CEO & Founder</p>
+                    <p className="font-sans text-lg sm:text-xl text-accent font-semibold mb-3">CEO & Founder</p>
                     <a 
                       href="https://www.linkedin.com/in/carol-eastman/" 
                       target="_blank"
@@ -288,7 +288,7 @@ const AboutPage: React.FC = () => {
                     </a>
                   </div>
 
-                  <p className="font-sans text-gray-700 text-base md:text-lg leading-relaxed">
+                  <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
                     Carol Eastman is an accomplished technology entrepreneur and CEO with a career spanning multiple successful ventures in security, communications, and disruptive technologies. Carol has founded, scaled, and successfully exited companies to global enterprises—including two strategic acquisitions that validated her vision and execution.
                   </p>
                 </div>
@@ -296,10 +296,10 @@ const AboutPage: React.FC = () => {
             </div>
 
             {/* Bio Content - Two Column Layout */}
-            <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                <div className="space-y-6">
-                  <p className="font-sans text-gray-700 text-base md:text-lg leading-relaxed">
+            <div className="bg-white rounded-2xl shadow-2xl p-5 sm:p-8 md:p-12">
+              <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
+                <div className="space-y-4 sm:space-y-6">
+                  <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
                     As the founder and leader of ReadyAI.dev, Carol has built an AI company that addresses the critical gap between AI innovation and enterprise readiness. ReadyAI.dev provides professional services for innovative AI solutions and serves as a best-in-class enterprise platform that enables businesses to host all of their internal AI operations.
                   </p>
 
@@ -312,8 +312,8 @@ const AboutPage: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="space-y-6">
-                  <p className="font-sans text-gray-700 text-base md:text-lg leading-relaxed">
+                <div className="space-y-4 sm:space-y-6">
+                  <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
                     As a data-driven executive, Carol doesn't rely solely on intuition—she demands intelligence. Every strategic decision, from product development to market positioning, is grounded in rigorous analysis and informed by real-world insights.
                   </p>
 
@@ -353,7 +353,7 @@ const AboutPage: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 max-w-6xl mx-auto">
             {[
               { icon: Globe, label: 'C-Level Leaders' },
               { icon: Users, label: 'Directors' },
@@ -362,9 +362,9 @@ const AboutPage: React.FC = () => {
               { icon: Lock, label: 'Educational Institutions' },
               { icon: Shield, label: 'Government Agencies' }
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 text-center hover:shadow-md transition-all">
-                <item.icon className="w-10 h-10 text-accent mx-auto mb-3" />
-                <p className="font-sans text-sm font-semibold text-gray-700">{item.label}</p>
+              <div key={index} className="bg-white rounded-xl p-4 sm:p-6 text-center hover:shadow-md transition-all">
+                <item.icon className="w-8 h-8 sm:w-10 sm:h-10 text-accent mx-auto mb-2 sm:mb-3" />
+                <p className="font-sans text-xs sm:text-sm font-semibold text-gray-700">{item.label}</p>
               </div>
             ))}
           </div>
@@ -372,12 +372,12 @@ const AboutPage: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-br from-primary via-primary-light to-primary-dark py-20 md:py-32">
+      <div className="bg-gradient-to-br from-primary via-primary-light to-primary-dark py-16 sm:py-20 md:py-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-4 sm:mb-6">
             Ready to Transform Your AI Strategy?
           </h2>
-          <p className="font-sans text-lg md:text-xl text-white/90 mb-12 leading-relaxed">
+          <p className="font-sans text-base sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-12 leading-relaxed">
             Whether you're exploring LLM integration, AI-powered workflows, or organizational AI governance, 
             our platform can help you&nbsp;succeed.
           </p>

@@ -23,7 +23,7 @@ const faqCategories: FAQCategory[] = [
       {
         question: 'How does the ReadyAI.dev Platform benefit your enterprise?',
         answer:
-          'ReadyAI.dev gives you one secure, unified space to manage your entire AI ecosystem. You can connect to multiple LLMs in one place, monitor usage and costs, and stay fully compliant across every department. Your CIO, or whoever oversees your AI strategy, gets complete visibility and control from a single dashboard.\n\n→ Learn more in our Solutions section',
+          'ReadyAI.dev gives you one secure, unified space to manage your entire AI ecosystem. You can connect to multiple LLMs in one place, monitor usage and costs, and stay fully compliant across every department. Your CIO, or whoever oversees your AI strategy, gets complete visibility and control from a single dashboard.\n\n→ Learn more in our Platform page',
       },
       {
         question: 'What makes ReadyAI.dev different from other AI firms?',
@@ -33,7 +33,7 @@ const faqCategories: FAQCategory[] = [
       {
         question: 'How does the platform simplify LLM access and management?',
         answer:
-          'You get unlimited LLM options, all for one price. The platform brings everything together: model access, permissions, performance data, and governance controls. That means you can test and scale AI safely while keeping full visibility over how, where, and why it\'s being used.\n\n→ Explore our Framework for Choosing the Right LLMs',
+          'You get unlimited LLM options, all for one price. The platform brings everything together: model access, permissions, performance data, and governance controls. That means you can test and scale AI safely while keeping full visibility over how, where, and why it\'s being used.',
       },
     ],
   },
@@ -82,7 +82,7 @@ const faqCategories: FAQCategory[] = [
       {
         question: 'Who are your technology and industry partners?',
         answer:
-          'We collaborate with leading organizations such as XXX, XXX, and XXX, as well as enterprise and research partners around the world. These partnerships allow us to share knowledge, host events, and co-develop governance frameworks that make enterprise AI safer and more effective.\n\n→ See upcoming collaborations in our Events & News section.',
+          'We collaborate with leading organizations as well as enterprise and research partners around the world. These partnerships allow us to share knowledge, host events, and co-develop governance frameworks that make enterprise AI safer and more effective.',
       },
     ],
   },
@@ -203,14 +203,10 @@ const FaqPage: React.FC = () => {
                                         let href = '#';
                                         let target = '_self';
                                         
-                                        if (linkText.includes('Solutions section')) {
+                                        if (linkText.includes('Platform page')) {
                                           href = '/solutions';
-                                        } else if (linkText.includes('Framework for Choosing')) {
-                                          href = '/resources';
                                         } else if (linkText.includes('Trust & Security')) {
                                           href = '/solutions/security';
-                                        } else if (linkText.includes('Events & News')) {
-                                          href = '/insights';
                                         }
                                         
                                         return (

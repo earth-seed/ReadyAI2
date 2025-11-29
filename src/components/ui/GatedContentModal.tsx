@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Download, Lock, CheckCircle, ArrowRight } from 'lucide-react';
+import { X, Download, Lock, CheckCircle } from 'lucide-react';
 import Button from './Button';
-import ContactForm from '../layout/ContactForm';
+import { emailSchema } from '../../utils/security';
 
 interface GatedContentModalProps {
   isOpen: boolean;
@@ -28,17 +28,60 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
 }) => {
   const [step, setStep] = useState<'form' | 'success'>('form');
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     company: '',
     email: '',
     phone: '',
     consent: false
   });
+  const [errors, setErrors] = useState<{ email?: string; firstName?: string; lastName?: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Load saved form data from localStorage when modal opens
   useEffect(() => {
     if (isOpen) {
       onTrack?.('gated_content_opened', { title });
       document.body.style.overflow = 'hidden';
+      
+      // Check if user has previously submitted form data
+      const savedData = localStorage.getItem('gated-content-form-data');
+      if (savedData) {
+        try {
+          const parsed = JSON.parse(savedData);
+          // Handle legacy format with single 'name' field
+          if (parsed.name && !parsed.firstName) {
+            const nameParts = parsed.name.trim().split(' ');
+            setFormData({
+              firstName: nameParts[0] || '',
+              lastName: nameParts.slice(1).join(' ') || '',
+              company: parsed.company || '',
+              email: parsed.email || '',
+              phone: parsed.phone || '',
+              consent: parsed.consent || false
+            });
+          } else {
+            setFormData({
+              firstName: parsed.firstName || '',
+              lastName: parsed.lastName || '',
+              company: parsed.company || '',
+              email: parsed.email || '',
+              phone: parsed.phone || '',
+              consent: parsed.consent || false
+            });
+          }
+        } catch (error) {
+          console.warn('Failed to parse saved form data:', error);
+        }
+      }
+
+      // Check if this specific PDF has already been accessed
+      const accessedPDFs = JSON.parse(localStorage.getItem('gated-content-accessed') || '[]');
+      if (accessedPDFs.includes(title)) {
+        // User already accessed this PDF, skip to success
+        setStep('success');
+      }
+      // If savedData exists, form will be pre-filled and user can just click submit
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -51,9 +94,34 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.email || !formData.consent) {
+    // Reset errors
+    setErrors({});
+    
+    // Validate required fields
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.consent) {
+      const newErrors: { email?: string; firstName?: string; lastName?: string } = {};
+      if (!formData.firstName) {
+        newErrors.firstName = 'First name is required';
+      }
+      if (!formData.lastName) {
+        newErrors.lastName = 'Last name is required';
+      }
+      if (!formData.email) {
+        newErrors.email = 'Email is required';
+      }
+      setErrors(newErrors);
       return;
     }
+
+    // Validate email format
+    try {
+      emailSchema.parse(formData.email);
+    } catch (error) {
+      setErrors({ email: 'Please enter a valid email address' });
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       // Submit to eWay-CRM via Netlify Function
@@ -61,7 +129,8 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.name,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
           company: formData.company,
           email: formData.email,
           phone: formData.phone,
@@ -78,6 +147,23 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
 
       console.log('✅ Lead submitted to eWay-CRM successfully:', result);
       
+      // Save form data to localStorage for future use
+      localStorage.setItem('gated-content-form-data', JSON.stringify({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        company: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        consent: formData.consent
+      }));
+
+      // Track which PDFs have been accessed
+      const accessedPDFs = JSON.parse(localStorage.getItem('gated-content-accessed') || '[]');
+      if (!accessedPDFs.includes(title)) {
+        accessedPDFs.push(title);
+        localStorage.setItem('gated-content-accessed', JSON.stringify(accessedPDFs));
+      }
+      
       onFormSubmit?.(formData);
       onTrack?.('gated_content_form_submitted', { title, email: formData.email });
       setStep('success');
@@ -85,6 +171,8 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
       console.error('❌ Error submitting form:', error);
       onTrack?.('gated_content_form_error', { title, error: error.message });
       alert('Failed to submit form. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -111,23 +199,28 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
       />
       
       {/* Modal */}
-      <div className="flex min-h-full items-center justify-center p-4">
-        <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
+      <div className="flex min-h-full items-end md:items-center justify-center p-0 md:p-4">
+        <div className="relative bg-white rounded-t-2xl md:rounded-2xl shadow-2xl max-w-2xl w-full max-h-[95vh] md:max-h-[90vh] overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-primary-dark text-white p-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
-                  <Lock className="w-5 h-5" />
+          <div className="bg-gradient-to-r from-primary to-primary-dark text-white p-5 md:p-6">
+            <div className="flex items-start md:items-center justify-between gap-3">
+              <div className="flex items-start md:items-center gap-3 flex-1 min-w-0">
+                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm flex-shrink-0">
+                  <Download className="w-5 h-5" />
                 </div>
-                <div>
-                  <h2 className="text-xl font-semibold">{title}</h2>
-                  <p className="text-white/90 text-sm">{description}</p>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h2 className="text-lg md:text-xl font-semibold leading-tight">{title}</h2>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-accent text-primary">
+                      FREE
+                    </span>
+                  </div>
+                  <p className="text-white/90 text-xs md:text-sm leading-snug">{contentDescription}</p>
                 </div>
               </div>
               <button
                 onClick={handleClose}
-                className="text-white/80 hover:text-white hover:bg-white/10 rounded-lg p-2 transition-colors"
+                className="text-white/80 hover:text-white hover:bg-white/10 rounded-lg p-2 transition-colors flex-shrink-0"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -135,62 +228,95 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
           </div>
 
           {/* Content */}
-          <div className="p-6">
+          <div className="p-5 md:p-6 overflow-y-auto max-h-[calc(95vh-120px)] md:max-h-[calc(90vh-120px)]">
             {step === 'form' ? (
               <div>
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">{contentTitle}</h3>
-                  <p className="text-gray-600">{contentDescription}</p>
-                </div>
-
-                <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-primary"
-                    />
+                <form onSubmit={handleFormSubmit} className="space-y-3 md:space-y-4">
+                  <div className="grid grid-cols-2 gap-3 md:gap-4">
+                    <div>
+                      <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
+                        First Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.firstName}
+                        onChange={(e) => {
+                          setFormData(prev => ({ ...prev, firstName: e.target.value }));
+                          if (errors.firstName) setErrors(prev => ({ ...prev, firstName: undefined }));
+                        }}
+                        className={`w-full border rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary ${
+                          errors.firstName ? 'border-red-300' : 'border-gray-300'
+                        }`}
+                      />
+                      {errors.firstName && (
+                        <p className="mt-1 text-xs text-red-600">{errors.firstName}</p>
+                      )}
+                    </div>
+                    <div>
+                      <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
+                        Last Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.lastName}
+                        onChange={(e) => {
+                          setFormData(prev => ({ ...prev, lastName: e.target.value }));
+                          if (errors.lastName) setErrors(prev => ({ ...prev, lastName: undefined }));
+                        }}
+                        className={`w-full border rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary ${
+                          errors.lastName ? 'border-red-300' : 'border-gray-300'
+                        }`}
+                      />
+                      {errors.lastName && (
+                        <p className="mt-1 text-xs text-red-600">{errors.lastName}</p>
+                      )}
+                    </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
                       Company
                     </label>
                     <input
                       type="text"
                       value={formData.company}
                       onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
                       Email *
                     </label>
                     <input
                       type="email"
                       required
                       value={formData.email}
-                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-primary"
+                      onChange={(e) => {
+                        setFormData(prev => ({ ...prev, email: e.target.value }));
+                        if (errors.email) setErrors(prev => ({ ...prev, email: undefined }));
+                      }}
+                      className={`w-full border rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary ${
+                        errors.email ? 'border-red-300' : 'border-gray-300'
+                      }`}
                     />
+                    {errors.email && (
+                      <p className="mt-1 text-xs text-red-600">{errors.email}</p>
+                    )}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
                       Phone
                     </label>
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>
 
@@ -202,7 +328,7 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       onChange={(e) => setFormData(prev => ({ ...prev, consent: e.target.checked }))}
                       className="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
                     />
-                    <label htmlFor="consent" className="text-sm text-gray-600">
+                    <label htmlFor="consent" className="text-xs md:text-sm text-gray-600">
                       I agree to the{' '}
                       <a href="/privacy-policy" className="text-primary hover:text-primary-dark underline">
                         privacy policy
@@ -216,20 +342,20 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                     size="lg"
                     isFullWidth
                     className="mt-6"
-                    disabled={!formData.name || !formData.email || !formData.consent}
+                    disabled={!formData.firstName || !formData.lastName || !formData.email || !formData.consent || isSubmitting}
                   >
                     <Lock className="w-4 h-4 mr-2" />
-                    Access Content
+                    {isSubmitting ? 'Submitting...' : 'Access Content'}
                   </Button>
                 </form>
               </div>
             ) : (
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-green-600" />
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-7 h-7 md:w-8 md:h-8 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">Access Granted!</h3>
-                <p className="text-gray-600 mb-6">
+                <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-2">Access Granted!</h3>
+                <p className="text-sm md:text-base text-gray-600 mb-6">
                   Thank you for providing your information. You can now access the content.
                 </p>
                 

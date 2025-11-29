@@ -154,7 +154,7 @@ const ContactForm: React.FC = () => {
           id="name"
           value={formData.name}
           onChange={handleChange}
-          className={`mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-accent focus:border-accent sm:text-sm ${
+          className={`mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-accent focus:border-accent px-4 py-2.5 text-base ${
             errors.name ? 'border-red-500' : ''
           }`}
         />
@@ -171,7 +171,7 @@ const ContactForm: React.FC = () => {
           id="company"
           value={formData.company}
           onChange={handleChange}
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-accent focus:border-accent sm:text-sm"
+          className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-accent focus:border-accent px-4 py-2.5 text-base"
         />
       </div>
 
@@ -185,7 +185,7 @@ const ContactForm: React.FC = () => {
           id="email"
           value={formData.email}
           onChange={handleChange}
-          className={`mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-accent focus:border-accent sm:text-sm ${
+          className={`mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-accent focus:border-accent px-4 py-2.5 text-base ${
             errors.email ? 'border-red-500' : ''
           }`}
         />
@@ -202,7 +202,7 @@ const ContactForm: React.FC = () => {
           id="phone"
           value={formData.phone}
           onChange={handleChange}
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-accent focus:border-accent sm:text-sm"
+          className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-accent focus:border-accent px-4 py-2.5 text-base"
         />
       </div>
 
@@ -216,7 +216,7 @@ const ContactForm: React.FC = () => {
           rows={4}
           value={formData.message}
           onChange={handleChange}
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-accent focus:border-accent sm:text-sm"
+          className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-accent focus:border-accent px-4 py-2.5 text-base"
         />
       </div>
 

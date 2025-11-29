@@ -80,22 +80,22 @@ const ROICalculator: React.FC = () => {
       </div>
 
       {calculated && (
-        <div className="mt-6 p-6 bg-gradient-to-br from-accent/10 to-transparent rounded-xl border-2 border-accent/30">
-          <h4 className="font-heading text-primary text-lg font-normal mb-4">Your Potential Savings</h4>
+        <div className="mt-6 p-3 sm:p-4 lg:p-6 bg-gradient-to-br from-accent/10 to-transparent rounded-xl border-2 border-accent/30">
+          <h4 className="font-heading text-primary text-sm sm:text-base lg:text-lg font-normal mb-3">Your Potential Savings</h4>
 
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div className="bg-white rounded-lg p-4 border border-accent/20">
-              <p className="font-sans text-xs uppercase tracking-wide text-primary-light mb-1">Annual Savings</p>
-              <p className="font-heading text-2xl font-normal text-accent">${annualSavings.toLocaleString()}</p>
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4 mb-3">
+            <div className="bg-white rounded-lg p-2 sm:p-3 lg:p-4 border border-accent/20">
+              <p className="font-sans text-[10px] sm:text-xs uppercase tracking-wide text-primary-light mb-1">Annual Savings</p>
+              <p className="font-heading text-base sm:text-lg lg:text-xl xl:text-2xl font-normal text-accent break-words overflow-hidden">${annualSavings.toLocaleString()}</p>
             </div>
 
-            <div className="bg-white rounded-lg p-4 border border-accent/20">
-              <p className="font-sans text-xs uppercase tracking-wide text-primary-light mb-1">Percentage Savings</p>
-              <p className="font-heading text-2xl font-normal text-accent">{percentageSavings.toFixed(1)}%</p>
+            <div className="bg-white rounded-lg p-2 sm:p-3 lg:p-4 border border-accent/20">
+              <p className="font-sans text-[10px] sm:text-xs uppercase tracking-wide text-primary-light mb-1">Percentage Savings</p>
+              <p className="font-heading text-base sm:text-lg lg:text-xl xl:text-2xl font-normal text-accent overflow-hidden">{percentageSavings.toFixed(1)}%</p>
             </div>
           </div>
 
-          <p className="font-sans text-sm text-primary-light leading-relaxed">
+          <p className="font-sans text-[11px] sm:text-xs lg:text-sm text-primary-light leading-relaxed">
             By switching to ReadyAI, you could save <span className="font-semibold text-accent">${annualSavings.toLocaleString()}</span> annually,
             which is <span className="font-semibold text-accent">{percentageSavings.toFixed(1)}%</span> of your current AI spending.
           </p>

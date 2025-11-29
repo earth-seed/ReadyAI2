@@ -5,14 +5,14 @@ import ROICalculator from './ROICalculator';
 
 const CalcSection: React.FC = () => {
   return (
-    <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark py-20 md:py-32 overflow-hidden">
+    <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark py-16 sm:py-20 md:py-32 overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
 
         {/* Top Text Section */}
         <motion.div
@@ -20,35 +20,35 @@ const CalcSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
+          <p className="font-sans text-accent text-xs sm:text-sm md:text-base uppercase tracking-widest mb-4 sm:mb-6">
             Smart Investment
           </p>
-          <h2 className="font-heading text-white text-3xl md:text-4xl lg:text-5xl font-normal mb-6 leading-tight">
+          <h2 className="font-heading text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal mb-4 sm:mb-6 leading-tight">
             AI That Pays for Itself
           </h2>
-          <p className="font-sans text-gray-300 text-base mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-sans text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2">
             AI should cut costs, not create chaos.
           </p>
           
           {/* Price Highlight */}
-          <div className="inline-block bg-accent/10 border border-accent/30 rounded-2xl px-8 py-6 backdrop-blur-sm mb-8">
-            <div className="font-heading text-accent text-4xl md:text-5xl font-normal mb-2">
-              $30 <span className="text-2xl text-gray-400">per user/month</span>
+          <div className="inline-block bg-accent/10 border border-accent/30 rounded-2xl px-6 py-4 sm:px-8 sm:py-6 backdrop-blur-sm mb-6 sm:mb-8">
+            <div className="font-heading text-accent text-3xl sm:text-4xl md:text-5xl font-normal mb-2">
+              $30 <span className="text-xl sm:text-2xl text-gray-400">per user/month</span>
             </div>
           </div>
 
           {/* Feature Bullets */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-300">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-gray-300 px-2">
             <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-accent" />
-              <span className="font-sans text-base md:text-lg">Unlimited agents + every LLM included</span>
+              <Zap className="w-5 h-5 text-accent flex-shrink-0" />
+              <span className="font-sans text-sm sm:text-base md:text-lg">Unlimited agents + every LLM included</span>
             </div>
             <div className="hidden sm:block text-gray-600">•</div>
             <div className="flex items-center gap-2">
-              <TrendingDown className="w-5 h-5 text-accent" />
-              <span className="font-sans text-base md:text-lg">Predictable pricing. Proven savings.</span>
+              <TrendingDown className="w-5 h-5 text-accent flex-shrink-0" />
+              <span className="font-sans text-sm sm:text-base md:text-lg">Predictable pricing. Proven savings.</span>
             </div>
           </div>
         </motion.div>
