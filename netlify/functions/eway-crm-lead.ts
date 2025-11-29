@@ -1,8 +1,18 @@
 import { Handler } from '@netlify/functions';
+import { createHash } from 'crypto';
 
 interface EWayLoginResponse {
   sessionId: string;
   webServiceApiVersion?: string;
+}
+
+/**
+ * Hash password using MD5 for eWay CRM legacy login endpoint
+ * @param password - Plain text password
+ * @returns MD5 hash of the password in lowercase hex format
+ */
+function hashPassword(password: string): string {
+  return createHash('md5').update(password).digest('hex');
 }
 
 interface EWaySaveContactResponse {
@@ -56,6 +66,9 @@ export const handler: Handler = async (event) => {
     console.log(`Service URL: ${serviceUrl}`);
     console.log(`Username: ${username}`);
 
+    // Hash password using MD5 for legacy login endpoint
+    const passwordHash = hashPassword(password);
+
     // Step 1: Login to get sessionId
     const loginResponse = await fetch(`${serviceUrl}/LogIn`, {
       method: 'POST',
@@ -64,7 +77,7 @@ export const handler: Handler = async (event) => {
       },
       body: JSON.stringify({
         userName: username,
-        passwordHash: password,
+        passwordHash: passwordHash,
         appVersion: appVersion,
         clientMachineIdentifier: 'readyai-website',
         clientMachineName: 'ReadyAI Website',
