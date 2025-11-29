@@ -1,18 +1,52 @@
 /**
- * Simple test script for eWay-CRM authentication (no dependencies)
+ * Simple test script for eWay-CRM authentication
  * 
- * Run with environment variables inline:
+ * Loads environment variables from .env file in project root
  * 
- * EWAY_CRM_SERVICE_URL=https://hosting.eway-crm.us/readyai/API \
- * EWAY_CRM_USERNAME=your-email@example.com \
- * EWAY_CRM_PASSWORD=your-password \
- * node test-eway-auth-simple.js
+ * Run: node test-eway-auth-simple.js
  */
+
+import { createHash } from 'crypto';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+// Load .env file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+try {
+  const envFile = readFileSync(join(__dirname, '.env'), 'utf-8');
+  envFile.split('\n').forEach(line => {
+    const trimmedLine = line.trim();
+    if (trimmedLine && !trimmedLine.startsWith('#')) {
+      const [key, ...valueParts] = trimmedLine.split('=');
+      if (key && valueParts.length > 0) {
+        const value = valueParts.join('=').trim();
+        // Remove quotes if present
+        const cleanValue = value.replace(/^["']|["']$/g, '');
+        process.env[key.trim()] = cleanValue;
+      }
+    }
+  });
+} catch (error) {
+  // .env file not found or couldn't be read - that's okay, use process.env
+  console.warn('⚠️  Could not load .env file, using process.env variables');
+}
 
 const serviceUrl = process.env.EWAY_CRM_SERVICE_URL;
 const username = process.env.EWAY_CRM_USERNAME;
 const password = process.env.EWAY_CRM_PASSWORD;
 const appVersion = process.env.EWAY_CRM_APP_VERSION || '1.0';
+
+/**
+ * Hash password using MD5 for eWay CRM legacy login endpoint
+ * @param {string} password - Plain text password
+ * @returns {string} MD5 hash of the password in lowercase hex format
+ */
+function hashPassword(password) {
+  return createHash('md5').update(password).digest('hex');
+}
 
 console.log('\n🧪 Testing eWay-CRM Authentication\n');
 console.log('Configuration:');
@@ -36,6 +70,9 @@ async function testAuth() {
     console.log('🔐 Step 1: Attempting to login...');
     console.log('   Trying REST API endpoint...');
     
+    // Hash password using MD5 for legacy login endpoint
+    const passwordHash = hashPassword(password);
+    
     // Try REST API first
     let loginResponse = await fetch(`${serviceUrl}/LogIn`, {
       method: 'POST',
@@ -45,7 +82,7 @@ async function testAuth() {
       },
       body: JSON.stringify({
         userName: username,
-        passwordHash: password,
+        passwordHash: passwordHash,
         appVersion: appVersion,
       }),
     });
@@ -68,7 +105,7 @@ async function testAuth() {
         },
         body: JSON.stringify({
           userName: username,
-          passwordHash: password,
+          passwordHash: passwordHash,
           appVersion: appVersion,
         }),
       });
