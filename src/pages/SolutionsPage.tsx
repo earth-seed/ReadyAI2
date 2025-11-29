@@ -106,13 +106,13 @@ const SolutionsPage: React.FC = () => {
             </div>
             
             
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
               <div className="max-w-4xl">
-                <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl font-normal text-white mb-8 leading-tight">
+                <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white mb-6 sm:mb-8 leading-tight">
                   Inside the<br /><span className="text-accent">AI Operating Layer</span>
                 </h1>
                 
-                <p className="font-sans text-lg md:text-xl text-white/90 mb-6 leading-relaxed max-w-3xl">
+                <p className="font-sans text-base sm:text-lg md:text-xl text-white/90 mb-6 leading-relaxed max-w-3xl">
                   Every capability in our platform connects back to one purpose: <span className="font-semibold text-white">giving enterprises a single, governed operating layer that unifies every model, agent, and workflow.</span>
                 </p>
                 
@@ -156,7 +156,7 @@ const SolutionsPage: React.FC = () => {
                     <p className="font-heading text-2xl md:text-3xl lg:text-4xl text-primary font-normal mb-4 leading-tight">
                       Your entire internal AI ecosystem — finally unified under one operating layer.
                     </p>
-                    <p className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
+                    <p className="font-sans text-base text-primary-light leading-relaxed">
                       Now you can govern every model and workflow from one secure foundation.
                     </p>
                   </div>
@@ -174,7 +174,7 @@ const SolutionsPage: React.FC = () => {
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-6">
                 Capabilities
               </h2>
-              <p className="font-sans text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              <p className="font-sans text-base text-primary-light max-w-3xl mx-auto leading-relaxed">
                 These capabilities form the intelligence layer that powers your enterprise AI — governed, connected, and built for scale.
               </p>
             </div>
@@ -415,7 +415,7 @@ const SolutionsPage: React.FC = () => {
                     </div>
                   </div>
                   
-                  <div className="space-y-4 text-gray-700 font-sans text-base leading-relaxed">
+                  <div className="space-y-4 text-primary-light font-sans text-base leading-relaxed">
                     <p>
                       Take control of your AI, so you can enjoy optimal AI performance with our built-in lifecycle management.
                     </p>
@@ -444,53 +444,53 @@ const SolutionsPage: React.FC = () => {
                 <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-6">
                   Service Offerings
                 </h2>
-                <p className="font-sans text-base text-gray-700 max-w-3xl mx-auto mb-4 leading-relaxed">
+                <p className="font-sans text-base text-primary-light max-w-3xl mx-auto mb-4 leading-relaxed">
                   Accelerate your AI adoption with expert-led guidance.
                 </p>
-                <p className="font-sans text-base text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                <p className="font-sans text-base text-primary-light max-w-4xl mx-auto leading-relaxed">
                   Our professional services help you implement, scale, and manage your AI ecosystem within the ReadyAI.dev framework — ensuring a smooth, compliant journey from pilot to full deployment.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div className="bg-white rounded-2xl p-8 border border-gray-100 hover:border-accent/30 hover:shadow-lg transition-all duration-300">
-                  <h3 className="font-heading text-xl font-normal text-primary mb-4 pb-4 border-b border-gray-100">AI Strategy Consulting</h3>
-                  <p className="font-sans text-gray-700 leading-relaxed">
+                  <h3 className="font-heading text-lg font-normal text-primary mb-4 pb-4 border-b border-gray-100">AI Strategy Consulting</h3>
+                  <p className="font-sans text-base text-primary-light leading-relaxed">
                     Define your AI roadmap, governance policies, and integration strategy to drive effective AI adoption.
                   </p>
                 </div>
 
                 <div className="bg-white rounded-2xl p-8 border border-gray-100 hover:border-accent/30 hover:shadow-lg transition-all duration-300">
-                  <h3 className="font-heading text-xl font-normal text-primary mb-4 pb-4 border-b border-gray-100">Change Management</h3>
-                  <p className="font-sans text-gray-700 leading-relaxed">
+                  <h3 className="font-heading text-lg font-normal text-primary mb-4 pb-4 border-b border-gray-100">Change Management</h3>
+                  <p className="font-sans text-base text-primary-light leading-relaxed">
                     Support your teams through adoption with structured enablement.
                   </p>
                 </div>
 
                 <div className="bg-white rounded-2xl p-8 border border-gray-100 hover:border-accent/30 hover:shadow-lg transition-all duration-300">
-                  <h3 className="font-heading text-xl font-normal text-primary mb-4 pb-4 border-b border-gray-100">Implementation Services</h3>
-                  <p className="font-sans text-gray-700 leading-relaxed">
+                  <h3 className="font-heading text-lg font-normal text-primary mb-4 pb-4 border-b border-gray-100">Implementation Services</h3>
+                  <p className="font-sans text-base text-primary-light leading-relaxed">
                     Integrate ReadyAI.dev with your existing tools, data pipelines, and cloud infrastructure to streamline your workflow.
                   </p>
                 </div>
 
                 <div className="bg-white rounded-2xl p-8 border border-gray-100 hover:border-accent/30 hover:shadow-lg transition-all duration-300">
-                  <h3 className="font-heading text-xl font-normal text-primary mb-4 pb-4 border-b border-gray-100">Pilots</h3>
-                  <p className="font-sans text-gray-700 leading-relaxed">
+                  <h3 className="font-heading text-lg font-normal text-primary mb-4 pb-4 border-b border-gray-100">Pilots</h3>
+                  <p className="font-sans text-base text-primary-light leading-relaxed">
                     Launch controlled, measurable pilots that prove value while maintaining compliance.
                   </p>
                 </div>
 
                 <div className="bg-white rounded-2xl p-8 border border-gray-100 hover:border-accent/30 hover:shadow-lg transition-all duration-300">
-                  <h3 className="font-heading text-xl font-normal text-primary mb-4 pb-4 border-b border-gray-100">Training & Enablement</h3>
-                  <p className="font-sans text-gray-700 leading-relaxed">
+                  <h3 className="font-heading text-lg font-normal text-primary mb-4 pb-4 border-b border-gray-100">Training & Enablement</h3>
+                  <p className="font-sans text-base text-primary-light leading-relaxed">
                     Equip business and technical teams with the knowledge to govern and scale AI responsibly.
                   </p>
                 </div>
 
                 <div className="bg-white rounded-2xl p-8 border border-gray-100 hover:border-accent/30 hover:shadow-lg transition-all duration-300">
-                  <h3 className="font-heading text-xl font-normal text-primary mb-4 pb-4 border-b border-gray-100">Virtual AI Architect</h3>
-                  <p className="font-sans text-gray-700 leading-relaxed">
+                  <h3 className="font-heading text-lg font-normal text-primary mb-4 pb-4 border-b border-gray-100">Virtual AI Architect</h3>
+                  <p className="font-sans text-base text-primary-light leading-relaxed">
                     On-demand technical leadership to design and deploy secure AI environments.
                   </p>
                 </div>
@@ -553,7 +553,7 @@ const SolutionsPage: React.FC = () => {
                 <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-6">
                   Trust Elements
                 </h2>
-                <p className="font-sans text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                <p className="font-sans text-base text-primary-light max-w-3xl mx-auto leading-relaxed">
                   Security and compliance — built into every layer of the platform.
                 </p>
               </div>
@@ -575,7 +575,7 @@ const SolutionsPage: React.FC = () => {
                 {/* Governance Architecture */}
                 <div>
                   <h3 className="font-heading text-xl md:text-2xl font-normal text-primary mb-6">Governance Architecture</h3>
-                  <p className="font-sans text-sm text-gray-600 mb-6 max-w-2xl">
+                  <p className="font-sans text-base text-primary-light mb-6 max-w-2xl">
                     Four interconnected layers ensure complete AI governance and compliance
                   </p>
                   
@@ -588,7 +588,7 @@ const SolutionsPage: React.FC = () => {
                         </div>
                         <div>
                           <h4 className="font-heading text-lg font-normal text-primary mb-1">Audits Layer</h4>
-                          <p className="font-sans text-sm text-gray-600 leading-relaxed">Logging, tracking, compliance reporting, and audit trails</p>
+                          <p className="font-sans text-base text-primary-light leading-relaxed">Logging, tracking, compliance reporting, and audit trails</p>
                         </div>
                       </div>
                     </div>
@@ -601,7 +601,7 @@ const SolutionsPage: React.FC = () => {
                         </div>
                         <div>
                           <h4 className="font-heading text-lg font-normal text-primary mb-1">Users Layer</h4>
-                          <p className="font-sans text-sm text-gray-600 leading-relaxed">Role-based access, permissions, authentication, and user management</p>
+                          <p className="font-sans text-base text-primary-light leading-relaxed">Role-based access, permissions, authentication, and user management</p>
                         </div>
                       </div>
                     </div>
@@ -614,7 +614,7 @@ const SolutionsPage: React.FC = () => {
                         </div>
                         <div>
                           <h4 className="font-heading text-lg font-normal text-primary mb-1">Models Layer</h4>
-                          <p className="font-sans text-sm text-gray-600 leading-relaxed">Access control, versioning, monitoring, and model governance</p>
+                          <p className="font-sans text-base text-primary-light leading-relaxed">Access control, versioning, monitoring, and model governance</p>
                         </div>
                       </div>
                     </div>
@@ -627,7 +627,7 @@ const SolutionsPage: React.FC = () => {
                         </div>
                         <div>
                           <h4 className="font-heading text-lg font-normal text-primary mb-1">Data Layer</h4>
-                          <p className="font-sans text-sm text-gray-600 leading-relaxed">Encryption, residency, retention policies, and data sovereignty controls</p>
+                          <p className="font-sans text-base text-primary-light leading-relaxed">Encryption, residency, retention policies, and data sovereignty controls</p>
                         </div>
                       </div>
                     </div>
@@ -638,7 +638,7 @@ const SolutionsPage: React.FC = () => {
               {/* Summary CTA */}
               <div className="bg-accent2-lightest rounded-2xl p-8 md:p-10 border border-gray-200 shadow-sm">
                 <div className="text-center">
-                  <p className="font-sans text-base text-gray-700 leading-relaxed mb-6 max-w-3xl mx-auto">
+                  <p className="font-sans text-base text-primary-light leading-relaxed mb-6 max-w-3xl mx-auto">
                     ReadyAI.dev embeds governance into every layer of AI operations — from user permissions to data retention. Our platform ensures your enterprise can innovate with confidence while maintaining transparency, accountability, and trust.
                   </p>
                   <a
@@ -702,7 +702,7 @@ const SolutionsPage: React.FC = () => {
                   <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-normal text-primary border-b border-gray-200 pb-4">
                     AI Agents for Business Automation
                   </h2>
-                  <p className="font-sans text-base text-gray-700 leading-relaxed">
+                  <p className="font-sans text-base text-primary-light leading-relaxed">
                     ReadyAI's AI agents are autonomous programs that can be customized to handle specific tasks and workflows in your organization. 
                     They combine the power of large language models with specialized tools and data access to automate complex processes that 
                     previously required human intervention.
@@ -733,11 +733,13 @@ const SolutionsPage: React.FC = () => {
 
                   {/* Comparison Section */}
                   <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6 text-center">
+                    <h3 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-6 text-center">
                       Pricing Comparison: Direct Subscriptions vs ReadyAI
                     </h3>
                     
                     <div className="max-w-4xl mx-auto">
+                      {/* Desktop Table View */}
+                      <div className="hidden md:block">
                       <div className="grid grid-cols-3 gap-4 mb-4 text-center font-semibold">
                         <div className="text-left text-gray-700">Service</div>
                         <div className="text-gray-900">Direct Subscription</div>
@@ -782,7 +784,60 @@ const SolutionsPage: React.FC = () => {
                               <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
                                 Save 86%
                               </span>
+                              </div>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Mobile Card View */}
+                      <div className="md:hidden space-y-3 sm:space-y-4 mb-6">
+                        {Services.map((service, index) => (
+                          <div key={index} className="bg-white rounded-lg p-3 sm:p-4 border border-gray-200">
+                            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 pb-2 sm:pb-3 border-b border-gray-100">
+                              {service.icon && (
+                                <img
+                                  src={service.icon}
+                                  alt={service.name}
+                                  className="h-5 w-5 sm:h-6 sm:w-6 object-contain flex-shrink-0"
+                                />
+                              )}
+                              <span className="text-sm sm:text-base font-semibold text-gray-900 flex-1 min-w-0 break-words">{service.name}</span>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                              <div>
+                                <div className="text-xs text-gray-500 mb-1">Direct</div>
+                                <div className="text-base sm:text-lg font-semibold text-gray-900">{service.price}</div>
+                              </div>
+                              <div>
+                                <div className="text-xs text-gray-500 mb-1">ReadyAI</div>
+                                <div className="text-base sm:text-lg font-semibold text-accent">Included</div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                        
+                        {/* Mobile Total */}
+                        <div className="bg-white rounded-lg p-4 sm:p-5 border-2 border-gray-300">
+                          <div className="text-center mb-3 sm:mb-4">
+                            <div className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">TOTAL COMPARISON</div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                            <div className="text-center p-3 sm:p-4 bg-red-50 rounded-lg">
+                              <div className="text-xs text-gray-600 mb-1 sm:mb-2">Direct</div>
+                              <div className="text-2xl sm:text-3xl font-bold text-red-600">$210</div>
+                              <div className="text-xs text-gray-500">/mo/seat</div>
+                            </div>
+                            <div className="text-center p-3 sm:p-4 bg-green-50 rounded-lg">
+                              <div className="text-xs text-gray-600 mb-1 sm:mb-2">ReadyAI</div>
+                              <div className="text-2xl sm:text-3xl font-bold text-green-600">$30</div>
+                              <div className="text-xs text-gray-500">/mo/seat</div>
+                            </div>
+                          </div>
+                          <div className="text-center mt-3 sm:mt-4">
+                            <span className="inline-block bg-green-100 text-green-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
+                              Save 86%
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -799,53 +854,53 @@ const SolutionsPage: React.FC = () => {
                   </div>
                   
                   <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Key Features</h3>
+                    <h3 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-6">Key Features</h3>
                     <ul className="space-y-4">
                       <li className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Customizable Workflows</strong> - Design agents to match your exact business processes</span>
+                        <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Customizable Workflows</strong> - Design agents to match your exact business processes</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Tool Integration</strong> - Connect agents to your existing tools and systems</span>
+                        <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Tool Integration</strong> - Connect agents to your existing tools and systems</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Human-in-the-Loop</strong> - Configure when and how agents should involve human oversight</span>
+                        <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Human-in-the-Loop</strong> - Configure when and how agents should involve human oversight</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Visual Creation Interface</strong> - Build agents without coding experience</span>
+                        <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Visual Creation Interface</strong> - Build agents without coding experience</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                        <span className="font-sans text-gray-700"><strong className="text-primary">Security Controls</strong> - Define precise permissions for data access and actions</span>
+                        <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Security Controls</strong> - Define precise permissions for data access and actions</span>
                       </li>
                     </ul>
                   </div>
                   
                   <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                    <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Common Use Cases</h3>
+                    <h3 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-6">Common Use Cases</h3>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <li className="flex items-center gap-3">
                         <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Customer support automation</span>
+                        <span className="font-sans text-base text-primary-light">Customer support automation</span>
                       </li>
                       <li className="flex items-center gap-3">
                         <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Document processing and analysis</span>
+                        <span className="font-sans text-base text-primary-light">Document processing and analysis</span>
                       </li>
                       <li className="flex items-center gap-3">
                         <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Data extraction and reporting</span>
+                        <span className="font-sans text-base text-primary-light">Data extraction and reporting</span>
                       </li>
                       <li className="flex items-center gap-3">
                         <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Meeting scheduling and summarization</span>
+                        <span className="font-sans text-base text-primary-light">Meeting scheduling and summarization</span>
                       </li>
                       <li className="flex items-center gap-3">
                         <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                        <span className="font-sans text-gray-700">Multi-step approval workflows</span>
+                        <span className="font-sans text-base text-primary-light">Multi-step approval workflows</span>
                       </li>
                     </ul>
                   </div>
@@ -857,60 +912,60 @@ const SolutionsPage: React.FC = () => {
                     <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-normal text-primary border-b border-gray-200 pb-4">
                       LLM Integration
                     </h2>
-                    <p className="font-sans text-base text-gray-700 leading-relaxed">
+                    <p className="font-sans text-base text-primary-light leading-relaxed">
                       Access a wide range of industry-leading large language models through a single platform. ReadyAI provides
                       a unified interface to multiple LLMs, allowing you to choose the right model for each specific use case
                       based on performance, cost, and specialized capabilities.
                     </p>
                     
                     <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                      <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Available Models</h3>
+                      <h3 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-6">Available Models</h3>
                       <ul className="space-y-4">
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700">GPT-4 and GPT-3.5 from OpenAI</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed">GPT-4 and GPT-3.5 from OpenAI</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700">Claude 3 from Anthropic</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed">Claude 3 from Anthropic</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700">Gemini from Google</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed">Gemini from Google</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700">Specialized domain models for finance, healthcare, and legal</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed">Specialized domain models for finance, healthcare, and legal</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700">Fine-tuned models on your proprietary data</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed">Fine-tuned models on your proprietary data</span>
                         </li>
                       </ul>
                     </div>
                     
                     <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                      <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Integration Benefits</h3>
+                      <h3 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-6">Integration Benefits</h3>
                       <ul className="space-y-4">
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700"><strong className="text-primary">Cost Optimization</strong> - Route requests to the most cost-effective model for each task</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Cost Optimization</strong> - Route requests to the most cost-effective model for each task</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700"><strong className="text-primary">Model Redundancy</strong> - Automatic fallbacks if a particular provider has downtime</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Model Redundancy</strong> - Automatic fallbacks if a particular provider has downtime</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700"><strong className="text-primary">Unified API</strong> - Consistent interface regardless of the underlying model</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Unified API</strong> - Consistent interface regardless of the underlying model</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700"><strong className="text-primary">Prompt Management</strong> - Centralized storage and versioning of prompts</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Prompt Management</strong> - Centralized storage and versioning of prompts</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700"><strong className="text-primary">Performance Analytics</strong> - Compare model performance across different tasks</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Performance Analytics</strong> - Compare model performance across different tasks</span>
                         </li>
                       </ul>
                     </div>
@@ -922,73 +977,88 @@ const SolutionsPage: React.FC = () => {
                     <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-normal text-primary border-b border-gray-200 pb-4">
                       Enterprise-Grade Security & Compliance
                     </h2>
-                    <p className="font-sans text-base text-gray-700 leading-relaxed">
+                    <p className="font-sans text-base text-primary-light leading-relaxed">
                       The platform is built with security and compliance at its core. Our comprehensive security 
                       features and certifications ensure your AI operations meet the highest industry standards while 
                       protecting sensitive data and maintaining regulatory compliance.
                     </p>
 
                     <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                      <h3 className="font-sans text-2xl font-semibold text-primary mb-6">
+                      <h3 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-6">
                         Security Features & Certifications
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {securityFeatures.map((feature, index) => (
                           <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 hover:border-accent/30 transition-colors">
                             <h4 className="font-sans text-lg font-semibold text-primary mb-2">{feature.name}</h4>
-                            <p className="font-sans text-gray-600">{feature.description}</p>
+                            <p className="font-sans text-base text-primary-light leading-relaxed">{feature.description}</p>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
-                      <h3 className="font-sans text-2xl font-semibold text-primary mb-6">Key Security Measures</h3>
+                      <h3 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-6">Key Security Measures</h3>
                       <ul className="space-y-4">
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700"><strong className="text-primary">Data Privacy</strong> - Comprehensive data protection with encryption at rest and in transit</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Data Privacy</strong> - Comprehensive data protection with encryption at rest and in transit</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700"><strong className="text-primary">Access Management</strong> - Granular role-based access control and user permissions</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Access Management</strong> - Granular role-based access control and user permissions</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700"><strong className="text-primary">Audit Logging</strong> - Detailed activity tracking and compliance reporting</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Audit Logging</strong> - Detailed activity tracking and compliance reporting</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700"><strong className="text-primary">Network Security</strong> - Advanced firewalls and intrusion detection systems</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Network Security</strong> - Advanced firewalls and intrusion detection systems</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-gray-700"><strong className="text-primary">Compliance Monitoring</strong> - Automated compliance checks and reporting</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed"><strong className="text-primary">Compliance Monitoring</strong> - Automated compliance checks and reporting</span>
                         </li>
                       </ul>
                     </div>                    
                   </div>
                 )}
                 
-                {/* CTA Section */}
-                <div className="mt-10 border-t border-gray-200 pt-10">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-                    <div>
-                      <h3 className="font-sans text-lg font-medium text-gray-900">Ready to explore this solution?</h3>
-                      <p className="font-sans mt-1 text-sm text-gray-500">Contact our team for a personalized demonstration.</p>
-                    </div>
-                    <div className="mt-4 sm:mt-0">
-                      <Link to="/contact">
-                        <Button className="w-full sm:w-auto">
-                          Contact Sales
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
+            </div>
+
+            {/* CTA Banner */}
+            <div className="mt-16 bg-gradient-to-br from-primary via-primary-light to-primary-dark rounded-2xl p-12 md:p-16 text-center relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-0 right-0 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
+              
+              <div className="relative z-10">
+                <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-4">
+                  Get Started
+                </p>
+                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6">
+                  Ready to Transform Your AI Strategy?
+                </h2>
+                <p className="font-sans text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Connect with our team to explore how ReadyAI can secure and scale your AI operations
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/contact" className="w-full sm:w-auto">
+                    <button className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                      Contact Our Team
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
+                  </Link>
+                  <CalendlyBtn
+                    url="https://calendly.com/readyai-sales"
+                    text="Schedule a Demo"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
+                  />
                 </div>
               </div>
             </div>
           </div>
+        </div>
       )}
       
     </div>

@@ -137,7 +137,8 @@ const LeadCapturePopup: React.FC<LeadCapturePopupProps> = ({
       }, 3000);
     } catch (error) {
       console.error('Error submitting form:', error);
-      onTrack?.('lead_capture_form_error', { error: error.message });
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      onTrack?.('lead_capture_form_error', { error: errorMessage });
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -150,42 +151,42 @@ const LeadCapturePopup: React.FC<LeadCapturePopupProps> = ({
     <>
       {/* Backdrop */}
       <div 
-        className={`fixed inset-0 bg-black transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black transition-opacity duration-300 z-40 ${
           isAnimating ? 'bg-opacity-30' : 'bg-opacity-0'
         }`}
         onClick={hidePopup}
       />
       
       {/* Popup */}
-      <div className={`fixed bottom-4 right-4 z-50 transition-all duration-300 ${
+      <div className={`fixed bottom-0 left-0 right-0 md:bottom-4 md:right-4 md:left-auto z-50 transition-all duration-300 ${
         isAnimating 
           ? 'translate-y-0 opacity-100' 
           : 'translate-y-full opacity-0'
       }`}>
-        <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-80 border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-2xl w-full md:max-w-sm md:w-80 border border-gray-100 overflow-hidden max-h-[90vh] overflow-y-auto">
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-primary-dark text-white p-4">
+          <div className="bg-gradient-to-r from-primary to-primary-dark text-white p-4 md:p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Sparkles className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-sm">{title}</h3>
+                  <h3 className="font-semibold text-sm leading-tight">{title}</h3>
                 </div>
               </div>
               <button
                 onClick={hidePopup}
-                className="text-white/80 hover:text-white hover:bg-white/10 rounded-lg p-1 transition-colors"
+                className="text-white/80 hover:text-white hover:bg-white/10 rounded-lg p-1 transition-colors flex-shrink-0"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5 md:w-4 md:h-4" />
               </button>
             </div>
           </div>
 
           {/* Content */}
-          <div className="p-4">
-            <p className="text-gray-600 text-sm mb-4">{description}</p>
+          <div className="p-5 md:p-4">
+            <p className="text-gray-600 text-sm mb-4 leading-relaxed">{description}</p>
             
             {submitStatus === 'success' ? (
               <div className="text-center">
