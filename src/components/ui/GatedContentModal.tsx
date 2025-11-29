@@ -138,14 +138,14 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
           <div className="p-5 md:p-6 overflow-y-auto max-h-[calc(95vh-120px)] md:max-h-[calc(90vh-120px)]">
             {step === 'form' ? (
               <div>
-                <div className="text-center mb-6">
-                  <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">{contentTitle}</h3>
-                  <p className="text-sm md:text-base text-gray-600">{contentDescription}</p>
+                <div className="text-center mb-5 md:mb-6">
+                  <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-2">{contentTitle}</h3>
+                  <p className="text-xs md:text-base text-gray-600">{contentDescription}</p>
                 </div>
 
                 <form onSubmit={handleFormSubmit} className="space-y-3 md:space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
                       Name *
                     </label>
                     <input
@@ -153,24 +153,24 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       required
                       value={formData.name}
                       onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 md:py-2 text-base focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
                       Company
                     </label>
                     <input
                       type="text"
                       value={formData.company}
                       onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 md:py-2 text-base focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
                       Email *
                     </label>
                     <input
@@ -178,19 +178,19 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       required
                       value={formData.email}
                       onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 md:py-2 text-base focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
                       Phone
                     </label>
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 md:py-2 text-base focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>
 
@@ -202,7 +202,7 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       onChange={(e) => setFormData(prev => ({ ...prev, consent: e.target.checked }))}
                       className="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
                     />
-                    <label htmlFor="consent" className="text-sm text-gray-600">
+                    <label htmlFor="consent" className="text-xs md:text-sm text-gray-600">
                       I agree to the{' '}
                       <a href="/privacy-policy" className="text-primary hover:text-primary-dark underline">
                         privacy policy
@@ -225,11 +225,11 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
               </div>
             ) : (
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-green-600" />
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-7 h-7 md:w-8 md:h-8 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">Access Granted!</h3>
-                <p className="text-gray-600 mb-6">
+                <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-2">Access Granted!</h3>
+                <p className="text-sm md:text-base text-gray-600 mb-6">
                   Thank you for providing your information. You can now access the content.
                 </p>
                 
