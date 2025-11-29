@@ -38,7 +38,7 @@ const Header: React.FC = () => {
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden xl:flex items-center space-x-8">
             {NAVIGATION.map((item) => (
               <div key={item.name} className="relative group">
                 <Link 
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center space-x-4 -mr-8">
+          <div className="hidden xl:flex items-center space-x-4 -mr-8">
             <form onSubmit={handleSearch} className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-4 w-4 text-gray-400" />
@@ -104,7 +104,7 @@ const Header: React.FC = () => {
             </a>
           </div>
 
-          <div className="lg:hidden flex items-center">
+          <div className="xl:hidden flex items-center">
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -122,7 +122,7 @@ const Header: React.FC = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="lg:hidden">
+        <div className="xl:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-md">
             {NAVIGATION.map((item) => (
               <div key={item.name}>
