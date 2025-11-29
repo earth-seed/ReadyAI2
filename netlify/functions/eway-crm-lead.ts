@@ -121,21 +121,35 @@ export const handler: Handler = async (event) => {
     // Step 3: Create contact/lead in eWay-CRM
     console.log('📝 Creating contact in eWay-CRM...');
     
+    // Build transmitObject - ensure required fields have values
+    // eWay CRM requires LastName, so use a fallback if empty
+    const transmitObject: any = {
+      FileAs: formData.name.trim(),
+      FirstName: firstName.trim(),
+      LastName: (lastName && lastName.trim()) || firstName.trim() || 'User', // Ensure LastName always has a value
+      Email: formData.email.trim(),
+    };
+
+    // Only add optional fields if they have values (avoid empty strings)
+    if (formData.company && formData.company.trim()) {
+      transmitObject.CompanyName = formData.company.trim();
+    }
+    
+    if (formData.phone && formData.phone.trim()) {
+      transmitObject.BusinessPhone = formData.phone.trim();
+    }
+
+    // Try a simpler approach - AdditionalFields might need to be flat or omitted
+    // Some eWay CRM versions don't support nested AdditionalFields
+    // Let's try without AdditionalFields first to see if that's the issue
+    // If needed, we can add them back in a different format
+
     const contactData = {
       sessionId: sessionId,
-      transmitObject: {
-        FileAs: formData.name,
-        FirstName: firstName,
-        LastName: lastName,
-        Email: formData.email,
-        CompanyName: formData.company || '',
-        BusinessPhone: formData.phone || '',
-        AdditionalFields: {
-          LeadSource: 'Website - Gated Content',
-          Content: formData.content || 'Gated Content Download',
-        },
-      },
+      transmitObject: transmitObject,
     };
+
+    console.log('📤 Sending contact data:', JSON.stringify(contactData, null, 2));
 
     const saveResponse = await fetch(`${serviceUrl}/SaveContact`, {
       method: 'POST',
@@ -147,7 +161,10 @@ export const handler: Handler = async (event) => {
 
     if (!saveResponse.ok) {
       const errorText = await saveResponse.text();
-      console.error('❌ Save contact failed:', saveResponse.status, errorText);
+      console.error('❌ Save contact failed:', saveResponse.status);
+      console.error('Response headers:', Object.fromEntries(saveResponse.headers.entries()));
+      console.error('Response body:', errorText);
+      console.error('Request payload was:', JSON.stringify(contactData, null, 2));
       
       // Try to logout even if save failed
       try {
@@ -164,7 +181,7 @@ export const handler: Handler = async (event) => {
         statusCode: 500,
         body: JSON.stringify({ 
           error: 'Failed to save contact',
-          details: errorText
+          details: errorText.substring(0, 500) // Limit error text length
         }),
       };
     }

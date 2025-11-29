@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Download, Lock, CheckCircle, ArrowRight } from 'lucide-react';
 import Button from './Button';
 import ContactForm from '../layout/ContactForm';
+import { emailSchema } from '../../utils/security';
 
 interface GatedContentModalProps {
   isOpen: boolean;
@@ -34,6 +35,8 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
     phone: '',
     consent: false
   });
+  const [errors, setErrors] = useState<{ email?: string; name?: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -51,9 +54,31 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Reset errors
+    setErrors({});
+    
+    // Validate required fields
     if (!formData.name || !formData.email || !formData.consent) {
+      const newErrors: { email?: string; name?: string } = {};
+      if (!formData.name) {
+        newErrors.name = 'Name is required';
+      }
+      if (!formData.email) {
+        newErrors.email = 'Email is required';
+      }
+      setErrors(newErrors);
       return;
     }
+
+    // Validate email format
+    try {
+      emailSchema.parse(formData.email);
+    } catch (error) {
+      setErrors({ email: 'Please enter a valid email address' });
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       // Submit to eWay-CRM via Netlify Function
@@ -85,6 +110,8 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
       console.error('❌ Error submitting form:', error);
       onTrack?.('gated_content_form_error', { title, error: error.message });
       alert('Failed to submit form. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -152,9 +179,17 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       type="text"
                       required
                       value={formData.name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary"
+                      onChange={(e) => {
+                        setFormData(prev => ({ ...prev, name: e.target.value }));
+                        if (errors.name) setErrors(prev => ({ ...prev, name: undefined }));
+                      }}
+                      className={`w-full border rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary ${
+                        errors.name ? 'border-red-300' : 'border-gray-300'
+                      }`}
                     />
+                    {errors.name && (
+                      <p className="mt-1 text-xs text-red-600">{errors.name}</p>
+                    )}
                   </div>
 
                   <div>
@@ -177,9 +212,17 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                       type="email"
                       required
                       value={formData.email}
-                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary"
+                      onChange={(e) => {
+                        setFormData(prev => ({ ...prev, email: e.target.value }));
+                        if (errors.email) setErrors(prev => ({ ...prev, email: undefined }));
+                      }}
+                      className={`w-full border rounded-lg px-3 py-2 text-sm md:text-base focus:ring-2 focus:ring-primary focus:border-primary ${
+                        errors.email ? 'border-red-300' : 'border-gray-300'
+                      }`}
                     />
+                    {errors.email && (
+                      <p className="mt-1 text-xs text-red-600">{errors.email}</p>
+                    )}
                   </div>
 
                   <div>
@@ -216,10 +259,10 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
                     size="lg"
                     isFullWidth
                     className="mt-6"
-                    disabled={!formData.name || !formData.email || !formData.consent}
+                    disabled={!formData.name || !formData.email || !formData.consent || isSubmitting}
                   >
                     <Lock className="w-4 h-4 mr-2" />
-                    Access Content
+                    {isSubmitting ? 'Submitting...' : 'Access Content'}
                   </Button>
                 </form>
               </div>
