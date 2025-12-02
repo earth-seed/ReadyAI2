@@ -28,7 +28,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="fixed w-full z-50 bg-white shadow-sm">
-      <div className="container mx-auto pl-3 pr-0 sm:pl-4 sm:pr-0 md:pl-6 md:pr-0 lg:pl-8 lg:pr-0">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16">
           <Link to="/" className="flex items-center">
             <img 
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          <div className="hidden xl:flex items-center space-x-4 -mr-8">
+          <div className="hidden xl:flex items-center space-x-4">
             <form onSubmit={handleSearch} className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-4 w-4 text-gray-400" />

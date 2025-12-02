@@ -190,13 +190,13 @@ const InsightsPage: React.FC = () => {
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="pt-28 pb-20 md:pt-36 md:pb-24">
+          <div className="pt-28 pb-14 md:pt-36 md:pb-18">
             <div className="text-center max-w-4xl mx-auto">
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white mb-8">
+              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal text-white mb-6">
                 AI Insights & <span className="text-accent">Trends</span>
               </h1>
               
-              <p className="text-lg text-gray-200 mb-12 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-lg text-gray-200 leading-relaxed max-w-2xl mx-auto">
                 Expert analysis, industry trends, and strategic insights for enterprise AI adoption
               </p>
             </div>
