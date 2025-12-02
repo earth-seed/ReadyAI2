@@ -139,11 +139,29 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
         }),
       });
 
-      const result = await response.json();
-
+      // Check if response is OK before parsing JSON
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to submit lead');
+        let errorMessage = 'Failed to submit lead';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorData.message || errorMessage;
+          if (errorData.details) {
+            console.error('Error details:', errorData.details);
+          }
+        } catch (parseError) {
+          // If response is not JSON, try to get text
+          try {
+            const errorText = await response.text();
+            console.error('Non-JSON error response:', errorText);
+            errorMessage = `Server error (${response.status}): ${errorText.substring(0, 100)}`;
+          } catch (textError) {
+            errorMessage = `Server error (${response.status})`;
+          }
+        }
+        throw new Error(errorMessage);
       }
+
+      const result = await response.json();
 
       console.log('✅ Lead submitted to eWay-CRM successfully:', result);
       
@@ -170,7 +188,8 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
     } catch (error: any) {
       console.error('❌ Error submitting form:', error);
       onTrack?.('gated_content_form_error', { title, error: error.message });
-      alert('Failed to submit form. Please try again.');
+      const errorMessage = error.message || 'Failed to submit form. Please try again.';
+      alert(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
