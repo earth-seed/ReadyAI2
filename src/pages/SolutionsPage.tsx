@@ -731,14 +731,13 @@ const SolutionsPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Comparison Section */}
-                  <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
+                  {/* Comparison Section - Hidden for now */}
+                  {/* <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
                     <h3 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-6 text-center">
                       Pricing Comparison: Direct Subscriptions vs ReadyAI
                     </h3>
                     
                     <div className="max-w-4xl mx-auto">
-                      {/* Desktop Table View */}
                       <div className="hidden md:block">
                       <div className="grid grid-cols-3 gap-4 mb-4 text-center font-semibold">
                         <div className="text-left text-gray-700">Service</div>
@@ -746,7 +745,6 @@ const SolutionsPage: React.FC = () => {
                         <div className="text-accent">With ReadyAI</div>
                       </div>
 
-                      {/* Services */}
                       <div className="space-y-2 mb-6">
                         {Services.map((service, index) => (
                           <div
@@ -769,7 +767,6 @@ const SolutionsPage: React.FC = () => {
                         ))}
                       </div>
 
-                      {/* Total */}
                       <div className="border-t-2 border-gray-300 pt-6 mb-6">
                         <div className="grid grid-cols-3 gap-4 items-center">
                           <div className="text-lg font-bold text-gray-900">TOTAL</div>
@@ -790,7 +787,6 @@ const SolutionsPage: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Mobile Card View */}
                       <div className="md:hidden space-y-3 sm:space-y-4 mb-6">
                         {Services.map((service, index) => (
                           <div key={index} className="bg-white rounded-lg p-3 sm:p-4 border border-gray-200">
@@ -817,7 +813,6 @@ const SolutionsPage: React.FC = () => {
                           </div>
                         ))}
                         
-                        {/* Mobile Total */}
                         <div className="bg-white rounded-lg p-4 sm:p-5 border-2 border-gray-300">
                           <div className="text-center mb-3 sm:mb-4">
                             <div className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">TOTAL COMPARISON</div>
@@ -842,7 +837,6 @@ const SolutionsPage: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* CTA */}
                       <div className="text-center">
                         <a href="https://devs.ai/signup?ref=sales%40readyai.dev">
                           <button className="bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-10 rounded-lg transition-colors shadow-md hover:shadow-lg">
@@ -851,7 +845,7 @@ const SolutionsPage: React.FC = () => {
                         </a>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   
                   <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
                     <h3 className="font-heading text-2xl md:text-3xl font-normal text-primary mb-6">Key Features</h3>

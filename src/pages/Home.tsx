@@ -6,7 +6,7 @@ import Banner3Section from '../components/sections/Banner3Section';
 import Banner6Section from '../components/sections/Banner6Section';
 import CalcSection from '../components/sections/CalcSection';
 import CIOInsightSection from '../components/sections/CIOInsightSection';
-import GatedContentSection from '../components/sections/GatedContentSection';
+// import GatedContentSection from '../components/sections/GatedContentSection';
 import CtaSection from '../components/sections/CtaSection';
 import ClosingSection from '../components/sections/ClosingSection';
 import SocialSection from '../components/sections/SocialSection';
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
       <Banner6Section />
       <CalcSection />
       <CIOInsightSection />
-      <GatedContentSection />
+      {/* <GatedContentSection /> */}
       <CtaSection />
       <ClosingSection />
       <SocialSection />
