@@ -127,8 +127,8 @@ const PricingPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Why Enterprises Choose ReadyAI */}
-          <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden mb-16">
+          {/* Why Enterprises Choose ReadyAI - Removed */}
+          {/* <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden mb-16">
             <div className="bg-gradient-to-r from-accent2-lightest via-accent2-light to-accent2-lightest px-8 py-8">
               <h2 className="font-heading text-3xl md:text-4xl font-normal text-primary text-center">
                 Why Enterprises Choose ReadyAI
@@ -147,7 +147,7 @@ const PricingPage: React.FC = () => {
                 in governance, compliance, and enterprise security.
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Ready to Get Started? */}
           <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-2xl p-8 md:p-12 mb-16 border border-gray-100 shadow-md">
