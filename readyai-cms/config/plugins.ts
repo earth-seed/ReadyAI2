@@ -30,6 +30,15 @@ export default ({ env }) => {
         preview: {
           enabled: true,
           openTarget: 'new-tab',
+          // Preview URL template - Strapi replaces {id}, {token}, {contentType} placeholders
+          // Priority: STAGING_FRONTEND_URL > FRONTEND_URL > defaults
+          url: (() => {
+            const isProduction = env('NODE_ENV') === 'production';
+            const frontendUrl = env('STAGING_FRONTEND_URL') || 
+                              env('FRONTEND_URL') || 
+                              (isProduction ? 'https://readyai.dev' : 'http://localhost:5173');
+            return `${frontendUrl}/preview?id={id}&token={token}&contentType={contentType}`;
+          })(),
         },
       },
     },

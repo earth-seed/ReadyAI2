@@ -22,6 +22,8 @@ export default ({ env }) => [
       origin: [
         'http://localhost:1337',
         'http://localhost:3000',
+        'http://localhost:59043', // Your frontend port
+        'http://localhost:5173',
         'https://readyai2.onrender.com',
         'https://readyai.dev',
         env('FRONTEND_URL'),
