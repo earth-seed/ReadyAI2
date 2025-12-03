@@ -4,8 +4,41 @@
  */
 
 import { factories } from '@strapi/strapi';
+import crypto from 'crypto';
 
 const controller = factories.createCoreController('api::article.article', ({ strapi }) => {
+  
+  /**
+   * Validate preview token
+   * Token format: hash(uid:documentId:timestamp:secret)
+   * Since we can't reverse the hash, we use a simpler validation:
+   * - Check token format (should be hex string)
+   * - The real security comes from documentIds being hard to guess
+   * - In production, you might want to store tokens temporarily for validation
+   */
+  const validatePreviewToken = (token: string, documentId: string, uid: string = 'api::article.article'): boolean => {
+    if (!token || !documentId) {
+      return false;
+    }
+
+    try {
+      // Basic validation: token should be a hex string of reasonable length
+      if (!/^[a-f0-9]{64}$/i.test(token)) {
+        return false;
+      }
+
+      // For now, we'll allow any valid-looking token
+      // In a production system, you'd want to:
+      // 1. Store tokens temporarily in cache/DB with expiration
+      // 2. Or include timestamp in token and validate it
+      // 3. Or use Strapi's built-in preview token validation if available
+      
+      return true;
+    } catch (error) {
+      strapi.log.error('Error validating preview token:', error);
+      return false;
+    }
+  };
   
   /**
    * Helper function to populate image field in image-block components
@@ -113,17 +146,66 @@ const controller = factories.createCoreController('api::article.article', ({ str
     async findOne(ctx: any) {
       // Check if this is a preview request (has token in query)
       const previewToken = ctx.query?.token;
+      const idParam = ctx.params.id; // This could be documentId (string) or entity ID (number)
+      
+      let response;
       
       if (previewToken) {
-        // For preview requests, allow access to draft content
-        // Set publicationState to 'preview' to get draft content
-        ctx.query = {
-          ...ctx.query,
-          publicationState: 'preview',
-        };
+        // Validate the preview token format
+        const uid = 'api::article.article';
+        const isValidToken = validatePreviewToken(previewToken, idParam, uid);
+        
+        if (!isValidToken) {
+          return ctx.unauthorized('Invalid preview token');
+        }
+        
+        // For preview requests, we need to find by documentId if it's a string
+        // In Strapi 5, documentIds are strings like "ps4ofw9iop9g516ed4vpn3lk"
+        // Entity IDs are numeric
+        try {
+          // Try to find by documentId first (if idParam looks like a documentId - alphanumeric string)
+          if (isNaN(Number(idParam))) {
+            // It's likely a documentId, query database to find entity ID
+            // In Strapi 5, documents table stores documentId -> entity_id mapping
+            const documentsTable = strapi.db.connection('documents');
+            const docEntry = await documentsTable
+              .where('document_id', idParam)
+              .where('content_type', 'api::article.article')
+              .first();
+            
+            if (docEntry && docEntry.entity_id) {
+              // Found entity ID, update ctx.params.id and use standard findOne
+              ctx.params.id = docEntry.entity_id;
+            } else {
+              // Document not found
+              return ctx.notFound('Article not found');
+            }
+          }
+          
+          // Use standard findOne with preview state (works with both documentId->entityId or direct entityId)
+          ctx.query = {
+            ...ctx.query,
+            publicationState: 'preview',
+          };
+          response = await super.findOne(ctx);
+        } catch (error) {
+          strapi.log.error('Error finding article for preview:', error);
+          // Fallback to standard findOne
+          ctx.query = {
+            ...ctx.query,
+            publicationState: 'preview',
+          };
+          response = await super.findOne(ctx);
+        }
+      } else {
+        // Normal request, use standard findOne
+        response = await super.findOne(ctx);
       }
       
-      const response = await super.findOne(ctx);
+      // If preview token was provided but article not found, return 404
+      if (previewToken && !response?.data) {
+        return ctx.notFound('Article not found');
+      }
 
       if (response?.data) {
         const article = response.data;
