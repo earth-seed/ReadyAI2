@@ -165,32 +165,82 @@ const controller = factories.createCoreController('api::article.article', ({ str
         try {
           // Try to find by documentId first (if idParam looks like a documentId - alphanumeric string)
           if (isNaN(Number(idParam))) {
-            // It's likely a documentId, query database to find entity ID
-            // In Strapi 5, documents table stores documentId -> entity_id mapping
-            const documentsTable = strapi.db.connection('documents');
-            const docEntry = await documentsTable
-              .where('document_id', idParam)
-              .where('content_type', 'api::article.article')
-              .first();
-            
-            if (docEntry && docEntry.entity_id) {
-              // Found entity ID, update ctx.params.id and use standard findOne
-              ctx.params.id = docEntry.entity_id;
-            } else {
-              // Document not found
-              return ctx.notFound('Article not found');
+            // It's likely a documentId, use Strapi's document service
+            // This works for both published and unpublished articles
+            try {
+              const documentService = strapi.documents('api::article.article');
+              const document = await documentService.findOne({
+                documentId: idParam,
+              });
+              
+              if (document) {
+                // Document service returns the document, but we need to get full populated data
+                // Use entity service with the document's id to get all relations
+                const entity = await strapi.entityService.findOne('api::article.article', document.id, {
+                  populate: ctx.query.populate || '*',
+                  publicationState: 'preview', // This allows access to draft/unpublished content
+                });
+                
+                if (entity) {
+                  // Convert entity service response to API format
+                  response = {
+                    data: {
+                      id: entity.id,
+                      attributes: entity,
+                    },
+                  };
+                } else {
+                  strapi.log.warn(`Entity not found for documentId ${idParam}, document.id: ${document.id}`);
+                  return ctx.notFound('Article not found');
+                }
+              } else {
+                return ctx.notFound('Article not found');
+              }
+            } catch (docError: any) {
+              strapi.log.error('Error using document service:', docError);
+              // Fallback: try to query the articles table directly by documentId
+              // In some Strapi 5 setups, documentId might be stored in the main table
+              try {
+                const articlesTable = strapi.db.connection('articles');
+                const articleEntry = await articlesTable
+                  .where('document_id', idParam)
+                  .first();
+                
+                if (articleEntry && articleEntry.id) {
+                  const entity = await strapi.entityService.findOne('api::article.article', articleEntry.id, {
+                    populate: ctx.query.populate || '*',
+                    publicationState: 'preview',
+                  });
+                  
+                  if (entity) {
+                    response = {
+                      data: {
+                        id: entity.id,
+                        attributes: entity,
+                      },
+                    };
+                  } else {
+                    return ctx.notFound('Article not found');
+                  }
+                } else {
+                  return ctx.notFound('Article not found');
+                }
+              } catch (fallbackError) {
+                strapi.log.error('Fallback query also failed:', fallbackError);
+                return ctx.notFound('Article not found');
+              }
             }
+          } else {
+            // It's a numeric entity ID, use standard findOne with preview state
+            ctx.query = {
+              ...ctx.query,
+              publicationState: 'preview',
+            };
+            response = await super.findOne(ctx);
           }
-          
-          // Use standard findOne with preview state (works with both documentId->entityId or direct entityId)
-          ctx.query = {
-            ...ctx.query,
-            publicationState: 'preview',
-          };
-          response = await super.findOne(ctx);
         } catch (error) {
           strapi.log.error('Error finding article for preview:', error);
-          // Fallback to standard findOne
+          // Final fallback to standard findOne
           ctx.query = {
             ...ctx.query,
             publicationState: 'preview',
