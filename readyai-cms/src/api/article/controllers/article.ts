@@ -108,9 +108,21 @@ const controller = factories.createCoreController('api::article.article', ({ str
     },
 
     /**
-     * Override findOne to populate image blocks
+     * Override findOne to populate image blocks and handle preview tokens
      */
     async findOne(ctx: any) {
+      // Check if this is a preview request (has token in query)
+      const previewToken = ctx.query?.token;
+      
+      if (previewToken) {
+        // For preview requests, allow access to draft content
+        // Set publicationState to 'preview' to get draft content
+        ctx.query = {
+          ...ctx.query,
+          publicationState: 'preview',
+        };
+      }
+      
       const response = await super.findOne(ctx);
 
       if (response?.data) {
