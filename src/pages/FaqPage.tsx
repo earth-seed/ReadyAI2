@@ -119,7 +119,7 @@ const FaqPage: React.FC = () => {
 
             {/* Subtext */}
             <p className="font-sans text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Everything you need to know about ReadyAI&apos;s enterprise AI platform, security, and implementation.
+              Everything you need to know about ReadyAI.dev&apos;s enterprise AI platform, security, and implementation.
             </p>
           </div>
         </div>

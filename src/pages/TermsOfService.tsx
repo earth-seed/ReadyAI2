@@ -39,7 +39,7 @@ const TermsOfService: React.FC = () => {
                 Introduction
               </h2>
               <p className="font-sans text-lg text-gray-700 leading-relaxed">
-                Welcome to ReadyAI a platform designed to provide information on an enterprise grade AI platform. 
+                Welcome to ReadyAI.dev a platform designed to provide information on an enterprise grade AI platform. 
                 By accessing or using our website, you agree to be bound by these Terms of Service ("Terms"). 
                 Please read them carefully.
               </p>
@@ -54,7 +54,7 @@ const TermsOfService: React.FC = () => {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                    <span className="font-sans text-gray-700"><strong className="text-primary">Website:</strong> Refers to ReadyAI including all its subdomains and related services.</span>
+                    <span className="font-sans text-gray-700"><strong className="text-primary">Website:</strong> Refers to ReadyAI.dev including all its subdomains and related services.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />

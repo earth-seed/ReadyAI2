@@ -51,7 +51,7 @@ const GdprPolicy: React.FC = () => {
               </h2>
               <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 border border-gray-100">
                 <p className="font-sans text-gray-700">
-                  <strong className="text-primary">Data Controller:</strong> ReadyAI is the data controller of your personal data.
+                  <strong className="text-primary">Data Controller:</strong> ReadyAI.dev is the data controller of your personal data.
                 </p>
               </div>
             </div>
@@ -63,7 +63,7 @@ const GdprPolicy: React.FC = () => {
               </h2>
               <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 border border-gray-100">
                 <p className="font-sans text-gray-700">
-                  <strong className="text-primary">Data Protection Officer:</strong> ReadyAI is our Data Protection Officer.
+                  <strong className="text-primary">Data Protection Officer:</strong> ReadyAI.dev is our Data Protection Officer.
                 </p>
               </div>
             </div>

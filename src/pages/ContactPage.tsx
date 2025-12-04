@@ -128,7 +128,7 @@ const ContactPage: React.FC = () => {
                   </h3>
                 </div>
                 <p className="font-sans text-base text-white/90 leading-relaxed mb-5">
-                  See ReadyAI in action. Book a personalized walkthrough with our team to explore how we can help secure and scale your AI operations.
+                  See ReadyAI.dev in action. Book a personalized walkthrough with our team to explore how we can help secure and scale your AI operations.
                 </p>
                 <PopupButton
                   url="https://calendly.com/readyai-sales"
