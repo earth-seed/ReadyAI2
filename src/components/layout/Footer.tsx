@@ -122,7 +122,7 @@ const Footer: React.FC = () => {
         {/* Bottom copyright */}
         <div className="border-t border-gray-200 mt-12 pt-8">
           <p className="text-gray-500 text-sm text-center">
-            &copy; {new Date().getFullYear()} ReadyAI. All rights reserved.
+            &copy; {new Date().getFullYear()} ReadyAI.dev. All rights reserved.
           </p>
         </div>
       </div>

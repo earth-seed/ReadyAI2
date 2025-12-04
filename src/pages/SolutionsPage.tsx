@@ -117,7 +117,7 @@ const SolutionsPage: React.FC = () => {
                 </p>
                 
                 <p className="font-sans text-base md:text-lg text-white/90 mb-6 leading-relaxed max-w-3xl">
-                  The platform gives your enterprise everything you need to turn your AI potential into performance.
+                  The platform gives your enterprise everything you need to turn your Internal AI potential into performance.
                 </p>
                 
                 <p className="font-sans text-base md:text-lg text-white/90 mb-10 leading-relaxed max-w-3xl">
@@ -661,7 +661,7 @@ const SolutionsPage: React.FC = () => {
             
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6">
-                Build Your AI Operating Layer
+                Build Your Internal AI Operating Layer
               </h2>
               <p className="font-sans text-base text-white/90 leading-relaxed max-w-4xl mx-auto mb-8">
                 Take control with unified governance, seamless integrations, and enterprise-grade security.

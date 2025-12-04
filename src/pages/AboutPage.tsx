@@ -57,13 +57,6 @@ const AboutPage: React.FC = () => {
     }
   ];
 
-  const stats = [
-    { number: '30+', label: 'AI Models' },
-    { number: '7+', label: 'Enterprise Subscriptions' },
-    { number: '86%', label: 'Cost Savings' },
-    { number: '24/7', label: 'Support' }
-  ];
-
   const differentiators = [
     {
       title: 'Proven Infrastructure',
@@ -105,27 +98,6 @@ const AboutPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="bg-accent2-lightest py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest">
-              By The Numbers
-            </p>
-          </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="bg-white/40 backdrop-blur-sm rounded-2xl p-4 sm:p-6 md:p-8 text-center border border-white/60">
-                <div className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-accent mb-2">
-                  {stat.number}
-                </div>
-                <div className="font-sans text-gray-700 text-sm sm:text-base md:text-lg">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Mission Section */}
       <div className="bg-gradient-to-br from-accent2-lightest to-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -143,7 +115,7 @@ const AboutPage: React.FC = () => {
 
           <div className="max-w-5xl mx-auto mb-16">
             <p className="font-sans text-lg text-gray-700 leading-relaxed text-center">
-              We believe AI adoption doesn't have to be risky, rushed, or chaotic. Our mission is to help 
+              We believe internal AI adoption doesn't have to be risky, rushed, or chaotic. Our mission is to help 
               organizations embrace AI with clarity, confidence, and compliance—especially in high-stakes 
               sectors like healthcare, finance, education, and&nbsp;government.
             </p>
@@ -205,7 +177,7 @@ const AboutPage: React.FC = () => {
             
             <div className="text-center">
               <p className="font-sans text-xl md:text-2xl font-semibold text-accent">
-                ReadyAI exists to change that.
+                ReadyAI.dev exists to change that.
               </p>
             </div>
           </div>
