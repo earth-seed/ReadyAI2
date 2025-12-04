@@ -57,6 +57,9 @@ const Banner1Section = () => {
               <p className="font-sans text-base text-gray-700 leading-relaxed text-center">
                 One platform to unify every model, every team, and every process.
               </p>
+              <p className="font-sans text-base text-gray-700 leading-relaxed text-center font-semibold">
+                <span className="text-accent">Eliminate employees' individual LLM accounts</span> — it's all included in your subscription. Bundle your existing AI spend into one predictable monthly fee instead of paying separately for monitoring.
+              </p>
             </div>
           </div>
 
