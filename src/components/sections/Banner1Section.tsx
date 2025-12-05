@@ -47,8 +47,7 @@ const Banner1Section = () => {
             </h2>
             <div className="max-w-5xl mx-auto px-2 sm:px-4 space-y-3 sm:space-y-4">
               <p className="font-sans text-base text-gray-700 leading-relaxed text-center">
-                How many LLMs is your business running? Do you know?{' '}
-                <span className="whitespace-nowrap">Shouldn't you?</span>
+                How many LLMs is your business running? {' '}
               </p>
               <p className="font-sans text-base text-gray-700 leading-relaxed text-center">
                 Visibility defines control. Governance defines trust.{' '}
