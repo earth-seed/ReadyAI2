@@ -5,7 +5,7 @@ import { Linkedin, Calendar, ArrowRight, BookOpen, Users, Clock } from "lucide-r
 import { Link } from "react-router-dom";
 
 // Strapi imports
-import { fetchArticles, fetchArticleBySlug, getImageUrl } from "../utils/strapi";
+import { fetchArticles, fetchArticleBySlug, getImageUrl, ensureAbsoluteImageUrl } from "../utils/strapi";
 import StrapiBlocksRenderer from "../components/sections/StrapiBlocksRenderer";
 
 // Article type for display (mapped from Strapi)
@@ -47,8 +47,8 @@ const InsightsPage: React.FC = () => {
             let imgURL = '';
             if (attrs.featuredImage) {
               if (attrs.featuredImage.url) {
-                // Flat structure: featuredImage.url
-                imgURL = attrs.featuredImage.url;
+                // Flat structure: featuredImage.url - ensure it's absolute
+                imgURL = ensureAbsoluteImageUrl(attrs.featuredImage.url);
               } else if (attrs.featuredImage.data?.attributes?.url) {
                 // Nested structure: featuredImage.data.attributes.url
                 imgURL = getImageUrl(attrs.featuredImage);
@@ -106,7 +106,8 @@ const InsightsPage: React.FC = () => {
               if (attrs.featuredImage) {
                 const featuredImg = attrs.featuredImage as any;
                 if (featuredImg.url) {
-                  imgURL = featuredImg.url;
+                  // Ensure it's absolute for social media sharing
+                  imgURL = ensureAbsoluteImageUrl(featuredImg.url);
                 } else if (featuredImg.data?.attributes?.url) {
                   imgURL = getImageUrl(featuredImg);
                 } else if (featuredImg.data?.url) {
@@ -162,17 +163,36 @@ const InsightsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Open Graph Meta */}
+      {/* Open Graph & Social Media Meta */}
       {currArticle?.title ? (
         <Helmet>
           <title>ReadyAI - {currArticle.title}</title>
           <meta name="description" content={currArticle.description} />
           <meta name="keywords" content={currArticle.metaKeywords} />
-          <meta property="og:title" content={currArticle.title} />
-          <meta property="og:image" content={currArticle.imgURL} />
-          <meta property="og:description" content={currArticle.description} />
-          <meta property="og:url" content={shareLinkedInUrl} />
+          
+          {/* Open Graph / Facebook */}
           <meta property="og:type" content="article" />
+          <meta property="og:url" content={shareLinkedInUrl} />
+          <meta property="og:title" content={currArticle.title} />
+          <meta property="og:description" content={currArticle.description} />
+          {currArticle.imgURL && (
+            <>
+              <meta property="og:image" content={currArticle.imgURL} />
+              <meta property="og:image:alt" content={currArticle.title} />
+            </>
+          )}
+          <meta property="og:site_name" content="ReadyAI" />
+          
+          {/* Twitter Card */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={currArticle.title} />
+          <meta name="twitter:description" content={currArticle.description} />
+          {currArticle.imgURL && (
+            <meta name="twitter:image" content={currArticle.imgURL} />
+          )}
+          
+          {/* LinkedIn specific */}
+          <meta property="article:published_time" content={currArticle.publicationDate} />
         </Helmet>
       ) : (
         <Helmet>
