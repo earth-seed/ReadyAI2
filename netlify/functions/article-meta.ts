@@ -131,6 +131,7 @@ export const handler: Handler = async (event): Promise<HandlerResponse> => {
     const publicationDate = attrs.publicationDate || attrs.publishedAt || '';
     
     // Get featured image URL
+    // Note: featuredImage is required in Strapi schema, so it should always exist
     let imageUrl = '';
     if (attrs.featuredImage) {
       const featuredImg = attrs.featuredImage;
@@ -143,8 +144,23 @@ export const handler: Handler = async (event): Promise<HandlerResponse> => {
       }
     }
 
+    // Log for debugging (will appear in Netlify function logs)
+    console.log('Article meta generation:', {
+      slug,
+      title,
+      hasImage: !!imageUrl,
+      imageUrl: imageUrl ? imageUrl.substring(0, 100) : 'MISSING - featuredImage should always exist!',
+      userAgent: event.headers['user-agent'] || event.headers['User-Agent'] || 'unknown',
+    });
+
     const articleUrl = `https://readyai.dev/insights/${slug}`;
     const siteName = 'ReadyAI';
+
+    // CRITICAL: Always include og:image tag - LinkedIn requires it
+    // Since featuredImage is required in Strapi, imageUrl should always be set
+    // Fallback is defensive programming in case of API structure issues
+    const defaultImage = 'https://readyai.dev/favicon.png'; // Fallback (shouldn't be needed)
+    const finalImageUrl = imageUrl || defaultImage;
 
     // Generate HTML with meta tags
     const html = `<!DOCTYPE html>
@@ -159,15 +175,15 @@ export const handler: Handler = async (event): Promise<HandlerResponse> => {
     <meta property="og:url" content="${escapeHtml(articleUrl)}" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description.substring(0, 200))}" />
-    ${imageUrl ? `<meta property="og:image" content="${escapeHtml(imageUrl)}" />` : ''}
-    ${imageUrl ? `<meta property="og:image:alt" content="${escapeHtml(title)}" />` : ''}
+    <meta property="og:image" content="${escapeHtml(finalImageUrl)}" />
+    <meta property="og:image:alt" content="${escapeHtml(title)}" />
     <meta property="og:site_name" content="${escapeHtml(siteName)}" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(title)}" />
     <meta name="twitter:description" content="${escapeHtml(description.substring(0, 200))}" />
-    ${imageUrl ? `<meta name="twitter:image" content="${escapeHtml(imageUrl)}" />` : ''}
+    <meta name="twitter:image" content="${escapeHtml(finalImageUrl)}" />
     
     <!-- LinkedIn specific -->
     ${publicationDate ? `<meta property="article:published_time" content="${escapeHtml(publicationDate)}" />` : ''}
