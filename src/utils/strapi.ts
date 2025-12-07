@@ -251,4 +251,22 @@ export const getImageUrl = (image: StrapiArticle['attributes']['featuredImage'])
   return `${STRAPI_URL}${url}`;
 };
 
+/**
+ * Ensure an image URL is absolute (for social media sharing)
+ * If the URL is relative, prepends the Strapi URL
+ */
+export const ensureAbsoluteImageUrl = (url: string): string => {
+  if (!url) {
+    return '';
+  }
+  
+  // If it's already a full URL, return as-is
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url;
+  }
+  
+  // Otherwise, it's a relative path, prepend Strapi URL
+  return `${STRAPI_URL}${url}`;
+};
+
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Linkedin, Calendar, ArrowRight } from "lucide-react";
-import { fetchArticlePreview, getImageUrl } from "../utils/strapi";
+import { fetchArticlePreview, getImageUrl, ensureAbsoluteImageUrl } from "../utils/strapi";
 import StrapiBlocksRenderer from "../components/sections/StrapiBlocksRenderer";
 
 type Article = {
@@ -61,8 +61,8 @@ const ArticlePreview: React.FC = () => {
         if (attrs.featuredImage) {
           const featuredImage = attrs.featuredImage as any;
           if (featuredImage.url) {
-            // Flat structure: featuredImage.url
-            imgURL = featuredImage.url;
+            // Flat structure: featuredImage.url - ensure it's absolute
+            imgURL = ensureAbsoluteImageUrl(featuredImage.url);
           } else if (featuredImage.data?.attributes?.url) {
             // Nested structure: featuredImage.data.attributes.url
             imgURL = getImageUrl(featuredImage);
@@ -152,17 +152,36 @@ const ArticlePreview: React.FC = () => {
         </p>
       </div>
 
-      {/* Open Graph Meta */}
+      {/* Open Graph & Social Media Meta */}
       <Helmet>
         <title>ReadyAI - {article.title} (Preview)</title>
         <meta name="description" content={article.description} />
         <meta name="keywords" content={article.metaKeywords} />
-        <meta property="og:title" content={article.title} />
-        <meta property="og:image" content={article.imgURL} />
-        <meta property="og:description" content={article.description} />
-        <meta property="og:url" content={shareLinkedInUrl} />
-        <meta property="og:type" content="article" />
         <meta name="robots" content="noindex, nofollow" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={shareLinkedInUrl} />
+        <meta property="og:title" content={article.title} />
+        <meta property="og:description" content={article.description} />
+        {article.imgURL && (
+          <>
+            <meta property="og:image" content={article.imgURL} />
+            <meta property="og:image:alt" content={article.title} />
+          </>
+        )}
+        <meta property="og:site_name" content="ReadyAI" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={article.title} />
+        <meta name="twitter:description" content={article.description} />
+        {article.imgURL && (
+          <meta name="twitter:image" content={article.imgURL} />
+        )}
+        
+        {/* LinkedIn specific */}
+        <meta property="article:published_time" content={article.publicationDate} />
       </Helmet>
 
       {/* Article Content */}
