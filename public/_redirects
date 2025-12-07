@@ -1,0 +1,4 @@
+# Fallback to SPA for all routes
+# Note: We handle /insights/* meta tags via Edge Functions or direct function calls
+/* /index.html 200
+
