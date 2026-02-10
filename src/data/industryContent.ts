@@ -50,14 +50,14 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
     trustSection: {
       icon: Shield,
       title: 'Secure. Compliant. Built for Confidence.',
-      content: 'Financial institutions continually navigate the delicate balance between innovation and oversight.',
-      additionalContent: 'In a highly regulated environment where trust is non-negotiable, AI must not only be powerful but also governed, auditable, and compliant from its foundation.<br/><br/>The ReadyAI.dev platform provides a <strong>secure, governed AI framework</strong> that enables banks, insurers, and fintech organizations to deploy advanced AI responsibly. It unifies innovation and compliance — supporting faster transformation, stronger risk management, and enhanced customer experiences.<br/><br/>Every workflow — from fraud detection to customer service — operates within a transparent, compliant structure aligned with <strong>SOC 2, ISO 27001</strong>, and global financial-data standards.'
+      content: 'Financial institutions must continually balance innovation with oversight.',
+      additionalContent: 'In highly regulated environments where trust is critical, internal AI adoption requires strong security, visibility, and governance from the outset.<br/><br/>Delivered through a proven enterprise AI platform, organizations gain access to a secure, governed environment designed to support internal AI usage across banking, insurance, and fintech operations.<br/><br/>ReadyAI.dev works with leadership teams to apply these platform capabilities in line with risk, compliance, and regulatory expectations, ensuring internal AI adoption remains controlled as it scales.<br/><br/>AI use cases, including fraud detection and customer support, can be explored within structured environments that support auditability, oversight, and internal AI workflows, aligned with recognized standards such as SOC 2 and ISO 27001.'
     },
     transformationSection: {
       icon: Brain,
-      title: 'Transforming Financial Services with Responsible AI',
-      content: 'ReadyAI.dev allows financial enterprises to modernize safely — automating document processing, assessing credit risk, and managing compliance without sacrificing control. Our platform provides leaders with full visibility, auditability, and accountability across every model and decision.',
-      additionalContent: ''
+      title: 'Internal AI for Financial Services',
+      content: 'Financial institutions are adopting internal AI to improve efficiency while maintaining strict oversight.',
+      additionalContent: 'An enterprise AI platform provides a secure, governed environment for internal AI use cases such as document processing and risk analysis.<br/><br/>ReadyAI.dev supports leadership teams in aligning these capabilities with regulatory, risk, and governance expectations across the organization.'
     },
     benefitsSection: {
       title: 'Why Financial Leaders Choose ReadyAI.dev',
@@ -132,14 +132,14 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
     trustSection: {
       icon: Shield,
       title: 'Personalized. Predictive. Built for Trust.',
-      content: 'The ReadyAI.dev platform provides retailers with a <strong>unified AI foundation</strong>, connecting customers, products, and operations through a secure and governed framework.',
-      additionalContent: 'It centralizes intelligence across every channel, enabling data and innovation teams to move faster while maintaining full compliance with <strong>GDPR, CCPA</strong>, and global data privacy standards. Every model, insight, and interaction is explainable, transparent, and built for trust.'
+      content: 'Retail organizations are increasingly using internal AI across customer, product, and operational functions.',
+      additionalContent: 'An enterprise AI platform provides a secure, governed environment designed to support these internal AI use cases while aligning with data privacy requirements such as GDPR and CCPA.<br/><br/>ReadyAI.dev supports leadership teams in adopting and applying these capabilities with clarity and oversight across the organization.'
     },
     transformationSection: {
       icon: Brain,
-      title: 'Transforming Retail with Responsible AI',
-      content: 'ReadyAI.dev bridges personalization, operational efficiency, and compliance — equipping retailers with the structure to scale responsibly.',
-      additionalContent: 'Whether optimizing pricing, predicting demand, or automating service, our platform delivers <strong>AI you can govern and trust</strong>, even as your business grows.'
+      title: 'Internal AI for Retail',
+      content: 'Retail organizations are adopting internal AI to enhance personalization and operational efficiency while meeting data privacy requirements.',
+      additionalContent: 'An enterprise AI platform provides a secure, governed environment for internal AI use cases such as pricing optimization, demand forecasting, and service automation.<br/><br/>ReadyAI.dev supports leadership teams in aligning these capabilities with governance and risk expectations across the organization.'
     },
     benefitsSection: {
       title: 'Why Retail Leaders Choose ReadyAI.dev',
@@ -214,14 +214,14 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
     trustSection: {
       icon: Shield,
       title: 'Secure. Compliant. Built for Better Care.',
-      content: 'Our platform enables healthcare teams to deploy AI safely and transparently by combining security, compliance, and explainability to enhance patient care.',
-      additionalContent: 'Healthcare organizations face a unique challenge in that they must drive innovation while simultaneously protecting patient safety, privacy, and trust.<br/><br/>The ReadyAI.dev platform enables healthcare providers, researchers, and life sciences enterprises to deploy <strong>trusted</strong>, <strong>governed AI</strong> with full compliance to healthcare data regulations such as HIPAA and GDPR.<br/><br/>Our <strong>Private AI Workspaces</strong> offer secure environments for handling PHI and model development, ensuring data sovereignty, traceability, and auditability throughout every process.'
+      content: 'Healthcare organizations must balance innovation with patient safety and regulatory oversight.',
+      additionalContent: 'An enterprise AI platform provides secure, governed environments designed to support internal AI usage across clinical and research settings, aligned with healthcare regulations such as HIPAA and GDPR.<br/><br/>ReadyAI.dev supports leadership teams in adopting and applying these capabilities responsibly across the organization.'
     },
     transformationSection: {
       icon: Brain,
-      title: 'The Future of Responsible Healthcare',
-      content: 'From clinical documentation to research analytics, ReadyAI.dev empowers healthcare teams to use AI safely and transparently.',
-      additionalContent: 'Every interaction and insight is explainable, secure, and most importantly, aligned with patient-first principles.'
+      title: 'Responsible Healthcare AI',
+      content: 'Responsible healthcare AI requires structure, oversight, and trust.',
+      additionalContent: 'An enterprise AI platform supports internal AI usage across clinical and research settings within secure, governed environments.<br/><br/>ReadyAI.dev supports leadership teams in adopting and applying these capabilities responsibly across the organization.'
     },
     benefitsSection: {
       title: 'Why Healthcare Leaders Choose ReadyAI.dev',
@@ -292,14 +292,14 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
     trustSection: {
       icon: Shield,
       title: 'Efficient. Predictive. Built for Precision.',
-      content: 'Manufacturers face increasing pressure to improve efficiency, maintain quality, and adapt to global supply chain volatility — all while meeting stringent compliance and safety standards.',
-      additionalContent: 'The ReadyAI.dev platform enables manufacturers to integrate <strong>trusted, governed AI</strong> across their operations. This integration connects data from production lines, IoT systems, and ERP platforms within one secure, compliant framework.<br/><br/>Our <strong>Private AI Workspaces</strong> ensure full data sovereignty and governance, allowing teams to build, test, and deploy AI solutions safely — from predictive maintenance to intelligent scheduling — without compromising control.'
+      content: 'Manufacturers are adopting internal AI to improve efficiency and resilience while meeting strict safety and compliance requirements.',
+      additionalContent: 'An enterprise AI platform provides secure, governed environments designed to support internal AI usage across production and operational contexts, including integration with industrial and enterprise systems.<br/><br/>ReadyAI.dev supports leadership teams in adopting and applying these capabilities responsibly across the organization.'
     },
     transformationSection: {
       icon: Brain,
-      title: 'Powering the Future of Smart Manufacturing',
-      content: 'ReadyAI.dev helps manufacturers achieve precision, predictability, and progress through explainable AI. Every insight is traceable, transparent, and accountable — ensuring operational excellence that scales with confidence.',
-      additionalContent: ''
+      title: 'Internal AI for Manufacturing',
+      content: 'An enterprise AI platform supports explainable AI capabilities designed to improve visibility and confidence in internal AI driven manufacturing decision making.',
+      additionalContent: 'ReadyAI.dev supports leadership teams in applying these capabilities responsibly as internal AI adoption scales across the organization.'
     },
     benefitsSection: {
       title: 'Why Manufacturing Leaders Choose ReadyAI.dev',
@@ -370,14 +370,14 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
     trustSection: {
       icon: Shield,
       title: 'Reliable. Compliant. Built for Resilience.',
-      content: 'The energy and utilities sector is transforming — balancing the shift to renewables, expanding data demands, and meeting increasing regulatory oversight.',
-      additionalContent: 'The ReadyAI.dev platform enables energy enterprises to operate efficiently, predict and prevent system failures, and innovate responsibly — all while maintaining governance and compliance.<br/><br/>Our <strong>Private AI Workspaces</strong> enable secure, role-based collaboration between engineering, IT, and compliance teams. With access to <strong>every major LLM</strong>, organizations can build domain-specific AI applications with complete control and accountability.'
+      content: 'Energy and utilities organizations are adopting internal AI while managing increasing regulatory and operational complexity.',
+      additionalContent: 'An enterprise AI platform provides secure, governed environments designed to support internal AI usage across infrastructure and operational contexts.<br/><br/>ReadyAI.dev supports leadership teams in adopting and applying these capabilities responsibly across the organization.'
     },
     transformationSection: {
       icon: Brain,
-      title: 'Powering the Future of Energy',
-      content: 'From grid optimization to demand forecasting, ReadyAI.dev turns complex data into safe, explainable, and actionable intelligence. Every insight is auditable, transparent, and accountable — giving utilities confidence to scale securely.',
-      additionalContent: ''
+      title: 'Internal AI for Energy & Utilities',
+      content: 'An enterprise AI platform supports internal AI use cases such as grid optimization and demand forecasting within secure, governed environments.',
+      additionalContent: 'Explainability and auditability capabilities support transparency and confidence as internal AI adoption scales across the organization.'
     },
     benefitsSection: {
       title: 'Why Energy Leaders Choose ReadyAI.dev',
@@ -452,13 +452,14 @@ export const INDUSTRY_CONTENT: IndustryContent[] = [
     trustSection: {
       icon: Shield,
       title: 'Secure. Compliant. Built for Accountability.',
-      content: 'Public institutions need AI they can trust — not another consulting engagement.',
-      additionalContent: 'At ReadyAI.dev, we don\'t sell services; we deliver a <strong>complete governed platform</strong> that enables agencies to deploy, monitor, and scale AI responsibly.<br/><br/>Built for transparency and operational efficiency, our platform helps government teams achieve more while maintaining public trust.<br/><br/>Our <strong>Private AI Workspaces</strong> guarantee full data sovereignty and compliance, while giving teams the flexibility to choose from <strong>every major LLM</strong> — a level of control proprietary ecosystems can\'t match.'
+      content: 'Public institutions need AI adoption grounded in trust, transparency, and accountability.',
+      additionalContent: 'An enterprise AI platform provides secure, governed environments designed to support internal AI usage while meeting public sector oversight and data sovereignty requirements.<br/><br/>ReadyAI.dev supports public sector leadership teams in adopting and applying these capabilities responsibly across the organization, without relying on consulting-led delivery models.'
     },
     transformationSection: {
       icon: Brain,
-      title: 'Transforming Public Service Delivery',
-      content: 'From citizen engagement to fraud prevention, ReadyAI.dev provides complete oversight and explainability. We help you to accelerate modernization without compromising governance.'
+      title: 'Internal AI for Public Sector',
+      content: 'An enterprise AI platform supports internal AI use cases such as citizen engagement and fraud prevention within secure, governed environments.',
+      additionalContent: 'Oversight and explainability capabilities support responsible modernization aligned with public sector governance expectations as internal AI adoption scales.'
     },
     benefitsSection: {
       icon: TrendingUp,

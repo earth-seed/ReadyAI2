@@ -95,9 +95,10 @@ const PricingPage: React.FC = () => {
                   </div>
                   <p className="font-sans text-sm text-primary-light mt-1">Annual billing</p>
                 </div>
-                <p className="font-sans text-base text-primary-light mb-6 leading-relaxed">
-                  Scale with confidence. When you're ready to deploy enterprise-wide, ReadyAI delivers all the power of 30+ AI models in one secure platform.
-                </p>
+                <div className="font-sans text-base text-primary-light mb-6 leading-relaxed space-y-2">
+                  <p>Scale with confidence.</p>
+                  <p>Delivered through an enterprise AI Platform Partner, organizations gain access to all of the major language models within a secure, governed internal AI environment.</p>
+                </div>
                 
                 <div className="mb-6">
                   <p className="font-sans font-semibold text-primary mb-3">Enterprise plan features:</p>

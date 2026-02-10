@@ -107,14 +107,17 @@ const Banner3Section = () => {
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12">
           <p className="font-sans text-accent text-xs sm:text-sm md:text-base uppercase tracking-widest mb-4 sm:mb-6">
-            All-in-One Platform
+            A Complete Enterprise AI Platform for Internal AI
           </p>
-            <h2 className="font-heading text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal mb-4 sm:mb-6">
-              Complete AI Platform
-            </h2>
-            <p className="font-sans text-primary-light text-sm sm:text-base max-w-3xl mx-auto leading-relaxed px-2">
-              Everything you need to build, deploy, and manage AI across your enterprise
-            </p>
+          <h2 className="font-heading text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal mb-2 sm:mb-3">
+            Enterprise AI Platform Capabilities
+          </h2>
+          <p className="font-sans text-accent text-sm sm:text-base font-medium mb-4 sm:mb-6">
+            Delivered Through a Proven Global Platform Partner
+          </p>
+          <p className="font-sans text-primary-light text-sm sm:text-base max-w-3xl mx-auto leading-relaxed px-2">
+            Everything required to build, deploy, and manage internal AI across the enterprise, using low‑code and no‑code tools, with governance, visibility, and control applied by design.
+          </p>
         </div>
 
         {/* Tab Navigation */}

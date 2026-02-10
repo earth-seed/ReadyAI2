@@ -56,7 +56,7 @@ const Banner2Section = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 bg-accent text-white px-10 py-5 rounded-xl font-sans font-semibold hover:bg-accent-dark transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-lg"
                   >
-                    Explore the ReadyAI.dev Platform
+                    Explore the Enterprise AI Platform
                     <ArrowRight className="w-5 h-5" />
                   </a>
                 </div>
