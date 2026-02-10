@@ -109,19 +109,19 @@ const SolutionsPage: React.FC = () => {
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
               <div className="max-w-4xl">
                 <h1 className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-normal text-white mb-6 sm:mb-8 leading-tight">
-                  Inside the<br /><span className="text-accent">AI Operating Layer</span>
+                  Inside the <span className="text-accent">Enterprise AI Operating Layer</span>
                 </h1>
                 
                 <p className="font-sans text-base sm:text-lg md:text-xl text-white/90 mb-6 leading-relaxed max-w-3xl">
-                  Every capability in our platform connects back to one purpose: <span className="font-semibold text-white">giving enterprises a single, governed operating layer that unifies every model, agent, and workflow.</span>
+                  Every capability within the enterprise AI platform supports a single objective: to provide organizations with a governed environment for internal AI at scale. There is zero requirement to bring your own LLM, they are all accessible within the user interface, select the LLM which fits your task or switch to another without another subscription.
                 </p>
                 
                 <p className="font-sans text-base md:text-lg text-white/90 mb-6 leading-relaxed max-w-3xl">
-                  The platform gives your enterprise everything you need to turn your Internal AI potential into performance.
+                  Delivered through our proven global enterprise AI Platform Partner, the operating layer brings models, agents, and integrations into a structured, secure environment designed for enterprise oversight, including those built using low‑code and no‑code tools.
                 </p>
                 
                 <p className="font-sans text-base md:text-lg text-white/90 mb-10 leading-relaxed max-w-3xl">
-                  From knowledge-enhanced agents to real-time integrations, every feature is built to expand your capabilities without compromising your control.
+                  ReadyAI.dev supports leadership teams in adopting and applying these capabilities responsibly across internal AI use, without compromising governance or control.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -131,12 +131,12 @@ const SolutionsPage: React.FC = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 shadow-2xl"
                   >
-                    Explore Platform
+                    Explore the Platform
                     <ArrowRight className="w-5 h-5" />
                   </a>
                 <CalendlyBtn
                   url="https://calendly.com/readyai-sales"
-                  text="Book a Call"
+                  text="Book a Leadership Conversation"
                   className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
                 />
                 </div>
@@ -154,10 +154,10 @@ const SolutionsPage: React.FC = () => {
                   
                   <div className="pl-8">
                     <p className="font-heading text-2xl md:text-3xl lg:text-4xl text-primary font-normal mb-4 leading-tight">
-                      Your entire internal AI ecosystem — finally unified under one operating layer.
+                      An enterprise AI platform brings internal AI usage into a structured, governed environment.
                     </p>
                     <p className="font-sans text-base text-primary-light leading-relaxed">
-                      Now you can govern every model and workflow from one secure foundation.
+                      ReadyAI.dev supports leadership teams in applying governance expectations consistently across the organization.
                     </p>
                   </div>
                 </div>
@@ -175,7 +175,7 @@ const SolutionsPage: React.FC = () => {
                 Capabilities
               </h2>
               <p className="font-sans text-base text-primary-light max-w-3xl mx-auto leading-relaxed">
-                These capabilities form the intelligence layer that powers your enterprise AI — governed, connected, and built for scale.
+                These capabilities support the intelligence layer within an enterprise AI platform, designed to enable structured, connected internal AI usage at scale.
               </p>
             </div>
 
@@ -703,9 +703,10 @@ const SolutionsPage: React.FC = () => {
                     AI Agents for Business Automation
                   </h2>
                   <p className="font-sans text-base text-primary-light leading-relaxed">
-                    ReadyAI's AI agents are autonomous programs that can be customized to handle specific tasks and workflows in your organization. 
-                    They combine the power of large language models with specialized tools and data access to automate complex processes that 
-                    previously required human intervention.
+                    AI agents within the enterprise AI platform are configurable programs designed to support specific tasks and workflows for internal AI usage.
+                  </p>
+                  <p className="font-sans text-base text-primary-light leading-relaxed">
+                    They combine large language models with approved tools and controlled data access, enabling organizations to introduce automation in a structured, governed manner, including through low‑code and no‑code configuration. The AI agents are included in the monthly platform fixed fee, no surprise charges or unexpected overages.
                   </p>
 
                   {/* Value Props Section */}
@@ -907,9 +908,10 @@ const SolutionsPage: React.FC = () => {
                       LLM Integration
                     </h2>
                     <p className="font-sans text-base text-primary-light leading-relaxed">
-                      Access a wide range of industry-leading large language models through a single platform. ReadyAI provides
-                      a unified interface to multiple LLMs, allowing you to choose the right model for each specific use case
-                      based on performance, cost, and specialized capabilities.
+                      The enterprise AI platform provides access to the majority of industry-leading large language models through a single, governed internal AI environment.
+                    </p>
+                    <p className="font-sans text-base text-primary-light leading-relaxed">
+                      This enables organizations to select models based on performance, and suitability for specific use cases, without fragmenting access or governance. There is no necessity to bring your own LLM.
                     </p>
                     
                     <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">
@@ -972,9 +974,10 @@ const SolutionsPage: React.FC = () => {
                       Enterprise-Grade Security & Compliance
                     </h2>
                     <p className="font-sans text-base text-primary-light leading-relaxed">
-                      The platform is built with security and compliance at its core. Our comprehensive security 
-                      features and certifications ensure your AI operations meet the highest industry standards while 
-                      protecting sensitive data and maintaining regulatory compliance.
+                      The enterprise AI platform is designed with security and compliance at its core for internal AI usage.
+                    </p>
+                    <p className="font-sans text-base text-primary-light leading-relaxed">
+                      It includes enterprise-grade security controls and compliance capabilities that support regulatory requirements while protecting sensitive data. Book a call with our Platform Product Manager and deep dive into the structure of the Internal AI Platform design.
                     </p>
 
                     <div className="bg-gradient-to-br from-accent2-lightest to-white rounded-xl p-6 md:p-8 border border-gray-100">

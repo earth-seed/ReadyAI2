@@ -22,16 +22,22 @@ const HeroSection: React.FC = () => {
               
               <div className="space-y-4 mb-8 animate-fade-in-up-delay">
                 <p className="font-sans text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
-                  Even the most advanced enterprises are struggling to control internal AI use.
+                  Through a strategic alliance with a globally recognized, multi‑billion‑dollar cybersecurity leader, organizations gain access to a proven, secure enterprise AI platform designed for internal AI adoption at scale.
                 </p>
                 <p className="font-sans text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
-                  ReadyAI.dev gives enterprises one secure workspace to govern every LLM — safely, compliantly, and under a single governance layer.
+                  The platform gives leadership teams clear visibility, control, and confidence as AI usage expands across the business, while enabling employees to build and use AI through low‑code and no‑code tools without slowing teams down.
                 </p>
               </div>
               
-              <div className="mb-10 animate-fade-in-up-delay">
+              <div className="mb-10 animate-fade-in-up-delay space-y-1">
                 <p className="font-sans text-base sm:text-lg md:text-xl text-accent font-semibold">
-                  Choice is power, but control is confidence.
+                  Visibility enables governance.
+                </p>
+                <p className="font-sans text-base sm:text-lg md:text-xl text-accent font-semibold">
+                  Control enables scale.
+                </p>
+                <p className="font-sans text-base sm:text-lg md:text-xl text-accent font-semibold">
+                  Confidence enables adoption.
                 </p>
               </div>
               
@@ -42,7 +48,7 @@ const HeroSection: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 sm:px-8 sm:py-3.5 rounded-lg shadow-md hover:bg-accent-dark hover:shadow-lg transition-all duration-200 text-sm sm:text-base font-semibold w-full sm:w-auto"
                 >
-                  <span className="hidden sm:inline">Explore the ReadyAI.dev Platform</span>
+                  <span className="hidden sm:inline">Explore the Enterprise AI Platform</span>
                   <span className="sm:hidden">Explore Platform</span>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

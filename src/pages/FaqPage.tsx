@@ -21,14 +21,15 @@ const faqCategories: FAQCategory[] = [
     icon: <Cpu className="w-5 h-5" />,
     faqs: [
       {
-        question: 'How does the ReadyAI.dev Platform benefit your enterprise?',
+        question:
+          "How does the enterprise AI platform, built by our Global Partner, benefit your organization, and what is ReadyAI.dev's role?",
         answer:
-          'ReadyAI.dev gives you one secure, unified space to manage your entire AI ecosystem. You can connect to multiple LLMs in one place, monitor usage and costs, and stay fully compliant across every department. Your CIO, or whoever oversees your AI strategy, gets complete visibility and control from a single dashboard.\n\n→ Learn more in our Platform page',
+          "An enterprise-grade AI platform provides organizations with a secure, governed environment for internal AI usage across teams and use cases.\n\nThrough the platform, enterprises can access multiple large language models within a single environment, gain visibility into internal AI usage and spend, and apply governance controls that support compliance and oversight requirements.\n\nReadyAI.dev supports leadership teams, with consulting services in adopting and applying these platform capabilities effectively, giving CIOs and AI leaders clear insight into how internal AI is being used across the organization.",
       },
       {
-        question: 'What makes ReadyAI.dev different from other AI firms?',
+        question: 'What makes ReadyAI.dev different from traditional AI consulting firms?',
         answer:
-          'Most companies offer AI consulting. We go further. ReadyAI.dev combines a powerful, governed platform with hands-on Professional Services. You get real structure, compliance, and support, not just generic advice. Our team helps you manage every LLM under one umbrella so you can move fast and stay in control.',
+          "Many AI consulting firms lead with workshops, roadmaps, and bespoke projects that often result in recommendations rather than durable structure.\n\nReadyAI.dev operates as a platform partner, not a traditional consulting firm.\n\nWe help enterprises access a proven enterprise AI platform designed for secure, governed internal AI adoption, while supporting leadership teams in applying platform capabilities responsibly and consistently.\n\nThe focus is on clarity, governance, and sustainable internal AI adoption, not on building custom solutions or operating AI systems on a customer's behalf.\n\nOrganizations work with ReadyAI.dev to move beyond advisory output and establish a structured, enterprise-ready foundation for internal AI.",
       },
       {
         question: 'How does the platform simplify LLM access and management?',
@@ -42,9 +43,9 @@ const faqCategories: FAQCategory[] = [
     icon: <Shield className="w-5 h-5" />,
     faqs: [
       {
-        question: 'How secure is ReadyAI.dev?',
+        question: "What's the security protocol for the Platform?",
         answer:
-          'Security isn\'t a checkbox for us, it\'s built into everything we do. Our platform meets SOC 2, GDPR, HIPAA, and NIST standards, with encryption, audit trails, and continuous monitoring. Our Professional Services team also work directly with your Security and Compliance leads to make sure every integration meets your standards and keeps your data protected.\n\n→ View our Trust & Security Certifications',
+          "Our Global Technology Partner built the AI Platform with security as a top priority. They implement industry-leading security measures to safeguard your data and maintain platform integrity. This includes secure data encryption both in transit and at rest, regular security audits, and robust access controls to ensure only authorized users can access sensitive information.\n\nThe infrastructure is monitored continuously for vulnerabilities and potential threats, and best practices are followed for secure coding and infrastructure management. Additionally, they comply with relevant data protection regulations to protect your privacy and provide a safe development environment.\n\nThe platform includes enterprise-grade security controls and compliance capabilities aligned with recognized frameworks such as SOC 2, GDPR, HIPAA, and NIST. These include encryption, access controls, audit logging, and administrative visibility to support secure internal AI usage.\n\nWe support leadership and security teams in applying the platform’s security and compliance capabilities within their existing risk, governance, and regulatory frameworks as internal AI adoption scales.",
       },
     ],
   },
@@ -60,7 +61,7 @@ const faqCategories: FAQCategory[] = [
       {
         question: 'What\'s included in your AI Strategy Consulting?',
         answer:
-          'We support you through every stage of enterprise AI adoption: AI Strategy & Pilot Design, Virtual AI Architect, Implementation Services, Change Management Support, and Training & Enablement. Our Professional Services team is with you from planning to rollout, using the ReadyAI.dev platform to ensure continuity, compliance, and measurable success without any stress.',
+          "ReadyAI.dev supports organizations across the full lifecycle of internal AI adoption by enabling access to a proven enterprise AI platform and helping leadership teams apply it effectively.\n\nThis includes support for early-stage strategy and pilot definition, platform onboarding, and alignment across leadership, risk, and compliance functions to ensure internal AI adoption remains structured, governed, and scalable.\n\nReadyAI.dev focuses on platform-led adoption. The emphasis is on clarity, governance, and continuity, ensuring organizations can move from planning to rollout using a consistent enterprise AI foundation.",
       },
     ],
   },
@@ -119,7 +120,7 @@ const FaqPage: React.FC = () => {
 
             {/* Subtext */}
             <p className="font-sans text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Everything you need to know about ReadyAI.dev&apos;s enterprise AI platform, security, and implementation.
+              Enterprise AI platform FAQs: Internal AI Security, Governance, and Adoption
             </p>
           </div>
         </div>

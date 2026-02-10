@@ -50,7 +50,10 @@ const CIOInsightSection: React.FC = () => {
                 </div>
                 <div className="flex-1">
                   <p className="font-sans text-white text-sm sm:text-base leading-relaxed">
-                    Within weeks of moving to ReadyAI.dev's AI operating layer, every model and workflow was unified under one secure workspace. The CIO gained full visibility, automated compliance reporting, and restored confidence across clinical and administrative teams — transforming AI chaos into coordinated intelligence.
+                    Within weeks of adopting an enterprise AI operating layer delivered through a proven global platform partner, models and workflows were consolidated into a single, governed internal AI environment.
+                  </p>
+                  <p className="font-sans text-white text-sm sm:text-base leading-relaxed mt-4">
+                    The CIO gained clear visibility into AI usage, access to compliance reporting, and renewed confidence across clinical and administrative teams, moving the organization from fragmented experimentation to coordinated internal AI adoption.
                   </p>
                 </div>
               </div>

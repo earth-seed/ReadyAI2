@@ -43,21 +43,21 @@ const Banner1Section = () => {
             </p>
             
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-4 sm:mb-6">
-              Why Enterprises Choose <span className="text-accent">ReadyAI.dev</span>
+              Why Enterprises Work With <span className="text-accent">ReadyAI.dev</span>
             </h2>
             <div className="max-w-5xl mx-auto px-2 sm:px-4 space-y-3 sm:space-y-4">
               <p className="font-sans text-base text-gray-700 leading-relaxed text-center">
-                How many LLMs is your business running? {' '}
+                How many LLMs is your organization already using?
               </p>
               <p className="font-sans text-base text-gray-700 leading-relaxed text-center">
-                Visibility defines control. Governance defines trust.{' '}
-                <span className="text-accent font-semibold">ReadyAI.dev delivers both.</span>
+                As internal AI adoption spreads across teams, visibility becomes essential. Without a clear view of models, access, and usage, governance discussions are built on assumptions rather than facts.
               </p>
               <p className="font-sans text-base text-gray-700 leading-relaxed text-center">
-                One platform to unify every model, every team, and every process.
+                Enterprise AI platforms provide the technical controls required to govern internal AI at scale. Delivered through a globally recognized, multi‑billion‑dollar cybersecurity platform partner, the enterprise AI platform gives leadership teams the ability to see, manage, and apply those controls consistently as usage expands across the organization, using low‑code and no‑code tools.
               </p>
               <p className="font-sans text-base text-gray-700 leading-relaxed text-center font-semibold">
-                <span className="text-accent">Eliminate employees' individual LLM accounts</span> — it's all included in your subscription. Bundle your existing AI spend into one predictable monthly fee instead of paying separately for monitoring.
+                <span className="text-accent">Organizations can eliminate individual employee LLM accounts entirely.</span>{' '}
+                Internal AI access, governance, and usage monitoring are bundled into a single, predictable subscription, replacing fragmented licenses and separate oversight costs with one controlled enterprise model.
               </p>
             </div>
           </div>
@@ -76,7 +76,7 @@ const Banner1Section = () => {
                     Consumer AI Tools
                   </div>
                   <div className="font-sans text-accent font-semibold text-xs md:text-sm uppercase tracking-widest text-center">
-                    ReadyAI.dev
+                    Global AI Platform for Enterprise&apos;s Internal Teams
                   </div>
                 </div>
 
@@ -138,7 +138,7 @@ const Banner1Section = () => {
                     
                     <div className="bg-accent/5 rounded-lg p-3 sm:p-4 border border-accent/20">
                       <div className="text-xs uppercase tracking-wide text-accent mb-2 font-semibold">
-                        ReadyAI.dev
+                        Global AI Platform for Enterprise&apos;s Internal Teams
                       </div>
                       <div className="font-sans text-primary text-sm font-semibold leading-relaxed">
                         {row.readyai}
@@ -153,7 +153,7 @@ const Banner1Section = () => {
           {/* Closing Statement */}
           <div className="text-center max-w-4xl mx-auto">
             <p className="font-sans text-gray-700 text-lg md:text-xl leading-relaxed font-light">
-              ReadyAI.dev gives enterprises a governed foundation for AI. <span className="font-semibold text-gray-900">Every model, every team</span>, fully compliant and auditable.
+              Enterprises access a governed internal AI foundation through a proven enterprise AI platform, with ReadyAI.dev supporting leadership teams in applying it consistently across the organization.
             </p>
           </div>
         </div>

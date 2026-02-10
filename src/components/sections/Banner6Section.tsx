@@ -122,7 +122,7 @@ export default function Banner6Section() {
                     </p>
                     <div className="pt-4 border-t border-gray-200">
                       <p className="font-sans text-gray-900 text-lg md:text-xl leading-relaxed font-semibold">
-                        ReadyAI.dev provides the secure foundation for that shift — <span className="text-accent">one platform to unify every model, every team, and every process</span> with complete oversight, compliance, and control.
+                        That shift is enabled through an enterprise AI platform, bringing models, teams, and use cases into a governed internal AI environment, with ReadyAI.dev supporting leadership adoption and execution across the organization.
                       </p>
                     </div>
                   </div>

@@ -18,30 +18,32 @@ const CtaSection: React.FC = () => {
                   Ready to Take the Next Step?
                 </h2>
                 <p className="font-sans text-base text-gray-300 mb-6 leading-relaxed">
-                  Starting with AI or looking to formalize governance across your enterprise.
-                  Whatever stage you are at, ReadyAI can help you. Select one of the steps below to secure AI in your workplace.
+                  Whether internal AI is just emerging or already embedded across the enterprise, leadership teams are being asked to bring clarity, structure, and governance to how it is used.
                 </p>
-                <h3 className="font-heading text-xl font-normal text-white mt-8 mb-4">Next Steps to Secure AI:</h3>
+                <p className="font-sans text-base text-gray-300 mb-6 leading-relaxed">
+                  ReadyAI.dev supports organizations by helping leadership teams assess their current internal AI landscape and connect to a proven enterprise AI platform designed for secure, governed adoption, including AI built using low‑code and no‑code tools.
+                </p>
+                <h3 className="font-heading text-xl font-normal text-white mt-8 mb-4">Next Steps</h3>
                 <ul className="font-sans space-y-3 text-gray-300">
                   <li className="flex items-start gap-3">
                     <span className="text-accent mt-1">•</span>
-                    <span>Book a Call with a Platform Guide to evaluate your current AI situation</span>
+                    <span>Book a leadership conversation to review how internal AI is currently being used across your organization</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-accent mt-1">•</span>
-                    <span>Explore the platform with a Self-Guided Demo</span>
+                    <span>Explore the enterprise AI platform through a guided or self-guided demo</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-accent mt-1">•</span>
-                    <span>Test and scale with confidence with a ReadyAI pilot (3–7 people)</span>
+                    <span>Run a small pilot (3–7 people) to understand fit, value, and governance considerations</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-accent mt-1">•</span>
-                    <span>Schedule a Strategy Session with our Executive Team</span>
+                    <span>Schedule a strategy session to align internal AI adoption with leadership, risk, and compliance expectations</span>
                   </li>
                 </ul>
                 <p className="font-sans text-gray-300 mt-6 italic">
-                  Let's build your AI foundation, securely, strategically, and at your pace
+                  Bring clarity to internal AI adoption by aligning leadership priorities, platform capability, and governance expectations.
                 </p>
               </div>
               <div className="lg:col-span-5 mt-8 lg:mt-0">
