@@ -197,8 +197,9 @@ const FaqPage: React.FC = () => {
                             >
                               <div className="px-6 pb-6 pt-2 border-t border-gray-100">
                                 <div className="pl-4 border-l-4 border-accent/30">
-                                  <div className="font-sans text-base md:text-lg text-gray-700 leading-relaxed">
+                                  <div className="font-sans text-base md:text-lg text-gray-700 leading-relaxed space-y-4">
                                     {faq.answer.split('\n').map((line, index) => {
+                                      if (line.trim() === '') return null;
                                       if (line.startsWith('→')) {
                                         const linkText = line.replace('→ ', '');
                                         let href = '#';
@@ -225,7 +226,7 @@ const FaqPage: React.FC = () => {
                                           </div>
                                         );
                                       }
-                                      return <p key={index}>{line}</p>;
+                                      return <p key={index} className="mb-0">{line}</p>;
                                     })}
                                   </div>
 

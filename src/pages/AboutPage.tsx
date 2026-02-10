@@ -1,8 +1,11 @@
-import React from 'react';
-import { Shield, Target, Users, Zap, Award, Globe, Lock, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Shield, Target, Users, Zap, Award, Globe, Lock, TrendingUp, CheckCircle, ArrowRight, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import BenMarshallArticleOverlay from '../components/ui/BenMarshallArticleOverlay';
 
 const AboutPage: React.FC = () => {
+  const [benArticleOverlayOpen, setBenArticleOverlayOpen] = useState(false);
+
   React.useEffect(() => {
     document.title = 'About ReadyAI - Enterprise AI Platform';
   }, []);
@@ -184,6 +187,68 @@ const AboutPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Ben Marshall – Enterprise Internal AI Licensing */}
+      <div className="bg-accent2-lightest py-16 md:py-20 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-6">
+                Trusted perspective
+              </p>
+              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-primary mb-8">
+                Enterprise Internal AI Licensing in Focus
+              </h2>
+            </div>
+            {/* Single card: left = photo + subtext (bigger), right = text + button */}
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+              <div className="p-6 sm:p-8 md:p-10 flex flex-col sm:flex-row gap-8 md:gap-12">
+                {/* Left: photo + subtext */}
+                <div className="flex-shrink-0 flex flex-col items-start">
+                  <a
+                    href="https://www.linkedin.com/in/benfmarshall/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-xl overflow-hidden bg-gray-900 w-44 h-44 sm:w-52 sm:h-52 md:w-56 md:h-56"
+                  >
+                    <img
+                      src="/assets/images/ben.jpeg"
+                      alt="Ben Marshall, Founder & CEO, The IT Strategists"
+                      className="w-full h-full object-cover"
+                      width={224}
+                      height={224}
+                    />
+                  </a>
+                  <p className="font-sans text-base font-semibold text-primary mt-4">Ben Marshall</p>
+                  <p className="font-sans text-sm text-gray-600">Founder & CEO, The IT Strategists</p>
+                  <a
+                    href="https://www.linkedin.com/in/benfmarshall/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-sans text-sm text-accent hover:underline mt-1 inline-block"
+                  >
+                    LinkedIn
+                  </a>
+                </div>
+                {/* Right: text + button */}
+                <div className="flex-1 min-w-0 flex flex-col">
+                  <p className="font-sans text-base sm:text-lg text-gray-700 leading-relaxed">
+                    With insights from Ben Marshall, world-class licensing expert and CEO of The IT Strategist, whose proven expertise helps enterprises navigate complex licensing impacts, this document brings much-needed clarity to the internal AI licensing, cost, and risk landscape.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setBenArticleOverlayOpen(true)}
+                    className="mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-sans text-sm font-medium text-accent border-2 border-accent hover:bg-accent/5 transition-colors w-fit"
+                  >
+                    <FileText className="w-5 h-5" />
+                    Read the full document
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* What Makes Us Different */}
       <div className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -213,6 +278,8 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <BenMarshallArticleOverlay isOpen={benArticleOverlayOpen} onClose={() => setBenArticleOverlayOpen(false)} />
 
       {/* Leadership Section */}
       <div id="leadership" className="bg-gradient-to-br from-primary via-primary-light to-primary-dark py-20 md:py-32 scroll-mt-20">
