@@ -20,11 +20,11 @@ const HeroSection: React.FC = () => {
                 <span className="block sm:whitespace-nowrap">Real Enterprise Control.</span>
               </h1>
               
-              <div className="space-y-4 mb-8 animate-fade-in-up-delay">
-                <p className="font-sans text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
+              <div className="space-y-6 sm:space-y-8 mb-8 animate-fade-in-up-delay max-w-xl">
+                <p className="font-sans text-base sm:text-lg text-gray-700 leading-relaxed">
                   Through a strategic alliance with a globally recognized, multi‑billion‑dollar cybersecurity leader, organizations gain access to a proven, secure enterprise AI platform designed for internal AI adoption at scale.
                 </p>
-                <p className="font-sans text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
+                <p className="font-sans text-base sm:text-lg text-gray-700 leading-relaxed">
                   The platform gives leadership teams clear visibility, control, and confidence as AI usage expands across the business, while enabling employees to build and use AI through low‑code and no‑code tools without slowing teams down.
                 </p>
               </div>

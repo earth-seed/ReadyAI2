@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroSection from '../components/sections/HeroSection';
+import BenMarshallArticleSection from '../components/sections/BenMarshallArticleSection';
 import Banner1Section from '../components/sections/Banner1Section';
 import BannerStandalone from '../components/sections/BannerStandalone';
 import Banner3Section from '../components/sections/Banner3Section';
@@ -20,6 +21,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <HeroSection />
+      <BenMarshallArticleSection />
       <Banner1Section />
       <BannerStandalone />
       <Banner3Section />
