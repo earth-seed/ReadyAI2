@@ -94,7 +94,7 @@ const AboutPage: React.FC = () => {
               AI Confidence for Modern Enterprises
             </h1>
             <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">
-              We provide secure, enterprise-grade AI platform that helps organizations embrace innovation 
+              We provide a secure, enterprise-grade AI platform that helps organizations embrace innovation
               with clarity, confidence, and compliance.
             </p>
           </div>
