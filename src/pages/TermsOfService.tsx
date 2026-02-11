@@ -39,9 +39,10 @@ const TermsOfService: React.FC = () => {
                 Introduction
               </h2>
               <p className="font-sans text-lg text-gray-700 leading-relaxed">
-                Welcome to ReadyAI.dev a platform designed to provide information on an enterprise grade AI platform. 
-                By accessing or using our website, you agree to be bound by these Terms of Service ("Terms"). 
-                Please read them carefully.
+                Welcome to ReadyAI.dev. We provide consulting services enabling secure and controlled internal access to leading large language models (LLMs) and low‑code/no‑code autonomous AI agents within an enterprise-grade artificial intelligence framework. As an authorized AI consulting partner to a globally recognized cybersecurity platform, ReadyAI.dev supports organizations in managing AI technologies responsibly and securely. By accessing or using our website and services, users agree to comply with all applicable terms, conditions, and policies established to maintain the highest standards of security, confidentiality, and operational integrity.
+              </p>
+              <p className="font-sans text-lg text-gray-700 leading-relaxed mt-4">
+                By accessing or using our website, you agree to be bound by these Terms of Service (&quot;Terms&quot;). Please read them carefully.
               </p>
             </div>
 
