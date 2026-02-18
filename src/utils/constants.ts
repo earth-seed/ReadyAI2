@@ -192,7 +192,7 @@ export const ABOUT: About[] = [
       monthlyNote: '$18/mo/seat if month to month',
       popular: true,
       features: [
-        'Access to all 30+ LLMs',
+        'Access to all 50+ LLMs',
         '10GB storage',
         'All integrations',
         'Unlimited chat history',
@@ -210,7 +210,7 @@ export const ABOUT: About[] = [
       keywords: 'price, pricing, free, cost',
       note: 'Paid annually',
       features: [
-        'Access to 30+ LLMs',
+        'Access to 50+ LLMs',
         '20GB storage',
         'Governance features',
         'User permissions',
@@ -227,7 +227,7 @@ export const ABOUT: About[] = [
       keywords: 'starter, pricing, free, cost',
       note: 'Best for exploring AI capabilities and learning the basics',
       features: [
-        'Access to 30+ LLMs',
+        'Access to 50+ LLMs',
         '2GB storage',
         'Unlimited agents',
         'Analytics & reporting',

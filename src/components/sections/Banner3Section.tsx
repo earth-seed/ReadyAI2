@@ -32,7 +32,7 @@ const Banner3Section = () => {
       icon: Zap,
       details: 'Deploy cutting-edge AI models instantly. Stay current with the latest releases from OpenAI, Anthropic, and leading AI providers—all available with a single click.',
       features: [
-        'Access to 30+ leading LLMs instantly',
+        'Access to 50+ leading LLMs instantly',
         'OpenAI GPT-4o, Claude 3.5, DeepSeek R1+',
         'Google Gemini, Cohere, Grok, and Meta models',
         'Automatic updates with each new model release',

@@ -717,7 +717,7 @@ const SolutionsPage: React.FC = () => {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                       {[ 
                         { icon: Brain, title: '7+ AI subscriptions', subtitle: 'consolidated into one' },
-                        { icon: Layers, title: '30+ AI models', subtitle: 'from leading providers' },
+                        { icon: Layers, title: '50+ AI models', subtitle: 'from leading providers' },
                         { icon: Zap, title: 'Single platform', subtitle: 'unified experience' },
                         { icon: TrendingDown, title: '~80% savings', subtitle: 'vs separate subscriptions' }
                       ].map(({ icon: Icon, title, subtitle }, i) => (

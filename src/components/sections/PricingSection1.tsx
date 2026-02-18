@@ -19,7 +19,7 @@ const PricingSection1: React.FC = () => {
             <div className="space-y-8">
               {[ 
                 { icon: Brain, title: '7+', subtitle: 'AI subscriptions' },
-                { icon: Layers, title: '30+', subtitle: 'offering AI models' },
+                { icon: Layers, title: '50+', subtitle: 'offering AI models' },
                 { icon: Zap, title: '1', subtitle: 'rolled into one platform' },
                 { icon: TrendingDown, title: '~80%', subtitle: 'discount' }
               ].map(({ icon: Icon, title, subtitle }, i) => (
