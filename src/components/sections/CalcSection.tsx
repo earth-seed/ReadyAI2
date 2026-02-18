@@ -86,7 +86,7 @@ const CalcSection: React.FC = () => {
                 <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
                     'No hidden fees or usage charges',
-                    'Access to 30+ premium LLMs',
+                    'Access to 50+ premium LLMs',
                     'Unlimited AI agent creation',
                     'Enterprise-grade security included'
                   ].map((benefit, index) => (

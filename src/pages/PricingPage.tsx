@@ -269,7 +269,7 @@ const PricingPage: React.FC = () => {
                 </p>
                 <ul className="space-y-2.5 mb-8">
                   {[
-                    'Access to all 30+ LLMs',
+                    'Access to all 50+ LLMs',
                     '10GB storage',
                     'All integrations',
                     'Workflows & APIs',
