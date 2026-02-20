@@ -232,7 +232,8 @@ const PricingPage: React.FC = () => {
                 </p>
                 <ul className="space-y-2.5 mb-8">
                   {[
-                    'Access to 20+ leading LLMs',
+                    'Over 50+ LLMs',
+                    '500k tokens/mo/seat',
                     '2GB storage',
                     'Unlimited agents',
                     'Analytics & reporting',
@@ -269,7 +270,8 @@ const PricingPage: React.FC = () => {
                 </p>
                 <ul className="space-y-2.5 mb-8">
                   {[
-                    'Access to all 50+ LLMs',
+                    'Over 50+ LLMs',
+                    '8m tokens/mo/seat',
                     '10GB storage',
                     'All integrations',
                     'Workflows & APIs',

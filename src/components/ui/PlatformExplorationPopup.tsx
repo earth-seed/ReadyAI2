@@ -102,7 +102,7 @@ const PlatformExplorationPopup: React.FC<PlatformExplorationPopupProps> = ({
             <div className="flex items-start justify-between">
               <div>
                 <h2 className="font-heading text-xl font-medium text-gray-900 mb-1">Ready to get started with ReadyAI?</h2>
-                <p className="font-sans text-gray-600 text-sm">Secure your AI operations with enterprise-grade solutions</p>
+                <p className="font-sans text-gray-600 text-sm">Harness all your internal LLM's and Agents on one enterprise-grade platform</p>
               </div>
               <button
                 onClick={handleDismiss}
