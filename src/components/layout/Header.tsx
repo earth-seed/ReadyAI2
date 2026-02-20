@@ -38,7 +38,7 @@ const Header: React.FC = () => {
             />
           </Link>
 
-          <nav className="hidden 2xl:flex items-center space-x-8">
+          <nav className="hidden xl:flex items-center space-x-6 2xl:space-x-8">
             {NAVIGATION.map((item) => (
               <div key={item.name} className="relative group">
                 <Link 
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          <div className="hidden 2xl:flex items-center space-x-4">
+          <div className="hidden xl:flex items-center space-x-3 2xl:space-x-4">
             <form onSubmit={handleSearch} className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-4 w-4 text-gray-400" />
@@ -84,13 +84,13 @@ const Header: React.FC = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-accent focus:border-accent sm:text-sm"
+                className="block w-40 xl:w-44 2xl:w-56 pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-accent focus:border-accent sm:text-sm"
                 placeholder="Search"
               />
             </form>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+              className="inline-flex items-center justify-center px-3 xl:px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
             >
               Contact
             </Link>
@@ -98,13 +98,13 @@ const Header: React.FC = () => {
               href="https://devs.ai/signup?ref=sales%40readyai.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-accent hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+              className="inline-flex items-center justify-center px-3 xl:px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-accent hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
             >
               Explore Platform
             </a>
           </div>
 
-          <div className="2xl:hidden flex items-center">
+          <div className="xl:hidden flex items-center">
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -122,7 +122,7 @@ const Header: React.FC = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="2xl:hidden">
+        <div className="xl:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-md">
             {NAVIGATION.map((item) => (
               <div key={item.name}>
