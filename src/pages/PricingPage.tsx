@@ -4,6 +4,8 @@ import { Check, Sparkles, ArrowRight } from 'lucide-react';
 import CalendlyBtn from '../components/sections/CalendlyBtn';
 import { PricingTiers } from '../utils/constants';
 
+const PURCHASE_LICENSE_URL = 'https://devs.ai/signup?ref=sales%40readyai.dev';
+
 const PricingPage: React.FC = () => {
   const { tierId } = useParams<{ tierId: string }>();
   const selectedTier = tierId 
@@ -118,10 +120,19 @@ const PricingPage: React.FC = () => {
                   </ul>
                 </div>
 
-                <div className="mt-auto">
+                <div className="mt-auto space-y-3">
+                  <a
+                    href={PURCHASE_LICENSE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                  >
+                    Purchase License
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
                   <CalendlyBtn
                     text="Speak to an AI Strategy Advisor"
-                    className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                    className="w-full bg-white text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-lg py-3 px-6"
                   />
                 </div>
               </div>
@@ -164,10 +175,19 @@ const PricingPage: React.FC = () => {
                 Or if you're just exploring AI on your own, start small with our <Link to="/plans-and-enterprise-options/individual-starter-plans" className="text-accent font-semibold hover:underline">Free & Personal Plans</Link>.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
+              <a
+                href={PURCHASE_LICENSE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-accent-dark transition-all shadow-md hover:shadow-lg"
+              >
+                Purchase License
+                <ArrowRight className="w-4 h-4" />
+              </a>
               <CalendlyBtn
                 text="Schedule a Consultation"
-                className="bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                className="bg-white text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-lg py-3 px-8"
               />
               <Link 
                 to="/plans-and-enterprise-options/individual-starter-plans"
@@ -246,10 +266,15 @@ const PricingPage: React.FC = () => {
                   ))}
                 </ul>
                 <div className="mt-auto">
-                  <CalendlyBtn
-                    text="Start Exploring for FREE"
-                    className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
-                  />
+                  <a
+                    href={PURCHASE_LICENSE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                  >
+                    Get Started Free
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -284,10 +309,15 @@ const PricingPage: React.FC = () => {
                   ))}
                 </ul>
                 <div className="mt-auto">
-                  <CalendlyBtn
-                    text="Unlock Personal Plan"
-                    className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
-                  />
+                  <a
+                    href={PURCHASE_LICENSE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                  >
+                    Purchase License
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -302,10 +332,21 @@ const PricingPage: React.FC = () => {
               Move to our Enterprise Plan <strong className="text-accent text-xl">($30/seat/month)</strong> and gain governance, 
               compliance, advanced analytics, and enterprise-grade support, without losing your work or data.
             </p>
-            <CalendlyBtn
-              text="Upgrade to Enterprise Options"
-              className="bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-md hover:shadow-lg"
-            />
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
+              <a
+                href={PURCHASE_LICENSE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-accent-dark transition-all shadow-md hover:shadow-lg"
+              >
+                Purchase License
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <CalendlyBtn
+                text="Talk to an Advisor"
+                className="bg-white text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-lg py-3 px-8"
+              />
+            </div>
           </div>
 
           {/* CTA Banner */}
