@@ -15,6 +15,29 @@ interface FAQCategory {
   faqs: FAQ[];
 }
 
+const cioFaqs: FAQ[] = [
+  {
+    question: 'How do we determine which model to use?',
+    answer:
+      'The platform includes integrated Auto Model Selection that evaluates task requirements and dynamically routes requests across a multi-LLM environment.\n\nThis maintains performance optimization, cost control, and policy alignment — with executive visibility into model utilization across the organization.',
+  },
+  {
+    question: 'Can we integrate third-party systems (MCP, APIs, enterprise software)?',
+    answer:
+      'Yes.\n\nThe platform is architected for secure enterprise integration and supports API connectivity across 4,000+ systems.\n\nAI capabilities can be embedded directly into existing workflows within governed operating parameters, preserving auditability, role-based access control, and oversight.',
+  },
+  {
+    question: 'Can custom agents be deployed into our existing software stack?',
+    answer:
+      'Yes.\n\nAgents developed within the platform are designed for integration into existing enterprise environments.\n\nDeployment occurs within existing applications and workflows, enabling controlled orchestration without fragmented oversight.',
+  },
+  {
+    question: 'Can we migrate existing ChatGPT or other model configurations into the platform?',
+    answer:
+      'Yes.\n\nExisting prompts and structured workflows from tools such as OpenAI models can be transitioned into the governed enterprise environment.\n\nThis consolidates distributed AI activity into a controlled framework — preserving prior investment while strengthening enterprise-wide visibility and governance.',
+  },
+];
+
 const faqCategories: FAQCategory[] = [
   {
     name: 'Platform & Benefits',
@@ -96,9 +119,130 @@ const FaqPage: React.FC = () => {
     document.title = 'FAQs - ReadyAI';
   }, []);
 
-  const toggleFaq = (categoryIndex: number, faqIndex: number) => {
-    const key = `${categoryIndex}-${faqIndex}`;
+  const toggleFaq = (key: string) => {
     setOpenIndex(openIndex === key ? null : key);
+  };
+
+  const renderFaqItem = (faq: FAQ, key: string, delay: number) => {
+    const isOpen = openIndex === key;
+
+    return (
+      <motion.div
+        key={key}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay }}
+        className="group"
+      >
+        <div
+          className={`bg-white border-2 rounded-xl overflow-hidden transition-all duration-300 ${
+            isOpen
+              ? 'border-accent shadow-lg shadow-accent/10'
+              : 'border-gray-200 hover:border-accent/30 hover:shadow-md'
+          }`}
+        >
+          {/* Question Header */}
+          <button
+            onClick={() => toggleFaq(key)}
+            className="w-full px-6 py-5 flex items-start justify-between gap-4 text-left transition-colors duration-200"
+          >
+            <h3 className="flex-1 font-sans text-lg md:text-xl font-medium text-primary group-hover:text-accent transition-colors duration-200">
+              {faq.question}
+            </h3>
+
+            {/* Toggle Icon */}
+            <div className="flex-shrink-0 mt-1">
+              <div
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  isOpen
+                    ? 'bg-accent text-white rotate-180'
+                    : 'bg-gray-100 text-gray-600 group-hover:bg-accent/10 group-hover:text-accent'
+                }`}
+              >
+                <ChevronDown className="w-5 h-5" />
+              </div>
+            </div>
+          </button>
+
+          {/* Answer Content */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="overflow-hidden"
+              >
+                <div className="px-6 pb-6 pt-2 border-t border-gray-100">
+                  <div className="pl-4 border-l-4 border-accent/30">
+                    <div className="font-sans text-base md:text-lg text-gray-700 leading-relaxed space-y-4">
+                      {faq.answer.split('\n').map((line, index) => {
+                        if (line.trim() === '') return null;
+                        if (line.startsWith('→')) {
+                          const linkText = line.replace('→ ', '');
+                          let href = '#';
+                          let target = '_self';
+
+                          if (linkText.includes('Platform page')) {
+                            href = '/solutions';
+                          } else if (linkText.includes('Trust & Security')) {
+                            href = '/solutions/security';
+                          }
+
+                          return (
+                            <div key={index} className="mt-3">
+                              <a
+                                href={href}
+                                target={target}
+                                className="inline-flex items-center gap-2 text-accent hover:text-accent-dark font-semibold transition-colors duration-200"
+                              >
+                                {linkText}
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                              </a>
+                            </div>
+                          );
+                        }
+                        return <p key={index} className="mb-0">{line}</p>;
+                      })}
+                    </div>
+
+                    {/* Explore Platform Button */}
+                    {faq.hasButton && (
+                      <div className="mt-6">
+                        <a
+                          href="https://devs.ai/signup?ref=sales%40readyai.dev"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent-dark text-white rounded-lg font-sans font-semibold hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
+                        >
+                          Explore Platform
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
+                          </svg>
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
+    );
   };
 
   return (
@@ -129,6 +273,30 @@ const FaqPage: React.FC = () => {
       {/* FAQ Section */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="space-y-12">
+          {/* Most Asked by CIOs */}
+          <div className="bg-gradient-to-br from-accent2-lightest via-white to-white rounded-2xl border border-accent/20 shadow-md overflow-hidden">
+            <div className="px-6 sm:px-8 py-6 sm:py-7 border-b border-accent/10">
+              <div className="flex items-start sm:items-center justify-between gap-4 flex-col sm:flex-row">
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center w-10 h-10 bg-accent/10 rounded-lg text-accent">
+                    <Cpu className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h2 className="font-heading text-2xl sm:text-3xl font-normal text-primary">
+                      Most Asked by CIOs
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="px-4 sm:px-6 py-6">
+              <div className="space-y-3">
+                {cioFaqs.map((faq, index) => renderFaqItem(faq, `cio-${index}`, index * 0.05))}
+              </div>
+            </div>
+          </div>
+
           {faqCategories.map((category, categoryIndex) => (
             <div key={category.name}>
               {/* Category Header */}
@@ -143,128 +311,9 @@ const FaqPage: React.FC = () => {
 
               {/* FAQs */}
               <div className="space-y-3">
-                {category.faqs.map((faq, faqIndex) => {
-                  const key = `${categoryIndex}-${faqIndex}`;
-                  const isOpen = openIndex === key;
-
-                  return (
-                    <motion.div
-                      key={faqIndex}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: faqIndex * 0.05 }}
-                      className="group"
-                    >
-                      <div
-                        className={`bg-white border-2 rounded-xl overflow-hidden transition-all duration-300 ${
-                          isOpen
-                            ? 'border-accent shadow-lg shadow-accent/10'
-                            : 'border-gray-200 hover:border-accent/30 hover:shadow-md'
-                        }`}
-                      >
-                        {/* Question Header */}
-                        <button
-                          onClick={() => toggleFaq(categoryIndex, faqIndex)}
-                          className="w-full px-6 py-5 flex items-start justify-between gap-4 text-left transition-colors duration-200"
-                        >
-                          <h3 className="flex-1 font-sans text-lg md:text-xl font-medium text-primary group-hover:text-accent transition-colors duration-200">
-                            {faq.question}
-                          </h3>
-
-                          {/* Toggle Icon */}
-                          <div className="flex-shrink-0 mt-1">
-                            <div
-                              className={`p-2 rounded-lg transition-all duration-300 ${
-                                isOpen
-                                  ? 'bg-accent text-white rotate-180'
-                                  : 'bg-gray-100 text-gray-600 group-hover:bg-accent/10 group-hover:text-accent'
-                              }`}
-                            >
-                              <ChevronDown className="w-5 h-5" />
-                            </div>
-                          </div>
-                        </button>
-
-                        {/* Answer Content */}
-                        <AnimatePresence>
-                          {isOpen && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: 'auto', opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.3, ease: 'easeInOut' }}
-                              className="overflow-hidden"
-                            >
-                              <div className="px-6 pb-6 pt-2 border-t border-gray-100">
-                                <div className="pl-4 border-l-4 border-accent/30">
-                                  <div className="font-sans text-base md:text-lg text-gray-700 leading-relaxed space-y-4">
-                                    {faq.answer.split('\n').map((line, index) => {
-                                      if (line.trim() === '') return null;
-                                      if (line.startsWith('→')) {
-                                        const linkText = line.replace('→ ', '');
-                                        let href = '#';
-                                        let target = '_self';
-                                        
-                                        if (linkText.includes('Platform page')) {
-                                          href = '/solutions';
-                                        } else if (linkText.includes('Trust & Security')) {
-                                          href = '/solutions/security';
-                                        }
-                                        
-                                        return (
-                                          <div key={index} className="mt-3">
-                                            <a
-                                              href={href}
-                                              target={target}
-                                              className="inline-flex items-center gap-2 text-accent hover:text-accent-dark font-semibold transition-colors duration-200"
-                                            >
-                                              {linkText}
-                                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                              </svg>
-                                            </a>
-                                          </div>
-                                        );
-                                      }
-                                      return <p key={index} className="mb-0">{line}</p>;
-                                    })}
-                                  </div>
-
-                                  {/* Explore Platform Button */}
-                                  {faq.hasButton && (
-                                    <div className="mt-6">
-                                      <a
-                                        href="https://devs.ai/signup?ref=sales%40readyai.dev"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent-dark text-white rounded-lg font-sans font-semibold hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
-                                      >
-                                        Explore Platform
-                                        <svg
-                                          className="w-4 h-4"
-                                          fill="none"
-                                          stroke="currentColor"
-                                          viewBox="0 0 24 24"
-                                        >
-                                          <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                                          />
-                                        </svg>
-                                      </a>
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+                {category.faqs.map((faq, faqIndex) =>
+                  renderFaqItem(faq, `${categoryIndex}-${faqIndex}`, faqIndex * 0.05)
+                )}
               </div>
             </div>
           ))}
