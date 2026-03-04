@@ -106,6 +106,8 @@ const PricingPage: React.FC = () => {
                   <p className="font-sans font-semibold text-primary mb-3">Enterprise plan features:</p>
                   <ul className="space-y-2.5">
                     {[
+                      'Over 50+ LLMs',
+                      '22m tokens/mo/seat',
                       'Governance and compliance tools',
                       'Enterprise-grade security and support',
                       'User permissions and advanced analytics',
