@@ -202,37 +202,6 @@ const PricingPage: React.FC = () => {
               </Link>
             </div>
           </div>
-
-          {/* CTA Banner */}
-          <div className="bg-gradient-to-br from-primary via-primary-light to-primary-dark rounded-2xl p-12 md:p-16 text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-            <div className="absolute bottom-0 right-0 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
-            
-            <div className="relative z-10">
-              <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-4">
-                Get Started
-              </p>
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6">
-                Transform Your AI Strategy Today
-              </h2>
-              <p className="font-sans text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Connect with our team to explore how ReadyAI can secure and scale your AI operations
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    Contact Our Team
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
-                </Link>
-                <CalendlyBtn
-                  url="https://calendly.com/readyai-sales"
-                  text="Schedule a Demo"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
-                />
-              </div>
-            </div>
-          </div>
         </div>
 
       ) : (
@@ -348,37 +317,6 @@ const PricingPage: React.FC = () => {
                 text="Talk to an Advisor"
                 className="bg-white text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-lg py-3 px-8"
               />
-            </div>
-          </div>
-
-          {/* CTA Banner */}
-          <div className="bg-gradient-to-br from-primary via-primary-light to-primary-dark rounded-2xl p-12 md:p-16 text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-            <div className="absolute bottom-0 right-0 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
-            
-            <div className="relative z-10">
-              <p className="font-sans text-accent text-sm md:text-base uppercase tracking-widest mb-4">
-                Get Started
-              </p>
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6">
-                Transform Your AI Strategy Today
-              </h2>
-              <p className="font-sans text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Connect with our team to explore how ReadyAI can secure and scale your AI operations
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    Contact Our Team
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
-                </Link>
-                <CalendlyBtn
-                  url="https://calendly.com/readyai-sales"
-                  text="Schedule a Demo"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
-                />
-              </div>
             </div>
           </div>
         </div>
