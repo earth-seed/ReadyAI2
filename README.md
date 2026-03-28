@@ -842,6 +842,21 @@ npm run build
 **Environment Variables (Netlify):**
 - `VITE_STRAPI_URL`: Strapi API URL
 
+### HubSpot Tracking Code
+
+HubSpot is installed sitewide via the frontend `index.html` so it loads on every page.
+
+#### Verify installation (testing)
+
+- **In the browser**:
+  - Open the site in an incognito window (to avoid cached scripts).
+  - Open DevTools → **Network**, filter for `hs-scripts`.
+  - Confirm you see a successful request for `js-na2.hs-scripts.com/245381123.js` (status 200/304).
+  - Optional: DevTools → **Console** and confirm `window._hsq` exists (HubSpot queue).
+- **In HubSpot**:
+  - Go to **Settings → Tracking & Analytics → Tracking Code** and click **Check installation**.
+  - Note: this usually only succeeds after the updated code is deployed and you’ve visited the live site at least once.
+
 ### Strapi CMS Deployment (Render)
 
 See [Strapi Deployment Guide](#strapi-deployment-guide) above for complete instructions.
