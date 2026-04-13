@@ -290,6 +290,16 @@ export const NAVIGATION: NavItem[] = [
   {
     name: 'Insights',
     path: '/insights',
+    submenu: [
+      {
+        name: 'Articles',
+        path: '/insights',
+      },
+      {
+        name: 'Videos',
+        path: '/videos',
+      },
+    ],
   },
   {
     name: 'About',

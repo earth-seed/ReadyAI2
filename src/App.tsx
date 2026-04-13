@@ -25,6 +25,7 @@ import ArticlePreview from './pages/ArticlePreview';
 import AboutPage from './pages/AboutPage';
 import ReferralsPage from './pages/ReferralsPage';
 import AdminPage from './pages/AdminPage';
+import VideosPage from './pages/VideosPage';
 
 function App() {
   const { trackCustomMetric } = usePerformance();
@@ -64,8 +65,10 @@ function App() {
             <Route path="/resources" element={<ResourcesPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/faq" element={<FAQPage />} />
-            <Route path="/insights" element={<InsightsPage />} />  
+            <Route path="/insights" element={<InsightsPage />} />
             <Route path="/insights/:articleName" element={<InsightsPage />} />
+            <Route path="/videos" element={<VideosPage />} />
+            <Route path="/videos/:videoId" element={<VideosPage />} />
             <Route path="/preview" element={<ArticlePreview />} />
             <Route path="/about-us" element={<AboutPage />} />   
             <Route path="/referral/:referralCode" element={<ReferralsPage />} />   
