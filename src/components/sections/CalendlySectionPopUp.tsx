@@ -1,18 +1,14 @@
-import { useEffect } from "react";
-import { PopupWidget } from 'react-calendly';
-
-
-
 function CalendlySectionPopUp() {
   return (
     <div>
-      <PopupWidget
-          url="https://calendly.com/readyai-sales" 
-          rootElement={document.getElementById('root')} 
-          text="Schedule a Call" 
-          textColor="#ffffff"
-          color="#0069ff" 
-      />
+      <a
+        href="https://meetings-na2.hubspot.com/carol-eastman"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700"
+      >
+        Schedule a Call
+      </a>
     </div>
   );
 };

@@ -87,7 +87,7 @@ const LeadershipSection: React.FC = () => {
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a 
-                    href="https://calendly.com/carol-readyai/30min"
+                    href="https://meetings-na2.hubspot.com/carol-eastman"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white rounded-lg font-sans font-semibold hover:bg-accent-dark transition-all shadow-lg hover:shadow-xl"

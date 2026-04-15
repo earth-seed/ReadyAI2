@@ -180,7 +180,7 @@ const IndustryPage: React.FC = () => {
                     </button>
                   </Link>
                   <CalendlyBtn
-                    url="https://calendly.com/readyai-sales"
+                    url="https://meetings-na2.hubspot.com/carol-eastman"
                     text="Schedule a Demo"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
                   />
@@ -347,7 +347,7 @@ const IndustryPage: React.FC = () => {
                       Build trust, reduce risk, and innovate responsibly with transparent, compliant AI — powered by the only platform designed for enterprise-grade governance.
                     </p>
                     <CalendlyBtn
-                      url="https://calendly.com/readyai-sales"
+                      url="https://meetings-na2.hubspot.com/carol-eastman"
                       text="Explore your secure AI workspace"
                       className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                     />
@@ -474,7 +474,7 @@ const IndustryPage: React.FC = () => {
                     </button>
                   </Link>
                   <CalendlyBtn
-                    url="https://calendly.com/readyai-sales"
+                    url="https://meetings-na2.hubspot.com/carol-eastman"
                     text="Schedule a Demo"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
                   />

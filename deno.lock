@@ -34,7 +34,6 @@
         "npm:mammoth@^1.10.0",
         "npm:nodemailer@^7.0.3",
         "npm:postcss@^8.4.35",
-        "npm:react-calendly@^4.4.0",
         "npm:react-dom@^18.3.1",
         "npm:react-helmet-async@^2.0.5",
         "npm:react-router-dom@^6.20.0",

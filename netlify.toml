@@ -19,13 +19,13 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Content-Security-Policy = """
       default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com;
-      script-src-elem 'self' https://assets.calendly.com;
-      style-src 'self' 'unsafe-inline' https://assets.calendly.com;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval';
+      script-src-elem 'self';
+      style-src 'self' 'unsafe-inline';
       img-src 'self' data: https:;
-      font-src 'self' data: https://assets.calendly.com;
+      font-src 'self' data:;
       connect-src 'self' https://*.readyai.com https://*.netlify.com https://*.supabase.co;
-      frame-src https://calendly.com https://*.calendly.com;
+      frame-src 'self';
       frame-ancestors 'self';
       form-action 'self';
       upgrade-insecure-requests;
