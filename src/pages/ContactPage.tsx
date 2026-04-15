@@ -1,6 +1,5 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Calendar, MessageCircle } from 'lucide-react';
-import { PopupButton } from 'react-calendly';
 import ContactForm from '../components/layout/ContactForm';
 
 const ContactPage: React.FC = () => {
@@ -130,12 +129,14 @@ const ContactPage: React.FC = () => {
                 <p className="font-sans text-base text-white/90 leading-relaxed mb-5">
                   See ReadyAI.dev in action. Book a personalized walkthrough with our team to explore how we can help secure and scale your AI operations.
                 </p>
-                <PopupButton
-                  url="https://calendly.com/readyai-sales"
-                  rootElement={document.getElementById("root") as HTMLElement}
-                  text="Book a Demo"
+                <a
+                  href="https://meetings-na2.hubspot.com/carol-eastman"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-white text-primary rounded-lg font-sans font-semibold hover:bg-gray-50 transition-all hover:shadow-xl"
-                />
+                >
+                  Book a Demo
+                </a>
               </div>
             </div>
           </div>

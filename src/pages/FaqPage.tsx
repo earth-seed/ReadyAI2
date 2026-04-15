@@ -338,7 +338,7 @@ const FaqPage: React.FC = () => {
               </svg>
             </a>
             <CalendlyBtn
-              url="https://calendly.com/readyai-sales"
+              url="https://meetings-na2.hubspot.com/carol-eastman"
               text="Book an Evaluation"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary border-2 border-primary rounded-lg font-sans font-semibold hover:bg-primary hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             />

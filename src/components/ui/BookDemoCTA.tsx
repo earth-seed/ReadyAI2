@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { PopupButton } from 'react-calendly';
 import { Calendar, ArrowRight, Sparkles } from 'lucide-react';
-import Button from './Button';
 
 interface BookDemoCTAProps {
   variant?: 'primary' | 'secondary' | 'outline';
@@ -20,11 +18,10 @@ const BookDemoCTA: React.FC<BookDemoCTAProps> = ({
   showIcon = true,
   className = '',
   text = 'Book a Demo',
-  utm,
-  prefill,
   onTrack
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const hubspotBookingUrl = 'https://meetings-na2.hubspot.com/carol-eastman';
 
   const handleClick = () => {
     onTrack?.('demo_booking_clicked');
@@ -60,10 +57,10 @@ const BookDemoCTA: React.FC<BookDemoCTAProps> = ({
 
   return (
     <div className="relative group">
-      <PopupButton
-        url="https://calendly.com/readyai-sales"
-        rootElement={document.getElementById("root") as HTMLElement}
-        text={text}
+      <a
+        href={hubspotBookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         className={`
           ${getVariantStyles()}
           ${getSizeStyles()}
@@ -72,12 +69,6 @@ const BookDemoCTA: React.FC<BookDemoCTAProps> = ({
           disabled:opacity-50 disabled:cursor-not-allowed
           ${className}
         `}
-        pageSettings={{
-          hideEventTypeDetails: false,
-          hideLandingPageDetails: false,
-        }}
-        utm={utm}
-        prefill={prefill}
         onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -94,7 +85,7 @@ const BookDemoCTA: React.FC<BookDemoCTAProps> = ({
           {text}
           <ArrowRight className={`${iconSize} transition-transform duration-200 ${isHovered ? 'translate-x-1' : ''}`} />
         </span>
-      </PopupButton>
+      </a>
       
       {/* Subtle glow effect for primary variant */}
       {variant === 'primary' && (

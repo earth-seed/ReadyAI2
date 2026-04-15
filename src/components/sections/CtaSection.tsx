@@ -46,7 +46,7 @@ const CtaSection: React.FC = () => {
                   Bring clarity to internal AI adoption by aligning leadership priorities, platform capability, and governance expectations.
                 </p>
               </div>
-              <div className="lg:col-span-5 mt-8 lg:mt-0">
+              <div className="lg:col-span-5 mt-8 lg:mt-10">
                 <CalendlySection />
               </div>
             </div>

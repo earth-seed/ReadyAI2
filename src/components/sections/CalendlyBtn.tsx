@@ -1,5 +1,4 @@
 import React from "react";
-import { PopupButton } from "react-calendly";
 
 interface CalendlyButtonProps {
   url?: string;
@@ -11,23 +10,19 @@ interface CalendlyButtonProps {
 }
 
 const CalendlyBtn: React.FC<CalendlyButtonProps> = ({
-  url = "https://calendly.com/readyai-sales",
+  url = "https://meetings-na2.hubspot.com/carol-eastman",
   text = "Schedule a Call",
   className = "bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700",
-  pageSettings,
-  utm,
-  prefill,
 }) => {
   return (
-    <PopupButton
-      url={url}
-      rootElement={document.getElementById("root") as HTMLElement}
-      text={text}
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       className={className}
-      pageSettings={pageSettings}
-      utm={utm}
-      prefill={prefill}
-    />
+    >
+      {text}
+    </a>
   );
 };
 

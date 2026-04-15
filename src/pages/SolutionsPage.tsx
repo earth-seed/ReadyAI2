@@ -135,7 +135,7 @@ const SolutionsPage: React.FC = () => {
                     <ArrowRight className="w-5 h-5" />
                   </a>
                 <CalendlyBtn
-                  url="https://calendly.com/readyai-sales"
+                  url="https://meetings-na2.hubspot.com/carol-eastman"
                   text="Book a Leadership Conversation"
                   className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
                 />
@@ -376,7 +376,7 @@ const SolutionsPage: React.FC = () => {
             {/* CTA Section */}
             <div className="text-center mt-12">
               <CalendlyBtn
-                url="https://calendly.com/readyai-sales"
+                url="https://meetings-na2.hubspot.com/carol-eastman"
                 text="See How It Works"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
               />
@@ -533,7 +533,7 @@ const SolutionsPage: React.FC = () => {
                   
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <CalendlyBtn
-                      url="https://calendly.com/readyai-sales"
+                      url="https://meetings-na2.hubspot.com/carol-eastman"
                       text="Schedule a Call"
                       className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                     />
@@ -668,7 +668,7 @@ const SolutionsPage: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <CalendlyBtn
-                  url="https://calendly.com/readyai-sales"
+                  url="https://meetings-na2.hubspot.com/carol-eastman"
                   text="Book a Call With Us"
                   className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white rounded-xl font-sans font-semibold hover:bg-accent-dark hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                 />
@@ -1047,7 +1047,7 @@ const SolutionsPage: React.FC = () => {
                     </button>
                   </Link>
                   <CalendlyBtn
-                    url="https://calendly.com/readyai-sales"
+                    url="https://meetings-na2.hubspot.com/carol-eastman"
                     text="Schedule a Demo"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-sans font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
                   />
