@@ -161,10 +161,8 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
         throw new Error(errorMessage);
       }
 
-      const result = await response.json();
+      await response.json();
 
-      console.log('✅ Lead submitted to eWay-CRM successfully:', result);
-      
       // Save form data to localStorage for future use
       localStorage.setItem('gated-content-form-data', JSON.stringify({
         firstName: formData.firstName,

@@ -11,8 +11,6 @@ const ReferralsPage = () => {
     // get referral code from url param
     const { referralCode } = useParams();
 
-    console.log(referralCode);
-
     // async function for google sign in
     const AuthForm = async () => {
         try {

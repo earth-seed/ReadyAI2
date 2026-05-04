@@ -56,11 +56,8 @@ const CTAManager: React.FC<CTAManagerProps> = ({
   const [gatedContent, setGatedContent] = useState(gatedContentConfig);
 
   // Track CTA interactions
-  const handleTrack = (action: string, data?: any) => {
+  const handleTrack = (action: string, data?: unknown) => {
     onTrack?.(action, data);
-    
-    // Log to console for debugging (remove in production)
-    console.log('CTA Event:', action, data);
   };
 
   // Handle gated content access
