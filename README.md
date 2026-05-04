@@ -56,7 +56,8 @@ docs/                 Deployment + integration runbooks
 
 ## Docs
 
-- [`docs/deployment.md`](docs/deployment.md) — Netlify + Render deploy steps and required env vars
+- [`docs/strapi.md`](docs/strapi.md) — CMS architecture, custom controller, content types, deployment, cost analysis
+- [`docs/deployment.md`](docs/deployment.md) — Netlify + Render deploy steps, required env vars, HubSpot tracking
 - [`docs/eway-crm.md`](docs/eway-crm.md) — eWay CRM lead-form integration
 - [`readyai-cms/README.md`](readyai-cms/README.md) — Strapi-specific notes
 </content>
