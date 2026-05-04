@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Download, Lock, CheckCircle } from 'lucide-react';
 import Button from './Button';
 import { emailSchema } from '../../utils/security';
+import type { CTAEventHandler, LeadFormData } from '../../types';
 
 interface GatedContentModalProps {
   isOpen: boolean;
@@ -11,8 +12,8 @@ interface GatedContentModalProps {
   contentTitle: string;
   contentDescription: string;
   downloadUrl?: string;
-  onFormSubmit?: (formData: any) => void;
-  onTrack?: (action: string, data?: any) => void;
+  onFormSubmit?: (formData: LeadFormData) => void;
+  onTrack?: CTAEventHandler;
 }
 
 const GatedContentModal: React.FC<GatedContentModalProps> = ({
@@ -183,10 +184,10 @@ const GatedContentModal: React.FC<GatedContentModalProps> = ({
       onFormSubmit?.(formData);
       onTrack?.('gated_content_form_submitted', { title, email: formData.email });
       setStep('success');
-    } catch (error: any) {
-      console.error('❌ Error submitting form:', error);
-      onTrack?.('gated_content_form_error', { title, error: error.message });
-      const errorMessage = error.message || 'Failed to submit form. Please try again.';
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Failed to submit form. Please try again.';
+      console.error('Error submitting form:', error);
+      onTrack?.('gated_content_form_error', { title, error: errorMessage });
       alert(errorMessage);
     } finally {
       setIsSubmitting(false);

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BookDemoCTA from './BookDemoCTA';
 import GatedContentModal from './GatedContentModal';
 import { Download, Calendar, ArrowRight, Sparkles } from 'lucide-react';
+import type { CTAEventHandler, LeadFormData } from '../../types';
 
 interface PageCTAProps {
   variant?: 'hero' | 'section' | 'footer' | 'inline';
@@ -15,7 +16,7 @@ interface PageCTAProps {
     description: string;
     downloadUrl?: string;
   };
-  onTrack?: (action: string, data?: any) => void;
+  onTrack?: CTAEventHandler;
 }
 
 const PageCTA: React.FC<PageCTAProps> = ({
@@ -37,7 +38,7 @@ const PageCTA: React.FC<PageCTAProps> = ({
     }
   };
 
-  const handleFormSubmit = (formData: any) => {
+  const handleFormSubmit = (formData: LeadFormData) => {
     onTrack?.('gated_content_accessed', { content: gatedContent?.title, email: formData.email });
   };
 
