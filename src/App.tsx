@@ -35,9 +35,11 @@ function App() {
     const loadTime = performance.now();
     trackCustomMetric('InitialLoad', loadTime);
 
-    // Track memory usage (Chrome-specific API)
-    if ('memory' in performance && (performance as any).memory) {
-      trackCustomMetric('HeapSize', (performance as any).memory.usedJSHeapSize);
+    // performance.memory is a non-standard Chrome-only API
+    type MemoryPerformance = Performance & { memory?: { usedJSHeapSize: number } };
+    const perfMemory = (performance as MemoryPerformance).memory;
+    if (perfMemory) {
+      trackCustomMetric('HeapSize', perfMemory.usedJSHeapSize);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -93,9 +95,8 @@ function App() {
             triggerDelay: 120, // 2 minutes (less annoying)
             scrollTrigger: 80 // 80% scroll (more engaged users)
           }}
-          onTrack={(action, data) => {
-            console.log('CTA Event:', action, data);
-            // Add your analytics tracking here
+          onTrack={(_action, _data) => {
+            // Hook up analytics tracking here
           }}
         />
       </div>

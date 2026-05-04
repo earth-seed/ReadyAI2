@@ -111,13 +111,11 @@ const GatedContentSection: React.FC = () => {
           contentTitle={selectedContent.title}
           contentDescription={selectedContent.description}
           downloadUrl={selectedContent.downloadUrl}
-          onFormSubmit={(formData) => {
-            console.log('Gated content accessed:', formData);
-            // Add your analytics tracking here
+          onFormSubmit={(_formData) => {
+            // Hook up analytics tracking here
           }}
-          onTrack={(action, data) => {
-            console.log('Gated content event:', action, data);
-            // Add your analytics tracking here
+          onTrack={(_action, _data) => {
+            // Hook up analytics tracking here
           }}
         />
       )}

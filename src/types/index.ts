@@ -42,3 +42,16 @@ export interface NavItem {
   path: string;
   submenu?: NavItem[];
 }
+
+export interface LeadFormData {
+  firstName?: string;
+  lastName?: string;
+  name?: string;
+  company?: string;
+  email: string;
+  phone?: string;
+  consent?: boolean;
+}
+
+export type CTAEventData = Record<string, unknown>;
+export type CTAEventHandler = (action: string, data?: CTAEventData) => void;

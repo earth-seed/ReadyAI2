@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { X, ArrowRight, Sparkles, Shield, Users, CheckCircle } from 'lucide-react';
 import Button from './Button';
+import type { CTAEventHandler } from '../../types';
 
 interface PlatformExplorationPopupProps {
   triggerDelay?: number; // seconds before showing
   scrollTrigger?: number; // scroll percentage to trigger
-  onTrack?: (action: string, data?: any) => void;
+  onTrack?: CTAEventHandler;
 }
 
 const PlatformExplorationPopup: React.FC<PlatformExplorationPopupProps> = ({

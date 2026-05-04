@@ -84,9 +84,9 @@ const ArticlePreview: React.FC = () => {
           content: attrs.content,
         });
         setError(null);
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error('Failed to load preview:', err);
-        setError(err.message || 'Failed to load article preview.');
+        setError(err instanceof Error ? err.message : 'Failed to load article preview.');
       } finally {
         setLoading(false);
       }

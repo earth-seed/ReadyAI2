@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Mail, ArrowRight, Sparkles, Users, Shield } from 'lucide-react';
 import Button from './Button';
+import type { CTAEventHandler, LeadFormData } from '../../types';
 
 interface LeadCapturePopupProps {
   triggerDelay?: number; // seconds before showing
@@ -9,8 +10,8 @@ interface LeadCapturePopupProps {
   title?: string;
   description?: string;
   ctaText?: string;
-  onTrack?: (action: string, data?: any) => void;
-  onFormSubmit?: (formData: any) => void;
+  onTrack?: CTAEventHandler;
+  onFormSubmit?: (formData: LeadFormData) => void;
 }
 
 const LeadCapturePopup: React.FC<LeadCapturePopupProps> = ({

@@ -4,11 +4,20 @@
 
 # Dependencies
 node_modules
+**/node_modules
 
 # Build outputs
 dist
+**/dist
 dist-ssr
 *.local
+
+# Merge conflict artifacts
+*_BACKUP_*
+*_BASE_*
+*_LOCAL_*
+*_REMOTE_*
+*.orig
 
 # Vite cache
 .vite

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ArrowUp, Calendar, Download, Sparkles } from 'lucide-react';
 import BookDemoCTA from './BookDemoCTA';
 import GatedContentModal from './GatedContentModal';
+import type { CTAEventHandler, LeadFormData } from '../../types';
 
 interface ScrollTriggeredCTAProps {
   triggerPosition?: number; // scroll position to trigger
@@ -13,7 +14,7 @@ interface ScrollTriggeredCTAProps {
     description: string;
     downloadUrl?: string;
   };
-  onTrack?: (action: string, data?: any) => void;
+  onTrack?: CTAEventHandler;
 }
 
 const ScrollTriggeredCTA: React.FC<ScrollTriggeredCTAProps> = ({
@@ -57,7 +58,7 @@ const ScrollTriggeredCTA: React.FC<ScrollTriggeredCTAProps> = ({
     }
   };
 
-  const handleGatedContentSubmit = (formData: any) => {
+  const handleGatedContentSubmit = (formData: LeadFormData) => {
     onTrack?.('gated_content_accessed', { content: gatedContent?.title, email: formData.email });
   };
 

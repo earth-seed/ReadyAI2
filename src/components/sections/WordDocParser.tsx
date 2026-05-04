@@ -11,7 +11,6 @@ const WordDocParser = ({ docPath }) => {
     const fetchAndParse = async () => {
       try {
         const response = await fetch(docPath);
-        console.log('Content-Type:', response.headers.get('content-type'));
         if (!response.ok) throw new Error(`File not found: ${docPath}`);
 
         const arrayBuffer = await response.arrayBuffer();

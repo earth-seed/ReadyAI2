@@ -4,6 +4,7 @@ import GatedContentModal from './GatedContentModal';
 import LeadCapturePopup from './LeadCapturePopup';
 import ScrollTriggeredCTA from './ScrollTriggeredCTA';
 import PlatformExplorationPopup from './PlatformExplorationPopup';
+import type { CTAEventHandler, LeadFormData } from '../../types';
 
 interface CTAManagerProps {
   enableLeadCapture?: boolean;
@@ -28,7 +29,7 @@ interface CTAManagerProps {
     triggerDelay?: number;
     scrollTrigger?: number;
   };
-  onTrack?: (action: string, data?: any) => void;
+  onTrack?: CTAEventHandler;
 }
 
 const CTAManager: React.FC<CTAManagerProps> = ({
@@ -56,11 +57,8 @@ const CTAManager: React.FC<CTAManagerProps> = ({
   const [gatedContent, setGatedContent] = useState(gatedContentConfig);
 
   // Track CTA interactions
-  const handleTrack = (action: string, data?: any) => {
+  const handleTrack: CTAEventHandler = (action, data) => {
     onTrack?.(action, data);
-    
-    // Log to console for debugging (remove in production)
-    console.log('CTA Event:', action, data);
   };
 
   // Handle gated content access
@@ -75,13 +73,9 @@ const CTAManager: React.FC<CTAManagerProps> = ({
   };
 
   // Handle form submissions
-  const handleFormSubmit = (formData: any, source: string) => {
+  const handleFormSubmit = (formData: LeadFormData, source: string) => {
     handleTrack('form_submitted', { source, email: formData.email });
-    
-    // You can add additional processing here, such as:
-    // - Sending to CRM
-    // - Triggering email sequences
-    // - Analytics tracking
+    // Hook up CRM, email sequences, or analytics here.
   };
 
   return (

@@ -7,9 +7,8 @@ import ScrollTriggeredCTA from '../ui/ScrollTriggeredCTA';
 
 // Example usage of all CTA components
 const CTAExamples: React.FC = () => {
-  const handleTrack = (action: string, data?: any) => {
-    console.log('CTA Event:', action, data);
-    // Add your analytics tracking here
+  const handleTrack = (_action: string, _data?: unknown) => {
+    // Hook up analytics tracking here
   };
 
   return (
@@ -147,8 +146,7 @@ const CTAExamples: React.FC = () => {
             </p>
             <button
               onClick={() => {
-                // This would trigger the gated content modal
-                console.log('Gated content clicked');
+                // Trigger the gated content modal
               }}
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors"
             >
