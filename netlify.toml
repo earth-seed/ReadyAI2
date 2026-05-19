@@ -19,22 +19,20 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Content-Security-Policy = """
       default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval';
-      script-src-elem 'self';
-      style-src 'self' 'unsafe-inline';
-      img-src 'self' data: https:;
-      font-src 'self' data:;
-      connect-src 'self' https://*.readyai.com https://*.netlify.com https://*.supabase.co;
-      frame-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js-na2.hs-scripts.com https://ddwl4m2hdecbv.cloudfront.net;
+      script-src-elem 'self' 'unsafe-inline' https://js-na2.hs-scripts.com https://ddwl4m2hdecbv.cloudfront.net;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      img-src 'self' data: https: blob:;
+      font-src 'self' data: https://fonts.gstatic.com;
+      connect-src 'self' https: wss:;
+      frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://meetings-na2.hubspot.com https://*.hubspot.com;
+      media-src 'self' https: blob:;
       frame-ancestors 'self';
       form-action 'self';
       upgrade-insecure-requests;
-	  """
+      """
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=(), screen-wake-lock=(), ambient-light-sensor=(), accelerometer=(), gyroscope=(), magnetometer=(), midi=(), sync-xhr=(), autoplay=(), encrypted-media=(), picture-in-picture=(), fullscreen=(self)"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Cross-Origin-Embedder-Policy = "require-corp"
-    Cross-Origin-Opener-Policy = "same-origin"
-    Cross-Origin-Resource-Policy = "same-origin"
 
 [functions]
   directory = "netlify/functions"
