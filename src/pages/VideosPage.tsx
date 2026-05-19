@@ -14,6 +14,14 @@ type Video = {
 
 export const VIDEOS: Video[] = [
   {
+    id: "carol-eastman-shadow-ai-nextgen-studio",
+    title: "Carol Eastman: AI Governance, Shadow AI and the Future of Secure Enterprise AI Adoption",
+    description:
+      "In this episode of the NextGen Studio Podcast, Carol Eastman, CEO of ReadyAI, joins Elena Dimitrova to discuss one of the most urgent challenges facing companies today: AI governance, AI compliance, and secure enterprise AI adoption. Learn why shadow AI is becoming one of the biggest security and compliance concerns for modern organizations, and how leadership teams can create clear guardrails before AI adoption scales across the business.",
+    youtubeId: "xpx18ensPUY",
+    publishedDate: "2026-05-14",
+  },
+  {
     id: "implementing-ai-securely",
     title: "How to Implement AI Securely Inside Your Organization",
     description:
