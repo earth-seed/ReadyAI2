@@ -14,6 +14,14 @@ type Video = {
 
 export const VIDEOS: Video[] = [
   {
+    id: "explore-readyai-dev",
+    title: "Explore ReadyAI.dev",
+    description:
+      "Explore how ReadyAI.dev's Strategic Partners platform uniquely supports internal AI adoption with the option of intelligent model selection tailored to each task. Benefit from built-in message sanitization and redaction to protect sensitive data in a secure environment. Leverage pre-built agents requiring no coding expertise and integrate seamlessly with thousands of software applications via APIs—all governed within a robust, enterprise-grade platform. Discover the future of AI adoption designed for control, compliance, and scalability.",
+    youtubeId: "Wo7LUYJqwyQ",
+    publishedDate: "2026-05-21",
+  },
+  {
     id: "carol-eastman-shadow-ai-nextgen-studio",
     title: "Carol Eastman: AI Governance, Shadow AI and the Future of Secure Enterprise AI Adoption",
     description:
