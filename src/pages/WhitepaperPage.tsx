@@ -81,8 +81,8 @@ const WhitepaperPage: React.FC = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-            {/* Left - Copy */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-16 items-start">
+            {/* Left top - Headline and intro */}
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
                 <FileText className="w-4 h-4 text-accent" />
@@ -95,13 +95,16 @@ const WhitepaperPage: React.FC = () => {
                 The Enterprise Guide to Secure, Governed AI Adoption
               </h1>
 
-              <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed mb-6">
+              <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">
                 AI is spreading through your organization faster than most leadership teams can
                 track it. This whitepaper gives CIOs, CISOs, and technology leaders a practical
                 framework for bringing shadow AI under control, meeting compliance obligations,
                 and scaling AI adoption with confidence.
               </p>
+            </div>
 
+            {/* Left bottom - Bullets and trust (below the form on mobile) */}
+            <div className="max-w-2xl order-3 lg:order-none lg:col-start-1">
               <ul className="space-y-3 mb-8">
                 {[
                   'How to gain full visibility into AI usage across your enterprise',
@@ -133,7 +136,7 @@ const WhitepaperPage: React.FC = () => {
             </div>
 
             {/* Right - Gated form */}
-            <div className="w-full max-w-lg mx-auto lg:mx-0 lg:ml-auto lg:mt-16">
+            <div className="w-full max-w-lg mx-auto lg:mx-0 lg:ml-auto lg:mt-16 order-2 lg:order-none lg:col-start-2 lg:row-start-1 lg:row-span-2">
               <div className="rounded-2xl overflow-hidden shadow-2xl shadow-accent/20 border border-accent/30">
                 {/* Gold brand bar */}
                 <div className="h-1.5 bg-gradient-to-r from-accent-dark via-accent to-accent-light"></div>
