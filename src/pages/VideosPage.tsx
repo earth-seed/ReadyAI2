@@ -10,12 +10,28 @@ type Video = {
   id: string;
   title: string;
   description: string;
-  youtubeId: string;
+  youtubeId?: string;
+  spotifyEpisodeId?: string;
+  thumbnailUrl?: string;
   publishedDate: string;
   category: VideoCategory;
 };
 
+function getThumbnailUrl(video: Video): string {
+  return video.thumbnailUrl ?? `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`;
+}
+
 export const VIDEOS: Video[] = [
+  {
+    id: "responsible-ai-unmasked-carol-eastman-ashwin-rangan",
+    title: "Responsible AI: Unmasked with Carol Eastman and Ashwin Rangan",
+    description:
+      "Carol Eastman, CEO & Founder of ReadyAI, joins Ashwin Rangan for a candid conversation on what responsible AI really takes inside the enterprise. They discuss AI governance, security, and how leadership teams can move from ungoverned experimentation to confident, secure AI adoption at scale.",
+    spotifyEpisodeId: "4jZ5STH5Ka3eCtTsoO7Bax",
+    thumbnailUrl: "https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015beca35bdb07bc72711c64d20ba",
+    publishedDate: "2026-08-05",
+    category: "podcasts",
+  },
   {
     id: "explore-readyai-dev",
     title: "Explore ReadyAI.dev",
@@ -97,11 +113,11 @@ const VideosPage: React.FC = () => {
           <meta property="og:url" content={`https://readyai.dev/videos/${currVideo.id}`} />
           <meta property="og:title" content={currVideo.title} />
           <meta property="og:description" content={currVideo.description} />
-          <meta property="og:image" content={`https://img.youtube.com/vi/${currVideo.youtubeId}/maxresdefault.jpg`} />
+          <meta property="og:image" content={getThumbnailUrl(currVideo)} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={currVideo.title} />
           <meta name="twitter:description" content={currVideo.description} />
-          <meta name="twitter:image" content={`https://img.youtube.com/vi/${currVideo.youtubeId}/maxresdefault.jpg`} />
+          <meta name="twitter:image" content={getThumbnailUrl(currVideo)} />
         </Helmet>
       ) : (
         <Helmet>
@@ -164,7 +180,7 @@ const VideosPage: React.FC = () => {
                       {/* Thumbnail */}
                       <div className="relative overflow-hidden">
                         <img
-                          src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
+                          src={getThumbnailUrl(video)}
                           alt={video.title}
                           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                         />
@@ -191,7 +207,7 @@ const VideosPage: React.FC = () => {
                         </p>
 
                         <span className="inline-flex items-center gap-2 text-accent font-semibold group-hover:text-accent-dark transition-colors duration-200">
-                          Watch Video
+                          {video.spotifyEpisodeId ? "Listen to Podcast" : "Watch Video"}
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                         </span>
                       </div>
@@ -224,14 +240,23 @@ const VideosPage: React.FC = () => {
           {/* Video Player */}
           <div className="mb-10 rounded-2xl overflow-hidden shadow-lg">
             <div className="relative aspect-video">
-              <iframe
-                src={`https://www.youtube.com/embed/${currVideo.youtubeId}?rel=0&modestbranding=1`}
-                title={currVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                className="w-full h-full"
-              ></iframe>
+              {currVideo.spotifyEpisodeId ? (
+                <iframe
+                  src={`https://open.spotify.com/embed/episode/${currVideo.spotifyEpisodeId}/video`}
+                  title={currVideo.title}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  className="w-full h-full"
+                ></iframe>
+              ) : (
+                <iframe
+                  src={`https://www.youtube.com/embed/${currVideo.youtubeId}?rel=0&modestbranding=1`}
+                  title={currVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              )}
             </div>
           </div>
 
@@ -242,14 +267,18 @@ const VideosPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Watch on YouTube */}
+          {/* Watch on YouTube / Listen on Spotify */}
           <a
-            href={`https://www.youtube.com/watch?v=${currVideo.youtubeId}`}
+            href={
+              currVideo.spotifyEpisodeId
+                ? `https://open.spotify.com/episode/${currVideo.spotifyEpisodeId}`
+                : `https://www.youtube.com/watch?v=${currVideo.youtubeId}`
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-accent font-semibold hover:text-accent-dark transition-colors duration-200 mb-12"
           >
-            Watch on YouTube
+            {currVideo.spotifyEpisodeId ? "Listen on Spotify" : "Watch on YouTube"}
             <ExternalLink className="w-4 h-4" />
           </a>
 

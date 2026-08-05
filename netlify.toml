@@ -25,7 +25,7 @@
       img-src 'self' data: https: blob:;
       font-src 'self' data: https://fonts.gstatic.com;
       connect-src 'self' https: wss:;
-      frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://meetings-na2.hubspot.com https://*.hubspot.com https://*.hsforms.com https://*.hsforms.net;
+      frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://meetings-na2.hubspot.com https://*.hubspot.com https://*.hsforms.com https://*.hsforms.net https://open.spotify.com;
       media-src 'self' https: blob:;
       frame-ancestors 'self';
       form-action 'self' https://*.hsforms.com;
