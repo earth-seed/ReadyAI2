@@ -26,6 +26,8 @@ import AboutPage from './pages/AboutPage';
 import ReferralsPage from './pages/ReferralsPage';
 import AdminPage from './pages/AdminPage';
 import VideosPage from './pages/VideosPage';
+import WhitepaperPage from './pages/WhitepaperPage';
+import WhitepaperThankYouPage from './pages/WhitepaperThankYouPage';
 
 function App() {
   const { trackCustomMetric } = usePerformance();
@@ -69,6 +71,8 @@ function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/insights" element={<InsightsPage />} />
             <Route path="/insights/:articleName" element={<InsightsPage />} />
+            <Route path="/whitepaper" element={<WhitepaperPage />} />
+            <Route path="/whitepaper/thank-you" element={<WhitepaperThankYouPage />} />
             <Route path="/videos" element={<VideosPage />} />
             <Route path="/videos/:videoId" element={<VideosPage />} />
             <Route path="/preview" element={<ArticlePreview />} />
