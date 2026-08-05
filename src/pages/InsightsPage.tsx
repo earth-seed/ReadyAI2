@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Linkedin, Calendar, ArrowRight, BookOpen, Users, Clock } from "lucide-react";
-import { Link } from "react-router-dom";
 
 // Strapi imports
 import { fetchArticles, fetchArticleBySlug, getImageUrl, ensureAbsoluteImageUrl } from "../utils/strapi";
@@ -378,15 +377,9 @@ const InsightsPage: React.FC = () => {
             our platform can help you succeed.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <button className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary rounded-lg font-sans font-semibold hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl">
-                Contact Our Team
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </Link>
-            <a href="https://devs.ai/signup?ref=sales%40readyai.dev" target="_blank" rel="noopener noreferrer">
+            <a href="https://meetings-na2.hubspot.com/carol-eastman" target="_blank" rel="noopener noreferrer">
               <button className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white rounded-lg font-sans font-semibold hover:bg-accent-dark transition-all shadow-lg hover:shadow-xl">
-                Explore Platform
+                Book a Demo
                 <ArrowRight className="w-5 h-5" />
               </button>
             </a>

@@ -43,13 +43,12 @@ const HeroSection: React.FC = () => {
               
               <div className="mb-8 sm:mb-10 animate-fade-in-up-delay-2"> 
                 <a
-                  href="https://devs.ai/signup?ref=sales%40readyai.dev"
+                  href="https://meetings-na2.hubspot.com/carol-eastman"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 sm:px-8 sm:py-3.5 rounded-lg shadow-md hover:bg-accent-dark hover:shadow-lg transition-all duration-200 text-sm sm:text-base font-semibold w-full sm:w-auto"
                 >
-                  <span className="hidden sm:inline">Explore the Enterprise AI Platform</span>
-                  <span className="sm:hidden">Explore Platform</span>
+                  <span>Book a Demo</span>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>

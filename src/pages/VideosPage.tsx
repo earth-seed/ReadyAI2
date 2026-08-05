@@ -284,12 +284,12 @@ const VideosPage: React.FC = () => {
               </button>
             </Link>
             <a
-              href="https://devs.ai/signup?ref=sales%40readyai.dev"
+              href="https://meetings-na2.hubspot.com/carol-eastman"
               target="_blank"
               rel="noopener noreferrer"
             >
               <button className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white rounded-lg font-sans font-semibold hover:bg-accent-dark transition-all shadow-lg hover:shadow-xl">
-                Explore Platform
+                Book a Demo
                 <ArrowRight className="w-5 h-5" />
               </button>
             </a>

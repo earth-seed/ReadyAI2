@@ -88,19 +88,21 @@ const Header: React.FC = () => {
                 placeholder="Search"
               />
             </form>
-            <Link
-              to="/contact"
+            <a
+              href="https://meetings-na2.hubspot.com/carol-eastman?uuid=d46397ba-6de0-401e-8c4e-e0db67f523de"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-3 xl:px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
             >
-              Contact
-            </Link>
+              Book a Demo
+            </a>
             <a
               href="https://devs.ai/signup?ref=sales%40readyai.dev"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-3 xl:px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-accent hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
             >
-              Explore Platform
+              Try it Free
             </a>
           </div>
 
@@ -167,19 +169,21 @@ const Header: React.FC = () => {
               </form>
             </div>
             <div className="px-3 py-2 space-y-2">
-              <Link
-                to="/contact"
+              <a
+                href="https://meetings-na2.hubspot.com/carol-eastman?uuid=d46397ba-6de0-401e-8c4e-e0db67f523de"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-center w-full px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark"
               >
-                Contact
-              </Link>
+                Book a Demo
+              </a>
               <a
                 href="https://devs.ai/signup?ref=sales%40readyai.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-center w-full px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-accent hover:bg-accent-dark"
               >
-                Explore Platform
+                Try it Free
               </a>
             </div>
           </div>
