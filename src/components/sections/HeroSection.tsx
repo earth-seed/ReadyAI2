@@ -10,7 +10,7 @@ const HeroSection: React.FC = () => {
       </div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="pt-20 pb-12 sm:pt-24 sm:pb-16 md:pt-32 md:pb-24">
+        <div className="pt-20 pb-8 sm:pt-24 sm:pb-10 md:pt-32 md:pb-14">
           <div className="grid xl:grid-cols-2 gap-16 items-center">
             {/* Left side - Text content */}
             <div className="max-w-2xl pt-8 md:pt-12 mx-auto xl:mx-0">
