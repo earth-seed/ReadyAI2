@@ -122,19 +122,10 @@ const PricingPage: React.FC = () => {
                   </ul>
                 </div>
 
-                <div className="mt-auto space-y-3">
-                  <a
-                    href={PURCHASE_LICENSE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
-                  >
-                    Purchase License
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
+                <div className="mt-auto">
                   <CalendlyBtn
                     text="Speak to an AI Strategy Advisor"
-                    className="w-full bg-white text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-lg py-3 px-6"
+                    className="w-full inline-flex items-center justify-center bg-accent hover:bg-accent-dark text-white rounded-lg font-semibold transition-colors shadow-md hover:shadow-lg py-3 px-6"
                   />
                 </div>
               </div>
@@ -178,24 +169,15 @@ const PricingPage: React.FC = () => {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
-              <a
-                href={PURCHASE_LICENSE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-accent-dark transition-all shadow-md hover:shadow-lg"
-              >
-                Purchase License
-                <ArrowRight className="w-4 h-4" />
-              </a>
               <CalendlyBtn
                 text="Schedule a Consultation"
-                className="bg-white text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-lg py-3 px-8"
+                className="inline-flex items-center justify-center px-8 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-accent-dark transition-all shadow-md hover:shadow-lg"
               />
-              <Link 
+              <Link
                 to="/plans-and-enterprise-options/individual-starter-plans"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-white text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-lg"
               >
-                View Individual Plans
+                Try it Free or Purchase a Starter Plan
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -286,7 +268,7 @@ const PricingPage: React.FC = () => {
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
                   >
-                    Purchase License
+                    Purchase Starter Plan
                     <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
@@ -304,18 +286,9 @@ const PricingPage: React.FC = () => {
               compliance, advanced analytics, and enterprise-grade support, without losing your work or data.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
-              <a
-                href={PURCHASE_LICENSE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-accent-dark transition-all shadow-md hover:shadow-lg"
-              >
-                Purchase License
-                <ArrowRight className="w-4 h-4" />
-              </a>
               <CalendlyBtn
                 text="Talk to an Advisor"
-                className="bg-white text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-lg py-3 px-8"
+                className="inline-flex items-center justify-center px-8 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-accent-dark transition-all shadow-md hover:shadow-lg"
               />
             </div>
           </div>

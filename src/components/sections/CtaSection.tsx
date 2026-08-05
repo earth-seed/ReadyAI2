@@ -31,7 +31,7 @@ const CtaSection: React.FC = () => {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-accent mt-1">•</span>
-                    <span>Explore the enterprise AI platform through a guided or self-guided demo</span>
+                    <span>Explore the enterprise AI platform through a guided demo</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-accent mt-1">•</span>

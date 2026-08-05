@@ -1,5 +1,7 @@
 import React from 'react';
 import HeroSection from '../components/sections/HeroSection';
+import PodcastAnnouncementBanner from '../components/sections/PodcastAnnouncementBanner';
+import PodcastSection from '../components/sections/PodcastSection';
 import BoardMemberSection from '../components/sections/BoardMemberSection';
 import BenMarshallArticleSection from '../components/sections/BenMarshallArticleSection';
 import Banner1Section from '../components/sections/Banner1Section';
@@ -21,8 +23,10 @@ const Home: React.FC = () => {
 
   return (
     <div>
+      <PodcastAnnouncementBanner />
       <HeroSection />
       <BoardMemberSection />
+      <PodcastSection />
       <BenMarshallArticleSection />
       <Banner1Section />
       <BannerStandalone />

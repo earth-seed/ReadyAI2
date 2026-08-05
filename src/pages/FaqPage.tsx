@@ -209,16 +209,16 @@ const FaqPage: React.FC = () => {
                       })}
                     </div>
 
-                    {/* Explore Platform Button */}
+                    {/* Book a Demo Button */}
                     {faq.hasButton && (
                       <div className="mt-6">
                         <a
-                          href="https://devs.ai/signup?ref=sales%40readyai.dev"
+                          href="https://meetings-na2.hubspot.com/carol-eastman"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent-dark text-white rounded-lg font-sans font-semibold hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
                         >
-                          Explore Platform
+                          Book a Demo
                           <svg
                             className="w-4 h-4"
                             fill="none"
@@ -325,22 +325,13 @@ const FaqPage: React.FC = () => {
             Still have questions?
           </h3>
           <p className="font-sans text-white/90 mb-6 max-w-2xl mx-auto">
-            We'd love to help. Contact our team or book an executive evaluation to see how ReadyAI.dev can help you unify, govern, and scale AI across your enterprise.
+            We'd love to help. Book a demo to see how ReadyAI.dev can help you unify, govern, and scale AI across your enterprise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white rounded-lg font-sans font-semibold hover:bg-accent-dark transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              Contact Our Team
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </a>
             <CalendlyBtn
               url="https://meetings-na2.hubspot.com/carol-eastman"
-              text="Book an Evaluation"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary border-2 border-primary rounded-lg font-sans font-semibold hover:bg-primary hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              text="Book a Demo"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white rounded-lg font-sans font-semibold hover:bg-accent-dark transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             />
           </div>
         </div>
