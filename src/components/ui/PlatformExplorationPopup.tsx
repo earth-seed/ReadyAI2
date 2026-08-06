@@ -69,8 +69,7 @@ const PlatformExplorationPopup: React.FC<PlatformExplorationPopupProps> = ({
 
   const handleExploreClick = () => {
     onTrack?.('platform_exploration_clicked');
-    // Redirect to the same link as the Explore Platform button in header
-    window.open('https://devs.ai/signup?ref=sales%40readyai.dev', '_blank', 'noopener,noreferrer');
+    window.open('https://meetings-na2.hubspot.com/carol-eastman', '_blank', 'noopener,noreferrer');
   };
 
   const handleDismiss = () => {
@@ -121,7 +120,7 @@ const PlatformExplorationPopup: React.FC<PlatformExplorationPopupProps> = ({
                 <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">
                   <CheckCircle className="w-3 h-3 text-green-600" />
                 </div>
-                <span className="font-sans text-sm text-gray-700">Free platform exploration</span>
+                <span className="font-sans text-sm text-gray-700">Personalized platform walkthrough</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">
@@ -138,7 +137,7 @@ const PlatformExplorationPopup: React.FC<PlatformExplorationPopupProps> = ({
                 isFullWidth
                 className="font-sans font-medium"
               >
-                Get Started
+                Book a Call with Carol
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               
