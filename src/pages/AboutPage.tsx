@@ -339,7 +339,7 @@ const AboutPage: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
                 <div className="space-y-4 sm:space-y-6">
                   <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                    As the founder and leader of ReadyAI.dev, Carol has built an AI company that addresses the critical gap between AI innovation and enterprise readiness. ReadyAI.dev provides professional services for innovative AI solutions and serves as a best-in-class enterprise platform that enables businesses to host all of their internal AI operations.
+                    As the leader of ReadyAI.dev, Carol has built an AI company that addresses the critical gap between AI innovation and enterprise readiness. ReadyAI.dev provides professional services for innovative AI solutions and serves as a best-in-class enterprise platform that enables businesses to host all of their internal AI operations.
                   </p>
 
                   <p className="font-sans text-gray-700 text-base md:text-lg leading-relaxed">
