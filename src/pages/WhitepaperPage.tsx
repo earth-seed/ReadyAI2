@@ -91,8 +91,9 @@ const WhitepaperPage: React.FC = () => {
                 </span>
               </div>
 
-              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-4 sm:mb-6 leading-tight">
-                AI Readiness: Are You&nbsp;Prepared?
+              {/* Fluid font sizes keep the title on a single line at every viewport width */}
+              <h1 className="font-heading whitespace-nowrap text-[min(1.5rem,calc(6.4vw-2.2px))] sm:text-3xl lg:text-[min(2.25rem,calc(3.2vw-4.5px))] font-normal text-white mb-4 sm:mb-6 leading-tight">
+                AI Readiness: Are You Prepared?
               </h1>
 
               <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">

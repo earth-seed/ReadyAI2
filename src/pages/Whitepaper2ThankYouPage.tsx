@@ -24,8 +24,9 @@ const Whitepaper2ThankYouPage: React.FC = () => {
             <CheckCircle2 className="w-8 h-8 text-accent" />
           </div>
 
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-normal text-white mb-4 sm:mb-6">
-            Thank You — Your Whitepaper Is&nbsp;Ready
+          {/* Fluid font sizes keep the title on a single line at every viewport width */}
+          <h1 className="font-heading whitespace-nowrap text-[min(1.875rem,calc(5.5vw-2px))] md:text-4xl font-normal text-white mb-4 sm:mb-6">
+            Thank You — Your Whitepaper Is Ready
           </h1>
 
           <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed mb-8 max-w-2xl mx-auto">
