@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mic, ArrowRight } from 'lucide-react';
 
 export const PODCAST_SPOTIFY_URL =
@@ -6,8 +7,8 @@ export const PODCAST_SPOTIFY_URL =
 
 const PodcastAnnouncementBanner: React.FC = () => {
   return (
-    <a
-      href="#podcast"
+    <Link
+      to="#podcast"
       className="block mt-14 sticky top-14 sm:mt-16 sm:top-16 z-40 bg-gradient-to-r from-accent-dark via-accent to-accent-dark hover:from-accent hover:via-accent-light hover:to-accent transition-all duration-200 group shadow-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3">
@@ -23,7 +24,7 @@ const PodcastAnnouncementBanner: React.FC = () => {
           <ArrowRight className="w-4 h-4 flex-shrink-0 group-hover:translate-x-1 transition-transform duration-200" />
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 
