@@ -35,8 +35,7 @@ const PodcastSection: React.FC = () => {
                 Responsible AI: Unmasked
               </h2>
               <p className="font-sans text-sm sm:text-base text-primary-light leading-relaxed mb-3">
-                With Carol Eastman, CEO of ReadyAI, and Ashwin Rangan, Executive Board Member of
-                ReadyAI.
+                With Carol Eastman, CEO &amp; Ashwin Rangan, Executive Board Member
               </p>
               <p className="font-sans text-sm sm:text-base text-primary-light leading-relaxed mb-6">
                 A candid conversation on what responsible AI really takes inside the
