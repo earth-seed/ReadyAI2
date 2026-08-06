@@ -27,7 +27,7 @@ const LeadershipSection: React.FC = () => {
               Leadership & Vision
             </p>
             <h2 className="font-heading text-white text-3xl md:text-4xl lg:text-5xl font-normal">
-              Meet Our Founder
+              Meet Our CEO
             </h2>
           </motion.div>
 
@@ -44,7 +44,7 @@ const LeadershipSection: React.FC = () => {
               <div className="lg:col-span-2 relative">
                 <img 
                   src="/assets/images/readyai-carol-eastman.jpeg" 
-                  alt="Carol Eastman - CEO & Founder of ReadyAI" 
+                  alt="Carol Eastman - CEO of ReadyAI"
                   className="w-full h-full object-cover min-h-[300px]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
@@ -56,7 +56,7 @@ const LeadershipSection: React.FC = () => {
                   <h3 className="font-heading text-3xl md:text-4xl font-medium text-primary mb-2">
                     Carol Eastman
                   </h3>
-                  <p className="font-sans text-xl text-accent font-semibold mb-3">CEO & Founder</p>
+                  <p className="font-sans text-xl text-accent font-semibold mb-3">CEO</p>
                   <a 
                     href="https://www.linkedin.com/in/carol-eastman/" 
                     target="_blank"

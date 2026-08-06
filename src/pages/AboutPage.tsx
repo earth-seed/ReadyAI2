@@ -313,7 +313,7 @@ const AboutPage: React.FC = () => {
                     <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-primary mb-2">
                       Carol Eastman
                     </h3>
-                    <p className="font-sans text-lg sm:text-xl text-accent font-semibold mb-3">CEO & Founder</p>
+                    <p className="font-sans text-lg sm:text-xl text-accent font-semibold mb-3">CEO</p>
                     <a 
                       href="https://www.linkedin.com/in/carol-eastman/" 
                       target="_blank"
