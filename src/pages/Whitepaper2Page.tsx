@@ -7,14 +7,16 @@ const HUBSPOT_SCRIPT_SRC = 'https://js-na2.hsforms.net/forms/embed/v2.js';
 const HUBSPOT_PORTAL_ID = '245381123';
 const HUBSPOT_FORM_ID = 'f663c7e7-e8f1-419e-ad4d-e5b9a8c739d2';
 const HUBSPOT_REGION = 'na2';
-const FORM_TARGET_ID = 'hubspot-compliance-playbook-form';
+const FORM_TARGET_ID = 'hubspot-whitepaper2-form';
 
-const CompliancePlaybookPage: React.FC = () => {
+// Placeholder copy — update the headline, intro, and bullets once Carol
+// delivers the final whitepaper content.
+const Whitepaper2Page: React.FC = () => {
   const navigate = useNavigate();
   const formCreated = useRef(false);
 
   useEffect(() => {
-    document.title = 'The Compliance Playbook for Enterprise AI - ReadyAI';
+    document.title = 'Whitepaper - ReadyAI';
   }, []);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ const CompliancePlaybookPage: React.FC = () => {
         target: `#${FORM_TARGET_ID}`,
         onFormSubmitted: () => {
           // Fallback redirect in case no redirect is configured on the HubSpot form
-          setTimeout(() => navigate('/whitepaper/compliance-playbook/thank-you'), 500);
+          setTimeout(() => navigate('/whitepaper2/thank-you'), 500);
         },
       });
     };
@@ -74,14 +76,14 @@ const CompliancePlaybookPage: React.FC = () => {
               </div>
 
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-4 sm:mb-6 leading-tight">
-                The Compliance Playbook for Enterprise AI: SOC 2, HIPAA, GDPR and Beyond
+                Practical Guidance for Enterprise AI Leaders
               </h1>
 
               <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">
-                97% of enterprises lack proper AI access controls, and compliance gaps are
-                turning into breaches, fines, and career-ending headlines. This playbook breaks
-                down the major compliance frameworks and shows CIOs, CTOs, and HR leaders how to
-                meet their obligations while scaling AI adoption.
+                Enterprise AI is moving fast, and leadership teams need clear, actionable
+                guidance to keep up. This whitepaper gives CIOs, CISOs, and technology leaders
+                practical insights for adopting AI securely, meeting compliance obligations, and
+                scaling with confidence.
               </p>
             </div>
 
@@ -89,10 +91,10 @@ const CompliancePlaybookPage: React.FC = () => {
             <div className="max-w-2xl order-3 lg:order-none lg:col-start-1">
               <ul className="space-y-3 mb-8">
                 {[
-                  'A clear breakdown of SOC 2, HIPAA, and GDPR — and why each matters for AI',
-                  'How shadow AI creates compliance gaps and how to close them',
-                  'Practical controls for protecting sensitive data in AI workflows',
-                  'How to turn compliance into a strategic advantage, not a blocker',
+                  'Actionable guidance for secure enterprise AI adoption',
+                  'How to keep compliance and governance ahead of AI growth',
+                  'Practical steps to protect sensitive data in AI workflows',
+                  'Insights drawn from real enterprise AI deployments',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
@@ -152,14 +154,14 @@ const CompliancePlaybookPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal text-primary mb-4">
-            Why This Playbook Matters
+            Why This Whitepaper Matters
           </h2>
           <p className="font-sans text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-            AI adoption is accelerating faster than most compliance programs can keep up.
-            Ungoverned tools pull sensitive data into unsecured logs, and regulators are
-            watching more closely than ever. This playbook distills what SOC 2, HIPAA, and GDPR
-            actually require of enterprise AI — and how leading organizations use compliance to
-            drive safe innovation instead of slowing it down.
+            Most enterprises are adopting AI faster than they can govern it. Ungoverned tools,
+            unclear policies, and fragmented oversight put data, compliance, and trust at risk.
+            This guide distills what leading organizations are doing to turn AI from a liability
+            into a durable competitive advantage — with clear visibility, real control, and
+            confident adoption at every level of the business.
           </p>
         </div>
       </div>
@@ -167,4 +169,4 @@ const CompliancePlaybookPage: React.FC = () => {
   );
 };
 
-export default CompliancePlaybookPage;
+export default Whitepaper2Page;

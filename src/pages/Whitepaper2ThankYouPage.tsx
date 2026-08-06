@@ -4,9 +4,9 @@ import { CheckCircle2, Download, ArrowRight } from 'lucide-react';
 
 // Farid will also email this file to subscribers via the HubSpot workflow.
 // Swap this path for the final whitepaper PDF once Carol delivers it.
-const WHITEPAPER_DOWNLOAD_URL = '/downloads/readyai-compliance-playbook.pdf';
+const WHITEPAPER_DOWNLOAD_URL = '/downloads/readyai-whitepaper2.pdf';
 
-const CompliancePlaybookThankYouPage: React.FC = () => {
+const Whitepaper2ThankYouPage: React.FC = () => {
   useEffect(() => {
     document.title = 'Thank You - ReadyAI';
   }, []);
@@ -25,11 +25,11 @@ const CompliancePlaybookThankYouPage: React.FC = () => {
           </div>
 
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-normal text-white mb-4 sm:mb-6">
-            Thank You — Your Compliance Playbook Is Ready
+            Thank You — Your Whitepaper Is Ready
           </h1>
 
           <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed mb-8 max-w-2xl mx-auto">
-            Click below to download your copy of the playbook. We&apos;ve also sent a copy to
+            Click below to download your copy of the whitepaper. We&apos;ve also sent a copy to
             your inbox so you can revisit it anytime.
           </p>
 
@@ -39,7 +39,7 @@ const CompliancePlaybookThankYouPage: React.FC = () => {
             className="inline-flex items-center justify-center gap-2 bg-accent text-white px-8 py-3.5 rounded-lg shadow-md hover:bg-accent-dark hover:shadow-lg transition-all duration-200 text-sm sm:text-base font-semibold"
           >
             <Download className="w-5 h-5" />
-            Download the Playbook
+            Download the Whitepaper
           </a>
         </div>
       </div>
@@ -77,4 +77,4 @@ const CompliancePlaybookThankYouPage: React.FC = () => {
   );
 };
 
-export default CompliancePlaybookThankYouPage;
+export default Whitepaper2ThankYouPage;

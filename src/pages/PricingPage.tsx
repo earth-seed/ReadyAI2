@@ -225,7 +225,7 @@ const PricingPage: React.FC = () => {
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
                   >
-                    Get Started Free
+                    Try it Free
                     <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
