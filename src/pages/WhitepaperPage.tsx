@@ -96,10 +96,12 @@ const WhitepaperPage: React.FC = () => {
               </h1>
 
               <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">
-                AI is spreading through your organization faster than most leadership teams can
-                track it. This whitepaper gives CIOs, CISOs, and technology leaders a practical
-                framework for bringing shadow AI under control, meeting compliance obligations,
-                and scaling AI adoption with confidence.
+                AI Readiness: Are You Prepared? helps enterprise leaders rethink what true AI
+                readiness means. Authored by Ashwin Rangan, co-author of &quot;Governance in the
+                Age of Gen AI&quot;, it highlights why success depends on choosing the right type
+                of AI for the right business challenge. The paper offers a practical framework
+                for moving from experimentation to disciplined adoption. Essential reading for
+                leaders shaping the future of AI.
               </p>
             </div>
 
