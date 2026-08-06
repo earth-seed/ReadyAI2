@@ -30,6 +30,13 @@ function hashTargetY(hash: string): number | null {
   return element.getBoundingClientRect().top + window.scrollY - margin;
 }
 
+// For in-page links whose hash is already in the URL: clicking them fires no
+// navigation event, so callers invoke the scroll directly
+export function scrollToHashTarget(hash: string) {
+  const top = hashTargetY(hash);
+  if (top !== null) animateScrollTo(top);
+}
+
 const ScrollToTop: React.FC = () => {
   const { pathname, hash } = useLocation();
 

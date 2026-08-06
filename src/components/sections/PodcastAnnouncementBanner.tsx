@@ -1,14 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Mic, ArrowRight } from 'lucide-react';
+import { scrollToHashTarget } from '../ui/ScrollToTop';
 
 export const PODCAST_SPOTIFY_URL =
   'https://open.spotify.com/episode/4jZ5STH5Ka3eCtTsoO7Bax';
 
 const PodcastAnnouncementBanner: React.FC = () => {
+  const { hash } = useLocation();
+
   return (
     <Link
       to="#podcast"
+      onClick={(e) => {
+        if (hash === '#podcast') {
+          e.preventDefault();
+          scrollToHashTarget('#podcast');
+        }
+      }}
       className="block mt-14 sticky top-14 sm:mt-16 sm:top-16 z-40 bg-gradient-to-r from-accent-dark via-accent to-accent-dark hover:from-accent hover:via-accent-light hover:to-accent transition-all duration-200 group shadow-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3">
