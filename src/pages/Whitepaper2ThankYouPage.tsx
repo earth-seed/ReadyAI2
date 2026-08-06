@@ -4,9 +4,9 @@ import { CheckCircle2, Download, ArrowRight } from 'lucide-react';
 
 // Farid will also email this file to subscribers via the HubSpot workflow.
 // Swap this path for the final whitepaper PDF once Carol delivers it.
-const WHITEPAPER_DOWNLOAD_URL = '/downloads/readyai-whitepaper.pdf';
+const WHITEPAPER_DOWNLOAD_URL = '/downloads/readyai-whitepaper2.pdf';
 
-const WhitepaperThankYouPage: React.FC = () => {
+const Whitepaper2ThankYouPage: React.FC = () => {
   useEffect(() => {
     document.title = 'Thank You - ReadyAI';
   }, []);
@@ -78,4 +78,4 @@ const WhitepaperThankYouPage: React.FC = () => {
   );
 };
 
-export default WhitepaperThankYouPage;
+export default Whitepaper2ThankYouPage;

@@ -5,7 +5,10 @@ import ROICalculator from './ROICalculator';
 
 const CalcSection: React.FC = () => {
   return (
-    <div className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark py-16 sm:py-20 md:py-32 overflow-hidden">
+    <div
+      id="roi-calculator"
+      className="relative scroll-mt-[100px] sm:scroll-mt-[108px] bg-gradient-to-br from-primary via-primary-light to-primary-dark py-16 sm:py-20 md:py-32 overflow-hidden"
+    >
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl"></div>

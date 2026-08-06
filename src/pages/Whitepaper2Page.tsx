@@ -5,29 +5,13 @@ import { CheckCircle2, FileText } from 'lucide-react';
 // HubSpot form embed configuration (provided by marketing)
 const HUBSPOT_SCRIPT_SRC = 'https://js-na2.hsforms.net/forms/embed/v2.js';
 const HUBSPOT_PORTAL_ID = '245381123';
-const HUBSPOT_FORM_ID = 'b4beae67-e167-47f0-9a41-abd757b26df7';
+const HUBSPOT_FORM_ID = 'f663c7e7-e8f1-419e-ad4d-e5b9a8c739d2';
 const HUBSPOT_REGION = 'na2';
-const FORM_TARGET_ID = 'hubspot-whitepaper-form';
+const FORM_TARGET_ID = 'hubspot-whitepaper2-form';
 
-interface HubSpotForms {
-  forms: {
-    create: (options: {
-      portalId: string;
-      formId: string;
-      region: string;
-      target: string;
-      onFormSubmitted?: () => void;
-    }) => void;
-  };
-}
-
-declare global {
-  interface Window {
-    hbspt?: HubSpotForms;
-  }
-}
-
-const WhitepaperPage: React.FC = () => {
+// Placeholder copy — update the headline, intro, and bullets once Carol
+// delivers the final whitepaper content.
+const Whitepaper2Page: React.FC = () => {
   const navigate = useNavigate();
   const formCreated = useRef(false);
 
@@ -46,7 +30,7 @@ const WhitepaperPage: React.FC = () => {
         target: `#${FORM_TARGET_ID}`,
         onFormSubmitted: () => {
           // Fallback redirect in case no redirect is configured on the HubSpot form
-          setTimeout(() => navigate('/whitepaper/thank-you'), 500);
+          setTimeout(() => navigate('/whitepaper2/thank-you'), 500);
         },
       });
     };
@@ -81,7 +65,7 @@ const WhitepaperPage: React.FC = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-10 lg:gap-x-16 lg:gap-y-4 items-start">
             {/* Left top - Headline and intro */}
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
@@ -91,18 +75,15 @@ const WhitepaperPage: React.FC = () => {
                 </span>
               </div>
 
-              {/* Non-breaking spaces make the title wrap only after the colon, never mid-phrase */}
-              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-normal text-white mb-4 sm:mb-6 leading-tight">
-                AI Readiness: Are&nbsp;You&nbsp;Prepared?
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-4 sm:mb-6 leading-tight">
+                Practical Guidance for Enterprise AI Leaders
               </h1>
 
               <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">
-                AI Readiness: Are You Prepared? helps enterprise leaders rethink what true AI
-                readiness means. Authored by Ashwin Rangan, co-author of &quot;Governance in the
-                Age of Gen AI&quot;, it highlights why success depends on choosing the right type
-                of AI for the right business challenge. The paper offers a practical framework
-                for moving from experimentation to disciplined adoption. Essential reading for
-                leaders shaping the future of AI.
+                Enterprise AI is moving fast, and leadership teams need clear, actionable
+                guidance to keep up. This whitepaper gives CIOs, CISOs, and technology leaders
+                practical insights for adopting AI securely, meeting compliance obligations, and
+                scaling with confidence.
               </p>
             </div>
 
@@ -110,10 +91,10 @@ const WhitepaperPage: React.FC = () => {
             <div className="max-w-2xl order-3 lg:order-none lg:col-start-1">
               <ul className="space-y-3">
                 {[
-                  'What true AI readiness means for enterprise leaders',
-                  'How to choose the right type of AI for the right business challenge',
-                  'A practical framework for moving from experimentation to disciplined adoption',
-                  'Insights from Ashwin Rangan, co-author of "Governance in the Age of Gen AI"',
+                  'Actionable guidance for secure enterprise AI adoption',
+                  'How to keep compliance and governance ahead of AI growth',
+                  'Practical steps to protect sensitive data in AI workflows',
+                  'Insights drawn from real enterprise AI deployments',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
@@ -161,12 +142,11 @@ const WhitepaperPage: React.FC = () => {
             Why This Whitepaper Matters
           </h2>
           <p className="font-sans text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-            Most enterprises are experimenting with AI, but few are truly ready for it. Pilots
-            stall, tools get chosen before problems are defined, and investment outpaces
-            results. This paper helps leaders step back and ask the harder question — are we
-            prepared? — with a practical framework for matching the right type of AI to the
-            right business challenge and turning experimentation into disciplined, lasting
-            adoption.
+            Most enterprises are adopting AI faster than they can govern it. Ungoverned tools,
+            unclear policies, and fragmented oversight put data, compliance, and trust at risk.
+            This guide distills what leading organizations are doing to turn AI from a liability
+            into a durable competitive advantage — with clear visibility, real control, and
+            confident adoption at every level of the business.
           </p>
         </div>
       </div>
@@ -174,4 +154,4 @@ const WhitepaperPage: React.FC = () => {
   );
 };
 
-export default WhitepaperPage;
+export default Whitepaper2Page;

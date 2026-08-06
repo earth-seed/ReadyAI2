@@ -28,6 +28,8 @@ import AdminPage from './pages/AdminPage';
 import VideosPage from './pages/VideosPage';
 import WhitepaperPage from './pages/WhitepaperPage';
 import WhitepaperThankYouPage from './pages/WhitepaperThankYouPage';
+import Whitepaper2Page from './pages/Whitepaper2Page';
+import Whitepaper2ThankYouPage from './pages/Whitepaper2ThankYouPage';
 
 function App() {
   const { trackCustomMetric } = usePerformance();
@@ -73,6 +75,8 @@ function App() {
             <Route path="/insights/:articleName" element={<InsightsPage />} />
             <Route path="/whitepaper" element={<WhitepaperPage />} />
             <Route path="/whitepaper/thank-you" element={<WhitepaperThankYouPage />} />
+            <Route path="/whitepaper2" element={<Whitepaper2Page />} />
+            <Route path="/whitepaper2/thank-you" element={<Whitepaper2ThankYouPage />} />
             <Route path="/videos" element={<VideosPage />} />
             <Route path="/videos/:videoId" element={<VideosPage />} />
             <Route path="/preview" element={<ArticlePreview />} />

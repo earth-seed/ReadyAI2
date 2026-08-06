@@ -13,7 +13,7 @@ const SPOTIFY_EMBED_URL =
 const PodcastSection: React.FC = () => {
   return (
     <SlideAnimator direction="up">
-      <section className="bg-white">
+      <section id="podcast" className="bg-white scroll-mt-[100px] sm:scroll-mt-[108px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Left - Copy */}
@@ -35,7 +35,7 @@ const PodcastSection: React.FC = () => {
                 Responsible AI: Unmasked
               </h2>
               <p className="font-sans text-sm sm:text-base text-primary-light leading-relaxed mb-3">
-                With Carol Eastman, CEO &amp; Founder of ReadyAI, and Ashwin Rangan.
+                With Carol Eastman, CEO &amp; Ashwin Rangan, Executive Board Member
               </p>
               <p className="font-sans text-sm sm:text-base text-primary-light leading-relaxed mb-6">
                 A candid conversation on what responsible AI really takes inside the

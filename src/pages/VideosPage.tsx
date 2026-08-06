@@ -26,7 +26,7 @@ export const VIDEOS: Video[] = [
     id: "responsible-ai-unmasked-carol-eastman-ashwin-rangan",
     title: "Responsible AI: Unmasked with Carol Eastman and Ashwin Rangan",
     description:
-      "Carol Eastman, CEO & Founder of ReadyAI, joins Ashwin Rangan for a candid conversation on what responsible AI really takes inside the enterprise. They discuss AI governance, security, and how leadership teams can move from ungoverned experimentation to confident, secure AI adoption at scale.",
+      "Carol Eastman, CEO of ReadyAI, joins Ashwin Rangan, Executive Board Member of ReadyAI for a candid conversation on what responsible AI really takes inside the enterprise. They discuss AI governance, security, and how leadership teams can move from ungoverned experimentation to confident, secure AI adoption at scale.",
     spotifyEpisodeId: "4jZ5STH5Ka3eCtTsoO7Bax",
     thumbnailUrl: "https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015beca35bdb07bc72711c64d20ba",
     publishedDate: "2026-08-05",
