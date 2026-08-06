@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CheckCircle2, FileText, ShieldCheck, TrendingUp } from 'lucide-react';
+import { CheckCircle2, FileText } from 'lucide-react';
 
 // HubSpot form embed configuration (provided by marketing)
 const HUBSPOT_SCRIPT_SRC = 'https://js-na2.hsforms.net/forms/embed/v2.js';
@@ -92,7 +92,7 @@ const WhitepaperPage: React.FC = () => {
               </div>
 
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-4 sm:mb-6 leading-tight">
-                AI Readiness: Are You Prepared?
+                AI Readiness: Are You&nbsp;Prepared?
               </h1>
 
               <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">
@@ -107,7 +107,7 @@ const WhitepaperPage: React.FC = () => {
 
             {/* Left bottom - Bullets and trust (below the form on mobile) */}
             <div className="max-w-2xl order-3 lg:order-none lg:col-start-1">
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3">
                 {[
                   'What true AI readiness means for enterprise leaders',
                   'How to choose the right type of AI for the right business challenge',
@@ -120,21 +120,6 @@ const WhitepaperPage: React.FC = () => {
                   </li>
                 ))}
               </ul>
-
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-white/80">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-accent" />
-                  <span className="font-sans text-xs sm:text-sm font-medium">
-                    Enterprise-Grade Security
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-accent" />
-                  <span className="font-sans text-xs sm:text-sm font-medium">
-                    Built for AI at Scale
-                  </span>
-                </div>
-              </div>
             </div>
 
             {/* Right - Gated form */}
