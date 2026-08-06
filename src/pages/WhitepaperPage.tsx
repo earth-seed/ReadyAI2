@@ -92,7 +92,7 @@ const WhitepaperPage: React.FC = () => {
               </div>
 
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-4 sm:mb-6 leading-tight">
-                The Enterprise Guide to Secure, Governed AI Adoption
+                AI Readiness: Are You Prepared?
               </h1>
 
               <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">
@@ -109,10 +109,10 @@ const WhitepaperPage: React.FC = () => {
             <div className="max-w-2xl order-3 lg:order-none lg:col-start-1">
               <ul className="space-y-3 mb-8">
                 {[
-                  'How to gain full visibility into AI usage across your enterprise',
-                  'A governance framework that enables adoption instead of blocking it',
-                  'Practical steps to secure data while empowering teams with AI',
-                  'Benchmarks and insights from enterprise AI deployments',
+                  'What true AI readiness means for enterprise leaders',
+                  'How to choose the right type of AI for the right business challenge',
+                  'A practical framework for moving from experimentation to disciplined adoption',
+                  'Insights from Ashwin Rangan, co-author of "Governance in the Age of Gen AI"',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
@@ -175,11 +175,12 @@ const WhitepaperPage: React.FC = () => {
             Why This Whitepaper Matters
           </h2>
           <p className="font-sans text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-            Most enterprises are adopting AI faster than they can govern it. Ungoverned tools,
-            unclear policies, and fragmented oversight put data, compliance, and trust at risk.
-            This guide distills what leading organizations are doing to turn AI from a liability
-            into a durable competitive advantage — with clear visibility, real control, and
-            confident adoption at every level of the business.
+            Most enterprises are experimenting with AI, but few are truly ready for it. Pilots
+            stall, tools get chosen before problems are defined, and investment outpaces
+            results. This paper helps leaders step back and ask the harder question — are we
+            prepared? — with a practical framework for matching the right type of AI to the
+            right business challenge and turning experimentation into disciplined, lasting
+            adoption.
           </p>
         </div>
       </div>
