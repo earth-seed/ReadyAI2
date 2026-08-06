@@ -25,7 +25,7 @@ const WhitepaperThankYouPage: React.FC = () => {
           </div>
 
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-normal text-white mb-4 sm:mb-6">
-            Thank You — Your Whitepaper Is Ready
+            Thank You — Your Whitepaper Is&nbsp;Ready
           </h1>
 
           <p className="font-sans text-sm sm:text-base md:text-lg text-white/90 leading-relaxed mb-8 max-w-2xl mx-auto">
