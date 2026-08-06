@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CheckCircle2, FileText, ShieldCheck, TrendingUp } from 'lucide-react';
+import { CheckCircle2, FileText } from 'lucide-react';
 
 // HubSpot form embed configuration (provided by marketing)
 const HUBSPOT_SCRIPT_SRC = 'https://js-na2.hsforms.net/forms/embed/v2.js';
@@ -65,7 +65,7 @@ const Whitepaper2Page: React.FC = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-16 lg:gap-y-4 items-start">
             {/* Left top - Headline and intro */}
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
@@ -89,7 +89,7 @@ const Whitepaper2Page: React.FC = () => {
 
             {/* Left bottom - Bullets and trust (below the form on mobile) */}
             <div className="max-w-2xl order-3 lg:order-none lg:col-start-1">
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3">
                 {[
                   'Actionable guidance for secure enterprise AI adoption',
                   'How to keep compliance and governance ahead of AI growth',
@@ -102,21 +102,6 @@ const Whitepaper2Page: React.FC = () => {
                   </li>
                 ))}
               </ul>
-
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-white/80">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-accent" />
-                  <span className="font-sans text-xs sm:text-sm font-medium">
-                    Enterprise-Grade Security
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-accent" />
-                  <span className="font-sans text-xs sm:text-sm font-medium">
-                    Built for AI at Scale
-                  </span>
-                </div>
-              </div>
             </div>
 
             {/* Right - Gated form */}
