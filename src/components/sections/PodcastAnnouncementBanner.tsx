@@ -7,9 +7,7 @@ export const PODCAST_SPOTIFY_URL =
 const PodcastAnnouncementBanner: React.FC = () => {
   return (
     <a
-      href={PODCAST_SPOTIFY_URL}
-      target="_blank"
-      rel="noopener noreferrer"
+      href="#podcast"
       className="block mt-14 sticky top-14 sm:mt-16 sm:top-16 z-40 bg-gradient-to-r from-accent-dark via-accent to-accent-dark hover:from-accent hover:via-accent-light hover:to-accent transition-all duration-200 group shadow-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3">
