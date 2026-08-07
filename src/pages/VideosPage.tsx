@@ -68,6 +68,87 @@ export const VIDEOS: Video[] = [
     publishedDate: "2026-04-01",
     category: "demos",
   },
+  {
+    id: "business-reimagined-erp-and-now-ai",
+    title: "Business Reimagined, the road taken with ERP, and now AI",
+    description:
+      "How the enterprise journey through ERP transformation set the stage for today's AI adoption — and what leaders can learn from the road already taken.",
+    youtubeId: "W-iI5Is6N4c",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "ai-agents-establishing-trust-with-new-entities",
+    title: "AI Agents - Establishing Trust with New Entities",
+    description:
+      "AI agents are new actors inside your organization. How do you establish trust with entities that act on your behalf — and what guardrails need to be in place first?",
+    youtubeId: "AGe5Q-BsWGE",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "ai-governance-brutal-truth-boards-ignore",
+    title: "AI Governance: The Brutal Truth Boards Ignore",
+    description:
+      "The uncomfortable reality about AI governance that too many boards overlook — and why waiting to address it puts the business at risk.",
+    youtubeId: "MCVAaSfJimw",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "business-survival-dont-let-your-business-disappear",
+    title: "Business Survival - Don't Let Your Business Disappear!",
+    description:
+      "AI is redrawing the competitive map. What it takes to keep your business relevant — and why standing still is the biggest risk of all.",
+    youtubeId: "g3zuP3ymTIc",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "ceo-retiring-speed-of-tech-and-vulnerability",
+    title: "CEO Retiring - The Speed of Tech & Vulnerability",
+    description:
+      "A retiring CEO reflects on the accelerating pace of technology and the vulnerability that comes with leading through constant change.",
+    youtubeId: "an7mBbjTuCs",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "token-usage-gap-cardinal-sin",
+    title: "Token usage gap - not knowing about the spend is a cardinal sin",
+    description:
+      "Unmonitored AI token spend is a blind spot leaders can't afford. Why visibility into usage and cost is table stakes for enterprise AI.",
+    youtubeId: "CaunZTUaOFs",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "is-legacy-inertia-an-asset-or-detriment-in-ai",
+    title: "Is Legacy Inertia an Asset or Detriment in AI?",
+    description:
+      "Does a long operating history help or hurt when adopting AI? Weighing the stability of legacy against the inertia it can create.",
+    youtubeId: "xGi1AbQiI2g",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "nobody-told-me-thats-not-an-excuse",
+    title: "Well Nobody Told Me, That's Not an Excuse",
+    description:
+      "\"Nobody told me\" doesn't hold up as a defense anymore. Why leaders are accountable for understanding AI's impact on their business.",
+    youtubeId: "OyR3kxV005w",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "no-choice-but-to-pay-the-bill-unmonitored-token-usage",
+    title: "You Have No Choice but to Pay the Bill - Unmonitored Token Usage",
+    description:
+      "When AI usage goes unmonitored, the bill arrives either way. How to get ahead of runaway token costs before they get ahead of you.",
+    youtubeId: "8_XGffXPpOY",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
 ];
 
 const CATEGORY_INFO: Record<VideoCategory, { title: string; description: string }> = {
