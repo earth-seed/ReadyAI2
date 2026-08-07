@@ -5,6 +5,8 @@ import { CheckCircle2, Download, ArrowRight } from 'lucide-react';
 // Farid will also email this file to subscribers via the HubSpot workflow.
 // Swap this path for the final whitepaper PDF once Carol delivers it.
 const WHITEPAPER_DOWNLOAD_URL = '/downloads/readyai-whitepaper2.pdf';
+// Filename the browser saves the PDF as
+const WHITEPAPER_DOWNLOAD_FILENAME = 'The Seven Steps to Successful AI.pdf';
 
 const Whitepaper2ThankYouPage: React.FC = () => {
   useEffect(() => {
@@ -36,7 +38,7 @@ const Whitepaper2ThankYouPage: React.FC = () => {
 
           <a
             href={WHITEPAPER_DOWNLOAD_URL}
-            download
+            download={WHITEPAPER_DOWNLOAD_FILENAME}
             className="inline-flex items-center justify-center gap-2 bg-accent text-white px-8 py-3.5 rounded-lg shadow-md hover:bg-accent-dark hover:shadow-lg transition-all duration-200 text-sm sm:text-base font-semibold"
           >
             <Download className="w-5 h-5" />
