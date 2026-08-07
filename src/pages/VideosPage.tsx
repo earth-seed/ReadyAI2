@@ -71,8 +71,7 @@ export const VIDEOS: Video[] = [
   {
     id: "business-reimagined-erp-and-now-ai",
     title: "Business Reimagined, the road taken with ERP, and now AI",
-    description:
-      "How the enterprise journey through ERP transformation set the stage for today's AI adoption — and what leaders can learn from the road already taken.",
+    description: "",
     youtubeId: "W-iI5Is6N4c",
     publishedDate: "2026-08-07",
     category: "shorts",
@@ -80,8 +79,7 @@ export const VIDEOS: Video[] = [
   {
     id: "ai-agents-establishing-trust-with-new-entities",
     title: "AI Agents - Establishing Trust with New Entities",
-    description:
-      "AI agents are new actors inside your organization. How do you establish trust with entities that act on your behalf — and what guardrails need to be in place first?",
+    description: "",
     youtubeId: "AGe5Q-BsWGE",
     publishedDate: "2026-08-07",
     category: "shorts",
@@ -89,8 +87,7 @@ export const VIDEOS: Video[] = [
   {
     id: "ai-governance-brutal-truth-boards-ignore",
     title: "AI Governance: The Brutal Truth Boards Ignore",
-    description:
-      "The uncomfortable reality about AI governance that too many boards overlook — and why waiting to address it puts the business at risk.",
+    description: "",
     youtubeId: "MCVAaSfJimw",
     publishedDate: "2026-08-07",
     category: "shorts",
@@ -98,8 +95,7 @@ export const VIDEOS: Video[] = [
   {
     id: "business-survival-dont-let-your-business-disappear",
     title: "Business Survival - Don't Let Your Business Disappear!",
-    description:
-      "AI is redrawing the competitive map. What it takes to keep your business relevant — and why standing still is the biggest risk of all.",
+    description: "",
     youtubeId: "g3zuP3ymTIc",
     publishedDate: "2026-08-07",
     category: "shorts",
@@ -107,8 +103,7 @@ export const VIDEOS: Video[] = [
   {
     id: "ceo-retiring-speed-of-tech-and-vulnerability",
     title: "CEO Retiring - The Speed of Tech & Vulnerability",
-    description:
-      "A retiring CEO reflects on the accelerating pace of technology and the vulnerability that comes with leading through constant change.",
+    description: "",
     youtubeId: "an7mBbjTuCs",
     publishedDate: "2026-08-07",
     category: "shorts",
@@ -116,8 +111,7 @@ export const VIDEOS: Video[] = [
   {
     id: "token-usage-gap-cardinal-sin",
     title: "Token usage gap - not knowing about the spend is a cardinal sin",
-    description:
-      "Unmonitored AI token spend is a blind spot leaders can't afford. Why visibility into usage and cost is table stakes for enterprise AI.",
+    description: "",
     youtubeId: "CaunZTUaOFs",
     publishedDate: "2026-08-07",
     category: "shorts",
@@ -125,8 +119,7 @@ export const VIDEOS: Video[] = [
   {
     id: "is-legacy-inertia-an-asset-or-detriment-in-ai",
     title: "Is Legacy Inertia an Asset or Detriment in AI?",
-    description:
-      "Does a long operating history help or hurt when adopting AI? Weighing the stability of legacy against the inertia it can create.",
+    description: "",
     youtubeId: "xGi1AbQiI2g",
     publishedDate: "2026-08-07",
     category: "shorts",
@@ -134,8 +127,7 @@ export const VIDEOS: Video[] = [
   {
     id: "nobody-told-me-thats-not-an-excuse",
     title: "Well Nobody Told Me, That's Not an Excuse",
-    description:
-      "\"Nobody told me\" doesn't hold up as a defense anymore. Why leaders are accountable for understanding AI's impact on their business.",
+    description: "",
     youtubeId: "OyR3kxV005w",
     publishedDate: "2026-08-07",
     category: "shorts",
@@ -143,8 +135,7 @@ export const VIDEOS: Video[] = [
   {
     id: "no-choice-but-to-pay-the-bill-unmonitored-token-usage",
     title: "You Have No Choice but to Pay the Bill - Unmonitored Token Usage",
-    description:
-      "When AI usage goes unmonitored, the bill arrives either way. How to get ahead of runaway token costs before they get ahead of you.",
+    description: "",
     youtubeId: "8_XGffXPpOY",
     publishedDate: "2026-08-07",
     category: "shorts",
@@ -199,15 +190,15 @@ const VideosPage: React.FC = () => {
       {currVideo ? (
         <Helmet>
           <title>ReadyAI - {currVideo.title}</title>
-          <meta name="description" content={currVideo.description} />
+          <meta name="description" content={currVideo.description || currVideo.title} />
           <meta property="og:type" content="video" />
           <meta property="og:url" content={`https://readyai.dev/videos/${currVideo.id}`} />
           <meta property="og:title" content={currVideo.title} />
-          <meta property="og:description" content={currVideo.description} />
+          <meta property="og:description" content={currVideo.description || currVideo.title} />
           <meta property="og:image" content={getThumbnailUrl(currVideo)} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={currVideo.title} />
-          <meta name="twitter:description" content={currVideo.description} />
+          <meta name="twitter:description" content={currVideo.description || currVideo.title} />
           <meta name="twitter:image" content={getThumbnailUrl(currVideo)} />
         </Helmet>
       ) : (
@@ -312,9 +303,11 @@ const VideosPage: React.FC = () => {
                           {video.title}
                         </h3>
 
-                        <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                          {video.description}
-                        </p>
+                        {video.description && (
+                          <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                            {video.description}
+                          </p>
+                        )}
 
                         <span className="inline-flex items-center gap-2 text-accent font-semibold group-hover:text-accent-dark transition-colors duration-200">
                           {video.spotifyEpisodeId
@@ -381,11 +374,13 @@ const VideosPage: React.FC = () => {
           </div>
 
           {/* Description */}
-          <div className="prose prose-lg max-w-none mb-8">
-            <p className="text-lg text-gray-600 leading-relaxed">
-              {currVideo.description}
-            </p>
-          </div>
+          {currVideo.description && (
+            <div className="prose prose-lg max-w-none mb-8">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                {currVideo.description}
+              </p>
+            </div>
+          )}
 
           {/* Watch on YouTube / Listen on Spotify */}
           <a
