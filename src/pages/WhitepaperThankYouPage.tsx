@@ -6,7 +6,7 @@ import { CheckCircle2, Download, ArrowRight } from 'lucide-react';
 // Swap this path for the final whitepaper PDF once Carol delivers it.
 const WHITEPAPER_DOWNLOAD_URL = '/downloads/readyai-whitepaper.pdf';
 // Filename the browser saves the PDF as (":" and "?" are not allowed on Windows)
-const WHITEPAPER_DOWNLOAD_FILENAME = 'AI Readiness - Are You Prepared - ReadyAI Thoughtpiece No. 01.pdf';
+const WHITEPAPER_DOWNLOAD_FILENAME = 'AI Readiness - Are You Prepared.pdf';
 
 const WhitepaperThankYouPage: React.FC = () => {
   useEffect(() => {

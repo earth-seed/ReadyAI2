@@ -6,7 +6,7 @@ import { CheckCircle2, Download, ArrowRight } from 'lucide-react';
 // Swap this path for the final whitepaper PDF once Carol delivers it.
 const WHITEPAPER_DOWNLOAD_URL = '/downloads/readyai-whitepaper2.pdf';
 // Filename the browser saves the PDF as
-const WHITEPAPER_DOWNLOAD_FILENAME = 'The Seven Steps to Successful AI - ReadyAI Thoughtpiece No. 02.pdf';
+const WHITEPAPER_DOWNLOAD_FILENAME = 'The Seven Steps to Successful AI.pdf';
 
 const Whitepaper2ThankYouPage: React.FC = () => {
   useEffect(() => {
