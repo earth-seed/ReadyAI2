@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowRight, Play, Calendar, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 
-type VideoCategory = "demos" | "podcasts";
+type VideoCategory = "demos" | "podcasts" | "shorts";
 
 type Video = {
   id: string;
@@ -68,6 +68,78 @@ export const VIDEOS: Video[] = [
     publishedDate: "2026-04-01",
     category: "demos",
   },
+  {
+    id: "business-reimagined-erp-and-now-ai",
+    title: "Business Reimagined, the road taken with ERP, and now AI",
+    description: "",
+    youtubeId: "W-iI5Is6N4c",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "ai-agents-establishing-trust-with-new-entities",
+    title: "AI Agents - Establishing Trust with New Entities",
+    description: "",
+    youtubeId: "AGe5Q-BsWGE",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "ai-governance-brutal-truth-boards-ignore",
+    title: "AI Governance: The Brutal Truth Boards Ignore",
+    description: "",
+    youtubeId: "MCVAaSfJimw",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "business-survival-dont-let-your-business-disappear",
+    title: "Business Survival - Don't Let Your Business Disappear!",
+    description: "",
+    youtubeId: "g3zuP3ymTIc",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "ceo-retiring-speed-of-tech-and-vulnerability",
+    title: "CEO Retiring - The Speed of Tech & Vulnerability",
+    description: "",
+    youtubeId: "an7mBbjTuCs",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "token-usage-gap-cardinal-sin",
+    title: "Token usage gap - not knowing about the spend is a cardinal sin",
+    description: "",
+    youtubeId: "CaunZTUaOFs",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "is-legacy-inertia-an-asset-or-detriment-in-ai",
+    title: "Is Legacy Inertia an Asset or Detriment in AI?",
+    description: "",
+    youtubeId: "xGi1AbQiI2g",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "nobody-told-me-thats-not-an-excuse",
+    title: "Well Nobody Told Me, That's Not an Excuse",
+    description: "",
+    youtubeId: "OyR3kxV005w",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
+  {
+    id: "no-choice-but-to-pay-the-bill-unmonitored-token-usage",
+    title: "You Have No Choice but to Pay the Bill - Unmonitored Token Usage",
+    description: "",
+    youtubeId: "8_XGffXPpOY",
+    publishedDate: "2026-08-07",
+    category: "shorts",
+  },
 ];
 
 const CATEGORY_INFO: Record<VideoCategory, { title: string; description: string }> = {
@@ -79,13 +151,23 @@ const CATEGORY_INFO: Record<VideoCategory, { title: string; description: string 
     title: "Podcasts & Interviews",
     description: "Conversations with industry leaders on AI governance, security, and strategy",
   },
+  shorts: {
+    title: "Strategic Summaries",
+    description:
+      "High impact insights from industry experts to help leaders quickly understand and leverage the business impact of AI",
+  },
 };
 
 const VideosPage: React.FC = () => {
   const { videoId } = useParams<{ videoId: string }>();
   const navigate = useNavigate();
+  const [activeCategory, setActiveCategory] = useState<VideoCategory | "all">("all");
 
   const currVideo = videoId ? VIDEOS.find((v) => v.id === videoId) : null;
+
+  const categoriesWithContent = (Object.keys(CATEGORY_INFO) as VideoCategory[]).filter(
+    (category) => VIDEOS.some((v) => v.category === category)
+  );
 
   function formatTimestamp(dateString: string): string {
     if (!dateString) return "";
@@ -108,15 +190,15 @@ const VideosPage: React.FC = () => {
       {currVideo ? (
         <Helmet>
           <title>ReadyAI - {currVideo.title}</title>
-          <meta name="description" content={currVideo.description} />
+          <meta name="description" content={currVideo.description || currVideo.title} />
           <meta property="og:type" content="video" />
           <meta property="og:url" content={`https://readyai.dev/videos/${currVideo.id}`} />
           <meta property="og:title" content={currVideo.title} />
-          <meta property="og:description" content={currVideo.description} />
+          <meta property="og:description" content={currVideo.description || currVideo.title} />
           <meta property="og:image" content={getThumbnailUrl(currVideo)} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={currVideo.title} />
-          <meta name="twitter:description" content={currVideo.description} />
+          <meta name="twitter:description" content={currVideo.description || currVideo.title} />
           <meta name="twitter:image" content={getThumbnailUrl(currVideo)} />
         </Helmet>
       ) : (
@@ -158,7 +240,26 @@ const VideosPage: React.FC = () => {
       {/* Videos by Category (list view) */}
       {!videoId && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {(Object.keys(CATEGORY_INFO) as VideoCategory[]).map((category) => {
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 mb-14">
+            {(["all", ...categoriesWithContent] as (VideoCategory | "all")[]).map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-5 py-2.5 rounded-full font-sans font-semibold text-sm transition-all duration-200 ${
+                  activeCategory === category
+                    ? "bg-primary text-white shadow-md"
+                    : "bg-white text-gray-600 border border-gray-200 hover:border-accent hover:text-accent"
+                }`}
+              >
+                {category === "all" ? "All" : CATEGORY_INFO[category].title}
+              </button>
+            ))}
+          </div>
+
+          {(Object.keys(CATEGORY_INFO) as VideoCategory[])
+            .filter((category) => activeCategory === "all" || category === activeCategory)
+            .map((category) => {
             const categoryVideos = VIDEOS.filter((v) => v.category === category);
             if (categoryVideos.length === 0) return null;
             const info = CATEGORY_INFO[category];
@@ -202,12 +303,18 @@ const VideosPage: React.FC = () => {
                           {video.title}
                         </h3>
 
-                        <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                          {video.description}
-                        </p>
+                        {video.description && (
+                          <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                            {video.description}
+                          </p>
+                        )}
 
                         <span className="inline-flex items-center gap-2 text-accent font-semibold group-hover:text-accent-dark transition-colors duration-200">
-                          {video.spotifyEpisodeId ? "Listen to Podcast" : "Watch Video"}
+                          {video.spotifyEpisodeId
+                            ? "Listen to Podcast"
+                            : video.category === "shorts"
+                              ? "Watch Short"
+                              : "Watch Video"}
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                         </span>
                       </div>
@@ -239,7 +346,13 @@ const VideosPage: React.FC = () => {
 
           {/* Video Player */}
           <div className="mb-10 rounded-2xl overflow-hidden shadow-lg">
-            <div className="relative aspect-video">
+            <div
+              className={
+                currVideo.category === "shorts"
+                  ? "relative aspect-[9/16] max-w-sm mx-auto"
+                  : "relative aspect-video"
+              }
+            >
               {currVideo.spotifyEpisodeId ? (
                 <iframe
                   src={`https://open.spotify.com/embed/episode/${currVideo.spotifyEpisodeId}/video`}
@@ -261,11 +374,13 @@ const VideosPage: React.FC = () => {
           </div>
 
           {/* Description */}
-          <div className="prose prose-lg max-w-none mb-8">
-            <p className="text-lg text-gray-600 leading-relaxed">
-              {currVideo.description}
-            </p>
-          </div>
+          {currVideo.description && (
+            <div className="prose prose-lg max-w-none mb-8">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                {currVideo.description}
+              </p>
+            </div>
+          )}
 
           {/* Watch on YouTube / Listen on Spotify */}
           <a
