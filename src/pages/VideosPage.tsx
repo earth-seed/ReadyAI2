@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowRight, Play, Calendar, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 
-type VideoCategory = "demos" | "podcasts";
+type VideoCategory = "demos" | "podcasts" | "shorts";
 
 type Video = {
   id: string;
@@ -79,13 +79,23 @@ const CATEGORY_INFO: Record<VideoCategory, { title: string; description: string 
     title: "Podcasts & Interviews",
     description: "Conversations with industry leaders on AI governance, security, and strategy",
   },
+  shorts: {
+    title: "Strategic Summaries",
+    description:
+      "High impact insights from industry experts to help leaders quickly understand and leverage the business impact of AI",
+  },
 };
 
 const VideosPage: React.FC = () => {
   const { videoId } = useParams<{ videoId: string }>();
   const navigate = useNavigate();
+  const [activeCategory, setActiveCategory] = useState<VideoCategory | "all">("all");
 
   const currVideo = videoId ? VIDEOS.find((v) => v.id === videoId) : null;
+
+  const categoriesWithContent = (Object.keys(CATEGORY_INFO) as VideoCategory[]).filter(
+    (category) => VIDEOS.some((v) => v.category === category)
+  );
 
   function formatTimestamp(dateString: string): string {
     if (!dateString) return "";
@@ -158,7 +168,26 @@ const VideosPage: React.FC = () => {
       {/* Videos by Category (list view) */}
       {!videoId && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {(Object.keys(CATEGORY_INFO) as VideoCategory[]).map((category) => {
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 mb-14">
+            {(["all", ...categoriesWithContent] as (VideoCategory | "all")[]).map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-5 py-2.5 rounded-full font-sans font-semibold text-sm transition-all duration-200 ${
+                  activeCategory === category
+                    ? "bg-primary text-white shadow-md"
+                    : "bg-white text-gray-600 border border-gray-200 hover:border-accent hover:text-accent"
+                }`}
+              >
+                {category === "all" ? "All" : CATEGORY_INFO[category].title}
+              </button>
+            ))}
+          </div>
+
+          {(Object.keys(CATEGORY_INFO) as VideoCategory[])
+            .filter((category) => activeCategory === "all" || category === activeCategory)
+            .map((category) => {
             const categoryVideos = VIDEOS.filter((v) => v.category === category);
             if (categoryVideos.length === 0) return null;
             const info = CATEGORY_INFO[category];
@@ -207,7 +236,11 @@ const VideosPage: React.FC = () => {
                         </p>
 
                         <span className="inline-flex items-center gap-2 text-accent font-semibold group-hover:text-accent-dark transition-colors duration-200">
-                          {video.spotifyEpisodeId ? "Listen to Podcast" : "Watch Video"}
+                          {video.spotifyEpisodeId
+                            ? "Listen to Podcast"
+                            : video.category === "shorts"
+                              ? "Watch Short"
+                              : "Watch Video"}
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                         </span>
                       </div>
@@ -239,7 +272,13 @@ const VideosPage: React.FC = () => {
 
           {/* Video Player */}
           <div className="mb-10 rounded-2xl overflow-hidden shadow-lg">
-            <div className="relative aspect-video">
+            <div
+              className={
+                currVideo.category === "shorts"
+                  ? "relative aspect-[9/16] max-w-sm mx-auto"
+                  : "relative aspect-video"
+              }
+            >
               {currVideo.spotifyEpisodeId ? (
                 <iframe
                   src={`https://open.spotify.com/embed/episode/${currVideo.spotifyEpisodeId}/video`}
