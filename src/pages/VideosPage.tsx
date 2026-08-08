@@ -140,6 +140,38 @@ export const VIDEOS: Video[] = [
     publishedDate: "2026-08-07",
     category: "shorts",
   },
+  {
+    id: "the-diamond-mine-data-security-analogy",
+    title: "The Diamond Mine — data security analogy from Kimberley mining",
+    description: "",
+    youtubeId: "6zzOkjL74h4",
+    publishedDate: "2026-08-08",
+    category: "shorts",
+  },
+  {
+    id: "the-power-outlet-problem-measuring-deployment",
+    title: "The Power Outlet Problem — measuring deployment, not outcomes",
+    description: "",
+    youtubeId: "jLs4109sSV8",
+    publishedDate: "2026-08-08",
+    category: "shorts",
+  },
+  {
+    id: "the-readyai-platform-in-action",
+    title: "The ReadyAI Platform in Action",
+    description: "",
+    youtubeId: "FOV0riHPqpE",
+    publishedDate: "2026-08-08",
+    category: "shorts",
+  },
+  {
+    id: "the-tao-of-ai-transparency-accountability-observability",
+    title: "The TAO of AI — Transparency, Accountability, Observability",
+    description: "",
+    youtubeId: "tDoTb3jexZA",
+    publishedDate: "2026-08-08",
+    category: "shorts",
+  },
 ];
 
 const CATEGORY_INFO: Record<VideoCategory, { title: string; description: string }> = {
