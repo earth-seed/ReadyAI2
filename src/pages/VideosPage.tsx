@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, Play, Calendar, ExternalLink } from "lucide-react";
+import { ArrowRight, Play, Calendar, ExternalLink, ArrowUpDown } from "lucide-react";
 import { Link } from "react-router-dom";
 
 type VideoCategory = "demos" | "podcasts" | "shorts";
@@ -194,6 +194,7 @@ const VideosPage: React.FC = () => {
   const { videoId } = useParams<{ videoId: string }>();
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<VideoCategory | "all">("all");
+  const [sortOrder, setSortOrder] = useState<"desc" | "asc">("desc");
 
   const currVideo = videoId ? VIDEOS.find((v) => v.id === videoId) : null;
 
@@ -272,27 +273,56 @@ const VideosPage: React.FC = () => {
       {/* Videos by Category (list view) */}
       {!videoId && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-14">
-            {(["all", ...categoriesWithContent] as (VideoCategory | "all")[]).map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2.5 rounded-full font-sans font-semibold text-sm transition-all duration-200 ${
-                  activeCategory === category
-                    ? "bg-primary text-white shadow-md"
-                    : "bg-white text-gray-600 border border-gray-200 hover:border-accent hover:text-accent"
-                }`}
-              >
-                {category === "all" ? "All" : CATEGORY_INFO[category].title}
-              </button>
-            ))}
+          {/* Filter + Sort Toolbar */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-14">
+            {/* Category Filter */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-3">
+              {(["all", ...categoriesWithContent] as (VideoCategory | "all")[]).map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`px-5 py-2.5 rounded-full font-sans font-semibold text-sm transition-all duration-200 ${
+                    activeCategory === category
+                      ? "bg-primary text-white shadow-md"
+                      : "bg-white text-gray-600 border border-gray-200 hover:border-accent hover:text-accent"
+                  }`}
+                >
+                  {category === "all" ? "All" : CATEGORY_INFO[category].title}
+                </button>
+              ))}
+            </div>
+
+            {/* Sort Control */}
+            <div className="flex items-center justify-center md:justify-end gap-2 shrink-0">
+              <ArrowUpDown className="w-4 h-4 text-gray-400" />
+              <div className="inline-flex rounded-full border border-gray-200 bg-white p-1">
+                {([
+                  { value: "desc", label: "Newest" },
+                  { value: "asc", label: "Oldest" },
+                ] as { value: "desc" | "asc"; label: string }[]).map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => setSortOrder(option.value)}
+                    className={`px-4 py-1.5 rounded-full font-sans font-semibold text-sm transition-all duration-200 ${
+                      sortOrder === option.value
+                        ? "bg-primary text-white shadow-sm"
+                        : "text-gray-600 hover:text-accent"
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           {(Object.keys(CATEGORY_INFO) as VideoCategory[])
             .filter((category) => activeCategory === "all" || category === activeCategory)
             .map((category) => {
-            const categoryVideos = VIDEOS.filter((v) => v.category === category);
+            const categoryVideos = VIDEOS.filter((v) => v.category === category).sort((a, b) => {
+              const diff = new Date(a.publishedDate).getTime() - new Date(b.publishedDate).getTime();
+              return sortOrder === "asc" ? diff : -diff;
+            });
             if (categoryVideos.length === 0) return null;
             const info = CATEGORY_INFO[category];
             return (
