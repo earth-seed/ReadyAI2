@@ -174,19 +174,22 @@ export const VIDEOS: Video[] = [
   },
 ];
 
-const CATEGORY_INFO: Record<VideoCategory, { title: string; description: string }> = {
+const CATEGORY_INFO: Record<VideoCategory, { title: string; description: string; anchor: string }> = {
   demos: {
     title: "Demos & Tutorials",
     description: "Platform walkthroughs, feature demos, and educational content for enterprise AI adoption",
+    anchor: "demos",
   },
   podcasts: {
     title: "Podcasts & Interviews",
     description: "Conversations with industry leaders on AI governance, security, and strategy",
+    anchor: "podcasts",
   },
   shorts: {
     title: "Strategic Summaries",
     description:
       "High impact insights from industry experts to help leaders quickly understand and leverage the business impact of AI",
+    anchor: "strategicsummaries",
   },
 };
 
@@ -326,7 +329,7 @@ const VideosPage: React.FC = () => {
             if (categoryVideos.length === 0) return null;
             const info = CATEGORY_INFO[category];
             return (
-              <section key={category} className="mb-16 last:mb-0">
+              <section key={category} id={info.anchor} className="mb-16 last:mb-0 scroll-mt-28">
                 <div className="mb-8">
                   <h2 className="font-heading text-3xl md:text-4xl font-medium text-gray-900 mb-2">
                     {info.title}
