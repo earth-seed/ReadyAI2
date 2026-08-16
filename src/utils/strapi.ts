@@ -25,8 +25,89 @@ export interface StrapiArticle {
     publishedAt?: string;
     createdAt?: string;
     updatedAt?: string;
+    category?: string;
   };
 }
+
+/**
+ * Content category for an Article record.
+ * "article" is the default; the other three power the Announcements & Events section.
+ */
+export type EngagementCategory = 'announcement' | 'speaking' | 'event';
+export type ArticleCategory = 'article' | EngagementCategory;
+
+/** Categories that belong to the Announcements & Events section (i.e. NOT regular articles). */
+export const ENGAGEMENT_CATEGORIES: EngagementCategory[] = ['announcement', 'speaking', 'event'];
+
+/** Human-readable label for each category. */
+export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
+  article: 'Article',
+  announcement: 'Announcement',
+  speaking: 'Speaking Engagement',
+  event: 'Event',
+};
+
+/** Article shape used by the UI after mapping from Strapi's response. */
+export type MappedArticle = {
+  id: number;
+  title: string;
+  slug: string;
+  url: string;
+  imgURL: string;
+  description: string;
+  metaKeywords: string;
+  publicationDate: string;
+  category: ArticleCategory;
+  content?: any[];
+};
+
+/**
+ * Map a raw Strapi article (flat or nested `attributes` shape) into the flat
+ * `MappedArticle` used across the site. Records without a category are treated
+ * as regular articles so pre-existing content keeps working.
+ */
+export const mapStrapiArticle = (article: any): MappedArticle => {
+  const attrs = article.attributes || article;
+
+  let imgURL = '';
+  if (attrs.featuredImage) {
+    if (attrs.featuredImage.url) {
+      imgURL = ensureAbsoluteImageUrl(attrs.featuredImage.url);
+    } else if (attrs.featuredImage.data?.attributes?.url) {
+      imgURL = getImageUrl(attrs.featuredImage);
+    } else if (attrs.featuredImage.data?.url) {
+      imgURL = getImageUrl({ data: { attributes: { url: attrs.featuredImage.data.url } } });
+    }
+  }
+
+  const category = (attrs.category as ArticleCategory) || 'article';
+
+  return {
+    id: article.id,
+    title: attrs.title || 'Untitled',
+    slug: attrs.slug || '',
+    url: attrs.slug || '',
+    imgURL,
+    description: attrs.description || attrs.metaDescription || '',
+    metaKeywords: attrs.metaKeywords || '',
+    publicationDate: attrs.publicationDate || attrs.publishedAt || '',
+    category,
+    content: attrs.content,
+  };
+};
+
+/**
+ * Fetch all articles and return only the ones that belong to the
+ * Announcements & Events section (announcements, speaking engagements, events),
+ * newest first.
+ */
+export const fetchEngagements = async (): Promise<MappedArticle[]> => {
+  const articles = await fetchArticles();
+  return articles
+    .filter((article: any) => article && (article.attributes || article.title))
+    .map(mapStrapiArticle)
+    .filter((a) => (ENGAGEMENT_CATEGORIES as string[]).includes(a.category));
+};
 
 export interface StrapiResponse<T> {
   data: T[];

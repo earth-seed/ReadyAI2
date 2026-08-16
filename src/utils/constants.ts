@@ -296,6 +296,10 @@ export const NAVIGATION: NavItem[] = [
         path: '/insights',
       },
       {
+        name: 'Announcements & Events',
+        path: '/announcements',
+      },
+      {
         name: 'Videos',
         path: '/videos',
       },

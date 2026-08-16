@@ -21,6 +21,7 @@ import ScrollToTop from './components/ui/ScrollToTop';
 import { usePerformance } from './hooks/usePerformance';
 import Version from './pages/Version';
 import InsightsPage from './pages/InsightsPage';
+import AnnouncementsPage from './pages/AnnouncementsPage';
 import ArticlePreview from './pages/ArticlePreview';
 import AboutPage from './pages/AboutPage';
 import ReferralsPage from './pages/ReferralsPage';
@@ -73,6 +74,7 @@ function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/insights" element={<InsightsPage />} />
             <Route path="/insights/:articleName" element={<InsightsPage />} />
+            <Route path="/announcements" element={<AnnouncementsPage />} />
             <Route path="/whitepaper" element={<WhitepaperPage />} />
             <Route path="/whitepaper/thank-you" element={<WhitepaperThankYouPage />} />
             <Route path="/whitepaper2" element={<Whitepaper2Page />} />
