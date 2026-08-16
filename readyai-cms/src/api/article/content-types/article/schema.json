@@ -43,6 +43,17 @@
       "type": "datetime",
       "required": true
     },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "article",
+        "announcement",
+        "speaking",
+        "event"
+      ],
+      "default": "article",
+      "required": false
+    },
     "author": {
       "type": "relation",
       "relation": "oneToOne",

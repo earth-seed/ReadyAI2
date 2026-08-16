@@ -17,6 +17,7 @@ type Article = {
   description: string;
   metaKeywords: string;
   publicationDate: string;
+  category: string;
   content?: any[];
 };
 
@@ -66,10 +67,11 @@ const InsightsPage: React.FC = () => {
               description: attrs.description || attrs.metaDescription || '',
               metaKeywords: attrs.metaKeywords || '',
               publicationDate: attrs.publicationDate || attrs.publishedAt || '',
+              category: attrs.category || 'article',
               content: attrs.content,
             };
           });
-        
+
         setArticles(mappedArticles);
         setError(null);
       } catch (err) {
@@ -123,6 +125,7 @@ const InsightsPage: React.FC = () => {
                 description: attrs.description || attrs.metaDescription || '',
                 metaKeywords: attrs.metaKeywords || '',
                 publicationDate: attrs.publicationDate || attrs.publishedAt || '',
+                category: attrs.category || 'article',
                 content: attrs.content,
               });
             }
@@ -253,7 +256,7 @@ const InsightsPage: React.FC = () => {
 
           {!loading && !error && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {articles.map((article, idx) => (
+              {articles.filter((a) => a.category === 'article').map((article, idx) => (
               <article
                 key={article.id}
                 className={`group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 ${
