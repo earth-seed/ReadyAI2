@@ -1,20 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Calendar, ArrowRight, Megaphone, Mic, CalendarDays } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import SlideAnimator from '../../utils/SlideAnimator';
-import {
-  fetchEngagements,
-  CATEGORY_LABELS,
-  type ArticleCategory,
-  type MappedArticle,
-} from '../../utils/strapi';
-
-const CATEGORY_ICON: Record<string, React.ComponentType<{ className?: string }>> = {
-  announcement: Megaphone,
-  speaking: Mic,
-  event: CalendarDays,
-};
+import { fetchEngagements, type MappedArticle } from '../../utils/strapi';
 
 function formatTimestamp(dateString: string): string {
   if (!dateString) return '';
@@ -54,7 +43,7 @@ const AnnouncementsSection: React.FC = () => {
 
   return (
     <SlideAnimator direction="up">
-      <section className="relative bg-white py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-8 overflow-hidden">
+      <section className="relative bg-accent2-lightest py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-8 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Section Header */}
           <motion.div
@@ -85,7 +74,6 @@ const AnnouncementsSection: React.FC = () => {
           {/* Featured (newest) items */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {items.map((item, idx) => {
-              const Icon = CATEGORY_ICON[item.category] ?? Megaphone;
               return (
                 <motion.div
                   key={item.id}
@@ -105,10 +93,6 @@ const AnnouncementsSection: React.FC = () => {
                           alt={item.title}
                           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                         />
-                        <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/90 text-white text-xs font-semibold">
-                          <Icon className="w-3.5 h-3.5" />
-                          {CATEGORY_LABELS[item.category as ArticleCategory]}
-                        </span>
                       </div>
                     )}
 

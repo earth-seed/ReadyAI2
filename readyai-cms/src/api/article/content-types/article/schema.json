@@ -48,7 +48,6 @@
       "enum": [
         "article",
         "announcement",
-        "speaking",
         "event"
       ],
       "default": "article",

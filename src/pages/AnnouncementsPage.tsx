@@ -1,13 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Calendar, ArrowRight, ArrowUpDown, Megaphone, Mic, CalendarDays } from "lucide-react";
+import { Calendar, ArrowRight, ArrowUpDown, Megaphone, CalendarDays } from "lucide-react";
 
 import {
   fetchEngagements,
   ENGAGEMENT_CATEGORIES,
-  CATEGORY_LABELS,
-  type ArticleCategory,
   type EngagementCategory,
   type MappedArticle,
 } from "../utils/strapi";
@@ -15,21 +13,14 @@ import {
 // Display metadata for each engagement category
 const CATEGORY_INFO: Record<
   EngagementCategory,
-  { title: string; description: string; icon: React.ComponentType<{ className?: string }> }
+  { title: string; icon: React.ComponentType<{ className?: string }> }
 > = {
   announcement: {
     title: "Announcements",
-    description: "Company news, press features, and magazine highlights",
     icon: Megaphone,
-  },
-  speaking: {
-    title: "Speaking Engagements",
-    description: "Conferences, panels, and keynotes featuring the ReadyAI team",
-    icon: Mic,
   },
   event: {
     title: "Events",
-    description: "Dinners, roundtables, and gatherings we're hosting or joining",
     icon: CalendarDays,
   },
 };
@@ -91,7 +82,7 @@ const AnnouncementsPage: React.FC = () => {
         <title>ReadyAI - Announcements & Events</title>
         <meta
           name="description"
-          content="ReadyAI announcements, press features, speaking engagements, and events."
+          content="ReadyAI announcements, press features, and events."
         />
       </Helmet>
 
@@ -113,7 +104,7 @@ const AnnouncementsPage: React.FC = () => {
                 Announcements & <span className="text-accent">Events</span>
               </h1>
               <p className="text-lg text-gray-200 leading-relaxed max-w-2xl mx-auto">
-                Where to find ReadyAI next — press features, speaking engagements, panels, and events
+                Where to find ReadyAI next — announcements, press features, and events
               </p>
             </div>
           </div>
@@ -213,7 +204,6 @@ const AnnouncementsPage: React.FC = () => {
                         <h2 className="font-heading text-2xl md:text-3xl font-normal text-primary">
                           {info.title}
                         </h2>
-                        <p className="text-sm text-gray-500">{info.description}</p>
                       </div>
                     </div>
 
@@ -257,7 +247,6 @@ const EngagementCard: React.FC<{ item: MappedArticle; onSelect: (slug: string) =
   item,
   onSelect,
 }) => {
-  const label = CATEGORY_LABELS[item.category as ArticleCategory];
   return (
     <article className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col">
       {item.imgURL && (
@@ -267,9 +256,6 @@ const EngagementCard: React.FC<{ item: MappedArticle; onSelect: (slug: string) =
             alt={item.title}
             className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
           />
-          <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-primary/90 text-white text-xs font-semibold">
-            {label}
-          </span>
         </div>
       )}
 

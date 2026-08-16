@@ -33,17 +33,16 @@ export interface StrapiArticle {
  * Content category for an Article record.
  * "article" is the default; the other three power the Announcements & Events section.
  */
-export type EngagementCategory = 'announcement' | 'speaking' | 'event';
+export type EngagementCategory = 'announcement' | 'event';
 export type ArticleCategory = 'article' | EngagementCategory;
 
 /** Categories that belong to the Announcements & Events section (i.e. NOT regular articles). */
-export const ENGAGEMENT_CATEGORIES: EngagementCategory[] = ['announcement', 'speaking', 'event'];
+export const ENGAGEMENT_CATEGORIES: EngagementCategory[] = ['announcement', 'event'];
 
 /** Human-readable label for each category. */
 export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
   article: 'Article',
   announcement: 'Announcement',
-  speaking: 'Speaking Engagement',
   event: 'Event',
 };
 
@@ -98,8 +97,7 @@ export const mapStrapiArticle = (article: any): MappedArticle => {
 
 /**
  * Fetch all articles and return only the ones that belong to the
- * Announcements & Events section (announcements, speaking engagements, events),
- * newest first.
+ * Announcements & Events section (announcements and events), newest first.
  */
 export const fetchEngagements = async (): Promise<MappedArticle[]> => {
   const articles = await fetchArticles();
