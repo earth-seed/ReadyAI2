@@ -10,7 +10,6 @@ import Banner3Section from '../components/sections/Banner3Section';
 import Banner6Section from '../components/sections/Banner6Section';
 import CalcSection from '../components/sections/CalcSection';
 import CIOInsightSection from '../components/sections/CIOInsightSection';
-import AnnouncementsSection from '../components/sections/AnnouncementsSection';
 // import GatedContentSection from '../components/sections/GatedContentSection';
 import CtaSection from '../components/sections/CtaSection';
 import ClosingSection from '../components/sections/ClosingSection';
@@ -28,7 +27,6 @@ const Home: React.FC = () => {
       <HeroSection />
       <BoardMemberSection />
       <PodcastSection />
-      <AnnouncementsSection />
       <BenMarshallArticleSection />
       <Banner1Section />
       <BannerStandalone />
