@@ -58,6 +58,8 @@ export type MappedArticle = {
   publicationDate: string;
   category: ArticleCategory;
   content?: any[];
+  /** When set, the card links to this internal detail-page route instead of the default /insights/{slug}. */
+  detailPath?: string;
 };
 
 /**
@@ -133,8 +135,11 @@ export const fetchArticles = async (): Promise<StrapiArticle[]> => {
     'populate': '*',
     'sort[0]': 'publicationDate:desc',
     'publicationState': 'live',
+    // Strapi defaults to pageSize 25; raise it so announcement/event entries can't
+    // fall onto an unfetched second page and silently disappear from listings.
+    'pagination[pageSize]': '100',
   });
-  
+
   const url = `${STRAPI_URL}/api/articles?${params.toString()}`;
   
   try {
