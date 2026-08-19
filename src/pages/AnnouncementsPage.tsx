@@ -9,6 +9,7 @@ import {
   type EngagementCategory,
   type MappedArticle,
 } from "../utils/strapi";
+import { OCBJ_ANNOUNCEMENT } from "../data/ocbjAnnouncement";
 
 // Display metadata for each engagement category
 const CATEGORY_INFO: Record<
@@ -42,28 +43,32 @@ function formatTimestamp(dateString: string): string {
 
 const AnnouncementsPage: React.FC = () => {
   const navigate = useNavigate();
-  const [items, setItems] = useState<MappedArticle[]>([]);
+  // Seed with the hardcoded OCBJ announcement so it always shows, even if the CMS is unreachable.
+  const [items, setItems] = useState<MappedArticle[]>([OCBJ_ANNOUNCEMENT]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<EngagementCategory | "all">("all");
   const [sortOrder, setSortOrder] = useState<"desc" | "asc">("desc");
 
   useEffect(() => {
     document.title = "ReadyAI - Announcements & Events";
-    const load = async () => {
-      try {
-        setLoading(true);
-        const engagements = await fetchEngagements();
-        setItems(engagements);
-        setError(null);
-      } catch (err) {
+    let active = true;
+    fetchEngagements()
+      .then((engagements) => {
+        // Keep the hardcoded OCBJ announcement alongside any CMS-managed engagements.
+        if (active) setItems([OCBJ_ANNOUNCEMENT, ...engagements]);
+      })
+      .catch((err) => {
+        // CMS failure is non-fatal: the hardcoded OCBJ announcement still renders.
         console.error("Failed to fetch announcements from Strapi:", err);
-        setError("Failed to load announcements. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
+      })
+      .finally(() => {
+        // Gate rendering on the fetch settling so the OCBJ card and CMS cards
+        // appear together instead of the hardcoded one popping in first.
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
     };
-    load();
   }, []);
 
   // Only show category tabs that actually have content
@@ -72,8 +77,8 @@ const AnnouncementsPage: React.FC = () => {
     [items]
   );
 
-  const onSelect = (slug: string) => {
-    navigate(`/insights/${slug}`);
+  const onSelect = (path: string) => {
+    navigate(path);
   };
 
   return (
@@ -111,6 +116,7 @@ const AnnouncementsPage: React.FC = () => {
         </div>
       </div>
 
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {loading && (
           <div className="text-center py-12">
@@ -119,25 +125,7 @@ const AnnouncementsPage: React.FC = () => {
           </div>
         )}
 
-        {error && (
-          <div className="text-center py-12">
-            <p className="text-red-600 mb-4">{error}</p>
-            <button
-              onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark"
-            >
-              Retry
-            </button>
-          </div>
-        )}
-
-        {!loading && !error && items.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-600">No announcements or events yet. Check back soon.</p>
-          </div>
-        )}
-
-        {!loading && !error && items.length > 0 && (
+        {!loading && items.length > 0 && (
           <>
             {/* Filter + Sort Toolbar */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-14">
@@ -243,7 +231,7 @@ const AnnouncementsPage: React.FC = () => {
 };
 
 // Card for a single engagement item
-const EngagementCard: React.FC<{ item: MappedArticle; onSelect: (slug: string) => void }> = ({
+const EngagementCard: React.FC<{ item: MappedArticle; onSelect: (path: string) => void }> = ({
   item,
   onSelect,
 }) => {
@@ -272,7 +260,7 @@ const EngagementCard: React.FC<{ item: MappedArticle; onSelect: (slug: string) =
         <p className="text-sm text-gray-600 mb-4 line-clamp-3">{item.description}</p>
 
         <button
-          onClick={() => onSelect(item.slug)}
+          onClick={() => onSelect(item.detailPath || `/insights/${item.slug}`)}
           className="mt-auto inline-flex items-center gap-2 text-accent font-semibold hover:text-accent-dark transition-colors duration-200 group/btn"
         >
           Learn More
