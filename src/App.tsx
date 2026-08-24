@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -77,10 +77,16 @@ function App() {
             <Route path="/insights/:articleName" element={<InsightsPage />} />
             <Route path="/announcements" element={<AnnouncementsPage />} />
             <Route path="/announcements/ocbj-women-in-business-2026" element={<OcbjAnnouncementPage />} />
-            <Route path="/whitepaper" element={<WhitepaperPage />} />
-            <Route path="/whitepaper/thank-you" element={<WhitepaperThankYouPage />} />
-            <Route path="/whitepaper2" element={<Whitepaper2Page />} />
-            <Route path="/whitepaper2/thank-you" element={<Whitepaper2ThankYouPage />} />
+            {/* Whitepapers — descriptive, SEO-friendly URLs */}
+            <Route path="/whitepapers/ai-readiness-are-you-prepared" element={<WhitepaperPage />} />
+            <Route path="/whitepapers/ai-readiness-are-you-prepared/thank-you" element={<WhitepaperThankYouPage />} />
+            <Route path="/whitepapers/seven-steps-to-successful-ai" element={<Whitepaper2Page />} />
+            <Route path="/whitepapers/seven-steps-to-successful-ai/thank-you" element={<Whitepaper2ThankYouPage />} />
+            {/* Legacy whitepaper URLs — redirect to preserve existing/shared links & SEO */}
+            <Route path="/whitepaper" element={<Navigate to="/whitepapers/ai-readiness-are-you-prepared" replace />} />
+            <Route path="/whitepaper/thank-you" element={<Navigate to="/whitepapers/ai-readiness-are-you-prepared/thank-you" replace />} />
+            <Route path="/whitepaper2" element={<Navigate to="/whitepapers/seven-steps-to-successful-ai" replace />} />
+            <Route path="/whitepaper2/thank-you" element={<Navigate to="/whitepapers/seven-steps-to-successful-ai/thank-you" replace />} />
             <Route path="/videos" element={<VideosPage />} />
             <Route path="/videos/:videoId" element={<VideosPage />} />
             <Route path="/preview" element={<ArticlePreview />} />
