@@ -5,6 +5,27 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Legacy whitepaper URLs → descriptive URLs (301 for SEO; must precede the SPA catch-all)
+[[redirects]]
+  from = "/whitepaper"
+  to = "/whitepapers/ai-readiness-are-you-prepared"
+  status = 301
+
+[[redirects]]
+  from = "/whitepaper/thank-you"
+  to = "/whitepapers/ai-readiness-are-you-prepared/thank-you"
+  status = 301
+
+[[redirects]]
+  from = "/whitepaper2"
+  to = "/whitepapers/seven-steps-to-successful-ai"
+  status = 301
+
+[[redirects]]
+  from = "/whitepaper2/thank-you"
+  to = "/whitepapers/seven-steps-to-successful-ai/thank-you"
+  status = 301
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

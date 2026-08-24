@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Linkedin, Calendar, ArrowRight, BookOpen, Users, Clock } from "lucide-react";
+import { Linkedin, Calendar, ArrowRight, BookOpen, Users, Clock, FileText, Download } from "lucide-react";
 
 // Strapi imports
 import { fetchArticles, fetchArticleBySlug, getImageUrl, ensureAbsoluteImageUrl } from "../utils/strapi";
 import StrapiBlocksRenderer from "../components/sections/StrapiBlocksRenderer";
+import { whitepapers } from "../data/whitepapers";
 
 // Article type for display (mapped from Strapi)
 type Article = {
@@ -226,6 +227,62 @@ const InsightsPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Whitepapers Callout Section */}
+      {!articleName && (
+        <div className="bg-accent2-lightest">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            {/* Section Header */}
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+              <div>
+                <p className="font-sans text-accent text-xs sm:text-sm uppercase tracking-widest mb-3">
+                  In-depth resources
+                </p>
+                <h2 className="font-heading text-primary text-2xl sm:text-3xl md:text-4xl font-normal">
+                  Whitepapers
+                </h2>
+                <p className="font-sans text-sm sm:text-base text-gray-600 mt-3 max-w-2xl">
+                  Free, in-depth guides to help enterprise leaders adopt AI with confidence.
+                </p>
+              </div>
+            </div>
+
+            {/* Whitepaper Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {whitepapers.map((wp) => (
+                <Link
+                  key={wp.id}
+                  to={wp.url}
+                  className="group flex flex-col h-full bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+                >
+                  <div className="p-6 sm:p-8 flex flex-col h-full">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-11 h-11 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <FileText className="w-5 h-5 text-accent-dark" />
+                      </div>
+                      <span className="font-sans text-xs font-medium text-accent-dark uppercase tracking-wide">
+                        Free Whitepaper
+                      </span>
+                    </div>
+
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 group-hover:text-accent transition-colors duration-200">
+                      {wp.title}
+                    </h3>
+
+                    <p className="text-sm text-gray-600 mb-6 flex-grow">{wp.description}</p>
+
+                    <span className="inline-flex items-center gap-2 text-accent font-semibold group-hover:text-accent-dark transition-colors duration-200">
+                      <Download className="w-4 h-4" />
+                      Download Whitepaper
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Articles Grid */}
       {!articleName && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -254,8 +311,24 @@ const InsightsPage: React.FC = () => {
             </div>
           )}
 
-          {!loading && !error && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {!loading && !error && articles.filter((a) => a.category === 'article').length > 0 && (
+            <>
+              {/* Section Header */}
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+                <div>
+                  <p className="font-sans text-accent text-xs sm:text-sm uppercase tracking-widest mb-3">
+                    Expert analysis
+                  </p>
+                  <h2 className="font-heading text-primary text-2xl sm:text-3xl md:text-4xl font-normal">
+                    Articles
+                  </h2>
+                  <p className="font-sans text-sm sm:text-base text-gray-600 mt-3 max-w-2xl">
+                    Industry trends and strategic insights for enterprise AI adoption.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {articles.filter((a) => a.category === 'article').map((article, idx) => (
               <article
                 key={article.id}
@@ -299,7 +372,8 @@ const InsightsPage: React.FC = () => {
                 </div>
               </article>
             ))}
-            </div>
+              </div>
+            </>
           )}
         </div>
       )}

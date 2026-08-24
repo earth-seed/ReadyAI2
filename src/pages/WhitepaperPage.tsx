@@ -46,7 +46,7 @@ const WhitepaperPage: React.FC = () => {
         target: `#${FORM_TARGET_ID}`,
         onFormSubmitted: () => {
           // Fallback redirect in case no redirect is configured on the HubSpot form
-          setTimeout(() => navigate('/whitepaper/thank-you'), 500);
+          setTimeout(() => navigate('/whitepapers/ai-readiness-are-you-prepared/thank-you'), 500);
         },
       });
     };
