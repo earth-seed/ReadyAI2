@@ -43,7 +43,7 @@ const HeroSection: React.FC = () => {
               </div>
 
               {/* Platform certifications — enterprise trust signal */}
-              <CertificationBadges size="sm" className="justify-center xl:justify-start mb-10 animate-fade-in-up-delay-2" />
+              <CertificationBadges size="sm" className="justify-start mb-10 animate-fade-in-up-delay-2" />
               
               <div className="mb-8 sm:mb-10 animate-fade-in-up-delay-2"> 
                 <a
