@@ -7,8 +7,8 @@ import { INDUSTRIES, SOLUTIONS, LEGAL, CONTACT, ABOUT } from '../../utils/consta
 const CERTIFICATIONS: { label: string; lines: { text: string; big: boolean }[] }[] = [
   { label: 'SOC 2 Type II', lines: [{ text: 'SOC 2', big: true }, { text: 'Type II', big: false }] },
   { label: 'ISO 27001', lines: [{ text: 'ISO', big: false }, { text: '27001', big: true }] },
-  { label: 'ISO 42001', lines: [{ text: 'ISO', big: false }, { text: '42001', big: true }] },
   { label: 'GDPR', lines: [{ text: 'GDPR', big: true }] },
+  { label: 'HIPAA', lines: [{ text: 'HIPAA', big: true }] },
 ];
 
 const Footer: React.FC = () => {
