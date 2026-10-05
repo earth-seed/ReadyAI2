@@ -23,6 +23,15 @@ function getThumbnailUrl(video: Video): string {
 
 export const VIDEOS: Video[] = [
   {
+    id: "carol-eastman-radian-compliance-podcast",
+    title: "Carol Eastman – CEO & Founder @ ReadyAI.dev | The Radian Compliance Podcast",
+    description:
+      "In this episode of the Radian Compliance Podcast, Carol Eastman, CEO & Founder of ReadyAI.dev, discusses how organizations can adopt AI securely, responsibly, and with the right governance in place. Carol shares her perspective on shadow AI, why businesses should treat AI as an enterprise capability rather than a collection of individual tools, and how to move from AI experimentation to a structured strategy that delivers measurable business value—without letting governance slow innovation.",
+    youtubeId: "aPXMGHkvYoU",
+    publishedDate: "2026-08-18",
+    category: "podcasts",
+  },
+  {
     id: "responsible-ai-unmasked-carol-eastman-ashwin-rangan",
     title: "Responsible AI: Unmasked with Carol Eastman and Ashwin Rangan",
     description:

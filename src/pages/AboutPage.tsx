@@ -332,11 +332,10 @@ const AboutPage: React.FC = () => {
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* Bio Content - Two Column Layout */}
-            <div className="bg-white rounded-2xl shadow-2xl p-5 sm:p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
+              {/* Bio Content - Two Column Layout */}
+              <div className="px-5 sm:px-8 md:px-12 pt-6 sm:pt-8 md:pt-10 pb-5 sm:pb-8 md:pb-12">
+                <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
                 <div className="space-y-4 sm:space-y-6">
                   <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
                     As the leader of ReadyAI.dev, Carol has built an AI company that addresses the critical gap between AI innovation and enterprise readiness. ReadyAI.dev provides professional services for innovative AI solutions and serves as a best-in-class enterprise platform that enables businesses to host all of their internal AI operations.
@@ -364,15 +363,79 @@ const AboutPage: React.FC = () => {
                     Under Carol's leadership, organizations gain more than a CEO—they gain a strategic architect who can anticipate disruption, operationalize innovation, and execute at the highest level. Her track record speaks for itself: multiple successful exits, lasting impact in security and communications sectors, and a proven methodology for turning emerging technologies into market-leading solutions.
                   </p>
                 </div>
+                </div>
               </div>
             </div>
 
-            {/* Team Note */}
-            <div className="mt-8 bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <p className="font-sans text-white/90 text-center text-lg leading-relaxed italic">
-                Carol is joined by an elite team of AI engineers, cybersecurity specialists, and customer success professionals who are committed to helping enterprises navigate their AI journey safely.
-              </p>
+            {/* John De Los Reyes */}
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mt-8">
+              <div className="grid lg:grid-cols-5 gap-0">
+                {/* Image Section */}
+                <div className="lg:col-span-2 relative">
+                  <img
+                    src="/assets/images/john.jpg"
+                    alt="John De Los Reyes - Enterprise AI & Go-to-Market Executive"
+                    className="w-full h-full object-cover min-h-[250px] sm:min-h-[300px]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                </div>
+
+                {/* Bio Info */}
+                <div className="lg:col-span-3 p-5 sm:p-6 md:p-8">
+                  <div className="mb-4">
+                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-primary">
+                      John De Los Reyes
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4">
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      John De Los Reyes "JDLR" is an enterprise technology and go-to-market executive with 15+ years of experience helping global organizations adopt transformational technologies and turn them into measurable business outcomes.
+                    </p>
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      His background spans AI and machine learning, cybersecurity, SaaS, and enterprise digital transformation. Most recently as VP of Customer Success, Americas at Zimperium, John partnered with CIOs and CISOs to drive AI adoption, value realization, and enterprise-wide scale. Previously at FICO, he worked with AI and machine learning platforms alongside AWS and other strategic partners to help enterprises harness data-driven intelligence for smarter, faster decision-making.
+                    </p>
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      John is a proven enterprise AI leader who turns executive vision into scalable, revenue-driving outcomes — bridging strategy, technology, and growth.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            {/* Ashwin "Ash" Rangan */}
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mt-8">
+              <div className="grid lg:grid-cols-5 gap-0">
+                {/* Image Section */}
+                <div className="lg:col-span-2 relative">
+                  <img
+                    src="/assets/images/readyai-ash-rangan.jpg"
+                    alt="Ashwin 'Ash' Rangan - Executive Board Member, ReadyAI"
+                    className="w-full h-full object-cover min-h-[250px] sm:min-h-[300px]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                </div>
+
+                {/* Bio Info */}
+                <div className="lg:col-span-3 p-5 sm:p-6 md:p-8">
+                  <div className="mb-4">
+                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-primary">
+                      Ashwin &ldquo;Ash&rdquo; Rangan
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4">
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      Ashwin &ldquo;Ash&rdquo; Rangan shapes ReadyAI&rsquo;s strategic direction as Executive Board Member, bringing the judgment, perspective, and enterprise leadership that help organizations move on AI with clarity and confidence.
+                    </p>
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      Former CIO of Walmart, Bank of America, Rockwell International, and ICANN, current Board Advisor to Qtonic Quantum, and co-author of <em>Governance in the Age of Generative AI</em>, he helps leaders separate noise from what truly matters and act on AI with discipline, credibility, and speed.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
