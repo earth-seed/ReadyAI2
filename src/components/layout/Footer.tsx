@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { INDUSTRIES, SOLUTIONS, LEGAL, CONTACT, ABOUT } from '../../utils/constants';
+import CertificationBadges from '../sections/CertificationBadges';
 
 const Footer: React.FC = () => {
   return (
@@ -119,8 +120,16 @@ const Footer: React.FC = () => {
 
         </div>
 
-        {/* Bottom copyright */}
+        {/* Platform certifications */}
         <div className="border-t border-gray-200 mt-12 pt-8">
+          <p className="text-gray-400 text-xs uppercase tracking-widest text-center mb-6">
+            Our Platform Certifications
+          </p>
+          <CertificationBadges />
+        </div>
+
+        {/* Bottom copyright */}
+        <div className="border-t border-gray-200 mt-10 pt-8">
           <p className="text-gray-500 text-sm text-center">
             &copy; {new Date().getFullYear()} ReadyAI.dev. All rights reserved.
           </p>

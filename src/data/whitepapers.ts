@@ -28,4 +28,18 @@ export const whitepapers: Whitepaper[] = [
       'Practical insights for CIOs, CISOs, and technology leaders on adopting AI securely, meeting compliance obligations, and scaling with confidence.',
     url: '/whitepapers/seven-steps-to-successful-ai',
   },
+  {
+    id: 'roi-with-ai-the-real-question-for-enterprises',
+    title: 'ROI with AI',
+    description:
+      'Authored by Ashwin Rangan, this whitepaper reframes the AI ROI debate around the question that actually matters for your business — and lays out a disciplined method for measuring the real return on every AI investment.',
+    url: '/whitepapers/roi-with-ai-the-real-question-for-enterprises',
+  },
+  {
+    id: 'crawl-walk-run-framework-for-enterprise-ai-adoption',
+    title: 'A Crawl-Walk-Run Framework for Enterprise AI Adoption',
+    description:
+      'Authored by Ashwin Rangan, this whitepaper lays out a staged crawl-walk-run model for enterprise AI adoption — sequencing from foundational literacy to margin expansion to new revenue growth, so adoption stays disciplined, measurable, and safe.',
+    url: '/whitepapers/crawl-walk-run-framework-for-enterprise-ai-adoption',
+  },
 ];

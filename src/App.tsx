@@ -32,6 +32,10 @@ import WhitepaperPage from './pages/WhitepaperPage';
 import WhitepaperThankYouPage from './pages/WhitepaperThankYouPage';
 import Whitepaper2Page from './pages/Whitepaper2Page';
 import Whitepaper2ThankYouPage from './pages/Whitepaper2ThankYouPage';
+import Whitepaper3Page from './pages/Whitepaper3Page';
+import Whitepaper3ThankYouPage from './pages/Whitepaper3ThankYouPage';
+import Whitepaper4Page from './pages/Whitepaper4Page';
+import Whitepaper4ThankYouPage from './pages/Whitepaper4ThankYouPage';
 
 function App() {
   const { trackCustomMetric } = usePerformance();
@@ -82,11 +86,19 @@ function App() {
             <Route path="/whitepapers/ai-readiness-are-you-prepared/thank-you" element={<WhitepaperThankYouPage />} />
             <Route path="/whitepapers/seven-steps-to-successful-ai" element={<Whitepaper2Page />} />
             <Route path="/whitepapers/seven-steps-to-successful-ai/thank-you" element={<Whitepaper2ThankYouPage />} />
+            <Route path="/whitepapers/roi-with-ai-the-real-question-for-enterprises" element={<Whitepaper3Page />} />
+            <Route path="/whitepapers/roi-with-ai-the-real-question-for-enterprises/thank-you" element={<Whitepaper3ThankYouPage />} />
+            <Route path="/whitepapers/crawl-walk-run-framework-for-enterprise-ai-adoption" element={<Whitepaper4Page />} />
+            <Route path="/whitepapers/crawl-walk-run-framework-for-enterprise-ai-adoption/thank-you" element={<Whitepaper4ThankYouPage />} />
             {/* Legacy whitepaper URLs — redirect to preserve existing/shared links & SEO */}
             <Route path="/whitepaper" element={<Navigate to="/whitepapers/ai-readiness-are-you-prepared" replace />} />
             <Route path="/whitepaper/thank-you" element={<Navigate to="/whitepapers/ai-readiness-are-you-prepared/thank-you" replace />} />
             <Route path="/whitepaper2" element={<Navigate to="/whitepapers/seven-steps-to-successful-ai" replace />} />
             <Route path="/whitepaper2/thank-you" element={<Navigate to="/whitepapers/seven-steps-to-successful-ai/thank-you" replace />} />
+            <Route path="/whitepaper3" element={<Navigate to="/whitepapers/roi-with-ai-the-real-question-for-enterprises" replace />} />
+            <Route path="/whitepaper3/thank-you" element={<Navigate to="/whitepapers/roi-with-ai-the-real-question-for-enterprises/thank-you" replace />} />
+            <Route path="/whitepaper4" element={<Navigate to="/whitepapers/crawl-walk-run-framework-for-enterprise-ai-adoption" replace />} />
+            <Route path="/whitepaper4/thank-you" element={<Navigate to="/whitepapers/crawl-walk-run-framework-for-enterprise-ai-adoption/thank-you" replace />} />
             <Route path="/videos" element={<VideosPage />} />
             <Route path="/videos/:videoId" element={<VideosPage />} />
             <Route path="/preview" element={<ArticlePreview />} />
