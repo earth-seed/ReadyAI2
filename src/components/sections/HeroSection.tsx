@@ -1,4 +1,5 @@
 import React from 'react';
+import CertificationBadges from './CertificationBadges';
 
 const HeroSection: React.FC = () => {
   return (
@@ -40,6 +41,9 @@ const HeroSection: React.FC = () => {
                   Confidence enables adoption.
                 </p>
               </div>
+
+              {/* Platform certifications — enterprise trust signal */}
+              <CertificationBadges size="sm" className="justify-center xl:justify-start mb-10 animate-fade-in-up-delay-2" />
               
               <div className="mb-8 sm:mb-10 animate-fade-in-up-delay-2"> 
                 <a

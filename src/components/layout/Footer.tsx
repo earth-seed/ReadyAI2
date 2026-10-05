@@ -1,15 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { INDUSTRIES, SOLUTIONS, LEGAL, CONTACT, ABOUT } from '../../utils/constants';
-
-// Platform certifications shown as badges along the bottom of every page.
-// `big` lines are emphasized; `small` lines are the supporting label.
-const CERTIFICATIONS: { label: string; lines: { text: string; big: boolean }[] }[] = [
-  { label: 'SOC 2 Type II', lines: [{ text: 'SOC 2', big: true }, { text: 'Type II', big: false }] },
-  { label: 'ISO 27001', lines: [{ text: 'ISO', big: false }, { text: '27001', big: true }] },
-  { label: 'GDPR', lines: [{ text: 'GDPR', big: true }] },
-  { label: 'HIPAA', lines: [{ text: 'HIPAA', big: true }] },
-];
+import CertificationBadges from '../sections/CertificationBadges';
 
 const Footer: React.FC = () => {
   return (
@@ -133,44 +125,7 @@ const Footer: React.FC = () => {
           <p className="text-gray-400 text-xs uppercase tracking-widest text-center mb-6">
             Our Platform Certifications
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
-            {CERTIFICATIONS.map((cert) => (
-              <div
-                key={cert.label}
-                role="img"
-                aria-label={`${cert.label} certified`}
-                className="relative flex h-24 w-24 flex-col items-center justify-center rounded-full bg-gradient-to-b from-primary to-primary-dark text-center shadow-sm"
-              >
-                {/* Gold arc across the top, echoing a certification seal */}
-                <svg
-                  viewBox="0 0 100 100"
-                  className="pointer-events-none absolute inset-0 h-full w-full text-accent"
-                  aria-hidden="true"
-                >
-                  {/* 150°-wide arc centered on the top of the circle */}
-                  <path
-                    d="M6.54 38.35 A45 45 0 0 1 93.46 38.35"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-                {cert.lines.map((line) => (
-                  <span
-                    key={line.text}
-                    className={
-                      line.big
-                        ? 'font-heading text-white text-lg font-semibold leading-none'
-                        : 'font-sans text-white/80 text-[11px] uppercase tracking-wide leading-tight'
-                    }
-                  >
-                    {line.text}
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
+          <CertificationBadges />
         </div>
 
         {/* Bottom copyright */}
