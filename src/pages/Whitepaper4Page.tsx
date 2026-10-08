@@ -5,9 +5,7 @@ import { CheckCircle2, FileText } from 'lucide-react';
 // HubSpot form embed configuration (provided by marketing)
 const HUBSPOT_SCRIPT_SRC = 'https://js-na2.hsforms.net/forms/embed/v2.js';
 const HUBSPOT_PORTAL_ID = '245381123';
-// TODO: replace with the Crawl-Walk-Run whitepaper's own HubSpot form ID from marketing.
-// Until then this reuses the portal with a placeholder and the form will not render.
-const HUBSPOT_FORM_ID = 'REPLACE_WITH_CRAWL_WALK_RUN_WHITEPAPER_FORM_ID';
+const HUBSPOT_FORM_ID = '75d149e8-898d-43f2-8f61-58e7855be550';
 const HUBSPOT_REGION = 'na2';
 const FORM_TARGET_ID = 'hubspot-whitepaper4-form';
 

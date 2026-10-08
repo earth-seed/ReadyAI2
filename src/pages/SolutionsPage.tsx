@@ -717,7 +717,7 @@ const SolutionsPage: React.FC = () => {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                       {[ 
                         { icon: Brain, title: '7+ AI subscriptions', subtitle: 'consolidated into one' },
-                        { icon: Layers, title: '50+ AI models', subtitle: 'from leading providers' },
+                        { icon: Layers, title: '75+ AI models', subtitle: 'from leading providers' },
                         { icon: Zap, title: 'Single platform', subtitle: 'unified experience' },
                         { icon: TrendingDown, title: '~80% savings', subtitle: 'vs separate subscriptions' }
                       ].map(({ icon: Icon, title, subtitle }, i) => (
@@ -919,11 +919,11 @@ const SolutionsPage: React.FC = () => {
                       <ul className="space-y-4">
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-base text-primary-light leading-relaxed">GPT-4 and GPT-3.5 from OpenAI</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed">GPT-5 and GPT-4o from OpenAI</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                          <span className="font-sans text-base text-primary-light leading-relaxed">Claude 3 from Anthropic</span>
+                          <span className="font-sans text-base text-primary-light leading-relaxed">Claude Opus 4.8 from Anthropic</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
