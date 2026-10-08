@@ -5,9 +5,7 @@ import { CheckCircle2, FileText } from 'lucide-react';
 // HubSpot form embed configuration (provided by marketing)
 const HUBSPOT_SCRIPT_SRC = 'https://js-na2.hsforms.net/forms/embed/v2.js';
 const HUBSPOT_PORTAL_ID = '245381123';
-// TODO: replace with the ROI whitepaper's own HubSpot form ID from marketing.
-// Until then this reuses the portal with a placeholder and the form will not render.
-const HUBSPOT_FORM_ID = 'REPLACE_WITH_ROI_WHITEPAPER_FORM_ID';
+const HUBSPOT_FORM_ID = 'd536bd5c-7325-418e-a27d-5d71e111f9b8';
 const HUBSPOT_REGION = 'na2';
 const FORM_TARGET_ID = 'hubspot-whitepaper3-form';
 
