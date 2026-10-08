@@ -106,7 +106,7 @@ const PricingPage: React.FC = () => {
                   <p className="font-sans font-semibold text-primary mb-3">Enterprise plan features:</p>
                   <ul className="space-y-2.5">
                     {[
-                      'Over 50+ LLMs',
+                      'Over 75+ LLMs',
                       '22m tokens/mo/seat',
                       'Governance and compliance tools',
                       'Enterprise-grade security and support',
@@ -205,7 +205,7 @@ const PricingPage: React.FC = () => {
                 </p>
                 <ul className="space-y-2.5 mb-8">
                   {[
-                    'Over 50+ LLMs',
+                    'Over 75+ LLMs',
                     '500k tokens/mo/seat',
                     '2GB storage',
                     'Unlimited agents',
@@ -248,7 +248,7 @@ const PricingPage: React.FC = () => {
                 </p>
                 <ul className="space-y-2.5 mb-8">
                   {[
-                    'Over 50+ LLMs',
+                    'Over 75+ LLMs',
                     '8m tokens/mo/seat',
                     '10GB storage',
                     'All integrations',
