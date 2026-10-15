@@ -32,6 +32,15 @@ export const VIDEOS: Video[] = [
     category: "guest",
   },
   {
+    id: "culture-eats-strategy-for-breakfast-carol-eastman-ashwin-rangan",
+    title: "Culture Eats Strategy for Breakfast with Carol Eastman and Ashwin Rangan",
+    description:
+      "Carol Eastman hosts Ashwin Rangan, Former CIO of BofA, Walmart, Rockwell and Executive Board Member of ReadyAI.dev. They discuss why \"Culture Eats Strategy for Breakfast every time\" and how CEOs can leverage Ash's insights on their AI journey.",
+    youtubeId: "Dj4LZLGuUlI",
+    publishedDate: "2026-10-15",
+    category: "3am",
+  },
+  {
     id: "responsible-ai-unmasked-carol-eastman-ashwin-rangan",
     title: "Responsible AI: Unmasked with Carol Eastman and Ashwin Rangan",
     description:
