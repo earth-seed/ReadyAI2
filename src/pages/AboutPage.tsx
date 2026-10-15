@@ -436,6 +436,39 @@ const AboutPage: React.FC = () => {
               </div>
             </div>
 
+            {/* Gary Eisenberger */}
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mt-8">
+              <div className="grid lg:grid-cols-5 gap-0">
+                {/* Image Section */}
+                <div className="lg:col-span-2 relative">
+                  <img
+                    src="/assets/images/readyai-gary-eisenberger.jpg"
+                    alt="Gary Eisenberger - Strategic Partnership and Alliance Advisor, ReadyAI"
+                    className="w-full h-full object-cover min-h-[250px] sm:min-h-[300px]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                </div>
+
+                {/* Bio Info */}
+                <div className="lg:col-span-3 p-5 sm:p-6 md:p-8">
+                  <div className="mb-4">
+                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-primary">
+                      Gary Eisenberger
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4">
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      Gary Eisenberger joins ReadyAI.dev as a Strategic Partnership and Alliance advisor. His role helps strengthen market positioning and support long-term growth through our channel partner program.
+                    </p>
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      He previously led and has served as CEO in technology and channel organizations. His focus is building scalable partner ecosystems and executive relationships in several different verticals, formalizing alliance frameworks, and translating strategy into measurable business outcomes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

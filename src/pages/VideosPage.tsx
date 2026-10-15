@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { ArrowRight, Play, Calendar, ExternalLink, ArrowUpDown } from "lucide-react";
 import { Link } from "react-router-dom";
 
-type VideoCategory = "demos" | "podcasts" | "shorts";
+type VideoCategory = "3am" | "guest" | "demos" | "shorts";
 
 type Video = {
   id: string;
@@ -29,7 +29,7 @@ export const VIDEOS: Video[] = [
       "In this episode of the Radian Compliance Podcast, Carol Eastman, CEO & Founder of ReadyAI.dev, discusses how organizations can adopt AI securely, responsibly, and with the right governance in place. Carol shares her perspective on shadow AI, why businesses should treat AI as an enterprise capability rather than a collection of individual tools, and how to move from AI experimentation to a structured strategy that delivers measurable business value—without letting governance slow innovation.",
     youtubeId: "aPXMGHkvYoU",
     publishedDate: "2026-08-18",
-    category: "podcasts",
+    category: "guest",
   },
   {
     id: "responsible-ai-unmasked-carol-eastman-ashwin-rangan",
@@ -39,7 +39,7 @@ export const VIDEOS: Video[] = [
     spotifyEpisodeId: "4jZ5STH5Ka3eCtTsoO7Bax",
     thumbnailUrl: "https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015beca35bdb07bc72711c64d20ba",
     publishedDate: "2026-08-05",
-    category: "podcasts",
+    category: "3am",
   },
   {
     id: "explore-readyai-dev",
@@ -57,7 +57,7 @@ export const VIDEOS: Video[] = [
       "In this episode of the NextGen Studio Podcast, Carol Eastman, CEO of ReadyAI, joins Elena Dimitrova to discuss one of the most urgent challenges facing companies today: AI governance, AI compliance, and secure enterprise AI adoption. Learn why shadow AI is becoming one of the biggest security and compliance concerns for modern organizations, and how leadership teams can create clear guardrails before AI adoption scales across the business.",
     youtubeId: "xpx18ensPUY",
     publishedDate: "2026-05-14",
-    category: "podcasts",
+    category: "guest",
   },
   {
     id: "ai-governance-readyai",
@@ -223,16 +223,33 @@ export const VIDEOS: Video[] = [
   },
 ];
 
-const CATEGORY_INFO: Record<VideoCategory, { title: string; description: string; anchor: string }> = {
+type CategoryInfo = {
+  title: string;
+  filterLabel?: string;
+  description: string;
+  anchor: string;
+  coverImage?: string;
+};
+
+// Key order sets the section and filter order on the page.
+const CATEGORY_INFO: Record<VideoCategory, CategoryInfo> = {
+  "3am": {
+    title: "3AM: The AI Doctrine for CEOs",
+    filterLabel: "3AM Podcast",
+    description:
+      "Carol Eastman’s podcast conversations with global leaders in AI governance, security, and strategy.",
+    anchor: "3am-podcast",
+    coverImage: "/assets/images/3am-ai-doctrine-podcast-cover.jpg",
+  },
+  guest: {
+    title: "Guest Appearances",
+    description: "Carol Eastman joins other hosts' shows to discuss AI governance, security, and strategy",
+    anchor: "guest-appearances",
+  },
   demos: {
     title: "Demos & Tutorials",
     description: "Platform walkthroughs, feature demos, and educational content for enterprise AI adoption",
     anchor: "demos",
-  },
-  podcasts: {
-    title: "Podcasts & Interviews",
-    description: "Conversations with industry leaders on AI governance, security, and strategy",
-    anchor: "podcasts",
   },
   shorts: {
     title: "Strategic Summaries",
@@ -291,7 +308,7 @@ const VideosPage: React.FC = () => {
           <title>ReadyAI - Videos & Podcasts</title>
           <meta
             name="description"
-            content="Watch demos, tutorials, and podcast interviews on enterprise AI adoption, security, and strategy from the ReadyAI team."
+            content="Listen to 3AM: The AI Doctrine for CEOs, hosted by Carol Eastman, and watch demos, tutorials, and podcast interviews on enterprise AI adoption, security, and strategy from the ReadyAI team."
           />
         </Helmet>
       )}
@@ -339,7 +356,9 @@ const VideosPage: React.FC = () => {
                       : "bg-white text-gray-600 border border-gray-200 hover:border-accent hover:text-accent"
                   }`}
                 >
-                  {category === "all" ? "All" : CATEGORY_INFO[category].title}
+                  {category === "all"
+                    ? "All"
+                    : CATEGORY_INFO[category].filterLabel ?? CATEGORY_INFO[category].title}
                 </button>
               ))}
             </div>
@@ -379,12 +398,28 @@ const VideosPage: React.FC = () => {
             const info = CATEGORY_INFO[category];
             return (
               <section key={category} id={info.anchor} className="mb-16 last:mb-0 scroll-mt-28">
-                <div className="mb-8">
-                  <h2 className="font-heading text-3xl md:text-4xl font-medium text-gray-900 mb-2">
-                    {info.title}
-                  </h2>
-                  <p className="text-gray-500 text-lg">{info.description}</p>
-                </div>
+                {info.coverImage ? (
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-8 mb-8">
+                    <img
+                      src={info.coverImage}
+                      alt={`${info.title} podcast cover`}
+                      className="w-40 h-40 md:w-48 md:h-48 rounded-2xl shadow-lg object-cover shrink-0"
+                    />
+                    <div>
+                      <h2 className="font-heading text-3xl md:text-4xl font-medium text-gray-900 mb-2">
+                        {info.title}
+                      </h2>
+                      <p className="text-gray-500 text-lg">{info.description}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mb-8">
+                    <h2 className="font-heading text-3xl md:text-4xl font-medium text-gray-900 mb-2">
+                      {info.title}
+                    </h2>
+                    <p className="text-gray-500 text-lg">{info.description}</p>
+                  </div>
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {categoryVideos.map((video) => (
                     <article
@@ -450,7 +485,7 @@ const VideosPage: React.FC = () => {
               <Calendar className="w-4 h-4" />
               <span>{formatTimestamp(currVideo.publishedDate)}</span>
               <span className="mx-2">•</span>
-              <span>ReadyAI Videos</span>
+              <span>{currVideo.category === "3am" ? CATEGORY_INFO["3am"].title : "ReadyAI Videos"}</span>
             </div>
 
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
