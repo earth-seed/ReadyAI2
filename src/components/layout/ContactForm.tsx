@@ -1,5 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Button from '../ui/Button';
+
+// reCAPTCHA v2 checkbox; Netlify Forms verifies the token (data-netlify-recaptcha in index.html)
+const RECAPTCHA_SCRIPT_SRC = 'https://www.google.com/recaptcha/api.js?render=explicit';
+const RECAPTCHA_SITE_KEY: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+
+interface ReCaptcha {
+  ready: (callback: () => void) => void;
+  render: (
+    container: HTMLElement,
+    options: {
+      sitekey: string;
+      callback: (token: string) => void;
+      'expired-callback': () => void;
+    }
+  ) => number;
+  reset: (widgetId?: number) => void;
+}
+
+declare global {
+  interface Window {
+    grecaptcha?: ReCaptcha;
+  }
+}
 
 interface FormData {
   name: string;
@@ -23,6 +46,57 @@ const ContactForm: React.FC = () => {
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [recaptchaError, setRecaptchaError] = useState(false);
+  const recaptchaContainer = useRef<HTMLDivElement>(null);
+  const recaptchaWidgetId = useRef<number | null>(null);
+  const botField = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!RECAPTCHA_SITE_KEY) {
+      console.error('VITE_RECAPTCHA_SITE_KEY is not set; the contact form cannot be submitted');
+      return;
+    }
+
+    const renderWidget = () => {
+      if (recaptchaWidgetId.current !== null || !recaptchaContainer.current || !window.grecaptcha) return;
+      recaptchaWidgetId.current = window.grecaptcha.render(recaptchaContainer.current, {
+        sitekey: RECAPTCHA_SITE_KEY,
+        callback: (token) => {
+          setRecaptchaToken(token);
+          setRecaptchaError(false);
+        },
+        'expired-callback': () => setRecaptchaToken(null),
+      });
+    };
+    const onScriptLoad = () => window.grecaptcha?.ready(renderWidget);
+
+    if (window.grecaptcha) {
+      onScriptLoad();
+      return;
+    }
+
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      `script[src="${RECAPTCHA_SCRIPT_SRC}"]`
+    );
+    const script = existingScript ?? document.createElement('script');
+    script.addEventListener('load', onScriptLoad);
+    if (!existingScript) {
+      script.src = RECAPTCHA_SCRIPT_SRC;
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    }
+
+    return () => script.removeEventListener('load', onScriptLoad);
+  }, []);
+
+  const resetRecaptcha = () => {
+    if (recaptchaWidgetId.current !== null) {
+      window.grecaptcha?.reset(recaptchaWidgetId.current);
+    }
+    setRecaptchaToken(null);
+  };
 
   const validateForm = () => {
     const newErrors: Partial<FormData> = {};
@@ -42,7 +116,8 @@ const ContactForm: React.FC = () => {
     }
     
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setRecaptchaError(!recaptchaToken);
+    return Object.keys(newErrors).length === 0 && !!recaptchaToken;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -62,28 +137,19 @@ const ContactForm: React.FC = () => {
       phone: formData.phone,
       message: formData.message,
       consent: formData.consent ? 'yes' : 'no',
+      'bot-field': botField.current?.value ?? '',
+      'g-recaptcha-response': recaptchaToken ?? '',
     });
 
     try {
-      // 1. Submit to Netlify Forms
-      await fetch('/', {
+      // Submit to Netlify Forms
+      const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encodedForm.toString(),
       });
 
-      // 2. Submit to your serverless function
-      // const response = await fetch('/.netlify/functions/send-email', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     to: 'sales@readyai.dev',
-      //     subject: 'New Contact Form Submission',
-      //     formData,
-      //   }),
-      // });
-
-      //if (!response.ok) throw new Error(response.statusText);
+      if (!response.ok) throw new Error(`Form submission failed: ${response.status}`);
 
       setSubmitStatus('success');
       setFormData({
@@ -98,6 +164,8 @@ const ContactForm: React.FC = () => {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
     } finally {
+      // Tokens are single-use, so every attempt needs a fresh check
+      resetRecaptcha();
       setIsSubmitting(false);
     }
   };
@@ -124,13 +192,21 @@ const ContactForm: React.FC = () => {
       name="contact" 
       method="POST" 
       data-netlify="true" 
-      netlify-honeypot="bot-field" 
+      netlify-honeypot="bot-field"
+      data-netlify-recaptcha="true"
       className="space-y-6"
       netlify
     >
       {/* Netlify hidden fields */}
       <input type="hidden" name="form-name" value="contact" />
-      <input type="hidden" name="bot-field" />
+
+      {/* Honeypot: off-screen for people; Netlify drops submissions that fill it in */}
+      <div className="absolute -left-[9999px]" aria-hidden="true">
+        <label>
+          Leave this field empty
+          <input type="text" name="bot-field" ref={botField} tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
 
       {submitStatus === 'success' && (
         <div className="bg-green-50 border border-green-200 rounded-md p-4 text-green-800">
@@ -244,6 +320,13 @@ const ContactForm: React.FC = () => {
           </p>
           {errors.consent && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
         </div>
+      </div>
+
+      <div>
+        <div ref={recaptchaContainer} />
+        {recaptchaError && (
+          <p className="mt-1 text-sm text-red-600">Please confirm you're not a robot</p>
+        )}
       </div>
 
       <div>
