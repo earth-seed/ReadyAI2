@@ -33,14 +33,14 @@ EWAY_CRM_SERVICE_URL=https://hosting.eway-crm.us/readyai/API.svc
 EWAY_CRM_USERNAME=your-email@example.com
 EWAY_CRM_PASSWORD=your-password
 EWAY_CRM_APP_VERSION=ReadyAI1.0
+```
 
-# SMTP Email (for contact forms)
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_SECURE=false
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-app-password
-SMTP_FROM=noreply@readyai.dev
+### Contact Form Spam Protection (reCAPTCHA v2 checkbox)
+```bash
+# From https://www.google.com/recaptcha/admin (type: v2 "I'm not a robot" checkbox)
+# Netlify Forms verifies submissions with these; the site key is also built into the contact form
+SITE_RECAPTCHA_KEY=your-site-key        # scopes: Builds + Runtime
+SITE_RECAPTCHA_SECRET=your-secret-key   # scopes: Runtime
 ```
 
 ### Build Environment
@@ -143,7 +143,8 @@ ADMIN_PASSWORD=your-secure-password
 
 ### 5. Testing
 - [ ] Frontend can fetch articles from Strapi API
-- [ ] Netlify Functions work (eWay-CRM, email, health check)
+- [ ] Netlify Functions work (eWay-CRM, health check)
+- [ ] Contact form shows the reCAPTCHA checkbox and a test submission arrives
 - [ ] Strapi admin panel accessible
 - [ ] Preview links work from Strapi
 - [ ] Images load correctly (Cloudinary URLs)

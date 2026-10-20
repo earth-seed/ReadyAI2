@@ -25,7 +25,6 @@
     "framer-motion": "^12.19.2",
     "lucide-react": "^0.344.0",
     "mammoth": "^1.10.0",
-    "nodemailer": "^7.0.3",
     "postcss": "^8.4.35",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

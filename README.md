@@ -38,7 +38,7 @@ src/                  React app
   types/              Shared TS types
 
 readyai-cms/          Strapi 5 backend (own package.json)
-netlify/functions/    Serverless functions (eway-crm, send-email)
+netlify/functions/    Serverless functions (eway-crm)
 public/               Static assets
 docs/                 Deployment + integration runbooks
 ```
