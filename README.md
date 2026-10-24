@@ -52,6 +52,7 @@ docs/                 Deployment + integration runbooks
 | `npm run preview`         | Preview the production build          |
 | `npm run lint`            | ESLint over `src/`                    |
 | `npm test`                | Run Vitest test suite                 |
+| `npm run sync:shorts`     | Pull YouTube Shorts (needs `YOUTUBE_API_KEY`) |
 | `npm run security:audit`  | `npm audit`                           |
 
 ## Docs
@@ -59,6 +60,7 @@ docs/                 Deployment + integration runbooks
 - [`docs/strapi.md`](docs/strapi.md) — CMS architecture, custom controller, content types, deployment, cost analysis
 - [`docs/deployment.md`](docs/deployment.md) — Netlify + Render deploy steps, required env vars, HubSpot tracking
 - [`docs/eway-crm.md`](docs/eway-crm.md) — eWay CRM lead-form integration
+- [`docs/youtube-shorts.md`](docs/youtube-shorts.md) — daily YouTube Shorts sync for the Videos page
 - [`readyai-cms/README.md`](readyai-cms/README.md) — Strapi-specific notes
 </content>
 </invoke>
