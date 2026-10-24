@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowRight, Play, Calendar, ExternalLink, ArrowUpDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import youtubeShorts from "../data/youtubeShorts.json";
+import { youtubeShortOverrides } from "../data/youtubeShortOverrides";
 
 type VideoCategory = "3am" | "guest" | "demos" | "shorts";
 
@@ -21,7 +23,7 @@ function getThumbnailUrl(video: Video): string {
   return video.thumbnailUrl ?? `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`;
 }
 
-export const VIDEOS: Video[] = [
+const MANUAL_VIDEOS: Video[] = [
   {
     id: "carol-eastman-radian-compliance-podcast",
     title: "Carol Eastman – CEO & Founder @ ReadyAI.dev | The Radian Compliance Podcast",
@@ -86,151 +88,21 @@ export const VIDEOS: Video[] = [
     publishedDate: "2026-04-01",
     category: "demos",
   },
-  {
-    id: "business-reimagined-erp-and-now-ai",
-    title: "Business Reimagined, the road taken with ERP, and now AI",
-    description: "",
-    youtubeId: "W-iI5Is6N4c",
-    publishedDate: "2026-08-07",
-    category: "shorts",
-  },
-  {
-    id: "ai-agents-establishing-trust-with-new-entities",
-    title: "AI Agents - Establishing Trust with New Entities",
-    description: "",
-    youtubeId: "AGe5Q-BsWGE",
-    publishedDate: "2026-08-07",
-    category: "shorts",
-  },
-  {
-    id: "ai-governance-brutal-truth-boards-ignore",
-    title: "AI Governance: The Brutal Truth Boards Ignore",
-    description: "",
-    youtubeId: "MCVAaSfJimw",
-    publishedDate: "2026-08-07",
-    category: "shorts",
-  },
-  {
-    id: "business-survival-dont-let-your-business-disappear",
-    title: "Business Survival - Don't Let Your Business Disappear!",
-    description: "",
-    youtubeId: "g3zuP3ymTIc",
-    publishedDate: "2026-08-07",
-    category: "shorts",
-  },
-  {
-    id: "ceo-retiring-speed-of-tech-and-vulnerability",
-    title: "CEO Retiring - The Speed of Tech & Vulnerability",
-    description: "",
-    youtubeId: "an7mBbjTuCs",
-    publishedDate: "2026-08-07",
-    category: "shorts",
-  },
-  {
-    id: "token-usage-gap-cardinal-sin",
-    title: "Token usage gap - not knowing about the spend is a cardinal sin",
-    description: "",
-    youtubeId: "CaunZTUaOFs",
-    publishedDate: "2026-08-07",
-    category: "shorts",
-  },
-  {
-    id: "is-legacy-inertia-an-asset-or-detriment-in-ai",
-    title: "Is Legacy Inertia an Asset or Detriment in AI?",
-    description: "",
-    youtubeId: "xGi1AbQiI2g",
-    publishedDate: "2026-08-07",
-    category: "shorts",
-  },
-  {
-    id: "nobody-told-me-thats-not-an-excuse",
-    title: "Well Nobody Told Me, That's Not an Excuse",
-    description: "",
-    youtubeId: "OyR3kxV005w",
-    publishedDate: "2026-08-07",
-    category: "shorts",
-  },
-  {
-    id: "no-choice-but-to-pay-the-bill-unmonitored-token-usage",
-    title: "You Have No Choice but to Pay the Bill - Unmonitored Token Usage",
-    description: "",
-    youtubeId: "8_XGffXPpOY",
-    publishedDate: "2026-08-07",
-    category: "shorts",
-  },
-  {
-    id: "the-diamond-mine-data-security-analogy",
-    title: "The Diamond Mine — data security analogy from Kimberley mining",
-    description: "",
-    youtubeId: "6zzOkjL74h4",
-    publishedDate: "2026-08-08",
-    category: "shorts",
-  },
-  {
-    id: "the-power-outlet-problem-measuring-deployment",
-    title: "The Power Outlet Problem — measuring deployment, not outcomes",
-    description: "",
-    youtubeId: "jLs4109sSV8",
-    publishedDate: "2026-08-08",
-    category: "shorts",
-  },
-  {
-    id: "the-readyai-platform-in-action",
-    title: "The ReadyAI Platform in Action",
-    description: "",
-    youtubeId: "FOV0riHPqpE",
-    publishedDate: "2026-08-08",
-    category: "shorts",
-  },
-  {
-    id: "the-tao-of-ai-transparency-accountability-observability",
-    title: "The TAO of AI — Transparency, Accountability, Observability",
-    description: "",
-    youtubeId: "tDoTb3jexZA",
-    publishedDate: "2026-08-08",
-    category: "shorts",
-  },
-  {
-    id: "ai-starts-at-the-top-strategy-not-technology",
-    title: "AI Starts at the Top — It's a Strategy, Not a Technology",
-    description: "",
-    youtubeId: "ggYt0Ew940Y",
-    publishedDate: "2026-08-13",
-    category: "shorts",
-  },
-  {
-    id: "the-boards-role-in-ai-strategy",
-    title: "The Board's Role in AI Strategy — Strategy Crafted with the Board",
-    description: "",
-    youtubeId: "DLdSwfch57E",
-    publishedDate: "2026-08-13",
-    category: "shorts",
-  },
-  {
-    id: "ninety-percent-of-ai-projects-fail-ashwin-striking-stat",
-    title: "90% of AI Projects Fail Today — Ashwin's Striking Stat",
-    description: "",
-    youtubeId: "VwSaNldQVN4",
-    publishedDate: "2026-08-13",
-    category: "shorts",
-  },
-  {
-    id: "ninety-days-is-enough-to-run-a-measured-ai-pilot",
-    title: "90 Days Is Enough to Run a Measured AI Pilot",
-    description: "",
-    youtubeId: "PftZZVGfWDo",
-    publishedDate: "2026-08-13",
-    category: "shorts",
-  },
-  {
-    id: "ceos-reacting-broadsword-layoffs-without-roi-reporting",
-    title: "CEOs Are Reacting — Broadsword Layoffs Without Formal ROI Reporting",
-    description: "",
-    youtubeId: "qRNeNNpGqFU",
-    publishedDate: "2026-08-13",
-    category: "shorts",
-  },
 ];
+
+// Synced daily from the YouTube channel; retitle or hide one in youtubeShortOverrides.ts.
+// A short that's also hand-added above is shown once, as the hand-added entry.
+const SHORTS: Video[] = youtubeShorts
+  .filter((short) => !youtubeShortOverrides[short.youtubeId]?.hidden)
+  .filter((short) => !MANUAL_VIDEOS.some((video) => video.youtubeId === short.youtubeId))
+  .map((short): Video => ({
+    ...short,
+    title: youtubeShortOverrides[short.youtubeId]?.title ?? short.title,
+    description: "",
+    category: "shorts",
+  }));
+
+export const VIDEOS: Video[] = [...MANUAL_VIDEOS, ...SHORTS];
 
 type CategoryInfo = {
   title: string;
