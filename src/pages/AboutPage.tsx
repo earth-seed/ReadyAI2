@@ -367,42 +367,6 @@ const AboutPage: React.FC = () => {
               </div>
             </div>
 
-            {/* John De Los Reyes */}
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mt-8">
-              <div className="grid lg:grid-cols-5 gap-0">
-                {/* Image Section */}
-                <div className="lg:col-span-2 relative">
-                  <img
-                    src="/assets/images/john.jpg"
-                    alt="John De Los Reyes - Enterprise AI & Go-to-Market Executive"
-                    className="w-full h-full object-cover min-h-[250px] sm:min-h-[300px]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
-                </div>
-
-                {/* Bio Info */}
-                <div className="lg:col-span-3 p-5 sm:p-6 md:p-8">
-                  <div className="mb-4">
-                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-primary">
-                      John De Los Reyes
-                    </h3>
-                  </div>
-
-                  <div className="space-y-4">
-                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                      John De Los Reyes "JDLR" is an enterprise technology and go-to-market executive with 15+ years of experience helping global organizations adopt transformational technologies and turn them into measurable business outcomes.
-                    </p>
-                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                      His background spans AI and machine learning, cybersecurity, SaaS, and enterprise digital transformation. Most recently as VP of Customer Success, Americas at Zimperium, John partnered with CIOs and CISOs to drive AI adoption, value realization, and enterprise-wide scale. Previously at FICO, he worked with AI and machine learning platforms alongside AWS and other strategic partners to help enterprises harness data-driven intelligence for smarter, faster decision-making.
-                    </p>
-                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                      John is a proven enterprise AI leader who turns executive vision into scalable, revenue-driving outcomes — bridging strategy, technology, and growth.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             {/* Ashwin "Ash" Rangan */}
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mt-8">
               <div className="grid lg:grid-cols-5 gap-0">
@@ -426,10 +390,46 @@ const AboutPage: React.FC = () => {
 
                   <div className="space-y-4">
                     <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                      Ashwin &ldquo;Ash&rdquo; Rangan shapes ReadyAI&rsquo;s strategic direction as Executive Board Member, bringing the judgment, perspective, and enterprise leadership that help organizations move on AI with clarity and confidence.
+                      Ashwin &ldquo;Ash&rdquo; Rangan serves as Executive Board Member at ReadyAI, bringing nearly four decades of global enterprise technology leadership, boardroom judgment, and AI governance expertise. A former senior executive at ICANN, Ash helped lead technology, engineering, security, infrastructure, and digital transformation for an organization central to the stability and resiliency of the global Internet.
                     </p>
                     <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                      Former CIO of Walmart, Bank of America, Rockwell International, and ICANN, current Board Advisor to Qtonic Quantum, and co-author of <em>Governance in the Age of Generative AI</em>, he helps leaders separate noise from what truly matters and act on AI with discipline, credibility, and speed.
+                      His executive experience spans some of the world&rsquo;s most complex organizations, including CIO of Walmart, Bank of America, Edwards Lifesciences, and Rockwell International. As co-author of <em>Governance in the Age of GenAI</em>, keynote speaker, Board Director, and advisor on cybersecurity, AI, quantum computing, and generative AI, Ash helps ReadyAI clients separate signal from noise and move forward with clarity, discipline, and executive-level confidence.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Peter Moore */}
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mt-8">
+              <div className="grid lg:grid-cols-5 gap-0">
+                {/* Image Section */}
+                <div className="lg:col-span-2 relative">
+                  <img
+                    src="/assets/images/readyai-peter-moore.jpg"
+                    alt="Peter Moore - Senior Strategic Advisor, ReadyAI"
+                    className="w-full h-full object-cover min-h-[250px] sm:min-h-[300px]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                </div>
+
+                {/* Bio Info */}
+                <div className="lg:col-span-3 p-5 sm:p-6 md:p-8">
+                  <div className="mb-4">
+                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-primary">
+                      Peter Moore
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4">
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      Peter Moore serves as Senior Strategic Advisor at ReadyAI, bringing decades of global executive advisory experience across business strategy, digital transformation, enterprise technology, and growth. He has worked as an advisor to senior leaders at many of the world&rsquo;s most recognized organizations, including Citigroup, Johnson &amp; Johnson, Microsoft, Amgen, FedEx, ICANN, SAP, SAS Institute, SpaceX, Splunk, Uber, VMware, and others.
+                    </p>
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      Peter helps companies compete through periods of digital disruption by developing new business models, competitive strategies, and technology initiatives. He has also collaborated with renowned author Geoffrey Moore to create models and tools for navigating major enterprise technology shifts, while building a network of senior advisors with deep experience across the technology sector. Earlier in his career, he served as Senior Vice President of Corporate Relations at the New York Stock Exchange, overseeing strategic planning, corporate marketing, media relations, government relations, and research.
+                    </p>
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      He brings guidance, deep experience and insights to the clients of ReadyAI who are searching for answers in AI adoption that only years in market can provide.
                     </p>
                   </div>
                 </div>
@@ -463,6 +463,42 @@ const AboutPage: React.FC = () => {
                     </p>
                     <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
                       He previously led and has served as CEO in technology and channel organizations. His focus is building scalable partner ecosystems and executive relationships in several different verticals, formalizing alliance frameworks, and translating strategy into measurable business outcomes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* John De Los Reyes */}
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mt-8">
+              <div className="grid lg:grid-cols-5 gap-0">
+                {/* Image Section */}
+                <div className="lg:col-span-2 relative">
+                  <img
+                    src="/assets/images/john.jpg"
+                    alt="John De Los Reyes - Enterprise AI & Go-to-Market Executive"
+                    className="w-full h-full object-cover min-h-[250px] sm:min-h-[300px]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                </div>
+
+                {/* Bio Info */}
+                <div className="lg:col-span-3 p-5 sm:p-6 md:p-8">
+                  <div className="mb-4">
+                    <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-primary">
+                      John De Los Reyes
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4">
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      John De Los Reyes "JDLR" is an enterprise technology and go-to-market executive with 15+ years of experience helping global organizations adopt transformational technologies and turn them into measurable business outcomes.
+                    </p>
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      His background spans AI and machine learning, cybersecurity, SaaS, and enterprise digital transformation. Most recently as VP of Customer Success, Americas at Zimperium, John partnered with CIOs and CISOs to drive AI adoption, value realization, and enterprise-wide scale. Previously at FICO, he worked with AI and machine learning platforms alongside AWS and other strategic partners to help enterprises harness data-driven intelligence for smarter, faster decision-making.
+                    </p>
+                    <p className="font-sans text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                      John is a proven enterprise AI leader who turns executive vision into scalable, revenue-driving outcomes — bridging strategy, technology, and growth.
                     </p>
                   </div>
                 </div>
