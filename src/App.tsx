@@ -36,6 +36,8 @@ import Whitepaper3Page from './pages/Whitepaper3Page';
 import Whitepaper3ThankYouPage from './pages/Whitepaper3ThankYouPage';
 import Whitepaper4Page from './pages/Whitepaper4Page';
 import Whitepaper4ThankYouPage from './pages/Whitepaper4ThankYouPage';
+import Whitepaper5Page from './pages/Whitepaper5Page';
+import Whitepaper5ThankYouPage from './pages/Whitepaper5ThankYouPage';
 
 function App() {
   const { trackCustomMetric } = usePerformance();
@@ -90,6 +92,8 @@ function App() {
             <Route path="/whitepapers/roi-with-ai-the-real-question-for-enterprises/thank-you" element={<Whitepaper3ThankYouPage />} />
             <Route path="/whitepapers/crawl-walk-run-framework-for-enterprise-ai-adoption" element={<Whitepaper4Page />} />
             <Route path="/whitepapers/crawl-walk-run-framework-for-enterprise-ai-adoption/thank-you" element={<Whitepaper4ThankYouPage />} />
+            <Route path="/whitepapers/crawl-walk-run-part-2" element={<Whitepaper5Page />} />
+            <Route path="/whitepapers/crawl-walk-run-part-2/thank-you" element={<Whitepaper5ThankYouPage />} />
             {/* Legacy whitepaper URLs — redirect to preserve existing/shared links & SEO */}
             <Route path="/whitepaper" element={<Navigate to="/whitepapers/ai-readiness-are-you-prepared" replace />} />
             <Route path="/whitepaper/thank-you" element={<Navigate to="/whitepapers/ai-readiness-are-you-prepared/thank-you" replace />} />
@@ -99,6 +103,8 @@ function App() {
             <Route path="/whitepaper3/thank-you" element={<Navigate to="/whitepapers/roi-with-ai-the-real-question-for-enterprises/thank-you" replace />} />
             <Route path="/whitepaper4" element={<Navigate to="/whitepapers/crawl-walk-run-framework-for-enterprise-ai-adoption" replace />} />
             <Route path="/whitepaper4/thank-you" element={<Navigate to="/whitepapers/crawl-walk-run-framework-for-enterprise-ai-adoption/thank-you" replace />} />
+            <Route path="/whitepaper5" element={<Navigate to="/whitepapers/crawl-walk-run-part-2" replace />} />
+            <Route path="/whitepaper5/thank-you" element={<Navigate to="/whitepapers/crawl-walk-run-part-2/thank-you" replace />} />
             <Route path="/videos" element={<VideosPage />} />
             <Route path="/videos/:videoId" element={<VideosPage />} />
             <Route path="/preview" element={<ArticlePreview />} />

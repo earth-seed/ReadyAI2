@@ -42,4 +42,12 @@ export const whitepapers: Whitepaper[] = [
       'Authored by Ashwin Rangan, this whitepaper lays out a staged crawl-walk-run model for enterprise AI adoption — sequencing from foundational literacy to margin expansion to new revenue growth, so adoption stays disciplined, measurable, and safe.',
     url: '/whitepapers/crawl-walk-run-framework-for-enterprise-ai-adoption',
   },
+  {
+    id: 'crawl-walk-run-part-2',
+    title: 'Crawl-Walk-Run Part 2',
+    // TODO: finalize description from the whitepaper #5 PDF
+    description:
+      'Authored by Ashwin Rangan, this whitepaper builds on the crawl-walk-run framework with practical guidance for scaling enterprise AI adoption into sustained, measurable results.',
+    url: '/whitepapers/crawl-walk-run-part-2',
+  },
 ];
