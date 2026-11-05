@@ -16,9 +16,10 @@ const HeroSection: React.FC = () => {
             {/* Left side - Text content */}
             <div className="max-w-2xl pt-8 md:pt-12 mx-auto xl:mx-0">
               <h1 className="font-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-primary leading-[1.1] mb-6 animate-fade-in-up">
-                <span className="block">One Secure Platform.</span>
-                <span className="block">Every AI Model.</span>
-                <span className="block sm:whitespace-nowrap">Real Enterprise Control.</span>
+                <span className="block">Tame AI Sprawl.</span>
+                <span className="block">Find it.</span>
+                <span className="block">Control it.</span>
+                <span className="block">Put it to work at scale in your business.</span>
               </h1>
               
               <div className="space-y-6 sm:space-y-8 mb-8 animate-fade-in-up-delay max-w-xl">
